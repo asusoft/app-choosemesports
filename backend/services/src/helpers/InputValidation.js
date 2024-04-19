@@ -11,11 +11,18 @@ const isValidLogin = value => {
     return re.test(value); 
 };
 
+const isValidEmail = value => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(value); 
+};
+
 export const validateInput = async (input) => {
     if(!isValidPassword(input.password)) {
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['password'] };
     } else if(!isValidLogin(input.login)){
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['login'] };
+    } else if(!isValidEmail(input.email)){
+        return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['email'] };
     }
     return true;
 };

@@ -7,6 +7,17 @@ export const ErrorStatus = {
     ALREADY_EXIST: "ALREADY_EXIST",
     NOT_ENOUGH_PERMISSIONS: "NOT_ENOUGH_PERMISSIONS",
     INVALID_CREDENTIALS: "INVALID_CREDENTIALS",
-    UNKNOWN_ERROR: " UNKNOWN_ERROR"
+    UNKNOWN_ERROR: "UNKNOWN_ERROR"
+}
+
+export const ERole = {
+    SCOUT: "SCOUT",
+    PLAYER: "PLAYER",
+}
+
+export const Gender = {
+    MALE: "MALE",
+    FEMALE: "FEMALE",
+    OTHER:"OTHER"
 }
     

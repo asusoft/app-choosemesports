@@ -1,5 +1,3 @@
-
-
 export const getUserByQuery = async (field, query, db) => {
     const userQuerySnapshot = await db
         .collection("Users")
