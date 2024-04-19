@@ -55,7 +55,6 @@ extend type Mutation {
 }
 
 extend type Query {
-    getPlayerMe: PlayerOrBE!
     retrieveSport(id: ID!): SportOrBE!
     getSportPositions(sportID: ID!): PositionListOrBE!
 }
