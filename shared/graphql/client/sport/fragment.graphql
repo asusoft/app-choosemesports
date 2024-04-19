@@ -1,0 +1,25 @@
+fragment FullSport on Sport {
+    id
+    name
+    uniqueFields
+    positions
+}
+
+fragment SimpleSport on Sport {
+    id
+    name
+}
+
+fragment FullPosition on Position {
+    id
+    sportID
+    name
+    stats
+}
+
+fragment PositionList on PositionList {
+    total
+    positions {
+        ...FullPosition
+    }
+}

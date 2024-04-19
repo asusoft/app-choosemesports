@@ -1,0 +1,11 @@
+query RetrievePlayer ($id: ID!){
+    retrievePlayer (id: $id) { 
+        __typename
+        ... on BaseError {
+            status
+        }
+        ... on Player {
+            ...FullPlayer
+        }
+    }
+}

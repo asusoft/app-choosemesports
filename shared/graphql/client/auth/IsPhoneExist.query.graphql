@@ -1,0 +1,11 @@
+query IsPhoneExist($phone: String!) {
+ isExist: isPhoneExist(phone: $phone) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on BooleanObject {
+    boolean
+    }
+ }
+}

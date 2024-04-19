@@ -1,0 +1,11 @@
+query IsLoginExist($login: String!) {
+ isExist: isLoginExist(login: $login) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on BooleanObject {
+    boolean
+    }
+ }
+}

@@ -1,0 +1,13 @@
+query GetPlayers($sport: Sport, $location: String, $ageGroup: AgeGroup, $skip: Int! = 0, $limit: Int! = 20) {
+  getPlayers(sport: $sport, location: $location, ageGroup: $ageGroup,, skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on PlayerList {
+      players {
+        ...FullPlayer
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ type AuthUser {
     token: String!
 }
 
-input SignInInput {
+input LogInInput {
     password: String!
     login: String!
 }
@@ -14,7 +14,7 @@ union AuthUserOrBE = AuthUser | BaseError
 type Mutation {
     logout(token: String!): BaseError
     changePassword(oldPassword: String!, newPassword: String!): ErrorWithFields
-    login(input: SignInInput): AuthUserOrBE!
+    login(input: LogInInput): AuthUserOrBE!
 }
 
 type Query {

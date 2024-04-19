@@ -1,0 +1,6 @@
+mutation UpdatePlayerContact($data: PlayerContactInUpdate!) {
+  updatePlayerContact(data: $data) {
+    status
+    fields
+  }
+}

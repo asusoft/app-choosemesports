@@ -1,0 +1,14 @@
+mutation Login($input: LogInInput) {
+    login(input: $input) {
+        __typename
+        ... on AuthUser {
+            user {
+                ...FullUser
+            }
+            token
+        }
+        ... on BaseError {
+            status
+        }
+    }
+}

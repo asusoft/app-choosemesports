@@ -1,0 +1,24 @@
+fragment FullPlayer on Player {
+    id
+    userID
+    sport
+    positions
+    dob
+    contact
+    personal
+}
+
+
+fragment SimplePlayer on Player {
+    id
+    userID
+    sport
+    positions
+}
+
+fragment PlayerList on PlayerList {
+    total
+    players {
+        ...FullPlayer
+    }
+}

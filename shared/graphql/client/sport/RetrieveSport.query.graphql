@@ -1,0 +1,11 @@
+query RetrieveSport ($id: ID!){
+    retrieveSport (id: $id) { 
+        __typename
+        ... on BaseError {
+            status
+        }
+        ... on Sport {
+            ...FullSport
+        }
+    }
+}

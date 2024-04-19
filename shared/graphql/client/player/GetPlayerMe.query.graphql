@@ -1,0 +1,11 @@
+query GetPlayerMe {
+  getPlayerMe {
+     __typename
+    ... on Player {
+      ...FullPlayer
+    }
+    ... on BaseError {
+      status
+    }
+  }
+}

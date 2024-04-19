@@ -1,0 +1,12 @@
+mutation CreateSport($sport: SportIn!){
+    createSport(sport: $sport){
+        __typename
+        ...on Sport {
+            ...FullSport
+        }
+        ... on ErrorWithFields {
+            status
+            fields
+        }
+    }
+}

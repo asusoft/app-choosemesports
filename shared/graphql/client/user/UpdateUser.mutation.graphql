@@ -1,0 +1,6 @@
+mutation UpdateUser($data: UserInUpdate!) {
+  updateUser(data: $data) {
+    status
+    fields
+  }
+}

@@ -1,0 +1,20 @@
+fragment FullUser on User {
+    id
+    name
+    login
+    email
+    role
+    gender
+    avatar
+    bio
+    location
+}
+
+fragment SimpleUser on User {
+    id
+    name
+    login
+    avatar
+    bio
+    location
+}

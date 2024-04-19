@@ -1,0 +1,18 @@
+query RetrieveFile($id: ID!){
+    retrieveFile(id: $id) {
+        __typename
+        ... on BaseError {
+            status
+        }
+        ... on File {
+            id
+            createdAt
+            updatedAt
+            name
+            path
+            type
+            checksum
+            size
+        }
+    }
+}

@@ -1,0 +1,15 @@
+mutation CreatePlayer($input: CreatePlayerInput) {
+    createPlayer(input: $input) {
+        __typename
+        ... on AuthUser {
+            user {
+                ...FullUser
+            }
+            token
+        }
+        ... on ErrorWithFields {
+            status
+            fields
+        }
+    }
+}
