@@ -4,6 +4,7 @@ import { useAppNavigation } from "../../hooks/use-app-navigation";
 import AppStoreIcon from "../../assets/LandingPage/icons/App-Store.png"
 import GooglePlayIcon from "../../assets/LandingPage/icons/Google-Play.png"
 import HeroApp from "../../assets/LandingPage/images/hero-app.png"
+import TextButton from "../../components/shared/ui-lib/text-button";
 
 export default function HomeScreen() {
     const isMobile = useMediaQuery("(max-width:960px)");
@@ -22,14 +23,14 @@ export default function HomeScreen() {
                 justifyContent="space-between"
             >
                <Box
-                    maxWidth={isMobile ? "80%" : "55%"}
+                    maxWidth={isMobile ? "80%" : "45%"}
                     display="flex"
                     alignSelf={isMobile ? 'center' : undefined}
                 >
                     <img
                         src={HeroApp}
                         alt="Hero"
-                        style={{ width: "100%", borderRadius: isMobile ? "0" : "10px", height: isMobile ? '600px' : '700px' }}
+                        style={{ width: "100%", borderRadius: isMobile ? "0" : "10px", }}
                     />
                 </Box>
                 <Box
@@ -78,6 +79,9 @@ export default function HomeScreen() {
                                 style={{ width: "100%", borderRadius: isMobile ? "0" : "10px" }}
                             />
                         </Box>
+                    </Box>
+                    <Box alignSelf={'center'} marginTop={'1.5rem'} maxWidth={isMobile ? '8rem' : '12rem'}>
+                        <TextButton color={'#006B7D'} label={'Get Started'} labelColor={'#FFF'} align={'center'}/>
                     </Box>
                 </Box>
             </Box>
