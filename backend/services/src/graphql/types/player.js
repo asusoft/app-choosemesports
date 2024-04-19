@@ -30,6 +30,7 @@ export const PlayerTypes = `
         sportID: String!
         dob: String!
         location: String!
+        password: String!
     }
 
     input PlayerContactInUpdate {
