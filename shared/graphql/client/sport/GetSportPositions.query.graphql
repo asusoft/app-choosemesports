@@ -1,5 +1,5 @@
-query GetSportPositions ($id: ID!){
-    getSportPositions (id: $id) { 
+query GetSportPositions ($sportID: ID!){
+    getSportPositions (sportID: $sportID) { 
         __typename
         ... on BaseError {
             status

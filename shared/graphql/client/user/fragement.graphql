@@ -5,7 +5,9 @@ fragment FullUser on User {
     email
     role
     gender
-    avatar
+    avatar {
+        ...Media
+    }
     bio
     location
 }
@@ -14,7 +16,9 @@ fragment SimpleUser on User {
     id
     name
     login
-    avatar
+    avatar {
+        ...Media
+    }
     bio
     location
 }

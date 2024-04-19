@@ -1,6 +1,5 @@
 mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoIn!) {
   updatePlayerPersonalInfo(data: $data) {
     status
-    fields
   }
 }

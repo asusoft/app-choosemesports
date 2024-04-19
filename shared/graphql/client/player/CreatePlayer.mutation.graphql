@@ -1,4 +1,4 @@
-mutation CreatePlayer($input: CreatePlayerInput) {
+mutation CreatePlayer($input: PlayerIn!) {
     createPlayer(input: $input) {
         __typename
         ... on AuthUser {

@@ -1,12 +1,11 @@
-mutation CreateSport($sport: SportIn!){
-    createSport(sport: $sport){
+mutation CreateSport($input: SportIn!) {
+  createSport(input: $input) {
         __typename
         ...on Sport {
             ...FullSport
         }
-        ... on ErrorWithFields {
+        ... on BaseError {
             status
-            fields
         }
     }
 }

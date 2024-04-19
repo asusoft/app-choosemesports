@@ -1,8 +1,15 @@
 fragment FullSport on Sport {
     id
     name
-    uniqueFields
-    positions
+    uniqueFields {
+        id
+        sportID
+        label
+        value
+    }
+    positions {
+        ...PositionList
+    }
 }
 
 fragment SimpleSport on Sport {
@@ -14,7 +21,11 @@ fragment FullPosition on Position {
     id
     sportID
     name
-    stats
+    stats {
+        positionID
+        field
+        value
+    }
 }
 
 fragment PositionList on PositionList {

@@ -1,19 +1,37 @@
 fragment FullPlayer on Player {
     id
     userID
-    sport
-    positions
+    sport {
+        ...FullSport
+    }
+    positions {
+        ...FullPosition
+    }
     dob
-    contact
-    personal
+    contact {
+        phone
+        youtube
+        facebook
+        twitter
+        instagram
+    }
+    personal {
+        height
+        weight
+        about
+    }
 }
 
 
 fragment SimplePlayer on Player {
     id
     userID
-    sport
-    positions
+    sport {
+        ...SimpleSport
+    }
+    positions {
+        ...FullPosition
+    }
 }
 
 fragment PlayerList on PlayerList {
