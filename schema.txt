@@ -1,0 +1,57 @@
+
+user {
+    UserID (Primary Key)
+    Username
+    Email
+    Password
+    UserType (Player or Scout)
+    ProfilePicture
+    Bio
+    Location
+}
+
+Player {
+    PlayerID (Primary Key)
+    UserID (Foreign Key referencing User)
+    Sport
+    Position
+    Height
+    Weight
+    Age
+    Skill level
+    Stats (could be an array or separate schema depending on complexity)
+    Videos
+}
+
+
+Scout {
+    ScoutID (Primary Key)
+    UserID (Foreign Key referencing User)
+    Organization
+    Scouting experience
+    Preferred sports
+    Preferred locations
+    Contact information
+}
+
+Sport {
+    SportID
+    SportName
+}
+
+Video {
+    VideoID
+    Poster
+    VideoSource
+    Author
+    Rating
+    Description
+}
+
+Review {
+    ReviewID
+    Author
+    VideoID
+    Text
+    Rating
+}
