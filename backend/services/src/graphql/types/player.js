@@ -31,6 +31,7 @@ export const PlayerTypes = `
         dob: String!
         location: String!
         password: String!
+        gender: Gender!
     }
 
     input PlayerContactInUpdate {

@@ -13,7 +13,7 @@ export const createUserDoc = async (id, input) => {
         login: input.login,
         email: input.email,
         role: input.role,
-        gender: Gender.MALE,
+        gender: input.gender,
         avatarID: '',
         bio: '',
         location: input.location,

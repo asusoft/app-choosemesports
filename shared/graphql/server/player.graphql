@@ -30,6 +30,7 @@ input PlayerIn {
     dob: String!
     location: String!
     password: String!
+    gender: Gender!
 }
 
 input PlayerContactInUpdate {

@@ -1,8 +1,8 @@
 import { GraphQLClient } from "graphql-request"
-import { ErrorStatus, PlayerIn } from "../../generated/types/graphql"
+import { ErrorStatus, Gender, PlayerIn } from "../../generated/types/graphql"
 import { useClient } from "../fixtures"
 import { createError, genString } from "../utils"
-import { createPlayer, createPlayerEnsureOK } from "./request"
+import { createPlayer } from "./request"
 import { describe, it, beforeAll, expect } from "bun:test"
 import { genEmail, genLogin, genName, genPassword } from "./gens"
 
@@ -21,7 +21,8 @@ describe('Create Player', () => {
             sportID: genString(),
             dob: new Date().toString(),
             location: genString(),
-            password: genPassword()
+            password: genPassword(),
+            gender: Gender.Male
         }
 
     })

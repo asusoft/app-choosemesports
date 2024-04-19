@@ -180,6 +180,7 @@ export type PlayerContactInUpdate = {
 export type PlayerIn = {
   dob: Scalars['String']['input'];
   email: Scalars['String']['input'];
+  gender: Gender;
   location: Scalars['String']['input'];
   login: Scalars['String']['input'];
   name: Scalars['String']['input'];
