@@ -11,7 +11,7 @@ export const SportTypes = `
         sports: [Sport!]!
     }
     
-    type SportIn {
+    input SportIn {
         name: String!
         positions: [PositionIn!]
     }
@@ -23,9 +23,14 @@ export const SportTypes = `
         stats: [StatField!]!
     }
     
-    type PositionIn {
+    input PositionIn {
         name: String!
-        stats: [StatField!]!
+        stats: [StatFieldIn!]!
+    }
+
+    input StatFieldIn {
+        field: String!
+        value: String!
     }
     
     type PositionList {

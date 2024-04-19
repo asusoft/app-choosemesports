@@ -46,8 +46,8 @@ input PlayerPersonalInfoIn {
 }
 
 type PlayerList {
-  total: Int!
-  players: [Player!]!
+    total: Int!
+    players: [Player!]!
 }
 
 union PlayerOrBE = Player | BaseError

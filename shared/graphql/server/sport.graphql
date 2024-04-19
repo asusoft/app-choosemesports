@@ -1,49 +1,54 @@
 type Sport {
-  id: ID!
-  name: String!
-  uniqueFields: [UniqueField!]
-  positions: PositionList
+    id: ID!
+    name: String!
+    uniqueFields: [UniqueField!]
+    positions: PositionList
 }
 
 type SportList {
-  total: Int!
-  sports: [Sport!]!
+    total: Int!
+    sports: [Sport!]!
 }
 
-type SportIn {
-  name: String!
-  positions: [PositionIn!]
+input SportIn {
+    name: String!
+    positions: [PositionIn!]
 }
 
 type Position {
-  id: ID!
-  sportID: ID!
-  name: String!
-  stats: [StatField!]!
+    id: ID!
+    sportID: ID!
+    name: String!
+    stats: [StatField!]!
 }
 
-type PositionIn {
-  name: String!
-  stats: [StatField!]!
+input PositionIn {
+    name: String!
+    stats: [StatFieldIn!]!
+}
+
+input StatFieldIn {
+    field: String!
+    value: String!
 }
 
 type PositionList {
-  total: Int!
-  positions: [Position!]!
+    total: Int!
+    positions: [Position!]!
 }
 
 type StatField {
-  positionID: ID
-  field: String!
-  value: String!
+    positionID: ID
+    field: String!
+    value: String!
 }
 
 
 type UniqueField {
-  id: ID!
-  sportID: ID!
-  label: String!
-  value: String!
+    id: ID!
+    sportID: ID!
+    label: String!
+    value: String!
 }
 
 union SportOrBE = Sport | BaseError
@@ -55,6 +60,7 @@ extend type Mutation {
 }
 
 extend type Query {
+    getPlayerMe: PlayerOrBE!
     retrieveSport(id: ID!): SportOrBE!
     getSportPositions(sportID: ID!): PositionListOrBE!
 }

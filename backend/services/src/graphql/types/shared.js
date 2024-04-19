@@ -16,6 +16,12 @@ export const SharedTypes = `
         status: ErrorStatus!
     }
 
+    type BooleanObject {
+        boolean: Boolean!
+    }
+
+    union BooleanObjectOrBE = BooleanObject | BaseError
+
     type ErrorWithFields {
         status: ErrorStatus!
         fields: [String!]!

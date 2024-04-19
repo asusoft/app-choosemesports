@@ -10,11 +10,11 @@ export const PlayerTypes = `
     }
 
     type PlayerContact {
-        phone: string
-        youtube: string
-        facebook: string
-        twitter: string
-        instagram: string
+        phone: String
+        youtube: String
+        facebook: String
+        twitter: String
+        instagram: String
     }
 
     type PlayerPersonalInfo {
@@ -27,23 +27,23 @@ export const PlayerTypes = `
         name: String!
         login: String!
         email: String!
-        sport: Sport!
+        sportID: String!
         dob: String!
-        location: string!
+        location: String!
     }
 
-    inuput PlayerContactInUpdate {
-        phone: string
-        youtube: string
-        facebook: string
-        twitter: string
-        instagram: string
+    input PlayerContactInUpdate {
+        phone: String
+        youtube: String
+        facebook: String
+        twitter: String
+        instagram: String
     }
 
     input PlayerPersonalInfoIn {
         height: String
         weight: String
-        about: string
+        about: String
     }
 
     type PlayerList {
@@ -63,6 +63,6 @@ export const PlayerTypes = `
     extend type Query {
         getPlayerMe: PlayerOrBE!
         retrievePlayer(id: ID!): PlayerOrBE!
-        getPlayers(sport: Sport, location: String, ageGroup: AgeGroup, skip: Int! = 0, limit: Int! = 20): PlayerListOrBE!
+        getPlayers(sportName: String, location: String, ageGroup: String, skip: Int! = 0, limit: Int! = 20): PlayerListOrBE!
     }
 `;

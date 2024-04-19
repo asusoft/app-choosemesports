@@ -13,7 +13,7 @@ const start = async () => {
     });
 
     const { url } = await startStandaloneServer(server, {
-        listen: { port: 4000, host: '0.0.0.0' },
+        listen: { port: 4000, host: '172.20.10.3' },
         context: async ({ req }) => {
             const user = await getUserFromToken(req.headers.authorization, database)
             return {

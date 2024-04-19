@@ -12,21 +12,20 @@ export const UserType = `
 
   type User {
     id: ID!
-    name: string!
-    login: string!
-    email: string!
+    name: String!
+    login: String!
+    email: String!
     role: ERole!
     gender: Gender!
     avatar: File
-    bio: string
-    location: string!
+    bio: String
+    location: String!
   }
 
   input UserInUpdate {
-    login: string
-    email: string
-    avatar: File
-    bio: string
+    login: String
+    email: String
+    bio: String
   }
 
   union UserOrBE = User | BaseError
