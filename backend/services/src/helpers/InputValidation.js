@@ -17,15 +17,27 @@ const isValidEmail = value => {
 };
 
 export const validateInput = async (input) => {
-    if(!isValidPassword(input.password)) {
+    if(!isValidPassword(input?.password)) {
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['password'] };
-    } else if(!isValidLogin(input.login)){
+    } else if(!isValidLogin(input?.login)){
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['login'] };
-    } else if(!isValidEmail(input.email)){
+    } else if(!isValidEmail(input?.email)){
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['email'] };
     }
     return true;
 };
+
+export const validateEmail = async (email) => {
+    return isValidEmail(email)
+}
+
+export const validatePassword = async (password) => {
+    return isValidPassword(password)
+}
+
+export const validateLogin = async (login) => {
+    return isValidLogin(login)
+}
 
 
   

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "bun test --timeout 25000 --bail=50",
     "single": "bun test get-all-scholars.test.ts --timeout 25000 --bail=50",
-    "folder": "bun test player/ --timeout 25000 --bail=50",
+    "folder": "bun test auth/ --timeout 25000 --bail=50",
     "lint": "eslint . --cache $ESLINT_ARG",
     "lint:fix": "bun run lint --fix",
     "lint:ts": "bun run tsc --noEmit",
