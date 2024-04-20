@@ -16,6 +16,11 @@ const isValidEmail = value => {
     return re.test(value); 
 };
 
+const isEmptyString = value => {
+    const re = /^ *$|^ {1,255}$/;
+    return re.test(value); 
+};
+
 export const validateInput = async (input) => {
     if(!isValidPassword(input?.password)) {
         return { status: ErrorStatus.INVALID_INPUT_DATA, fields: ['password'] };
@@ -37,6 +42,10 @@ export const validatePassword = async (password) => {
 
 export const validateLogin = async (login) => {
     return isValidLogin(login)
+}
+
+export const validateString = async (string) => {
+    return !isEmptyString(string)
 }
 
 

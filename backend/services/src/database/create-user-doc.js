@@ -1,10 +1,8 @@
 import { database } from "../../init-firebase.js";
-import { Gender } from "../helpers/Constants.js";
 
 
 export const createUserDoc = async (id, input) => {
     const db = database
-
     const newUserRef = db.collection("Users").doc(id);
 
     const data = {

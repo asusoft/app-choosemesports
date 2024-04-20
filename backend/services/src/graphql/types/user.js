@@ -26,6 +26,7 @@ export const UserType = `
     login: String
     email: String
     bio: String
+    avatarID: String
   }
 
   union UserOrBE = User | BaseError

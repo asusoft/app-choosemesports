@@ -369,6 +369,7 @@ export type User = {
 };
 
 export type UserInUpdate = {
+  avatarID?: InputMaybe<Scalars['String']['input']>;
   bio?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   login?: InputMaybe<Scalars['String']['input']>;
