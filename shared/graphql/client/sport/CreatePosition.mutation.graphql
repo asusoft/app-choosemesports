@@ -1,0 +1,11 @@
+mutation CreatePosition($input: PositionIn!) {
+  createPosition(input: $input) {
+        __typename
+        ...on Position {
+            ...FullPosition
+        }
+        ... on BaseError {
+            status
+        }
+    }
+}

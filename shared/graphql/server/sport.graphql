@@ -12,24 +12,22 @@ type SportList {
 
 input SportIn {
     name: String!
-    positions: [PositionIn!]
 }
 
 type Position {
     id: ID!
-    sportID: ID!
     name: String!
-    stats: [StatField!]!
+    sportID: String!
+    stats: [Stat!]!
 }
 
 input PositionIn {
     name: String!
-    stats: [StatFieldIn!]!
+    stats: [StatIn!]!
 }
 
-input StatFieldIn {
-    field: String!
-    value: String!
+input StatIn {
+    name: String!
 }
 
 type PositionList {
@@ -37,26 +35,30 @@ type PositionList {
     positions: [Position!]!
 }
 
-type StatField {
-    positionID: ID
-    field: String!
-    value: String!
+type Stat {
+    id: ID!
+    name: String!
 }
-
 
 type UniqueField {
     id: ID!
     sportID: ID!
     label: String!
-    value: String!
+}
+
+type UniqueFieldIn {
+    sportID: ID!
+    label: String!
 }
 
 union SportOrBE = Sport | BaseError
 union SportListOrBE = SportList | BaseError
+union PositionOrBE = Position | BaseError
 union PositionListOrBE = PositionList | BaseError
 
 extend type Mutation {
     createSport(input: SportIn!): SportOrBE!
+    createPosition(input: PositionIn!): PositionOrBE!
 }
 
 extend type Query {

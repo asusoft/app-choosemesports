@@ -1,9 +1,8 @@
 export const getAdminByQuery = async (field, query, db) => {
 
-  console.log('getting admin')
-
   const userQuerySnapshot = await db
-    .collection("Admins")
+    .collection("Users")
+    .where('isAdmin', "==", true)
     .where(field, "==", query).get();
 
   let user;

@@ -5,7 +5,6 @@ fragment FullSport on Sport {
         id
         sportID
         label
-        value
     }
     positions {
         ...PositionList
@@ -22,9 +21,8 @@ fragment FullPosition on Position {
     sportID
     name
     stats {
-        positionID
-        field
-        value
+        id
+        name
     }
 }
 

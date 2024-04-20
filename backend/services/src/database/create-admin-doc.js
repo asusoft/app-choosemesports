@@ -3,11 +3,12 @@ import { database } from "../../init-firebase.js";
 export const createAdminDoc = async (input) => {
    
     const db = database
-    const newAdminRef = db.collection("Admins").doc();
+    const newAdminRef = db.collection("Users").doc();
 
     const data = {
         id: newAdminRef.id,
         login: input.login,
+        isAdmin: true,
         password: input.password,
         createdAt: new Date(),
         updatedAt: new Date(),

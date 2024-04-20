@@ -1,12 +1,12 @@
-// import { ErrorStatus } from "../../../../helpers/Constants.js";
-// import { getUserByQuery } from "../../../../database/get-user-by-query.js";
+import { getAdminByQuery } from "../../../../database/get-admin-by-query.js";
+import { ErrorStatus } from "../../../../helpers/Constants.js";
 
 export const getAdminMeQueryResolver = async (_, __, { user, database }) => {
-    // if (!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
+    if (!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
 
-    // const me = await getUserByQuery("id", user.id, database)
+    const adminMe = await getAdminByQuery("id", user.id, database)
     
-    // if(!me) return { status: ErrorStatus.NOT_FOUND}
+    if(!adminMe) return { status: ErrorStatus.NOT_FOUND}
 
-    // return me
+    return adminMe
 };

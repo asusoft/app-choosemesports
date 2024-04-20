@@ -5,61 +5,63 @@ export const SportTypes = `
         uniqueFields: [UniqueField!]
         positions: PositionList
     }
-    
+
     type SportList {
         total: Int!
         sports: [Sport!]!
     }
-    
+
     input SportIn {
         name: String!
-        positions: [PositionIn!]
-    }
-    
-    type Position {
-        id: ID!
-        sportID: ID!
-        name: String!
-        stats: [StatField!]!
-    }
-    
-    input PositionIn {
-        name: String!
-        stats: [StatFieldIn!]!
     }
 
-    input StatFieldIn {
-        field: String!
-        value: String!
+    type Position {
+        id: ID!
+        name: String!
+        sportID: String!
+        stats: [Stat!]!
     }
-    
+
+    input PositionIn {
+        name: String!
+        stats: [StatIn!]!
+    }
+
+    input StatIn {
+        name: String!
+    }
+
     type PositionList {
         total: Int!
         positions: [Position!]!
     }
-    
-    type StatField {
-        positionID: ID
-        field: String!
-        value: String!
+
+    type Stat {
+        id: ID!
+        name: String!
     }
-    
-    
+
     type UniqueField {
         id: ID!
         sportID: ID!
         label: String!
-        value: String!
     }
-    
+
+    type UniqueFieldIn {
+        sportID: ID!
+        label: String!
+    }
+
     union SportOrBE = Sport | BaseError
     union SportListOrBE = SportList | BaseError
+    union PositionOrBE = Position | BaseError
     union PositionListOrBE = PositionList | BaseError
-    
+
     extend type Mutation {
         createSport(input: SportIn!): SportOrBE!
+        createPosition(input: PositionIn!): PositionOrBE!
     }
-    
+
     extend type Query {
         getPlayerMe: PlayerOrBE!
         retrieveSport(id: ID!): SportOrBE!
