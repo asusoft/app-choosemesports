@@ -1,0 +1,14 @@
+mutation AdminLogin($input: AdminIn) {
+    adminLogin(input: $input) {
+        __typename
+        ... on AuthAdmin {
+            admin {
+                login
+            }
+            token
+        }
+        ... on BaseError {
+            status
+        }
+    }
+}

@@ -13,7 +13,11 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "mutation AdminLogin($input: AdminIn) {\n  adminLogin(input: $input) {\n    __typename\n    ... on AuthAdmin {\n      admin {\n        login\n      }\n      token\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.AdminLoginDocument,
+    "mutation AdminLogout($token: String!) {\n  adminLogout(token: $token) {\n    status\n  }\n}": types.AdminLogoutDocument,
     "mutation ChangePassword($oldPassword: String!, $newPassword: String!) {\n  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}": types.ChangePasswordDocument,
+    "query GetAdminMe {\n  getAdminMe {\n    __typename\n    ... on Admin {\n      login\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.GetAdminMeDocument,
+    "mutation ChangeAdminPassword($oldPassword: String!, $newPassword: String!) {\n  changeAdminPassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}": types.ChangeAdminPasswordDocument,
     "query GetMe {\n  getMe {\n    __typename\n    ... on User {\n      ...FullUser\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.GetMeDocument,
     "query IsEmailExist($email: String!) {\n  isExist: isEmailExist(email: $email) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on BooleanObject {\n      boolean\n    }\n  }\n}": types.IsEmailExistDocument,
     "query IsLoginExist($login: String!) {\n  isExist: isLoginExist(login: $login) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on BooleanObject {\n      boolean\n    }\n  }\n}": types.IsLoginExistDocument,
@@ -58,7 +62,23 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "mutation AdminLogin($input: AdminIn) {\n  adminLogin(input: $input) {\n    __typename\n    ... on AuthAdmin {\n      admin {\n        login\n      }\n      token\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["mutation AdminLogin($input: AdminIn) {\n  adminLogin(input: $input) {\n    __typename\n    ... on AuthAdmin {\n      admin {\n        login\n      }\n      token\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation AdminLogout($token: String!) {\n  adminLogout(token: $token) {\n    status\n  }\n}"): (typeof documents)["mutation AdminLogout($token: String!) {\n  adminLogout(token: $token) {\n    status\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "mutation ChangePassword($oldPassword: String!, $newPassword: String!) {\n  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}"): (typeof documents)["mutation ChangePassword($oldPassword: String!, $newPassword: String!) {\n  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetAdminMe {\n  getAdminMe {\n    __typename\n    ... on Admin {\n      login\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["query GetAdminMe {\n  getAdminMe {\n    __typename\n    ... on Admin {\n      login\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation ChangeAdminPassword($oldPassword: String!, $newPassword: String!) {\n  changeAdminPassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}"): (typeof documents)["mutation ChangeAdminPassword($oldPassword: String!, $newPassword: String!) {\n  changeAdminPassword(oldPassword: $oldPassword, newPassword: $newPassword) {\n    status\n    fields\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

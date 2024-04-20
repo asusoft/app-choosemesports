@@ -1,0 +1,5 @@
+mutation AdminLogout($token: String!) {
+ adminLogout(token:$token) {
+    status
+  }
+}

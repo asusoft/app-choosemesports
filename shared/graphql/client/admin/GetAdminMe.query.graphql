@@ -1,0 +1,11 @@
+query GetAdminMe {
+  getAdminMe {
+     __typename
+    ... on Admin {
+      login
+    }
+    ... on BaseError {
+      status
+    }
+  }
+}
