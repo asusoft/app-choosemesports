@@ -34,6 +34,11 @@ export const PlayerTypes = `
         gender: Gender!
     }
 
+    input PlayerInUpdate {
+        personal: PlayerPersonalInfoIn
+        contact: PlayerContactInUpdate
+    }
+
     input PlayerContactInUpdate {
         phone: String
         youtube: String
@@ -58,6 +63,7 @@ export const PlayerTypes = `
 
     extend type Mutation {
         createPlayer(input: PlayerIn!): AuthUserOrEWF!
+        updatePlayer(data: PlayerInUpdate): BaseError
         updatePlayerContact(data: PlayerContactInUpdate): BaseError
         updatePlayerPersonalInfo(data: PlayerPersonalInfoIn): BaseError
     }

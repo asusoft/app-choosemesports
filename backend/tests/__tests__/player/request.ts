@@ -2,12 +2,14 @@ import { createEnsureRequest, createGraphQLRequest, throwIfNotTypename } from ".
 import {
     CreatePlayerDocument,
     GetPlayerMeDocument,
-    RetrievePlayerDocument
+    RetrievePlayerDocument,
+    UpdatePlayerDocument
 } from "../../generated/types/graphql"
 
 export const createPlayer = createGraphQLRequest(CreatePlayerDocument)
 export const retrievePlayer =  createGraphQLRequest(RetrievePlayerDocument)
 export const getPlayerMe = createGraphQLRequest(GetPlayerMeDocument)
+export const updatePlayer = createGraphQLRequest(UpdatePlayerDocument)
 
 export const createPlayerEnsureOK = createEnsureRequest(
     createPlayer, 'createPlayer', throwIfNotTypename('AuthUser')

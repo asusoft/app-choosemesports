@@ -1,0 +1,5 @@
+mutation UpdatePlayer($data: PlayerInUpdate!) {
+  updatePlayer(data: $data) {
+    status
+  }
+}

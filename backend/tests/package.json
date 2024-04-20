@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun test --timeout 25000 --bail=50",
-    "single": "bun test get-player-me.test.ts --timeout 25000 --bail=50",
+    "single": "bun test update-player.test.ts --timeout 25000 --bail=50",
     "folder": "bun test auth/ --timeout 25000 --bail=50",
     "lint": "eslint . --cache $ESLINT_ARG",
     "lint:fix": "bun run lint --fix",

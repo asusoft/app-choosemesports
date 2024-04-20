@@ -28,6 +28,7 @@ const documents = {
     "query GetPlayerMe {\n  getPlayerMe {\n    __typename\n    ... on Player {\n      ...FullPlayer\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.GetPlayerMeDocument,
     "query GetPlayers($sportName: String, $location: String, $ageGroup: String, $skip: Int! = 0, $limit: Int! = 20) {\n  getPlayers(\n    sportName: $sportName\n    location: $location\n    ageGroup: $ageGroup\n    skip: $skip\n    limit: $limit\n  ) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on PlayerList {\n      players {\n        ...FullPlayer\n      }\n    }\n  }\n}": types.GetPlayersDocument,
     "query RetrievePlayer($id: ID!) {\n  retrievePlayer(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on Player {\n      ...FullPlayer\n    }\n  }\n}": types.RetrievePlayerDocument,
+    "mutation UpdatePlayer($data: PlayerInUpdate!) {\n  updatePlayer(data: $data) {\n    status\n  }\n}": types.UpdatePlayerDocument,
     "mutation UpdatePlayerContact($data: PlayerContactInUpdate!) {\n  updatePlayerContact(data: $data) {\n    status\n  }\n}": types.UpdatePlayerContactDocument,
     "mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoIn!) {\n  updatePlayerPersonalInfo(data: $data) {\n    status\n  }\n}": types.UpdatePlayerPersonalInfoDocument,
     "fragment FullPlayer on Player {\n  id\n  userID\n  sport {\n    ...FullSport\n  }\n  positions {\n    ...FullPosition\n  }\n  dob\n  contact {\n    phone\n    youtube\n    facebook\n    twitter\n    instagram\n  }\n  personal {\n    height\n    weight\n    about\n  }\n}\n\nfragment SimplePlayer on Player {\n  id\n  userID\n  sport {\n    ...SimpleSport\n  }\n  positions {\n    ...FullPosition\n  }\n}\n\nfragment PlayerList on PlayerList {\n  total\n  players {\n    ...FullPlayer\n  }\n}": types.FullPlayerFragmentDoc,
@@ -114,6 +115,10 @@ export function graphql(source: "query GetPlayers($sportName: String, $location:
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query RetrievePlayer($id: ID!) {\n  retrievePlayer(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on Player {\n      ...FullPlayer\n    }\n  }\n}"): (typeof documents)["query RetrievePlayer($id: ID!) {\n  retrievePlayer(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on Player {\n      ...FullPlayer\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation UpdatePlayer($data: PlayerInUpdate!) {\n  updatePlayer(data: $data) {\n    status\n  }\n}"): (typeof documents)["mutation UpdatePlayer($data: PlayerInUpdate!) {\n  updatePlayer(data: $data) {\n    status\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
