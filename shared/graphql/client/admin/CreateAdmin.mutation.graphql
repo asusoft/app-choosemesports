@@ -1,5 +1,5 @@
-mutation AdminLogin($input: AdminIn) {
-    adminLogin(input: $input) {
+mutation CreateAdmin($input: AdminIn!) {
+    createAdmin(input: $input) {
         __typename
         ... on AuthAdmin {
             admin {
@@ -8,8 +8,9 @@ mutation AdminLogin($input: AdminIn) {
             }
             token
         }
-        ... on BaseError {
+        ... on ErrorWithFields {
             status
+            fields
         }
     }
 }

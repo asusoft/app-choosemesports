@@ -2,6 +2,7 @@ query GetAdminMe {
   getAdminMe {
      __typename
     ... on Admin {
+      id
       login
     }
     ... on BaseError {

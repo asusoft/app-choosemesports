@@ -13,6 +13,9 @@ import { SportCustomResolvers } from './Sport/index.js';
 import { UserQueriesResolvers } from './User/Queries/index.js';
 import { UserMutationResolvers } from './User/Mutations/index.js';
 import { UserCustomResolvers } from './User/index.js';
+import { AdminMutationResolvers } from './Admin/Mutations/index.js';
+import { AdminQueriesResolvers } from './Admin/Queries/index.js';
+import { AdminCustomResolvers } from './Admin/index.js';
 
 const resolvers = {
     Query: {
@@ -21,19 +24,22 @@ const resolvers = {
         ...PlayerQueriesResolvers,
         ...SportQueriesResolvers,
         ...UserQueriesResolvers,
+        ...AdminQueriesResolvers
     },
     Mutation: {
         ...AuthMutationResolvers,
         ...FileMutationResolvers,
         ...PlayerMutationResolvers,
         ...SportMutationResolvers,
-        ...UserMutationResolvers
+        ...UserMutationResolvers,
+        ...AdminMutationResolvers
     },
     ...AuthCustomResolvers,
     ...FileCustomResolvers,
     ...PlayerCustomResolvers,
     ...SportCustomResolvers,
-    ...UserCustomResolvers
+    ...UserCustomResolvers,
+    ...AdminCustomResolvers
 };
 
 export default resolvers;
