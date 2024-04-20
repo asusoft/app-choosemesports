@@ -6,7 +6,6 @@ import {
     LoginDocument,
     LogoutDocument,
     PlayerIn,
-    RetrieveUserDocument,
 } from "../../generated/types/graphql"
 import { GraphQLClient } from "graphql-request";
 import { beforeAll } from "bun:test";
@@ -16,7 +15,6 @@ import { createPlayer } from "../player/request";
 export const performLogin = createGraphQLRequest(LoginDocument)
 export const perfomeLogout = createGraphQLRequest(LogoutDocument)
 export const getMe = createGraphQLRequest(GetMeDocument)
-export const retrieveUser = createGraphQLRequest(RetrieveUserDocument)
 
 export const loginAndEnsureOK = createEnsureRequest(
     performLogin, 'login', throwIfNotTypename('AuthUser')
@@ -24,10 +22,6 @@ export const loginAndEnsureOK = createEnsureRequest(
 
 export const getMeAndEnsureOK = createEnsureRequest(
     getMe, 'getMe', throwIfNotTypename('User')
-)
-
-export const retrieveUserAndEnsureOK = createEnsureRequest(
-    retrieveUser, 'retrieveUser', throwIfNotTypename('User')
 )
 
 export async function createTokensAndEnsureOk(
@@ -70,7 +64,7 @@ export async function getPlayerToken (
     return response.login.token
 }
 
-export function useCustomerToken (
+export function usePlayerToken (
     client: GraphQLClient,
     player: PlayerIn | null = null
 ): () => string {

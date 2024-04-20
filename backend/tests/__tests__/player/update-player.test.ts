@@ -3,17 +3,13 @@ import { ErrorStatus } from '../../generated/types/graphql'
 import { createError } from '../utils'
 import { useClient } from '../fixtures'
 import { genPlayerInUpdate } from './gens'
-import { getPlayerToken } from '../auth/request'
+import { usePlayerToken } from '../auth/request'
 import { getPlayerMe, updatePlayer } from './request'
 
 describe('Update player', () => {
     const client = useClient()
     const player = genPlayerInUpdate()
-    let accessToken: string
-
-    beforeAll(async () => {
-        accessToken = await getPlayerToken(client)
-    })
+    let accessToken = usePlayerToken(client)
 
     it(
         'Should return NOT_AUTHENTICATED on unathenticated request',
@@ -31,13 +27,13 @@ describe('Update player', () => {
 
     it('Should return null, then return correct updated data', async () => {
         const response = await updatePlayer(
-            client, { data: player }, accessToken
+            client, { data: player }, accessToken()
         )
         const data = response.updatePlayer
         expect(data).toBeNull()
 
         const meResponse = await getPlayerMe(
-            client, {}, accessToken
+            client, {}, accessToken()
         )
         const playerData = meResponse.getPlayerMe
         if (playerData.__typename !== 'Player') {
@@ -66,7 +62,7 @@ describe('Update player', () => {
         }
 
         const response2 = await updatePlayer(
-            client, { data: player }, accessToken
+            client, { data: player }, accessToken()
         )
         const data2 = response2.updatePlayer
         expect(data2).toBeNull()

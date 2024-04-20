@@ -1,20 +1,16 @@
-import { beforeAll, describe, expect, it } from 'bun:test'
+import { describe, expect, it } from 'bun:test'
 import { ErrorStatus, type UserInUpdate } from '../../generated/types/graphql'
 import { createError, genEmptyString, genString } from '../utils'
 import { type Entry } from '../utils/entries'
 import { useClient } from '../fixtures'
 import { genUserInUpdate } from './gens'
-import { getMe, getPlayerToken } from '../auth/request'
+import { getMe, usePlayerToken } from '../auth/request'
 import { updateUser } from './request'
 
 describe('Update user', () => {
     const client = useClient()
     const user = genUserInUpdate()
-    let accessToken: string
-
-    beforeAll(async () => {
-        accessToken = await getPlayerToken(client)
-    })
+    let accessToken = usePlayerToken(client)
 
     it(
         'Should return NOT_AUTHENTICATED on unathenticated request',
@@ -40,7 +36,7 @@ describe('Update user', () => {
         'Should return INVALID_INPUT_DATA for invalid %s:%j',
         async (field, value) => {
             const response = await updateUser(
-                client, { data: { [field]: value } }, accessToken
+                client, { data: { [field]: value } }, accessToken()
             )
             const data = response.updateUser
             if (data == null) {
@@ -51,13 +47,13 @@ describe('Update user', () => {
 
     it('Should return null, then return correct updated data', async () => {
         const response = await updateUser(
-            client, { data: user }, accessToken
+            client, { data: user }, accessToken()
         )
         const data = response.updateUser
         expect(data).toBeNull()
 
         const meResponse = await getMe(
-            client, {}, accessToken
+            client, {}, accessToken()
         )
         const userData = meResponse.getMe
         if (userData.__typename !== 'User') {
@@ -73,7 +69,7 @@ describe('Update user', () => {
             expect(userData.login).toBe(user.login)
         }
         const response2 = await updateUser(
-            client, { data: user }, accessToken
+            client, { data: user }, accessToken()
         )
         const data2 = response2.updateUser
         expect(data2).toBeNull()

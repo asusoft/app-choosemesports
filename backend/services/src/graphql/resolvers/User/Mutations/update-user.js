@@ -21,6 +21,11 @@ export const updateUserMutationResolver = async (_, { data }, { user }) => {
         if(!isValidBio) return {status: ErrorStatus.INVALID_INPUT_DATA, fields: ['bio'] }
     }
 
+    if(data.avatarID) {
+        const isValidAvatarID = await validateString(data.avatarID)
+        if(!isValidAvatarID) return {status: ErrorStatus.INVALID_INPUT_DATA, fields: ['avatarID'] }
+    }
+
     const fields = {
         bio: data?.bio || user.bio,
         email: data?.email || user.email,
