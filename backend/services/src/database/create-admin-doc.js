@@ -8,6 +8,7 @@ export const createAdminDoc = async (input) => {
     const data = {
         id: newAdminRef.id,
         login: input.login,
+        password: input.password,
         createdAt: new Date(),
         updatedAt: new Date(),
     };

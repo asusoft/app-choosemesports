@@ -7,7 +7,6 @@ import { validateLogin, validatePassword } from "../../../../helpers/InputValida
 import { getToken } from "../../../../helpers/index.js";
 
 export const adminLoginMutationResolver = async (_, { input }, { database }) => {
-    console.log(input)
     const isValidPassword = await validatePassword(input.password)
     const isValidLogin = await validateLogin(input.login)
 
@@ -16,8 +15,10 @@ export const adminLoginMutationResolver = async (_, { input }, { database }) => 
     const admin = await getAdminByQuery("login", input.login, database)
     
     if (!admin) {
-        return { status: ErrorStatus.NOT_FOUND };
+        return { status: ErrorStatus.INVALID_CREDENTIALS };
     }
+
+    if(admin.password !== input.password) return { status: ErrorStatus.INVALID_CREDENTIALS };
 
     // try {
     //     await signInWithEmailAndPassword(auth, user.email, input.password)
@@ -27,7 +28,7 @@ export const adminLoginMutationResolver = async (_, { input }, { database }) => 
     // }
 
     return {
-        user,
+        admin,
         token: getToken(admin)
     };
 }; 

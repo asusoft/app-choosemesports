@@ -24,7 +24,7 @@ describe('Login', () => {
         }
     })
 
-    it('Should return NOT_FOUND on wrong login', async () => {
+    it('Should return INVALID_CREDENTIALS on wrong login', async () => {
         const response = await performAdminLogin(
             client,
             {input : { login: genLogin(), password: genPassword() }},
@@ -33,10 +33,10 @@ describe('Login', () => {
         if (response.adminLogin.__typename === 'AuthAdmin') {
             throw createError(response.adminLogin)
         }
-        expect(response.adminLogin.status).toBe(ErrorStatus.NotFound)
+        expect(response.adminLogin.status).toBe(ErrorStatus.InvalidCredentials)
     })
 
-    it('Should return INVALID_INPUT_DATA on wrong password', async () => {
+    it('Should return INVALID_CREDENTIALS on wrong password', async () => {
         const response = await performAdminLogin(
             client,
             {input: { login: adminIn.login, password: genPassword() }},
@@ -45,7 +45,7 @@ describe('Login', () => {
         if (response.adminLogin.__typename === 'AuthAdmin') {
             throw createError(response.adminLogin)
         }
-        expect(response.adminLogin.status).toBe(ErrorStatus.InvalidInputData)
+        expect(response.adminLogin.status).toBe(ErrorStatus.InvalidCredentials)
     })
 
     it('Should return INVALID_INPUT_DATA on invalid login', async () => {

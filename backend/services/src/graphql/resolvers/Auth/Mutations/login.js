@@ -14,14 +14,14 @@ export const loginMutationResolver = async (_, { input }, { database }) => {
     const user = await getUserByRole(input.login, input.role, database)
     
     if (!user) {
-        return { status: ErrorStatus.NOT_FOUND };
+        return { status: ErrorStatus.NOT_FOUND};
     }
 
     try {
         await signInWithEmailAndPassword(auth, user.email, input.password)
     } catch (error) {
         console.log(error)
-        return { status: ErrorStatus.INVALID_INPUT_DATA };
+        return { status: ErrorStatus.INVALID_CREDENTIALS };
     }
 
     return {

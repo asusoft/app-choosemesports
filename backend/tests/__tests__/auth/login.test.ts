@@ -50,7 +50,7 @@ describe('Login', () => {
         expect(response.login.status).toBe(ErrorStatus.NotFound)
     })
 
-    it('Should return INVALID_INPUT_DATA on wrong password', async () => {
+    it('Should return INVALID_CREDENTIALSon wrong password', async () => {
         const response = await performLogin(
             client,
             {input: { login: playerIn.login, password: genPassword(), role: ERole.Player }},
@@ -59,7 +59,7 @@ describe('Login', () => {
         if (response.login.__typename === 'AuthUser') {
             throw createError(response.login)
         }
-        expect(response.login.status).toBe(ErrorStatus.InvalidInputData)
+        expect(response.login.status).toBe(ErrorStatus.InvalidCredentials)
     })
 
     it('Should return INVALID_INPUT_DATA on invalid login', async () => {
