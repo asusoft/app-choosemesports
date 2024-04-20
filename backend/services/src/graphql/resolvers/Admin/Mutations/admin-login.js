@@ -1,4 +1,4 @@
-import { getAdminByQuery } from "../../../../database/get-admin-by-query.js";
+import { getAdminByQuery } from "../../../../database/GetDocs/get-admin-by-query.js";
 import { ErrorStatus } from "../../../../helpers/index.js";
 // import { getUserByRole } from "../../../../database/get-user-by-role.js";
 import { validateLogin, validatePassword } from "../../../../helpers/InputValidation.js";

@@ -1,10 +1,10 @@
 import { ErrorStatus } from "../../../../helpers/index.js";
 import { validateInput } from "../../../../helpers/index.js";
-import { getUserByQuery } from "../../../../database/get-user-by-query.js";
+import { getUserByQuery } from "../../../../database/GetDocs/get-user-by-query.js";
 import { auth } from "../../../../../init-firebase.js";
-import { createUserDoc } from "../../../../database/create-user-doc.js";
+import { createUserDoc } from "../../../../database/CreateDocs/create-user-doc.js";
 import { ERole } from "../../../../helpers/Constants.js";
-import { createPlayerDoc } from "../../../../database/create-player-doc.js";
+import { createPlayerDoc } from "../../../../database/CreateDocs/create-player-doc.js";
 import { getToken } from "../../../../helpers/index.js";
 
 export const createPlayerMutationResolver = async (_, { input }, { database }) => {

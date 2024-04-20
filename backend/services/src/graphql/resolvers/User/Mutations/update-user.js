@@ -1,4 +1,4 @@
-import { updateUserById } from "../../../../database/update-user-by-id.js";
+import { updateUserById } from "../../../../database/UpdateDocs/update-user-by-id.js";
 import { ErrorStatus } from "../../../../helpers/index.js";
 import { validateEmail, validateLogin, validateString } from "../../../../helpers/InputValidation.js";
 

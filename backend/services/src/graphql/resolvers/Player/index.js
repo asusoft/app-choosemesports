@@ -1,4 +1,4 @@
-import { getSportByID } from "../../../database/get-sport-by-id.js";
+import { getSportByID } from "../../../database/GetDocs/get-sport-by-id.js";
 
 export const PlayerCustomResolvers = {
     Player: {

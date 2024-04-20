@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import { getUserByQuery } from '../database/get-user-by-query.js';
+import { getUserByQuery } from '../database/GetDocs/get-user-by-query.js';
 
 dotenv.config()
 

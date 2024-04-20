@@ -1,5 +1,5 @@
-import { createAdminDoc } from "../../../../database/create-admin-doc.js";
-import { getAdminByQuery } from "../../../../database/get-admin-by-query.js";
+import { createAdminDoc } from "../../../../database/CreateDocs/create-admin-doc.js";
+import { getAdminByQuery } from "../../../../database/GetDocs/get-admin-by-query.js";
 import { ErrorStatus } from "../../../../helpers/Constants.js";
 import { validateLogin, validatePassword } from "../../../../helpers/InputValidation.js";
 import { getToken } from "../../../../helpers/tokenization.js";

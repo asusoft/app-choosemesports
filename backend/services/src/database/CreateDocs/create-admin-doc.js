@@ -1,4 +1,4 @@
-import { database } from "../../init-firebase.js";
+import { database } from "../../../init-firebase.js";
 
 export const createAdminDoc = async (input) => {
    

@@ -1,5 +1,4 @@
-import { createSportDoc } from "../../../../database/create-sport-doc.js";
-import { getUserByQuery } from "../../../../database/get-user-by-query.js";
+import { createSportDoc } from "../../../../database/CreateDocs/create-sport-doc.js";
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const createSportMutationResolver = async (_, { input }, { user }) => {

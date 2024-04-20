@@ -1,4 +1,4 @@
-import { getPlayerByQuery } from "../../../../database/get-player-by-query.js";
+import { getPlayerByQuery } from "../../../../database/GetDocs/get-player-by-query.js";
 import { ErrorStatus } from "../../../../helpers/Constants.js";
 
 

@@ -1,5 +1,5 @@
 import { ErrorStatus } from "../../../../helpers/index.js";
-import { getUserByRole } from "../../../../database/get-user-by-role.js";
+import { getUserByRole } from "../../../../database/GetDocs/get-user-by-role.js";
 import { validateLogin, validatePassword } from "../../../../helpers/InputValidation.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../../firebase-config.js";

@@ -1,4 +1,4 @@
-import { getAdminByQuery } from "../../../../database/get-admin-by-query.js";
+import { getAdminByQuery } from "../../../../database/GetDocs/get-admin-by-query.js";
 import { ErrorStatus } from "../../../../helpers/Constants.js";
 
 export const getAdminMeQueryResolver = async (_, __, { user, database }) => {

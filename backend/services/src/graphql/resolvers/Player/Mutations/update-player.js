@@ -1,5 +1,5 @@
-import { getPlayerByQuery } from "../../../../database/get-player-by-query.js";
-import { updatePlayerById } from "../../../../database/update-player-by-id.js";
+import { getPlayerByQuery } from "../../../../database/GetDocs/get-player-by-query.js";
+import { updatePlayerById } from "../../../../database/UpdateDocs/update-player-by-id.js";
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const updatePlayerMutationResolver = async (_, { data }, { user, database }) => {

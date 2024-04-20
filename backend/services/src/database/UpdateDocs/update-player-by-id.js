@@ -1,4 +1,4 @@
-import { database } from "../../init-firebase.js";
+import { database } from "../../../init-firebase.js";
 
 export const updatePlayerById = async (player, fields) => {
     const db = database
