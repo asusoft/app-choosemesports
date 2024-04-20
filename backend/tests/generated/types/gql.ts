@@ -37,8 +37,9 @@ const documents = {
     "mutation UpdatePlayerContact($data: PlayerContactInUpdate!) {\n  updatePlayerContact(data: $data) {\n    status\n  }\n}": types.UpdatePlayerContactDocument,
     "mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoIn!) {\n  updatePlayerPersonalInfo(data: $data) {\n    status\n  }\n}": types.UpdatePlayerPersonalInfoDocument,
     "fragment FullPlayer on Player {\n  id\n  userID\n  sport {\n    ...FullSport\n  }\n  positions {\n    ...FullPosition\n  }\n  dob\n  contact {\n    phone\n    youtube\n    facebook\n    twitter\n    instagram\n  }\n  personal {\n    height\n    weight\n    about\n  }\n}\n\nfragment SimplePlayer on Player {\n  id\n  userID\n  sport {\n    ...SimpleSport\n  }\n  positions {\n    ...FullPosition\n  }\n}\n\nfragment PlayerList on PlayerList {\n  total\n  players {\n    ...FullPlayer\n  }\n}": types.FullPlayerFragmentDoc,
+    "mutation AddSportUniqueField($input: UniqueFieldIn!) {\n  addSportUniqueField(input: $input) {\n    status\n  }\n}": types.AddSportUniqueFieldDocument,
     "mutation CreatePosition($input: PositionIn!) {\n  createPosition(input: $input) {\n    __typename\n    ... on Position {\n      ...FullPosition\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.CreatePositionDocument,
-    "mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...FullSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.CreateSportDocument,
+    "mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...SimpleSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.CreateSportDocument,
     "query GetSportPositions($sportID: ID!) {\n  getSportPositions(sportID: $sportID) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on PositionList {\n      ...PositionList\n    }\n  }\n}": types.GetSportPositionsDocument,
     "query RetrieveSport($id: ID!) {\n  retrieveSport(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on Sport {\n      ...FullSport\n    }\n  }\n}": types.RetrieveSportDocument,
     "fragment FullSport on Sport {\n  id\n  name\n  uniqueFields {\n    id\n    sportID\n    label\n  }\n  positions {\n    ...PositionList\n  }\n}\n\nfragment SimpleSport on Sport {\n  id\n  name\n}\n\nfragment FullPosition on Position {\n  id\n  sportID\n  name\n  stats {\n    id\n    name\n  }\n}\n\nfragment PositionList on PositionList {\n  total\n  positions {\n    ...FullPosition\n  }\n}": types.FullSportFragmentDoc,
@@ -160,11 +161,15 @@ export function graphql(source: "fragment FullPlayer on Player {\n  id\n  userID
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "mutation AddSportUniqueField($input: UniqueFieldIn!) {\n  addSportUniqueField(input: $input) {\n    status\n  }\n}"): (typeof documents)["mutation AddSportUniqueField($input: UniqueFieldIn!) {\n  addSportUniqueField(input: $input) {\n    status\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "mutation CreatePosition($input: PositionIn!) {\n  createPosition(input: $input) {\n    __typename\n    ... on Position {\n      ...FullPosition\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["mutation CreatePosition($input: PositionIn!) {\n  createPosition(input: $input) {\n    __typename\n    ... on Position {\n      ...FullPosition\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...FullSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...FullSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
+export function graphql(source: "mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...SimpleSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...SimpleSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

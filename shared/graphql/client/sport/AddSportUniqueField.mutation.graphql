@@ -1,0 +1,5 @@
+mutation AddSportUniqueField($input: UniqueFieldIn!) {
+    addSportUniqueField(input: $input) {
+        status
+    }
+}

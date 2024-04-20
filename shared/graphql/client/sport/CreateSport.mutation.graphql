@@ -2,7 +2,7 @@ mutation CreateSport($input: SportIn!) {
   createSport(input: $input) {
         __typename
         ...on Sport {
-            ...FullSport
+            ...SimpleSport
         }
         ... on BaseError {
             status

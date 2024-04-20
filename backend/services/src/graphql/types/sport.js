@@ -23,10 +23,11 @@ export const SportTypes = `
     }
 
     input PositionIn {
+        sportID: String!
         name: String!
         stats: [StatIn!]!
     }
-
+    
     input StatIn {
         name: String!
     }
@@ -47,9 +48,9 @@ export const SportTypes = `
         label: String!
     }
 
-    type UniqueFieldIn {
-        sportID: ID!
+    input UniqueFieldIn {
         label: String!
+        sportID: String!
     }
 
     union SportOrBE = Sport | BaseError
@@ -60,6 +61,7 @@ export const SportTypes = `
     extend type Mutation {
         createSport(input: SportIn!): SportOrBE!
         createPosition(input: PositionIn!): PositionOrBE!
+        addSportUniqueField(input: UniqueFieldIn!): BaseError
     }
 
     extend type Query {

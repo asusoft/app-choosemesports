@@ -5,6 +5,7 @@ import {
     RetrievePlayerDocument,
     UpdatePlayerDocument
 } from "../../generated/types/graphql"
+import { throwIfNotNull } from "../utils/graphql-request";
 
 export const createPlayer = createGraphQLRequest(CreatePlayerDocument)
 export const retrievePlayer =  createGraphQLRequest(RetrievePlayerDocument)
@@ -21,5 +22,9 @@ export const getPlayerMeAndEnsureOK = createEnsureRequest(
 
 export const retrievePlayerAndEnsureOK = createEnsureRequest(
     retrievePlayer, 'retrievePlayer', throwIfNotTypename('Player')
+)
+
+export const updatePlayerEnsureOK = createEnsureRequest(
+    updatePlayer, 'updatePlayer', throwIfNotNull
 )
 
