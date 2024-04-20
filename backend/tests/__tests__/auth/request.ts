@@ -2,6 +2,7 @@ import { createEnsureRequest, createError, createGraphQLRequest, throwIfNotTypen
 import {
     AuthUser,
     ERole,
+    GetMeDocument,
     LoginDocument,
     LogoutDocument,
     PlayerIn,
@@ -14,10 +15,19 @@ import { createPlayer } from "../player/request";
 
 export const performLogin = createGraphQLRequest(LoginDocument)
 export const perfomeLogout = createGraphQLRequest(LogoutDocument)
+export const getMe = createGraphQLRequest(GetMeDocument)
 export const retrieveUser = createGraphQLRequest(RetrieveUserDocument)
 
 export const loginAndEnsureOK = createEnsureRequest(
     performLogin, 'login', throwIfNotTypename('AuthUser')
+)
+
+export const getMeAndEnsureOK = createEnsureRequest(
+    getMe, 'getMe', throwIfNotTypename('User')
+)
+
+export const retrieveUserAndEnsureOK = createEnsureRequest(
+    retrieveUser, 'retrieveUser', throwIfNotTypename('User')
 )
 
 export async function createTokensAndEnsureOk(

@@ -12,8 +12,18 @@ export const createPlayerDoc = async (userID, input) => {
         sportID: input.sportID,
         positions: [],
         dob: input.dob,
-        contact: {},
-        personal: {},
+        contact: {
+            phone: '',
+            youtube: '',
+            facebook: '',
+            twitter: '',
+            instagram: '',
+        },
+        personal: {
+            height: '',
+            weight: '',
+            about: '',
+        },
         createdAt: new Date(),
         updatedAt: new Date(),
     };

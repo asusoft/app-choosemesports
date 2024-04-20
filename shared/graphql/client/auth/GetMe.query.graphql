@@ -1,0 +1,11 @@
+query GetMe {
+  getMe {
+     __typename
+    ... on User {
+      ...FullUser
+    }
+    ... on BaseError {
+      status
+    }
+  }
+}
