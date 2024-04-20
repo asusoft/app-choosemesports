@@ -1,20 +1,18 @@
 import { beforeAll, describe, expect, it } from 'bun:test'
-import { ErrorStatus, type PlayerInUpdate } from '../../generated/types/graphql'
-import { createError, genEmptyString, genString } from '../utils'
+import { ErrorStatus } from '../../generated/types/graphql'
+import { createError } from '../utils'
 import { useClient } from '../fixtures'
-import { genPlayerContactInUpdate, genPlayerInUpdate, genPlayerPersonalInUpdate } from './gens'
+import { genPlayerInUpdate } from './gens'
 import { getPlayerToken } from '../auth/request'
 import { getPlayerMe, updatePlayer } from './request'
-import { Entry } from '../utils/entries'
 
 describe('Update player', () => {
     const client = useClient()
-    let player: PlayerInUpdate
+    const player = genPlayerInUpdate()
     let accessToken: string
 
     beforeAll(async () => {
         accessToken = await getPlayerToken(client)
-        player = await genPlayerInUpdate()
     })
 
     it(
