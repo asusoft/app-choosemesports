@@ -7,6 +7,7 @@ export const AuthTypes = `
     input LogInInput {
         password: String!
         login: String!
+        role: ERole!
     }
 
     union AuthUserOrEWF = AuthUser | ErrorWithFields

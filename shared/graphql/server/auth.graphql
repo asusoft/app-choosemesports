@@ -6,6 +6,7 @@ type AuthUser {
 input LogInInput {
     password: String!
     login: String!
+    role: ERole!
 }
 
 union AuthUserOrEWF = AuthUser | ErrorWithFields

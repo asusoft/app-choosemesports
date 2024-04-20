@@ -82,6 +82,7 @@ export enum Gender {
 export type LogInInput = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
+  role: ERole;
 };
 
 export type Mutation = {

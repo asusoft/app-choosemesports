@@ -4,7 +4,7 @@ import { useClient } from "../fixtures"
 import { createError, genString } from "../utils"
 import { createPlayer } from "./request"
 import { describe, it, beforeAll, expect } from "bun:test"
-import { genEmail, genLogin, genName, genPassword } from "./gens"
+import { genEmail, genLogin, genName, genPassword } from "../utils//gens"
 
 
 describe('Create Player', () => {
