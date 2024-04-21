@@ -1,10 +1,12 @@
 import { database } from "../../../init-firebase.js";
 
-export const updateUserById = async (userID, fields) => {
+export const updateSportById = async (sportID, fields) => {
     const db = database
 
+    console.log('db')
+
     try {
-        await db.collection("Users").doc(userID).update({
+        await db.collection("Sports").doc(sportID).update({
             ...fields
         });
         return true;

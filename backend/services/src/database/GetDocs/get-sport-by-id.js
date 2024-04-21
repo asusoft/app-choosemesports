@@ -1,19 +1,19 @@
-export const getSportByID = async (id, db) => {
-    // const userQuerySnapshot = await db
-    //     .collection("Players")
-    //     .where(field, "==", query).get();
+import { database } from "../../../init-firebase.js";
 
-    //     let player;
+export const getSportByID = async (id) => {
+    const db = database
 
-    //     if (!userQuerySnapshot.empty) {
-    //         userQuerySnapshot.forEach((doc) => {
-    //           player = doc.data();
-    //         });
-    //     }
+    const sportQuerySnapshot = await db
+        .collection("Sports")
+        .where('id', "==", id)
+        .get();
 
-    const sport = {
-        id: id,
-        name: 'Football'
+    let sport;
+
+    if (!sportQuerySnapshot.empty) {
+        sportQuerySnapshot.forEach((doc) => {
+            sport = doc.data();
+        });
     }
 
     return sport

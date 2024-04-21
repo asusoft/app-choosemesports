@@ -5,7 +5,7 @@ import { useClient } from '../fixtures'
 import { useAdminToken } from '../admin/request'
 import { usePlayerToken } from '../auth/request'
 import { genPositionIn, genSportIn } from './gens'
-import { createPosition, createSport, createSportAndEnsureOK } from './request'
+import { createPosition, createSportAndEnsureOK } from './request'
 
 describe('Create Position', () => {
     const client = useClient()
@@ -16,12 +16,7 @@ describe('Create Position', () => {
     let positionIn: PositionIn
 
     beforeAll(async () => {
-        const response = await createSport(client, { input: sportIn }, adminAccessToken())
-        if (response.createSport.__typename === 'BaseError') {
-            throw createError(response.createSport)
-        }
-
-        const sport = response.createSport
+        const sport = await createSportAndEnsureOK(client, { input: sportIn}, adminAccessToken())
 
         positionIn = genPositionIn(sport.id)
 
