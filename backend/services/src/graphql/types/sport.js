@@ -38,7 +38,6 @@ export const SportTypes = `
     }
 
     type Stat {
-        id: ID!
         name: String!
     }
 

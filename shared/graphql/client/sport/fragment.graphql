@@ -21,7 +21,6 @@ fragment FullPosition on Position {
     sportID
     name
     stats {
-        id
         name
     }
 }

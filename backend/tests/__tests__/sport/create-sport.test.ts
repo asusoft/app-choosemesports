@@ -32,11 +32,11 @@ describe('Create Sport', () => {
     })
 
     it('Successful create sport', async () => {
-        const media = await createSport(client, { input: sportIn }, adminAccessToken())
-        if (media.createSport.__typename === 'BaseError') {
-            throw createError(media.createSport)
+        const response = await createSport(client, { input: sportIn }, adminAccessToken())
+        if (response.createSport.__typename === 'BaseError') {
+            throw createError(response.createSport)
         }
-        expect(media.createSport.id).not.toBeNull()
-        expect(media.createSport.name).toBe(sportIn.name)
+        expect(response.createSport.id).not.toBeNull()
+        expect(response.createSport.name).toBe(sportIn.name)
     })
 })

@@ -13,6 +13,17 @@ export const SportCustomResolvers = {
             }
             return null;
         },
+    },
+    PositionOrBE: {
+        __resolveType(obj, _, __){
+            if(obj.id){
+                return 'Position';
+            }
+            if(obj.status){
+                return 'BaseError';
+            }
+            return null;
+        },
     }
 };
 

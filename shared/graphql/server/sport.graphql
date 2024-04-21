@@ -37,7 +37,6 @@ type PositionList {
 }
 
 type Stat {
-    id: ID!
     name: String!
 }
 
