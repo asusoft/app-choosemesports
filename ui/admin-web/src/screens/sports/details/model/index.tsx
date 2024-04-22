@@ -1,4 +1,4 @@
-import { FullSportFragment, PositionIn, StatIn, useCreatePositionMutation, useRetrieveSportLazyQuery } from '@/shared/generated/graphql/graphql'
+import { FullSportFragment, PositionIn, StatIn, UniqueFieldIn, useAddSportUniqueFieldMutation, useCreatePositionMutation, useRetrieveSportLazyQuery } from '@/shared/generated/graphql/graphql'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 export const SportContext = createContext({} as ReturnType<typeof useSport>)
@@ -10,6 +10,7 @@ export const useSport = (id: string) => {
   const [sport, setSport] = useState<FullSportFragment>()
   const [retrievSport] = useRetrieveSportLazyQuery()
   const [addPosition] = useCreatePositionMutation()
+  const [addUniqueField] = useAddSportUniqueFieldMutation()
 
   const actions = {
     getSport: async () => {
@@ -19,7 +20,6 @@ export const useSport = (id: string) => {
         }
     },
     addPosition: async (name: string, stats: StatIn[]) => {
-
         const input: PositionIn = {
             sportID: id,
             name,
@@ -28,7 +28,18 @@ export const useSport = (id: string) => {
         const response = await addPosition({variables: { input }})
 
         if(response.data?.createPosition.__typename === 'BaseError'){
-            return response.data.createPosition.status
+            return response.data.createPosition
+        }
+    },
+    addUniqueField: async (label: string) => {
+        const input: UniqueFieldIn = {
+            sportID: id,
+            label,
+        }
+        const response = await addUniqueField({variables: { input }})
+
+        if(response.data?.addSportUniqueField?.__typename === 'BaseError'){
+            return response.data?.addSportUniqueField
         }
     }
  }

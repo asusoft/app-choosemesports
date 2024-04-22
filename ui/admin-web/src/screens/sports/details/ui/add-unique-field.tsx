@@ -12,54 +12,30 @@ import CircularProgress from "@mui/material/CircularProgress"
 import { CreateModalProps } from "../../ui/AddSport";
 import FlexBetween from "@/components/ui-lib/FlexBetween";
 import { useSportContext } from "../model";
-import { StatIn } from "@/shared/generated/graphql/graphql";
 
 
-export default function AddPosition({ isOpen, onClose }: CreateModalProps) {
+export default function AddUniqueFiled({ isOpen, onClose }: CreateModalProps) {
 
     const { actions } = useSportContext()
 
     const [name, setName] = React.useState("");
-    const [stats, setStats] = React.useState<StatIn[]>([]);
-    const [stat, setStat] = React.useState("");
     const [isLoading, setIsLoading] = React.useState(false);
 
-    const handleAddStat = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
-        if (stat) {
-            setStats((prevStats) => [...prevStats, { name: stat }]);
-            setStat("");
-        }
-    };
 
-    const handleRemoveStat = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, indexToRemove: number) => {
-        event.preventDefault();
-        setStats((prevStats) =>
-            prevStats.filter((_, index) => index !== indexToRemove)
-        );
-    };
-
-
-    const handleAddPosition = async (event: { preventDefault: () => void; }) => {
+    const handleAddUniqueField = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
 
         setIsLoading(true);
+        const response = await actions.addUniqueField(name)
 
-        if (stats.length > 0) {
-            const response = await actions.addPosition(name, stats)
-            if(response) return <Alert>{response.status}</Alert>
-            setIsLoading(false)
-            handleClose();
-        } else {
-            setIsLoading(false)
-            alert("Add Stats!!! A position must have atleast one stat")
-        }
+        if(response) return <Alert>{response.status}</Alert>
+
+        setIsLoading(false)
+        handleClose();
     };
 
     const clearAll = () => {
         setName('')
-        setStats([]);
-        setStat('')
     }
 
     const handleClose = () => {
@@ -73,10 +49,10 @@ export default function AddPosition({ isOpen, onClose }: CreateModalProps) {
             <Box
                 sx={{
                     position: "absolute",
-                    top: "40%",
-                    left: "600%",
-                    transform: "translate(-40%, -40%)",
-                    width: "40%",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "50%",
                     bgcolor: "background.paper",
                     boxShadow: 24
                 }}
@@ -97,7 +73,7 @@ export default function AddPosition({ isOpen, onClose }: CreateModalProps) {
                             zIndex: 1
                         }}
                     >
-                        <Typography variant="h6">Add Position</Typography>
+                        <Typography variant="h6">Add Required Field</Typography>
                     </FlexBetween>
                     <Box
                         sx={{
@@ -106,45 +82,17 @@ export default function AddPosition({ isOpen, onClose }: CreateModalProps) {
                             p: 2
                         }}
                     >
-                        <form onSubmit={handleAddPosition}>
-                            <Typography marginTop={'1.5rem'}>Name</Typography>
+                        <form onSubmit={handleAddUniqueField}>
+                            <Typography marginTop={'1.5rem'}>Title</Typography>
                             <TextField
                                 required
                                 fullWidth
-                                label="Name"
+                                label="Title"
                                 margin="normal"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
                             <Typography marginTop={'1.5rem'}>Stats</Typography>
-                            <ul className="size-list">
-                                {stats.map((stat, index) => (
-                                    <Box gap={"1rem"} display={'flex'}>
-                                        <li key={index} className="size-item">
-                                            {stat.name}
-                                        </li>
-                                        <button
-                                            className="add-button"
-                                            onClick={(event) => handleRemoveStat(event, index)}
-                                        >
-                                            X
-                                        </button>
-                                    </Box>
-
-                                ))}
-                            </ul>
-
-                            <FlexBetween gap={"1.5rem"}>
-                                <TextField
-                                    fullWidth
-                                    label="Stat"
-                                    margin="normal"
-                                    value={stat}
-                                    onChange={(e) => setStat(e.target.value)}
-                                />
-                                <button onClick={handleAddStat}>Add Stat</button>
-                            </FlexBetween>
-
                             <Button
                                 fullWidth
                                 variant="contained"
