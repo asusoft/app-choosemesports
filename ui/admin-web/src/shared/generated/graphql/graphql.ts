@@ -415,7 +415,6 @@ export type StatIn = {
 
 export type UniqueField = {
   __typename?: 'UniqueField';
-  id: Scalars['ID']['output'];
   label: Scalars['String']['output'];
   sportID: Scalars['ID']['output'];
 };
@@ -564,7 +563,7 @@ export type CreatePlayerMutation = { __typename?: 'Mutation', createPlayer: { __
 export type GetPlayerMeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPlayerMeQuery = { __typename?: 'Query', getPlayerMe: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } } };
+export type GetPlayerMeQuery = { __typename?: 'Query', getPlayerMe: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } } };
 
 export type GetPlayersQueryVariables = Exact<{
   sportName?: InputMaybe<Scalars['String']['input']>;
@@ -575,14 +574,14 @@ export type GetPlayersQueryVariables = Exact<{
 }>;
 
 
-export type GetPlayersQuery = { __typename?: 'Query', getPlayers: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PlayerList', players: Array<{ __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } }> } };
+export type GetPlayersQuery = { __typename?: 'Query', getPlayers: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PlayerList', players: Array<{ __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } }> } };
 
 export type RetrievePlayerQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type RetrievePlayerQuery = { __typename?: 'Query', retrievePlayer: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } } };
+export type RetrievePlayerQuery = { __typename?: 'Query', retrievePlayer: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } } };
 
 export type UpdatePlayerMutationVariables = Exact<{
   data: PlayerInUpdate;
@@ -605,11 +604,11 @@ export type UpdatePlayerPersonalInfoMutationVariables = Exact<{
 
 export type UpdatePlayerPersonalInfoMutation = { __typename?: 'Mutation', updatePlayerPersonalInfo?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
-export type FullPlayerFragment = { __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } };
+export type FullPlayerFragment = { __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } };
 
 export type SimplePlayerFragment = { __typename?: 'Player', id: string, userID: string, sport: { __typename?: 'Sport', id: string, name: string }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null };
 
-export type PlayerListFragment = { __typename?: 'PlayerList', total: number, players: Array<{ __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } }> };
+export type PlayerListFragment = { __typename?: 'PlayerList', total: number, players: Array<{ __typename?: 'Player', id: string, userID: string, dob: string, sport: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', height: string, weight: string, about: string } }> };
 
 export type AddSportUniqueFieldMutationVariables = Exact<{
   input: UniqueFieldIn;
@@ -652,9 +651,9 @@ export type RetrieveSportQueryVariables = Exact<{
 }>;
 
 
-export type RetrieveSportQuery = { __typename?: 'Query', retrieveSport: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } };
+export type RetrieveSportQuery = { __typename?: 'Query', retrieveSport: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } };
 
-export type FullSportFragment = { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', id: string, sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null };
+export type FullSportFragment = { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null };
 
 export type SimpleSportFragment = { __typename?: 'Sport', id: string, name: string };
 
@@ -722,7 +721,6 @@ export const FullSportFragmentDoc = gql`
   id
   name
   uniqueFields {
-    id
     sportID
     label
   }

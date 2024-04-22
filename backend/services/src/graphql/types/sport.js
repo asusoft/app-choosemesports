@@ -42,7 +42,6 @@ export const SportTypes = `
     }
 
     type UniqueField {
-        id: ID!
         sportID: ID!
         label: String!
     }

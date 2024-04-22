@@ -2,7 +2,6 @@ fragment FullSport on Sport {
     id
     name
     uniqueFields {
-        id
         sportID
         label
     }

@@ -41,7 +41,6 @@ type Stat {
 }
 
 type UniqueField {
-    id: ID!
     sportID: ID!
     label: String!
 }

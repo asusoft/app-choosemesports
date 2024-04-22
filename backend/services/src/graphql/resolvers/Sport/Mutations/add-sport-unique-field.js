@@ -17,10 +17,10 @@ export const addSportUniqueFieldMutationResolver = async (_, { input }, { user }
 
         let existingFields = sportToUpdate.uniqueFields
 
-        if (existingFields.includes(field)) {
-            return { status: ErrorStatus.ALREADY_DONE }
+        if (existingFields.some(existingField => existingField.label === field.label)) {
+            return { status: ErrorStatus.ALREADY_DONE };
         } else {
-            existingFields.push(field)
+            existingFields.push(field);
         }
 
         const updateField = {
