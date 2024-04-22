@@ -42,3 +42,7 @@ main {
   z-index: 1000;
   /* This ensures it remains on top */
 }
+
+.size-item {
+  font-size: large;
+}

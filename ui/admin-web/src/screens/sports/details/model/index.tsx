@@ -1,4 +1,4 @@
-import { FullSportFragment, useRetrieveSportLazyQuery } from '@/shared/generated/graphql/graphql'
+import { FullSportFragment, PositionIn, StatIn, useCreatePositionMutation, useRetrieveSportLazyQuery } from '@/shared/generated/graphql/graphql'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 export const SportContext = createContext({} as ReturnType<typeof useSport>)
@@ -9,6 +9,7 @@ export const useSport = (id: string) => {
 
   const [sport, setSport] = useState<FullSportFragment>()
   const [retrievSport] = useRetrieveSportLazyQuery()
+  const [addPosition] = useCreatePositionMutation()
 
   const actions = {
     getSport: async () => {
@@ -17,6 +18,19 @@ export const useSport = (id: string) => {
             setSport(response.data.retrieveSport)
         }
     },
+    addPosition: async (name: string, stats: StatIn[]) => {
+
+        const input: PositionIn = {
+            sportID: id,
+            name,
+            stats
+        }
+        const response = await addPosition({variables: { input }})
+
+        if(response.data?.createPosition.__typename === 'BaseError'){
+            return response.data.createPosition.status
+        }
+    }
  }
 
   useEffect(() => {

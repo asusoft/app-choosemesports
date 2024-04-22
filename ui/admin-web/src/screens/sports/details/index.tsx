@@ -8,13 +8,13 @@ import { Container } from './ui/container';
 export default function SportDetails() {
     const { sportID } = useParams();
 
-    if(!sportID) return null
-    
+    if (!sportID) return null
+
     const value = useSport(sportID)
 
-  return (
-    <Container value={value}>
-        <Content />
-    </Container>
-  )
+    return (
+        <Container value={value}>
+            <Content />
+        </Container>
+    )
 }
