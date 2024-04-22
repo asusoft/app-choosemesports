@@ -5,7 +5,7 @@ import { useClient } from '../fixtures'
 import { usePlayerToken } from '../auth/request'
 import { getSports } from './request'
 
-describe('Get sport', () => {
+describe('Get sports', () => {
     const client = useClient()
     const accessToken = usePlayerToken(client)
 
