@@ -30,6 +30,13 @@ export const Content = () => {
       </FlexBetween>
       {sport.uniqueFields && <Box marginTop={'1.5rem'} display={'flex'} flexDirection={'column'} gap={'1rem'}>
         <Typography fontSize={'26px'}>Required Field</Typography>
+        {
+          sport.uniqueFields.map((field) =>( 
+            <>
+              <Typography fontWeight={'bold'} fontSize={18}>{field.label}</Typography>
+            </>
+          ))
+        }
       </Box>}
      {sport.positions && <Box marginTop={'1.5rem'} display={'flex'} flexDirection={'column'} gap={'1rem'}>
         <Typography fontSize={'26px'}>Positions</Typography>
