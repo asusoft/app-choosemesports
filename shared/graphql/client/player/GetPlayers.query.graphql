@@ -1,5 +1,5 @@
 query GetPlayers($sportName: String, $location: String, $ageGroup: String, $skip: Int! = 0, $limit: Int! = 20) {
-  getPlayers(sportName: $sportName, location: $location, ageGroup: $ageGroup,, skip: $skip, limit: $limit) {
+  getPlayers(sportName: $sportName, location: $location, ageGroup: $ageGroup, skip: $skip, limit: $limit) {
     __typename
     ... on BaseError {
       status

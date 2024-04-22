@@ -1,0 +1,14 @@
+query GetSports($skip: Int! = 0, $limit: Int! = 20) {
+  getSports(skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on SportList {
+      sports {
+        ...SimpleSport
+      }
+      total
+    }
+  }
+}

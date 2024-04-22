@@ -24,6 +24,17 @@ export const SportCustomResolvers = {
             }
             return null;
         },
-    }
+    },
+    SportListOrBE: {
+        __resolveType(obj, _, __){
+            if(obj.total){
+                return 'SportList';
+            }
+            if(obj.status){
+                return 'BaseError';
+            }
+            return null;
+        },
+    },
 };
 

@@ -41,6 +41,7 @@ const documents = {
     "mutation CreatePosition($input: PositionIn!) {\n  createPosition(input: $input) {\n    __typename\n    ... on Position {\n      ...FullPosition\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.CreatePositionDocument,
     "mutation CreateSport($input: SportIn!) {\n  createSport(input: $input) {\n    __typename\n    ... on Sport {\n      ...SimpleSport\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.CreateSportDocument,
     "query GetSportPositions($sportID: ID!) {\n  getSportPositions(sportID: $sportID) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on PositionList {\n      ...PositionList\n    }\n  }\n}": types.GetSportPositionsDocument,
+    "query GetSports($skip: Int! = 0, $limit: Int! = 20) {\n  getSports(skip: $skip, limit: $limit) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on SportList {\n      sports {\n        ...SimpleSport\n      }\n      total\n    }\n  }\n}": types.GetSportsDocument,
     "query RetrieveSport($id: ID!) {\n  retrieveSport(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on Sport {\n      ...FullSport\n    }\n  }\n}": types.RetrieveSportDocument,
     "fragment FullSport on Sport {\n  id\n  name\n  uniqueFields {\n    id\n    sportID\n    label\n  }\n  positions {\n    ...PositionList\n  }\n}\n\nfragment SimpleSport on Sport {\n  id\n  name\n}\n\nfragment FullPosition on Position {\n  id\n  sportID\n  name\n  stats {\n    name\n  }\n}\n\nfragment PositionList on PositionList {\n  total\n  positions {\n    ...FullPosition\n  }\n}": types.FullSportFragmentDoc,
     "query RetrieveUser($id: ID!) {\n  retrieveUser(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on User {\n      ...FullUser\n    }\n  }\n}": types.RetrieveUserDocument,
@@ -174,6 +175,10 @@ export function graphql(source: "mutation CreateSport($input: SportIn!) {\n  cre
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query GetSportPositions($sportID: ID!) {\n  getSportPositions(sportID: $sportID) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on PositionList {\n      ...PositionList\n    }\n  }\n}"): (typeof documents)["query GetSportPositions($sportID: ID!) {\n  getSportPositions(sportID: $sportID) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on PositionList {\n      ...PositionList\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetSports($skip: Int! = 0, $limit: Int! = 20) {\n  getSports(skip: $skip, limit: $limit) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on SportList {\n      sports {\n        ...SimpleSport\n      }\n      total\n    }\n  }\n}"): (typeof documents)["query GetSports($skip: Int! = 0, $limit: Int! = 20) {\n  getSports(skip: $skip, limit: $limit) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on SportList {\n      sports {\n        ...SimpleSport\n      }\n      total\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
