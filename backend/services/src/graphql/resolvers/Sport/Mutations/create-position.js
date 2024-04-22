@@ -2,8 +2,6 @@ import { createPositionsDoc } from "../../../../database/CreateDocs/create-posit
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const createPositionMutationResolver = async (_, { input }, { user }) => {
-
-    console.log('called')
     if (!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
 
     if (!user.isAdmin) return { status: ErrorStatus.NOT_ENOUGH_PERMISSIONS }
