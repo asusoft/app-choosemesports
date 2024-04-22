@@ -1,41 +1,17 @@
 import React from 'react'
 import { Box, Grid, Typography } from "@mui/material";
 import { useSports } from '../model';
+import { useAppNavigation } from '@/navigation/hooks/use-app-navigation';
 
 export default function SportsList() {
   const { data } = useSports()
+  const { navigateTo } = useAppNavigation()
 
   if(!data) return null
 
   const Sports = data.sports
 
   if(!Sports) return null
-
-  // const Sports: SportList = {
-  //   sports: [
-  //       {
-  //         id: 'asdffg',
-  //         name: 'Football'
-  //       },
-  //       {
-  //         id: 'asdfdffg',
-  //         name: 'Basketball'
-  //       },
-  //       {
-  //         id: 'asaaSdffg',
-  //         name: 'Tennis'
-  //       },
-  //       {
-  //         id: 'asdSDETffg',
-  //         name: 'Ice Hokey'
-  //       },
-  //       {
-  //         id: 'asASDFdffg',
-  //         name: 'Chess'
-  //       }
-  //   ],
-  //   total: 5
-  // }
 
   return (
     <Grid
@@ -51,7 +27,9 @@ export default function SportsList() {
            padding={"1rem 0rem"} 
            gap={"1rem"} 
            alignItems={"center"} 
-           sx={{ borderBottom: "1px solid", borderColor: '#ECECEC'}}>
+           sx={{ borderBottom: "1px solid", borderColor: '#ECECEC'}}
+           onClick={() => navigateTo(`${sport.id}`)}
+        >
           <Typography
             fontSize="18px"
             fontWeight="bold"

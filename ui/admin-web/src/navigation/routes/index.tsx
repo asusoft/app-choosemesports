@@ -6,6 +6,7 @@ import { ProtectedRoute } from './protect-routes';
 import Dashboard from '@/screens/dashboard';
 import FourOFour from '@/screens/404';
 import Sports from '@/screens/sports';
+import SportDetails from '@/screens/sports/details';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +21,11 @@ const router = createBrowserRouter(
                 <Route path="sports" element={
                     <ProtectedRoute>
                         <Sports />
+                    </ProtectedRoute>
+                } />
+                 <Route path="sports/:sportID" element={
+                    <ProtectedRoute>
+                        <SportDetails />
                     </ProtectedRoute>
                 } />
                  <Route path="*" element={
