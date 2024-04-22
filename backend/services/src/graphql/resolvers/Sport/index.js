@@ -5,7 +5,12 @@ export const SportCustomResolvers = {
         id: ({ _id, id }) => _id || id,
         positions: async ({ id }) => {
             const pos = await getPositionsBySportID(id)
-            return { total: pos.length, positions: pos};
+            if(pos.length > 0) {
+                return { total: pos.length, positions: pos};
+            } else {
+                return null
+            }
+            
         },
     },
     SportOrBE: {
