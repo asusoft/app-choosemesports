@@ -342,7 +342,7 @@ export type QueryGetSportPositionsArgs = {
 
 export type QueryGetSportsArgs = {
   limit?: Scalars['Int']['input'];
-  skip?: Scalars['Int']['input'];
+  skip?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -640,7 +640,7 @@ export type GetSportPositionsQueryVariables = Exact<{
 export type GetSportPositionsQuery = { __typename?: 'Query', getSportPositions: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } };
 
 export type GetSportsQueryVariables = Exact<{
-  skip?: Scalars['Int']['input'];
+  skip?: InputMaybe<Scalars['String']['input']>;
   limit?: Scalars['Int']['input'];
 }>;
 
@@ -1876,7 +1876,7 @@ export type GetSportPositionsLazyQueryHookResult = ReturnType<typeof useGetSport
 export type GetSportPositionsSuspenseQueryHookResult = ReturnType<typeof useGetSportPositionsSuspenseQuery>;
 export type GetSportPositionsQueryResult = Apollo.QueryResult<GetSportPositionsQuery, GetSportPositionsQueryVariables>;
 export const GetSportsDocument = gql`
-    query GetSports($skip: Int! = 0, $limit: Int! = 20) {
+    query GetSports($skip: String, $limit: Int! = 20) {
   getSports(skip: $skip, limit: $limit) {
     __typename
     ... on BaseError {

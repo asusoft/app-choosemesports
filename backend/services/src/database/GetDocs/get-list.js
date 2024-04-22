@@ -4,23 +4,15 @@ import { database } from "../../../init-firebase.js";
 export const getList = async (collection, limit, skip) => {
     const db = database;
 
-    let lastVisible;
+    let query = db.collection(collection).orderBy('id');
 
-    const firstQuerySnapshot = await db.collection(collection)
-        .limit(limit)
-        .get();
-
-    if (firstQuerySnapshot.empty) {
-        return [];
+    if (skip) {
+        query = query.startAfter(skip);
     }
 
-    lastVisible = firstQuerySnapshot.docs[firstQuerySnapshot.docs.length - 1];
+    query = query.limit(limit);
 
-   
-    const nextQuerySnapshot = await db.collection(collection)
-        .startAfter(lastVisible)
-        .limit(limit)
-        .get();
+    const querySnapshot = await query.get();
 
-    return nextQuerySnapshot.docs.map(doc => doc.data());
+    return querySnapshot.docs.map(doc => doc.data());
 }

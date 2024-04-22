@@ -1,7 +1,7 @@
 import { SportList, useGetSportsLazyQuery } from '@/shared/generated/graphql/graphql'
 import { useEffect, useState } from 'react'
 
-const LIMIT = 10
+const LIMIT = 6
 
 export const useSports = () => {
     const [refreshing, setRefreshing] = useState(false)
@@ -13,7 +13,7 @@ export const useSports = () => {
         getSports: async () => {
             const { data } = await getAllSports({
                 variables: {
-                    limit: LIMIT,
+                    
                 },
             })
             if (data && data.getSports.__typename === 'SportList') {
