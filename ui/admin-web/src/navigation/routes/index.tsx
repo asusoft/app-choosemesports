@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import SideBar from '@/components/sidebar';
 import Auth from '@/auth';
-import { Dashboard } from '@mui/icons-material';
 import { ProtectedRoute } from './protect-routes';
+import Dashboard from '@/screens/dashboard';
+import FourOFour from '@/screens/404';
+import Sports from '@/screens/sports';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -17,8 +19,11 @@ const router = createBrowserRouter(
                 } />
                 <Route path="sports" element={
                     <ProtectedRoute>
-                        <Dashboard />
+                        <Sports />
                     </ProtectedRoute>
+                } />
+                 <Route path="*" element={
+                   <FourOFour />
                 } />
             </Route>
         </>

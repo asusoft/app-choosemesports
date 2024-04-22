@@ -315,6 +315,7 @@ export type Query = {
   getPlayerMe: PlayerOrBe;
   getPlayers: PlayerListOrBe;
   getSportPositions: PositionListOrBe;
+  getSports: SportListOrBe;
   isEmailExist: BooleanObjectOrBe;
   isLoginExist: BooleanObjectOrBe;
   isPhoneExist: BooleanObjectOrBe;
@@ -336,6 +337,12 @@ export type QueryGetPlayersArgs = {
 
 export type QueryGetSportPositionsArgs = {
   sportID: Scalars['ID']['input'];
+};
+
+
+export type QueryGetSportsArgs = {
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
 };
 
 
@@ -631,6 +638,14 @@ export type GetSportPositionsQueryVariables = Exact<{
 
 
 export type GetSportPositionsQuery = { __typename?: 'Query', getSportPositions: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } };
+
+export type GetSportsQueryVariables = Exact<{
+  skip?: Scalars['Int']['input'];
+  limit?: Scalars['Int']['input'];
+}>;
+
+
+export type GetSportsQuery = { __typename?: 'Query', getSports: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'SportList', total: number, sports: Array<{ __typename?: 'Sport', id: string, name: string }> } };
 
 export type RetrieveSportQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -1860,6 +1875,56 @@ export type GetSportPositionsQueryHookResult = ReturnType<typeof useGetSportPosi
 export type GetSportPositionsLazyQueryHookResult = ReturnType<typeof useGetSportPositionsLazyQuery>;
 export type GetSportPositionsSuspenseQueryHookResult = ReturnType<typeof useGetSportPositionsSuspenseQuery>;
 export type GetSportPositionsQueryResult = Apollo.QueryResult<GetSportPositionsQuery, GetSportPositionsQueryVariables>;
+export const GetSportsDocument = gql`
+    query GetSports($skip: Int! = 0, $limit: Int! = 20) {
+  getSports(skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on SportList {
+      sports {
+        ...SimpleSport
+      }
+      total
+    }
+  }
+}
+    ${SimpleSportFragmentDoc}`;
+
+/**
+ * __useGetSportsQuery__
+ *
+ * To run a query within a React component, call `useGetSportsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSportsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSportsQuery({
+ *   variables: {
+ *      skip: // value for 'skip'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useGetSportsQuery(baseOptions?: Apollo.QueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+      }
+export function useGetSportsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+        }
+export function useGetSportsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+        }
+export type GetSportsQueryHookResult = ReturnType<typeof useGetSportsQuery>;
+export type GetSportsLazyQueryHookResult = ReturnType<typeof useGetSportsLazyQuery>;
+export type GetSportsSuspenseQueryHookResult = ReturnType<typeof useGetSportsSuspenseQuery>;
+export type GetSportsQueryResult = Apollo.QueryResult<GetSportsQuery, GetSportsQueryVariables>;
 export const RetrieveSportDocument = gql`
     query RetrieveSport($id: ID!) {
   retrieveSport(id: $id) {
