@@ -29,7 +29,7 @@
 
 main {
   background-color: #FAFAFA;
-  margin-left: 250px;
+  margin-left: 280px;
   width: calc(100% - 250px);
   overflow-y: auto;
   position: relative;

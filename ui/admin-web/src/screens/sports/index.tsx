@@ -3,6 +3,7 @@ import FlexBetween from '@/components/ui-lib/FlexBetween'
 import { Box } from '@mui/material'
 import React from 'react'
 import SportsList from './ui/SportsList'
+import AddSport from './ui/AddSport'
 
 export default function Sports() {
     const [isAddSport, setIsAddSport] = React.useState(false)
@@ -11,13 +12,13 @@ export default function Sports() {
       <FlexBetween>
       <h1>Sports</h1>
       <Box marginTop={"-4rem"}>
-        <CardButton text={"Add Sport"} onPress={() => {}}/>
+        <CardButton text={"Add Sport"} onPress={() => setIsAddSport(true)}/>
       </Box>
       </FlexBetween>
       <Box>
        <SportsList />
       </Box> 
-     {/* <AddSport isOpen={isAddSport} onClose={() => setIsAddSport(false)}/> */}
+     <AddSport isOpen={isAddSport} onClose={() => setIsAddSport(false)}/>
     </Box>
   )
 }

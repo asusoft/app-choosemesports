@@ -58,6 +58,11 @@ export default function SportsList() {
             gutterBottom
             fontFamily="Sora"
             color="#000"
+            sx={{
+              "&:hover": {
+                cursor: 'pointer'
+              }
+            }}
           >
             {sport.name}
           </Typography>
