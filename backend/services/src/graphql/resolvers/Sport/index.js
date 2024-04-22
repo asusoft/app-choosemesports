@@ -1,7 +1,12 @@
+import { getPositionsBySportID } from "../../../database/GetDocs/get-positions-by-sportID.js";
 
 export const SportCustomResolvers = {
     Sport: {
         id: ({ _id, id }) => _id || id,
+        positions: async ({ id }) => {
+            const pos = await getPositionsBySportID(id)
+            return { total: pos.length, positions: pos};
+        },
     },
     SportOrBE: {
         __resolveType(obj, _, __){
@@ -25,6 +30,17 @@ export const SportCustomResolvers = {
             return null;
         },
     },
+    PositionListOrBE: {
+        __resolveType(obj, _, __){
+            if (obj.total !== undefined && obj.positions !== undefined){
+                return 'PositionList';
+            }
+            if(obj.status){
+                return 'BaseError';
+            }
+            return null;
+        },
+    },
     SportListOrBE: {
         __resolveType(obj, _, __){
             if(obj.total){
@@ -32,6 +48,14 @@ export const SportCustomResolvers = {
             }
             if(obj.status){
                 return 'BaseError';
+            }
+            return null;
+        },
+    },
+    UniqueField: {
+        __resolveType(obj, _, __){
+            if(obj.sportID){
+                return 'UniqueField';
             }
             return null;
         },

@@ -16,6 +16,7 @@ export const useSport = (id: string) => {
     getSport: async () => {
         const response = await retrievSport({variables: { id }})
         if(response.data?.retrieveSport.__typename === 'Sport') {
+            console.log(response.data.retrieveSport)
             setSport(response.data.retrieveSport)
         }
     },

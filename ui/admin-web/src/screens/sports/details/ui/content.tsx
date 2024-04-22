@@ -31,10 +31,10 @@ export const Content = () => {
       {sport.uniqueFields && <Box marginTop={'1.5rem'} display={'flex'} flexDirection={'column'} gap={'1rem'}>
         <Typography fontSize={'26px'}>Required Field</Typography>
       </Box>}
-      <Box marginTop={'1.5rem'} display={'flex'} flexDirection={'column'} gap={'1rem'}>
+     {sport.positions && <Box marginTop={'1.5rem'} display={'flex'} flexDirection={'column'} gap={'1rem'}>
         <Typography fontSize={'26px'}>Positions</Typography>
-        <Table />
-      </Box>
+        <Table positionList={sport.positions} />
+      </Box>}
       <Box>
       </Box>
       <AddPosition isOpen={isAddPosition} onClose={() => setAddPosition(false)} />

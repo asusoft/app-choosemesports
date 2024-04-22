@@ -13,7 +13,7 @@ export const addSportUniqueFieldMutationResolver = async (_, { input }, { user }
     if (!sportToUpdate) return { status: ErrorStatus.NOT_FOUND }
 
     if (sportToUpdate.uniqueFields) {
-        const field = input.label
+        const field = { sportID: input.sportID, label: input.label}
 
         let existingFields = sportToUpdate.uniqueFields
 
@@ -32,7 +32,7 @@ export const addSportUniqueFieldMutationResolver = async (_, { input }, { user }
         if (updateResponse) return null
         else return { fields: ['Unknown'], status: ErrorStatus.UNKNOWN_ERROR }
     } else {
-        const field = input.label
+        const field = { sportID: input.sportID, label: input.label}
 
         let fields = []
 
