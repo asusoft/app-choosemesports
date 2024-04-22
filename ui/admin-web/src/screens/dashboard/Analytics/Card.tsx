@@ -1,14 +1,13 @@
 import React from "react";
-import { Typography, Grid, Paper } from "@mui/material";
+import { Typography, Grid, Paper, Box } from "@mui/material";
 
 type CardProps = {
     text: string, 
-    value: number, 
     color: string, 
     onClick: () => void
 }
 
-export default function Card({ text, value, color, onClick } : CardProps) {
+export default function Card({ text, color, onClick } : CardProps) {
     return (
         <Grid item xs={12} sm={6} md={3} key={0} style={{
             display: "flex",
@@ -16,10 +15,9 @@ export default function Card({ text, value, color, onClick } : CardProps) {
             justifyContent: "center"
 
         }}>
-            <Paper
-                component="div"
+            <Box
                 onClick={onClick}
-                display="flex" alignItems="cenetr" justifyContent="center" textAlign="ceneter" 
+                display="flex" alignItems="cenetr" justifyContent="center" textAlign="center" 
                 sx={{
                     display: "flex",
                     textAlign: "center",
@@ -34,18 +32,13 @@ export default function Card({ text, value, color, onClick } : CardProps) {
                         transition: "transform 0.3s ease-in-out"
                     }
                 }}>
-                <Typography fontSize="30px" fontWeight="bold" gutterBottom fontFamily="Rajdhani" style={{
-                    marginTop: "1.5rem"
-                }} color="#FFF">
-                    {value || 0}
-                </Typography>
-                <Typography fontSize="18px" fontWeight="bold" gutterBottom fontFamily="Rajdhani" style={{
+                <Typography fontSize="22px" fontWeight="bold" gutterBottom fontFamily="Rajdhani" style={{
                     marginTop: "1.5rem",
                     marginBottom: "0.5rem"
                 }} color="#FFF">
                     {text}
                 </Typography>
-            </Paper>
+            </Box>
         </Grid>
     );
 }
