@@ -1,6 +1,6 @@
 import { expect, describe, it, beforeAll } from 'bun:test'
 import { ErrorStatus } from '../../generated/types/graphql'
-import { createError } from '../utils'
+import { createError, genString } from '../utils'
 import { useClient } from '../fixtures'
 import { usePlayerToken } from '../auth/request'
 import { createSportAndEnsureOK, retrieveSport } from './request'
@@ -32,6 +32,19 @@ describe('Retrieve sport', () => {
             expect(data.status).toBe(ErrorStatus.NotAuthenticated)
         }
     )
+
+    it(
+        'Should return NOT_FOUND on incorrect id',
+        async () => {
+            const response = await retrieveSport(client, {id: genString()}, adminAccessToken())
+            const data = response.retrieveSport
+            if (data.__typename === 'Sport') {
+                throw createError(data)
+            }
+            expect(data.status).toBe(ErrorStatus.NotFound)
+        }
+    )
+
 
     it('Should return array of sport on valid request', async () => {
         const response = await retrieveSport(
