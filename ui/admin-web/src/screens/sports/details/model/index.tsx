@@ -23,6 +23,8 @@ export const useSport = (id: string) => {
     async function fetchData() {
         await actions.getSport()
     }
+
+    fetchData()
    
   }, [id])
 
