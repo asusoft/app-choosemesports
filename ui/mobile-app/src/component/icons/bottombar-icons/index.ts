@@ -1,0 +1,5 @@
+export { default as FeedsIcon } from './feeds.svg'
+export { default as HomeIcon } from './home.svg'
+export { default as LibraryIcon } from './library.svg'
+export { default as ProfileIcon } from './profile.svg'
+export { default as SearchIcon } from './search.svg'

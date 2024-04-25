@@ -6,7 +6,7 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@/*": ["./src/*"],
-      "@screens/*": ["./src/screens/*"],
+      "@screens/*": ["./src/screens/*"]
     }
   }
 }
