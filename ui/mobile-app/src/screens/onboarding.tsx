@@ -2,7 +2,7 @@ import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 import GLOBAL_CONSTANTS from '@src/constants/constants'
-import { Logo } from '@src/img'
+import { Logo, OnboardingImage } from '@src/img'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoAuthStackParamList } from '@src/navigations/types/NoAuthStack.types'
 import { useTheme } from '@src/services/theme/hooks'
@@ -20,6 +20,8 @@ const OnboardingScreen = () => {
           <Spacing value={12} steps={4}/>
           <Typography style={{ textAlign: 'center', fontSize: 17}}>Create an account to showcase your sports talents, connect with scouts, and unlock new opportunities.</Typography>
         </View>
+        <Spacing value={12} steps={5}/>
+        <OnboardingImage />
         <View style={{ gap: 12, width: '100%', marginTop: 'auto', marginBottom: 50, flexDirection: 'row', justifyContent: 'center' }}>
           <FooterButton
             disabled={false}
