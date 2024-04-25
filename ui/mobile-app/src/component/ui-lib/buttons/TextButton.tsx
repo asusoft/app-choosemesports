@@ -9,8 +9,6 @@ const TextButton = ({
   color,
   label,
   onPress,
-  isLoading,
-  textColor,
 }: ButtonTypes) => {
   const { theme } = useTheme()
   return (

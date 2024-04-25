@@ -6,10 +6,7 @@ import { ButtonTypes } from './FooterButton'
 const IconButton = ({
   disabled,
   color,
-  label,
   onPress,
-  isLoading,
-  textColor,
   icon,
 }: ButtonTypes) => {
   const { theme } = useTheme()

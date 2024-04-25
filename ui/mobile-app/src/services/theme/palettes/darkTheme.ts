@@ -1,7 +1,7 @@
 import { Palette } from '../types'
 
 export const darkThemePallete: Palette = {
-  primary: '#F16133',
+  primary: '#ABFC9D',
   background: '#00000e',
   error: '#FF5A59',
   skeleton: '#D3D3D3',

@@ -1,4 +1,4 @@
-import GLOBAL_CONSTANTS from '@src/constants/constsnts'
+import GLOBAL_CONSTANTS from '@src/constants/constants'
 import { useTheme } from '@src/services/theme/hooks'
 import { PropsWithChildren } from 'react'
 import { View } from 'react-native'

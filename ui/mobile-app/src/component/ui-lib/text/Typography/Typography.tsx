@@ -1,3 +1,4 @@
+import React from 'react'
 import { TextBase } from '../TextBase'
 import { TypographyProps } from './types'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, ActivityIndicator, Pressable } from 'react-native'
+import { StyleSheet, ActivityIndicator, Pressable, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
 import { Typography } from '../text/Typography'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
 
@@ -10,7 +10,8 @@ export type ButtonTypes = {
   onPress: () => void
   isLoading?: boolean
   textColor?: string
-  icon?: string
+  icon?: ImageSourcePropType | undefined
+  style?: StyleProp<ViewStyle>
 }
 
 const FooterButton = ({
@@ -20,6 +21,7 @@ const FooterButton = ({
   onPress,
   isLoading,
   textColor,
+  style
 }: ButtonTypes) => {
   const { theme } = useTheme()
 
@@ -27,11 +29,14 @@ const FooterButton = ({
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={{
-        ...styles.Footer,
-        opacity: disabled ? 0.5 : 1,
-        backgroundColor: color || theme?.palette.primary,
-      }}>
+      style={[
+        styles.Footer,
+        style,
+        {
+          opacity: disabled ? 0.5 : 1,
+          backgroundColor: color || theme?.palette.primary,
+        },
+      ]}>
       {isLoading ? (
         <ActivityIndicator size={'small'} color={theme?.palette.activityIndicator} />
       ) : (
