@@ -73,10 +73,10 @@ export default function AddPosition({ isOpen, onClose }: CreateModalProps) {
             <Box
                 sx={{
                     position: "absolute",
-                    top: "40%",
-                    left: "600%",
-                    transform: "translate(-40%, -40%)",
-                    width: "40%",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "50%",
                     bgcolor: "background.paper",
                     boxShadow: 24
                 }}

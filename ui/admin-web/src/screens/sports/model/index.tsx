@@ -24,7 +24,19 @@ export const useSports = () => {
             if (response.data?.createSport.__typename === 'BaseError') {
                 return response.data.createSport
             }
-            await handlers.onRefresh()
+            const addedSport = response.data?.createSport
+
+            if(addedSport)
+            setData((prevData) => {
+                if (!prevData ) {
+                    return { total: 1, sports: [addedSport] };
+                }
+               
+                return {
+                    total: prevData.total + 1,
+                    sports: [...prevData.sports, addedSport]
+                };
+            });
         }
     }
     const handlers = {
@@ -33,9 +45,6 @@ export const useSports = () => {
             await actions.getSports()
             setRefreshing(false)
         },
-        // onEndReached: async () => {
-        //     await actions.loadMorePublications()
-        // },
     }
 
     useEffect(() => {
