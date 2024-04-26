@@ -1,16 +1,12 @@
-import { PlayerContactInUpdate, PlayerIn, PlayerInUpdate, PlayerPersonalInfoIn } from "../../generated/types/graphql";
-import { genBirthday, genCountry, genEmail, genGender, genLogin, genName, genPassword, genString, possibleUndefined } from "../utils/gens";
+import { PlayerContactInUpdate, PlayerIn, PlayerInUpdate, PlayerPersonalInfoIn, PlayerPersonalInfoInUpdate } from "../../generated/types/graphql";
+import {  genEmail, genLogin, genName, genPassword, genString, possibleUndefined } from "../utils/gens";
 
 export function genPlayerIn (): PlayerIn {
     return {
         email: genEmail(),
-        gender: genGender(),
-        location: genCountry(),
         login: genLogin(),
         name: genName(),
         password: genPassword(),
-        sportID: genString(),
-        dob: genBirthday().toDateString()
     }
 }
 
@@ -31,7 +27,7 @@ export function genPlayerContactInUpdate (): PlayerContactInUpdate {
     }
 }
 
-export function genPlayerPersonalInUpdate (): PlayerPersonalInfoIn {
+export function genPlayerPersonalInUpdate (): PlayerPersonalInfoInUpdate {
     return {
         about: genString(),
         height: genString(),

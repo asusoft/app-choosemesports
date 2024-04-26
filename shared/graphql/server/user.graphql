@@ -7,6 +7,7 @@ enum Gender {
     MALE
     FEMALE
     OTHER
+    UNKNOWN
 }
 
 type User {
@@ -15,10 +16,8 @@ type User {
     login: String!
     email: String!
     role: ERole!
-    gender: Gender!
     avatar: File
     bio: String
-    location: String!
 }
 
 input UserInUpdate {

@@ -7,7 +7,6 @@ fragment FullPlayer on Player {
     positions {
         ...FullPosition
     }
-    dob
     contact {
         phone
         youtube
@@ -16,6 +15,12 @@ fragment FullPlayer on Player {
         instagram
     }
     personal {
+        dateOfBirth
+        gender
+        nationality {
+            country
+            code
+        }
         height
         weight
         about

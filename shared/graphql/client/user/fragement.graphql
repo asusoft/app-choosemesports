@@ -4,12 +4,9 @@ fragment FullUser on User {
     login
     email
     role
-    gender
     avatar {
         ...Media
     }
-    bio
-    location
 }
 
 fragment SimpleUser on User {
@@ -19,6 +16,4 @@ fragment SimpleUser on User {
     avatar {
         ...Media
     }
-    bio
-    location
 }

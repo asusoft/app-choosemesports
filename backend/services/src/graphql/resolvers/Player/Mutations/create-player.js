@@ -8,6 +8,7 @@ import { createPlayerDoc } from "../../../../database/CreateDocs/create-player-d
 import { getToken } from "../../../../helpers/index.js";
 
 export const createPlayerMutationResolver = async (_, { input }, { database }) => {
+
     const isValidInput = await validateInput(input)
 
     if (isValidInput !== true) return isValidInput
@@ -34,6 +35,7 @@ export const createPlayerMutationResolver = async (_, { input }, { database }) =
                 .then(async (userRecord) => {
                     user = await createUserDoc(userRecord.uid, {...input, role: ERole.PLAYER})
                     await createPlayerDoc(user.id, input )
+                    console.log('we are here')
                 })
             return {
                 user,

@@ -1,4 +1,5 @@
 import { database } from "../../../init-firebase.js";
+import { Gender } from "../../helpers/Constants.js";
 
 
 export const createPlayerDoc = async (userID, input) => {
@@ -9,9 +10,7 @@ export const createPlayerDoc = async (userID, input) => {
     const data = {
         id: newPlayerRef.id,
         userID: userID,
-        sportID: input.sportID,
         positions: [],
-        dob: input.dob,
         contact: {
             phone: '',
             youtube: '',
@@ -20,10 +19,17 @@ export const createPlayerDoc = async (userID, input) => {
             instagram: '',
         },
         personal: {
+            dateOfBirth: '',
+            gender: Gender.UNKNOWN,
+            nationality: {
+                country: '',
+                code: ''
+            },
             height: '',
             weight: '',
-            about: '',
+            about: ''
         },
+        
         createdAt: new Date(),
         updatedAt: new Date(),
     };

@@ -5,6 +5,7 @@ import { createError, genString } from "../utils"
 import { createPlayer } from "./request"
 import { describe, it, beforeAll, expect } from "bun:test"
 import { genEmail, genLogin, genName, genPassword } from "../utils//gens"
+import { genPlayerIn } from "./gens"
 
 
 describe('Create Player', () => {
@@ -13,18 +14,7 @@ describe('Create Player', () => {
 
     beforeAll(async () => {
         client = useClient()
-
-        input = {
-            name: genName(),
-            login: genLogin(),
-            email: genEmail(),
-            sportID: genString(),
-            dob: new Date().toString(),
-            location: genString(),
-            password: genPassword(),
-            gender: Gender.Male
-        }
-
+        input = genPlayerIn()
     })
 
     it('Should return INVALID_INPUT_DATA on invalid login format', async () => {

@@ -18,6 +18,7 @@ export const ERole = {
 export const Gender = {
     MALE: "MALE",
     FEMALE: "FEMALE",
-    OTHER:"OTHER"
+    OTHER:"OTHER",
+    UNKNOWN:"UNKNOWN"
 }
     

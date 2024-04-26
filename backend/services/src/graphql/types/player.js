@@ -2,9 +2,8 @@ export const PlayerTypes = `
     type Player {
         id: ID!
         userID: ID!
-        sport: Sport!
+        sport: Sport
         positions: [Position!]
-        dob: String!
         contact: PlayerContact!
         personal: PlayerPersonalInfo!
     }
@@ -18,24 +17,23 @@ export const PlayerTypes = `
     }
 
     type PlayerPersonalInfo {
-        height: String!
-        weight: String!
-        about: String!
+        dateOfBirth: String
+        gender: Gender
+        nationality: UserNationalityOut
+        height: String
+        weight: String
+        about: String
     }
 
     input PlayerIn {
         name: String!
         login: String!
         email: String!
-        sportID: String!
-        dob: String!
-        location: String!
         password: String!
-        gender: Gender!
     }
 
     input PlayerInUpdate {
-        personal: PlayerPersonalInfoIn
+        personal: PlayerPersonalInfoInUpdate
         contact: PlayerContactInUpdate
     }
 
@@ -47,7 +45,26 @@ export const PlayerTypes = `
         instagram: String
     }
 
+    input UserNationalityIn {
+    country: String!
+    code: String!
+    }
+
+    type UserNationalityOut {
+    country: String!
+    code: String!
+    }
+
     input PlayerPersonalInfoIn {
+        dateOfBirth: String!
+        gender: Gender!
+        nationality: UserNationalityIn!
+        height: String!
+        weight: String!
+        about: String!
+    }
+
+    input PlayerPersonalInfoInUpdate {
         height: String
         weight: String
         about: String
@@ -63,9 +80,10 @@ export const PlayerTypes = `
 
     extend type Mutation {
         createPlayer(input: PlayerIn!): AuthUserOrEWF!
-        updatePlayer(data: PlayerInUpdate): BaseError
-        updatePlayerContact(data: PlayerContactInUpdate): BaseError
-        updatePlayerPersonalInfo(data: PlayerPersonalInfoIn): BaseError
+        updatePlayer(data: PlayerInUpdate!): BaseError
+        setPlayerSport(id: String!): BaseError
+        updatePlayerContact(data: PlayerContactInUpdate!): BaseError
+        updatePlayerPersonalInfo(data: PlayerPersonalInfoInUpdate!): BaseError
     }
 
     extend type Query {

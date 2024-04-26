@@ -8,6 +8,7 @@ export const UserType = `
     MALE
     FEMALE
     OTHER
+    UNKNOWN
   }
 
   type User {

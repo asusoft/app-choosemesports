@@ -1,4 +1,4 @@
-mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoIn!) {
+mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoInUpdate!) {
   updatePlayerPersonalInfo(data: $data) {
     status
   }

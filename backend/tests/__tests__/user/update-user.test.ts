@@ -59,9 +59,6 @@ describe('Update user', () => {
         if (userData.__typename !== 'User') {
             throw createError(userData)
         }
-        if (user.bio) {
-            expect(userData.bio).toBe(user.bio)
-        }
         if (user.email) {
             expect(userData.email).toBe(user.email)
         }

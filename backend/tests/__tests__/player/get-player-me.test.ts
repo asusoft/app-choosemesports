@@ -7,7 +7,7 @@ import { createPlayer, getPlayerMe } from './request'
 import { performLogin } from '../auth/request'
 
 
-describe('GetMe', () => {
+describe('Get Player Me', () => {
     let client: GraphQLClient
     let playerIn: PlayerIn
     let accessToken: string
@@ -52,8 +52,6 @@ describe('GetMe', () => {
         if (response.getPlayerMe.__typename === 'BaseError') {
             throw createError(response.getPlayerMe)
         }
-
-        expect(response.getPlayerMe.dob).toBe(playerIn.dob)
         expect(response.getPlayerMe.userID).toBe(authUserID)
         expect(response.getPlayerMe.id).not.toBeUndefined()
     })
