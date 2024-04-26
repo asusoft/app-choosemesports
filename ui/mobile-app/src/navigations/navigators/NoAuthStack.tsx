@@ -2,8 +2,8 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TNoAuthStackParamList } from '../types/NoAuthStack.types'
 import OnboardingScreen from '@src/screens/onboarding'
-import LoginScreen from '@src/screens/NoAuth/Login'
-import RegisterScreen from '@src/screens/NoAuth/Register'
+import { LoginScreen } from '@src/screens/NoAuth/Login'
+import { RegisterScreen } from '@src/screens/NoAuth/register'
 
 const NoAuthStack = createNativeStackNavigator<TNoAuthStackParamList>()
 
