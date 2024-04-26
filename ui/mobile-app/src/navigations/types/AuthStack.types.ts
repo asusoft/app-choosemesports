@@ -5,7 +5,10 @@ import { FullAlbumFragment } from '@src/shared/generated/types/graphql'
 export type AuthStackParamList = {
   HomeScreen: undefined
   AlbumScreen: { id: string }
-  AlbumContentEditScreen: { data: FullAlbumFragment; contentEditType: 'ADD' | 'REMOVE' }
+  AlbumContentEditScreen: {
+    data: FullAlbumFragment
+    contentEditType: 'ADD' | 'REMOVE'
+  }
   AlbumCreateScreen: undefined
   AlbumManagingScreen: undefined
   AlbumSubscriptionsScreen: undefined

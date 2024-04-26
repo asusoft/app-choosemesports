@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, ActivityIndicator, Pressable, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
+import {
+  StyleSheet,
+  ActivityIndicator,
+  Pressable,
+  ImageSourcePropType,
+  StyleProp,
+  ViewStyle,
+} from 'react-native'
 import { Typography } from '../text/Typography'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
 
@@ -21,7 +28,7 @@ const FooterButton = ({
   onPress,
   isLoading,
   textColor,
-  style
+  style,
 }: ButtonTypes) => {
   const { theme } = useTheme()
 

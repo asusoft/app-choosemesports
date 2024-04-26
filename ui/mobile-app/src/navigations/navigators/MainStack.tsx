@@ -11,9 +11,11 @@ const Stack = createNativeStackNavigator<TMainStackParamList>()
 const MainStack = () => {
   const { isCheckingToken, isAuth } = useViewer()
 
-  if (isCheckingToken) return <SplashScreen />
+  if (isCheckingToken) {
+    return <SplashScreen />
+  }
 
-  if (isAuth)
+  if (isAuth) {
     return (
       <Stack.Navigator
         initialRouteName='BottomBar'
@@ -23,6 +25,7 @@ const MainStack = () => {
         <Stack.Screen name='BottomBar' component={BottomBar} />
       </Stack.Navigator>
     )
+  }
 
   return (
     <Stack.Navigator

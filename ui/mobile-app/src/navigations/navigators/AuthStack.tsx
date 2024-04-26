@@ -1,4 +1,3 @@
-
 import { useAppNavigation } from '../hooks'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthStackParamList } from '../types/AuthStack.types'

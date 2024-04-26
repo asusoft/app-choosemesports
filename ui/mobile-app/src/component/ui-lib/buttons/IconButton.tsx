@@ -3,12 +3,7 @@ import { Image, Pressable } from 'react-native'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
 import { ButtonTypes } from './FooterButton'
 
-const IconButton = ({
-  disabled,
-  color,
-  onPress,
-  icon,
-}: ButtonTypes) => {
+const IconButton = ({ disabled, color, onPress, icon }: ButtonTypes) => {
   const { theme } = useTheme()
   return (
     <Pressable

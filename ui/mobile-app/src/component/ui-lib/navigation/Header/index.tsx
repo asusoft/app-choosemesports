@@ -33,16 +33,24 @@ export const Header = ({
   const showBackButton = forceBackButton || canGoBack
 
   const renderLeftElement = useCallback(() => {
-    if (leftElement) return leftElement()
+    if (leftElement) {
+      return leftElement()
+    }
   }, [leftElement, options])
 
   const renderCentralElement = useCallback(() => {
-    if (centralElement) return centralElement()
-    if (options?.title) return <Typography variant='userName' children={options?.title} />
+    if (centralElement) {
+      return centralElement()
+    }
+    if (options?.title) {
+      return <Typography variant='userName' children={options?.title} />
+    }
   }, [centralElement, options])
 
   const renderRightElement = useCallback(() => {
-    if (rightElement) return rightElement()
+    if (rightElement) {
+      return rightElement()
+    }
     return null
   }, [rightElement])
 

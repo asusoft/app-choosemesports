@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useReactiveVar } from '@apollo/client'
 import { hasTokensVar, initialViewerState, viewerVar } from '../../shared/apollo'
-import { LogInInput, useGetMeLazyQuery, useLoginMutation } from '../../shared/generated/types/graphql'
+import {
+  LogInInput,
+  useGetMeLazyQuery,
+  useLoginMutation,
+} from '../../shared/generated/types/graphql'
 
 export const useViewer = () => {
   const viewer = useReactiveVar(viewerVar)

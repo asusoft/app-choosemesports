@@ -8,7 +8,7 @@ export const formatDate = (date: Date) => {
   const month = date.getMonth() + 1
   const year = date.getFullYear().toString()
 
-  return `${day < 10 ? `0` + day : day}.${month < 10 ? `0` + month : month}.${year.slice(
+  return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year.slice(
     -2,
   )}`
 }

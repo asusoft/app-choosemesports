@@ -21,7 +21,11 @@ export const createFileFormData = (file: FileType) => {
 
 export const pickFromDevice = async (
   mediaType: 'photo' | 'video' | 'any' | undefined = 'photo',
-  cropping?: { height: number; width: number; withCircleOverlay?: boolean } | null,
+  cropping?: {
+    height: number
+    width: number
+    withCircleOverlay?: boolean
+  } | null,
   options?: {
     useCamera?: boolean
     maximumVideoDuration?: number

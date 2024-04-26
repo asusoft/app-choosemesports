@@ -9,38 +9,62 @@ import { useTheme } from '@src/services/theme/hooks'
 import React from 'react'
 import { View, StyleSheet, SafeAreaView } from 'react-native'
 
-
 const OnboardingScreen = () => {
   const { navigate } = useAppNavigation<TNoAuthStackParamList>()
   const { theme } = useTheme()
   return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: theme.palette.background, alignItems: 'center' }}>
-        <View style={{ marginTop: 70, alignItems: 'center', paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal + 11 }}>
-          <Logo />
-          <Spacing value={12} steps={4}/>
-          <Typography style={{ textAlign: 'center', fontSize: 17}}>Create an account to showcase your sports talents, connect with scouts, and unlock new opportunities.</Typography>
-        </View>
-        <Spacing value={12} steps={5}/>
-        <OnboardingImage />
-        <View style={{ gap: 12, width: '100%', marginTop: 'auto', marginBottom: 50, flexDirection: 'row', justifyContent: 'center' }}>
-          <FooterButton
-            disabled={false}
-            label='Log In'
-            isLoading={false}
-            onPress={() => {}}
-            style={{ width: '40%'}}
-            textColor={'#000000'}
-          />
-          <FooterButton
-            disabled={false}
-            label='Register'
-            isLoading={false}
-            onPress={() => {}}
-            color='transparent'
-            style={{ width: '40%', borderWidth: 1, borderColor: theme.palette.primary }}
-          />
-        </View>
-      </SafeAreaView>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: theme.palette.background,
+        alignItems: 'center',
+      }}>
+      <View
+        style={{
+          marginTop: 70,
+          alignItems: 'center',
+          paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal + 11,
+        }}>
+        <Logo />
+        <Spacing value={12} steps={4} />
+        <Typography style={{ textAlign: 'center', fontSize: 17 }}>
+          Create an account to showcase your sports talents, connect with scouts, and
+          unlock new opportunities.
+        </Typography>
+      </View>
+      <Spacing value={12} steps={5} />
+      <OnboardingImage />
+      <View
+        style={{
+          gap: 12,
+          width: '100%',
+          marginTop: 'auto',
+          marginBottom: 50,
+          flexDirection: 'row',
+          justifyContent: 'center',
+        }}>
+        <FooterButton
+          disabled={false}
+          label='Log In'
+          isLoading={false}
+          onPress={() => navigate('LoginScreen')}
+          style={{ width: '40%' }}
+          textColor={'#000000'}
+        />
+        <FooterButton
+          disabled={false}
+          label='Register'
+          isLoading={false}
+          onPress={() => navigate('RegistrationScreen')}
+          color='transparent'
+          style={{
+            width: '40%',
+            borderWidth: 1,
+            borderColor: theme.palette.primary,
+          }}
+        />
+      </View>
+    </SafeAreaView>
   )
 }
 

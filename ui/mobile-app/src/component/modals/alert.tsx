@@ -1,8 +1,11 @@
-import { fonts } from '@src/services/theme/fonts';
+import { fonts } from '@src/services/theme/fonts'
 import { Notifier, NotifierComponents } from 'react-native-notifier'
 import { AlertComponentProps } from 'react-native-notifier/lib/typescript/components/Alert'
 
-type Props = { title: string; description?: string } & Partial<AlertComponentProps>
+type Props = {
+  title: string
+  description?: string
+} & Partial<AlertComponentProps>
 
 export const alert = ({ title, description, alertType = 'info' }: Props) => {
   const isError = alertType === 'error'

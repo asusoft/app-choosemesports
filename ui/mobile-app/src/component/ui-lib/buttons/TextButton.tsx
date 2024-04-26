@@ -4,12 +4,7 @@ import { Typography } from '../text/Typography'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
 import { ButtonTypes } from './FooterButton'
 
-const TextButton = ({
-  disabled,
-  color,
-  label,
-  onPress,
-}: ButtonTypes) => {
+const TextButton = ({ disabled, color, label, onPress }: ButtonTypes) => {
   const { theme } = useTheme()
   return (
     <Pressable
