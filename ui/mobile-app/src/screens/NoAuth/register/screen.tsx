@@ -152,14 +152,10 @@ export const Screen = () => {
             isLoading={isLoading}
             onPress={() =>
               handlers.onSubmit({
-                dob: 'Scalars["String"]["input"]',
                 email: 'Scalars["String"]["input"]',
-                gender: Gender.Female,
-                location: 'Scalars["String"]["input"]',
                 login: 'Scalars["String"]["input"]',
                 name: 'Scalars["String"]["input"]',
                 password: 'Scalars["String"]["input"]',
-                sportID: 'Scalars["String"]["input"]',
               })
             }
           />
