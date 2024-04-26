@@ -1,10 +1,11 @@
+
 import { useAppNavigation } from '../hooks'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthStackParamList } from '../types/AuthStack.types'
 import { Pressable } from 'react-native'
 import { useTheme } from '@src/services/theme/hooks'
 import { Header } from '@src/component/ui-lib/navigation/Header'
-import HomeScreen from '@src/screens/Home'
+import HomeScreen from '@src/screens/Auth/Home'
 import { BellIcon } from '@src/component/icons'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 
