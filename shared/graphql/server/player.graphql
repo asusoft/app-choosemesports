@@ -7,6 +7,21 @@ type Player {
     personal: PlayerPersonalInfo!
 }
 
+type AuthPlayer {
+    id: ID!
+    userID: ID!
+    sport: Sport
+    positions: [Position!]
+    contact: PlayerContact!
+    personal: PlayerPersonalInfo!
+    name: String!
+    login: String!
+    email: String!
+    role: ERole!
+    avatar: File
+    bio: String
+}
+
 type PlayerContact {
     phone: String
     youtube: String

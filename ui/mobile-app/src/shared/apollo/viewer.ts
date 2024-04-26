@@ -1,18 +1,35 @@
 import { makeVar } from '@apollo/client'
-import { ERole, FullUserFragment } from '@src/shared/generated/types/graphql'
+import { ERole, FullAuthPlayerFragment } from '@src/shared/generated/types/graphql'
 
-const initialState: FullUserFragment = {
+const initialState: FullAuthPlayerFragment = {
   id: '',
-  login: '',
-  avatar: {
-    id: '',
-    path: ''
-  },
+  userID: '',
+  sport: undefined,
   name: '',
+  login: '',
   email: '',
-  role: ERole.Player
+  role: ERole.Player,
+  contact: {
+    __typename: undefined,
+    phone: undefined,
+    youtube: undefined,
+    facebook: undefined,
+    twitter: undefined,
+    instagram: undefined
+  },
+  personal: {
+    __typename: undefined,
+    dateOfBirth: undefined,
+    gender: undefined,
+    height: undefined,
+    weight: undefined,
+    about: undefined,
+    nationality: undefined
+  },
+  positions: undefined ,
+  avatar: undefined
 }
 
-const viewerVar = makeVar<FullUserFragment>(initialState)
+const viewerVar = makeVar<FullAuthPlayerFragment>(initialState)
 
 export { initialState as initialViewerState, viewerVar }

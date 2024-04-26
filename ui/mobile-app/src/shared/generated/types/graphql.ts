@@ -41,6 +41,22 @@ export type AuthAdminOrBe = AuthAdmin | BaseError;
 
 export type AuthAdminOrEwf = AuthAdmin | ErrorWithFields;
 
+export type AuthPlayer = {
+  __typename?: 'AuthPlayer';
+  avatar?: Maybe<File>;
+  bio?: Maybe<Scalars['String']['output']>;
+  contact: PlayerContact;
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  login: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  personal: PlayerPersonalInfo;
+  positions?: Maybe<Array<Position>>;
+  role: ERole;
+  sport?: Maybe<Sport>;
+  userID: Scalars['ID']['output'];
+};
+
 export type AuthUser = {
   __typename?: 'AuthUser';
   token: Scalars['String']['output'];
@@ -633,6 +649,8 @@ export type SimplePlayerFragment = { __typename?: 'Player', id: string, userID: 
 
 export type PlayerListFragment = { __typename?: 'PlayerList', total: number, players: Array<{ __typename?: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null } }> };
 
+export type FullAuthPlayerFragment = { __typename?: 'AuthPlayer', id: string, userID: string, name: string, login: string, email: string, role: ERole, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, positions?: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, avatar?: { __typename?: 'File', id: string, path: string } | null };
+
 export type AddSportUniqueFieldMutationVariables = Exact<{
   input: UniqueFieldIn;
 }>;
@@ -797,6 +815,45 @@ export const MediaFragmentDoc = gql`
   path
 }
     `;
+export const FullAuthPlayerFragmentDoc = gql`
+    fragment FullAuthPlayer on AuthPlayer {
+  id
+  userID
+  sport {
+    ...FullSport
+  }
+  positions {
+    ...FullPosition
+  }
+  contact {
+    phone
+    youtube
+    facebook
+    twitter
+    instagram
+  }
+  personal {
+    dateOfBirth
+    gender
+    nationality {
+      country
+      code
+    }
+    height
+    weight
+    about
+  }
+  name
+  login
+  email
+  role
+  avatar {
+    ...Media
+  }
+}
+    ${FullSportFragmentDoc}
+${FullPositionFragmentDoc}
+${MediaFragmentDoc}`;
 export const FullUserFragmentDoc = gql`
     fragment FullUser on User {
   id

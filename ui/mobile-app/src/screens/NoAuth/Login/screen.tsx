@@ -63,7 +63,7 @@ export const Screen = () => {
       subtitle={'Welcome back, you’ve been missed!'}
       Form={
         <>
-        <Spacing steps={3} value={20}/>
+          <Spacing steps={3} value={20} />
           <TextInput
             value={credentials.login}
             onChange={value => {

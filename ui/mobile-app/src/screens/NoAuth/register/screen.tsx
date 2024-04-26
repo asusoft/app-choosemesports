@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Text, View } from 'react-native'
+import { Alert, Pressable, Text, View } from 'react-native'
 import { SignUpButton } from './ui'
 import { ToSignIn } from './ui'
 import AuthLayout from '@src/component/ui-lib/layouts/AuthLayout'
@@ -16,7 +16,7 @@ import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoAuthStackParamList } from '@src/navigations/types/NoAuthStack.types'
 import { formatRegErrors } from '@src/utils/formated-error-messages'
 import { useViewer } from '@src/entities/viewer'
-import { CheckedBoxIcon } from '@src/component/icons'
+import { CheckedBoxIcon, UncheckedBoxIcon } from '@src/component/icons'
 import { TextBase } from '@src/component/ui-lib/text/TextBase'
 import { useTheme } from '@src/services/theme/hooks'
 
@@ -27,6 +27,9 @@ export const Screen = () => {
   const {
     actions: { login },
   } = useViewer()
+
+  const [isAccespted, setIsAccespted] = useState(false)
+
   const [credentials, setCredentials] = useState({
     name: '',
     login: '',
@@ -58,7 +61,8 @@ export const Screen = () => {
       credentials.confirmPassword !== '' &&
       registerError.login === '' &&
       registerError.password === '' &&
-      registerError.confirmPassword === ''
+      registerError.confirmPassword === '' &&
+      isAccespted
     )
   }
 
@@ -93,9 +97,6 @@ export const Screen = () => {
         if (response) Alert.alert(response)
       }
     },
-    // login: async () => {
-    //   await login({ login: state.login, password: state.password })
-    // },
   }
 
   const handlers = {
@@ -126,10 +127,15 @@ export const Screen = () => {
       subtitle={'Create an account to continue!'}
       renderBottomElement={() => (
         <>
-        <Spacing value={20} steps={2}/>
+          <Spacing value={20} steps={2} />
           <View style={{ flexDirection: 'row' }}>
-            <CheckedBoxIcon fill={theme.palette.primary} />
-            {/* <TextButton onPress={() => { }} label={'TERMS AND CONDITIONS'} /> */}
+            <Pressable onPress={() => setIsAccespted(p => !p)}>
+              {isAccespted ? (
+                <CheckedBoxIcon fill={theme.palette.primary} />
+              ) : (
+                <UncheckedBoxIcon stroke={theme.palette.primary} />
+              )}
+            </Pressable>
             <TextBase
               variant={'textParagraph'}
               color={'placeholder'}
@@ -146,16 +152,16 @@ export const Screen = () => {
               {underlinedText('processing of my personal data')}
             </TextBase>
           </View>
-          <Spacing value={20} steps={2}/>
+          <Spacing value={20} steps={2} />
           <SignUpButton
             disabled={!isEnableSignUp()}
             isLoading={isLoading}
             onPress={() =>
               handlers.onSubmit({
-                email: 'Scalars["String"]["input"]',
-                login: 'Scalars["String"]["input"]',
-                name: 'Scalars["String"]["input"]',
-                password: 'Scalars["String"]["input"]',
+                name: credentials.name,
+                login: credentials.login,
+                password: credentials.password,
+                email: credentials.email
               })
             }
           />

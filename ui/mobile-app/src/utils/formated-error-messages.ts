@@ -8,6 +8,15 @@ export const formatRegErrors = (field: string, status: string) => {
       default:
         break
     }
+  } else if (field === 'email') {
+    switch (status) {
+      case 'INVALID_INPUT_DATA':
+        return 'Invalid email format'
+      case 'ALREADY_EXIST':
+        return 'Email already in use'
+      default:
+        break
+    }
   } else {
     switch (status) {
       case 'INVALID_INPUT_DATA':

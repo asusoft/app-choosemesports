@@ -45,3 +45,39 @@ fragment PlayerList on PlayerList {
         ...FullPlayer
     }
 }
+
+fragment FullAuthPlayer on AuthPlayer {
+    id
+    userID
+    sport {
+        ...FullSport
+    }
+    positions {
+        ...FullPosition
+    }
+    contact {
+        phone
+        youtube
+        facebook
+        twitter
+        instagram
+    }
+    personal {
+        dateOfBirth
+        gender
+        nationality {
+            country
+            code
+        }
+        height
+        weight
+        about
+    }
+    name
+    login
+    email
+    role
+    avatar {
+        ...Media
+    }
+}

@@ -9,6 +9,8 @@ import { getToken } from "../../../../helpers/index.js";
 
 export const createPlayerMutationResolver = async (_, { input }, { database }) => {
 
+    console.log(input)
+
     const isValidInput = await validateInput(input)
 
     if (isValidInput !== true) return isValidInput

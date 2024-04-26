@@ -7,12 +7,7 @@ import { Spacing } from '../separators/spacing'
 import { AuthLayoutProps } from './types'
 import { Logo } from '@src/img'
 
-const AuthLayout = ({
-  title,
-  subtitle,
-  Form,
-  renderBottomElement,
-}: AuthLayoutProps) => {
+const AuthLayout = ({ title, subtitle, Form, renderBottomElement }: AuthLayoutProps) => {
   const { theme } = useTheme()
 
   return (
@@ -34,7 +29,7 @@ const AuthLayout = ({
           flex: 1,
           paddingHorizontal: 12,
         }}>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <Logo />
           <Spacing value={20} steps={2} />
           <Typography
