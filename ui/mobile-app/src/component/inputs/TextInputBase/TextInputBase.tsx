@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
-import { Spacing } from '../../separators/spacing'
 import { RNInput, TextInputBaseProps } from './types'
+import { Spacing } from '@src/component/ui-lib/separators/spacing'
 
 const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
   (

@@ -15,7 +15,7 @@ const initialState: FullAuthPlayerFragment = {
     youtube: undefined,
     facebook: undefined,
     twitter: undefined,
-    instagram: undefined
+    instagram: undefined,
   },
   personal: {
     __typename: undefined,
@@ -24,10 +24,10 @@ const initialState: FullAuthPlayerFragment = {
     height: undefined,
     weight: undefined,
     about: undefined,
-    nationality: undefined
+    nationality: undefined,
   },
-  positions: undefined ,
-  avatar: undefined
+  positions: undefined,
+  avatar: undefined,
 }
 
 const viewerVar = makeVar<FullAuthPlayerFragment>(initialState)

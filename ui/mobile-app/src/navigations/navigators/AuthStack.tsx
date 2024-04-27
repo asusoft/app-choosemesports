@@ -23,8 +23,7 @@ const AuthStack = () => {
       initialRouteName='HomeScreen'
       screenOptions={{
         headerShown: false,
-      }}
-      >
+      }}>
       <Stack.Screen
         name={'HomeScreen'}
         component={HomeScreen}

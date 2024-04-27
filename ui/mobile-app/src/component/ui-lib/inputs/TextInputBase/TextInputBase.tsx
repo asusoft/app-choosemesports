@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { useTheme } from '@src/services/theme/hooks/useTheme'
 import { Spacing } from '../../separators/spacing'
 import { RNInput, TextInputBaseProps } from './types'
+import { Typography } from '../../text/Typography'
 
 const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
   (
@@ -31,6 +32,7 @@ const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
 
     return (
       <View style={{ ...containerStyle }}>
+        {label && <Typography variant='pageTitle'>{label}</Typography>}
         <View
           style={{
             ...styles.containerInput,
@@ -55,6 +57,7 @@ const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
             value={value}
             autoCorrect={false}
             textAlign={textAlign}
+            //@ts-expect-error
             label={label}
             activeOutlineColor={theme.palette.blue}
             outlineColor={theme.palette.blue}
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 48,
     borderBottomWidth: 1,
-    marginTop: 16,
+    marginTop: 12,
   },
 })
 

@@ -1,20 +1,14 @@
-//import liraries
-import { useViewer } from '@src/entities/viewer'
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-// create a component
-const Screen1 = () => {
-  const { viewer } = useViewer()
-  console.log(viewer.userID)
+export const FifthStep = () => {
   return (
     <View style={styles.container}>
-      <Text>{viewer.id}</Text>
+      <Text>FifthStep</Text>
     </View>
   )
 }
 
-// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -23,6 +17,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#2c3e50',
   },
 })
-
-//make this component available to the app
-export default Screen1

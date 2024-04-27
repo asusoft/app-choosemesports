@@ -1,3 +1,4 @@
+import React from 'react'
 import { PropsWithChildren } from 'react'
 //@ts-ignore
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down'

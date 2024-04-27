@@ -6,13 +6,14 @@ import BottomBar from './BottomBar'
 import { useViewer } from '@src/entities/viewer'
 import SplashScreen from '@src/screens/splash'
 import NoInfoStack from './NoInfoStack'
+import { StateProvider } from '@src/screens/NoInfo/model'
 
 const Stack = createNativeStackNavigator<TMainStackParamList>()
 
 const MainStack = () => {
   const { isCheckingToken, isAuth, hasInfo } = useViewer()
 
-  if (isCheckingToken ) {
+  if (isCheckingToken) {
     return <SplashScreen />
   }
 
@@ -27,14 +28,16 @@ const MainStack = () => {
       </Stack.Navigator>
     )
   }
-  if(!hasInfo){
+  if (!hasInfo) {
     return (
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name='NoInfo' component={NoInfoStack} />
-      </Stack.Navigator>
+      <StateProvider>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name='NoInfo' component={NoInfoStack} />
+        </Stack.Navigator>
+      </StateProvider>
     )
   }
   return (

@@ -5,7 +5,7 @@ fragment FullPlayer on Player {
         ...FullSport
     }
     positions {
-        ...FullPosition
+        ...FullPlayerPosition
     }
     contact {
         phone
@@ -35,7 +35,7 @@ fragment SimplePlayer on Player {
         ...SimpleSport
     }
     positions {
-        ...FullPosition
+        ...FullPlayerPosition
     }
 }
 
@@ -53,7 +53,7 @@ fragment FullAuthPlayer on AuthPlayer {
         ...FullSport
     }
     positions {
-        ...FullPosition
+        ...FullPlayerPosition
     }
     contact {
         phone
@@ -79,5 +79,14 @@ fragment FullAuthPlayer on AuthPlayer {
     role
     avatar {
         ...Media
+    }
+}
+
+
+fragment  FullPlayerPosition on PlayerPosition {
+    name
+    stats {
+        label
+        value
     }
 }

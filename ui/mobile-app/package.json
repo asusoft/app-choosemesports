@@ -14,7 +14,6 @@
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:validate": "previous_hash=$(npm run --silent codegen:hash) && npm run codegen && if test $previous_hash = $(npm run --silent codegen:hash);then echo 'Types is consistent within current schema'; exit 0; else echo 'Types is not consistent within schema'; exit 1; fi",
     "codegen:hash": "echo $(find ./src/shared/generated -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -d \" \" -f 1);"
- 
   },
   "dependencies": {
     "@apollo/client": "^3.9.4",
@@ -36,6 +35,7 @@
     "react": "18.2.0",
     "react-native": "0.73.4",
     "react-native-document-picker": "^9.1.1",
+    "react-native-dropdown-picker": "^5.4.6",
     "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "^2.15.0",
     "react-native-image-crop-picker": "^0.40.3",

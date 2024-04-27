@@ -161,7 +161,7 @@ export const Screen = () => {
                 name: credentials.name,
                 login: credentials.login,
                 password: credentials.password,
-                email: credentials.email
+                email: credentials.email,
               })
             }
           />

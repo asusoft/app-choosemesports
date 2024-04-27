@@ -1,7 +1,11 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export type TNoInfoStackParamList = {
-  Screen1: undefined
+  FirstStep: undefined
+  SecondStep: undefined
+  ThirdStep: undefined
+  FourthStep: undefined
+  FifthStep: undefined
 }
 
 export type TNoAuthScreenNavigationProp<

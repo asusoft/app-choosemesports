@@ -15,7 +15,7 @@ export type RNInput = TextInput
 
 export type TextInputBaseProps = TextInputProps & {
   containerStyle: ViewStyle
-  label: string
+  label?: string
   inputStyle?: ViewStyle
   inputContainerStyle?: ViewStyle
   prependComponent?: any

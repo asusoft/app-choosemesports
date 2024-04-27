@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TNoInfoStackParamList } from '../types/NoInfoStack.types'
-import Screen1 from '@src/screens/NoInfo/screen1'
+import { NoInfoSteps } from '@src/screens/NoInfo'
 
 const NoInfoStack = createNativeStackNavigator<TNoInfoStackParamList>()
 
@@ -9,8 +9,12 @@ const NoInfoStackNavigator = () => {
   return (
     <NoInfoStack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName='Screen1'>
-      <NoInfoStack.Screen name='Screen1' component={Screen1} />
+      initialRouteName='FirstStep'>
+      <NoInfoStack.Screen name='FirstStep' component={NoInfoSteps.FirstStep} />
+      <NoInfoStack.Screen name='SecondStep' component={NoInfoSteps.SecondStep} />
+      <NoInfoStack.Screen name='ThirdStep' component={NoInfoSteps.ThirdStep} />
+      <NoInfoStack.Screen name='FourthStep' component={NoInfoSteps.ForthStep} />
+      <NoInfoStack.Screen name='FifthStep' component={NoInfoSteps.FifthStep} />
     </NoInfoStack.Navigator>
   )
 }

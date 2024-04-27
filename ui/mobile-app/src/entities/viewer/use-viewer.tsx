@@ -37,22 +37,22 @@ export const useViewer = () => {
         const authUser = response.data.getMe
         const playerResponse = await getPlayerMe()
 
-        if(playerResponse.data?.getPlayerMe?.__typename === 'Player'){
+        if (playerResponse.data?.getPlayerMe?.__typename === 'Player') {
           const player = playerResponse.data.getPlayerMe
           const authPlayer: FullAuthPlayerFragment = {
             id: player.id,
-            userID: authUser.id, 
+            userID: authUser.id,
             sport: player.sport ? { ...player.sport } : undefined,
             name: authUser.name,
             login: authUser.login,
             email: authUser.email,
             role: authUser.role,
             avatar: authUser.avatar ? { ...authUser.avatar } : undefined,
-            contact: { ...player.contact }, 
+            contact: { ...player.contact },
             personal: { ...player.personal },
-            positions: player.positions ? [ ...player.positions ] : undefined,
-          };
-          if(player.sport) hasInfoVar(true)
+            positions: player.positions ? [...player.positions] : undefined,
+          }
+          if (player.sport) hasInfoVar(true)
           viewerVar(authPlayer)
         }
       }
@@ -96,6 +96,6 @@ export const useViewer = () => {
     isAuth: hasTokens,
     isCheckingToken,
     actions,
-    hasInfo
+    hasInfo,
   }
 }
