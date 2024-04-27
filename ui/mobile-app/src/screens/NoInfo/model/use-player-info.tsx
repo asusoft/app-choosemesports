@@ -54,7 +54,6 @@ export const usePlayerInfo = () => {
 
   const actions = {
     savePlayerInfo: async (contacts: PlayerContactInUpdate) => {
-      console.log(contacts)
       setState(state => ({ ...state, isLoading: true }))
       sportID && await setPlayerSport({variables: { id: sportID}})
       additionalFields && additionalFields.length > 0 && await addPlayerFields({variables: { data: { fields: additionalFields }}})

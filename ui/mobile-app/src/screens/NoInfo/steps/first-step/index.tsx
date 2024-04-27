@@ -9,15 +9,11 @@ import { SportTag } from './ui/sport'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { usePlayerInfo } from '../../model'
 import globalStyles from '@src/constants/styles'
-import { useViewer } from '@src/entities/viewer'
 
 export const FirstStep = () => {
   const { theme } = useTheme()
   const { sportsList } = useSports()
   const { sportID, handlers } = usePlayerInfo()
-  const { viewer } = useViewer()
-
-  console.log(viewer.id)
 
   if (!sportsList) return null
 

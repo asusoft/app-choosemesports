@@ -33,7 +33,6 @@ export const useViewer = () => {
     },
     getMe: async () => {
       const response = await getMe()
-      console.log('here')
       if (response.data?.getMe?.__typename === 'User') {
         const authUser = response.data.getMe
         const playerResponse = await getPlayerMe()
@@ -78,7 +77,6 @@ export const useViewer = () => {
         await actions.getMe()
         hasTokensVar(true)
       } else {
-        console.log('heree')
         hasTokensVar(false)
       }
       setIsCheckingToken(false)

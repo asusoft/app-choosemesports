@@ -29,7 +29,6 @@ const MainStack = () => {
     )
   }
   if (isAuth && !hasInfo) {
-    console.log('we are here')
     return (
       <StateProvider>
         <Stack.Navigator

@@ -6,7 +6,6 @@ import { View, Text, StyleSheet } from 'react-native'
 // create a component
 const Screen1 = () => {
   const { viewer } = useViewer()
-  console.log(viewer.userID)
   return (
     <View style={styles.container}>
       <Text>{viewer.id}</Text>
