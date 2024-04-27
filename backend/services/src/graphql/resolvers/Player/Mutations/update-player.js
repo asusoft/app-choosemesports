@@ -12,22 +12,22 @@ export const updatePlayerMutationResolver = async (_, { data }, { user, database
 
     const fields = {
         contact: {
-            facebook: data.contact?.facebook || playerMe.contact.facebook,
-            instagram: data.contact?.instagram || playerMe.contact.instagram,
-            phone: data.contact?.phone || playerMe.contact.phone,
-            twitter: data.contact?.twitter || playerMe.contact.twitter,
-            youtube: data.contact?.youtube || playerMe.contact.youtube,
+            facebook: data.contact?.facebook || playerMe.contact?.facebook || '',
+            instagram: data.contact?.instagram || playerMe.contact?.instagram || '',
+            phone: data.contact?.phone || playerMe.contact?.phone || '',
+            twitter: data.contact?.twitter || playerMe.contact?.twitter || '',
+            youtube: data.contact?.youtube || playerMe.contact?.youtube || '',
         },
         personal: {
-            dateOfBirth: data.personal?.dateOfBirth || playerMe.personal.dateOfBirth,
-            gender: data.personal?.gender || playerMe.personal.gender,
+            dateOfBirth: data.personal?.dateOfBirth || playerMe.personal?.dateOfBirth || '',
+            gender: data.personal?.gender || playerMe.personal?.gender || '',
             nationality: {
-                country: data.personal?.nationality.country || playerMe.personal.nationality.country,
-                code: data.personal?.nationality.code || playerMe.personal.nationality.code
-            },
-            about: data.personal?.about || playerMe.personal.about,
-            height: data.personal?.height || playerMe.personal.height,
-            weight: data.personal?.weight || playerMe.personal.weight,
+                country: data.personal?.nationality?.country || playerMe.personal.nationality?.country || '',
+                code: data.personal?.nationality?.code || playerMe.personal.nationality?.code
+            } || '',
+            about: data.personal?.about || playerMe.personal?.about || '',
+            height: data.personal?.height || playerMe.personal?.height || '',
+            weight: data.personal?.weight || playerMe.personal?.weight || '',
         } 
     }
 

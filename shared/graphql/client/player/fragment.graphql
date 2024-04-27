@@ -4,7 +4,7 @@ fragment FullPlayer on Player {
     sport {
         ...FullSport
     }
-    positions {
+    playerPositions {
         ...FullPlayerPosition
     }
     contact {
@@ -34,7 +34,7 @@ fragment SimplePlayer on Player {
     sport {
         ...SimpleSport
     }
-    positions {
+    playerPositions {
         ...FullPlayerPosition
     }
 }
@@ -52,7 +52,7 @@ fragment FullAuthPlayer on AuthPlayer {
     sport {
         ...FullSport
     }
-    positions {
+    playerPositions {
         ...FullPlayerPosition
     }
     contact {

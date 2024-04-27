@@ -1,16 +1,29 @@
 import { useContext, useState } from 'react'
 import { StateContext } from './context'
 import {
+  InputMaybe,
   PlayerAdditionalField,
+  PlayerContactInUpdate,
   PlayerPersonalInfoIn,
   PlayerPositionIn,
+  Scalars,
   Sport,
+  useAddPlayerAdditionalFieldsMutation,
+  useAddPlayerPersonalInfoMutation,
+  useAddPlayerPositionsMutation,
+  useSetPlayerSportMutation,
+  useUpdatePlayerMutation,
 } from '@src/shared/generated/types/graphql'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoInfoStackParamList } from '@src/navigations/types/NoInfoStack.types'
+import { hasInfoVar } from '@src/shared/apollo/has-info'
 
 export type AdditionalFields = {
   [key: string]: string
+}
+
+interface UpdateData {
+  [key: string]: InputMaybe<Scalars['String']['input']> | undefined
 }
 
 const useCustomState = () => {
@@ -23,7 +36,11 @@ const useCustomState = () => {
 
 export const usePlayerInfo = () => {
   const { navigate } = useAppNavigation<TNoInfoStackParamList>()
-
+  const [setPlayerSport] = useSetPlayerSportMutation()
+  const [addPlayerPositions] = useAddPlayerPositionsMutation()
+  const [addPlayerFields] = useAddPlayerAdditionalFieldsMutation()
+  const [addPlayerPersonalInfo] = useAddPlayerPersonalInfoMutation()
+  const [updatePlayer] = useUpdatePlayerMutation()
 
   const [
     {
@@ -40,8 +57,27 @@ export const usePlayerInfo = () => {
   ] = useCustomState()
 
   const actions = {
-    savePlayerInfo: () => {
-
+    savePlayerInfo: async (contacts: PlayerContactInUpdate) => {
+      console.log(contacts)
+      setState(state => ({ ...state, isLoading: true }))
+      sportID && (await setPlayerSport({ variables: { id: sportID } }))
+      additionalFields &&
+        additionalFields.length > 0 &&
+        (await addPlayerFields({ variables: { data: { fields: additionalFields } } }))
+      positions &&
+        positions.length > 0 &&
+        (await addPlayerPositions({ variables: { data: { positions: positions } } }))
+      personal && (await addPlayerPersonalInfo({ variables: { data: personal } }))
+      contact &&
+        (await updatePlayer({
+          variables: {
+            data: {
+              contact: contacts,
+            },
+          },
+        }))
+      setState(state => ({ ...state, isLoading: false }))
+      hasInfoVar(true)
     },
   }
 
@@ -98,17 +134,16 @@ export const usePlayerInfo = () => {
     },
 
     onSavePersonalInfo: (info: PlayerPersonalInfoIn) => {
-      console.log(info)
       setState(state => ({ ...state, personal: info }))
       navigate('FifthStep')
     },
 
-    onSkip: () => {
-      setState(state => ({ ...state, isLoading: true }))
+    onSkip: (contact: PlayerContactInUpdate) => {
+      actions.savePlayerInfo(contact)
     },
-    onSaveContacts: () => {
-      setState(state => ({ ...state, isLoading: false }))
-    }
+    onSaveContacts: (contact: PlayerContactInUpdate) => {
+      actions.savePlayerInfo(contact)
+    },
   }
 
   return {

@@ -13,7 +13,7 @@ export const FifthStep = () => {
   const { theme } = useTheme()
   const { handlers, isLoading } = usePlayerInfo()
 
-  const [contact, setContact] = useState<PlayerContactInUpdate>()
+  const [contact, setContact] = useState({})
 
   return (
     <SafeAreaView
@@ -21,7 +21,7 @@ export const FifthStep = () => {
       <View style={{ paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal }}>
         <Spacing value={12} />
         <Typography
-          children={'Let’s know more about you'}
+          children={'Add your contact details'}
           variant='subHero'
           style={{
             textAlign: 'center',
@@ -74,8 +74,18 @@ export const FifthStep = () => {
           left: GLOBAL_CONSTANTS.paddingHorizontal,
           gap: 12,
         }}>
-        <FooterButton isLoading={isLoading} label='Skip' onPress={() => handlers.onSkip()} textColor='#000000' />
-        <FooterButton isLoading={isLoading} label='Save' onPress={() => handlers.onSaveContacts()} textColor='#000000' />
+        <FooterButton
+          isLoading={isLoading}
+          label='Skip'
+          onPress={() => handlers.onSkip(contact)}
+          textColor='#000000'
+        />
+        <FooterButton
+          isLoading={isLoading}
+          label='Save'
+          onPress={() => handlers.onSaveContacts(contact)}
+          textColor='#000000'
+        />
       </View>
     </SafeAreaView>
   )

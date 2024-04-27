@@ -5,6 +5,7 @@ import { updatePlayerPersonalInfoMutationResolver } from './update-player-person
 import { setPlayerSportMutationResolver } from './set-player-sport.js';
 import { addPlayerFieldsMutationResolver } from './add-player-additional-fields.js';
 import { addPlayerPositionsMutationResolver } from './add-player-positions.js';
+import { addPlayerPersonalInfoMutationResolver } from './add-player-personal-info.js';
 
 export const PlayerMutationResolvers = {
         createPlayer: createPlayerMutationResolver,
@@ -13,5 +14,6 @@ export const PlayerMutationResolvers = {
         updatePlayerPersonalInfo: updatePlayerPersonalInfoMutationResolver,
         setPlayerSport: setPlayerSportMutationResolver,
         addPlayerAdditionalFields: addPlayerFieldsMutationResolver,
-        addPlayerPositions: addPlayerPositionsMutationResolver
+        addPlayerPositions: addPlayerPositionsMutationResolver,
+        addPlayerPersonalInfo: addPlayerPersonalInfoMutationResolver
 };

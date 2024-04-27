@@ -1,0 +1,5 @@
+mutation AddPlayerPersonalInfo($data: PlayerPersonalInfoIn!) {
+  addPlayerPersonalInfo(data: $data) {
+    status
+  }
+}

@@ -2,18 +2,22 @@ import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 import { useTheme } from '@src/services/theme/hooks'
 import React, { Component, useState } from 'react'
-import { View, Text, StyleSheet, SafeAreaView, Pressable, ScrollView } from 'react-native'
+import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
 import { useSports } from '../../model/use-sports'
 import GLOBAL_CONSTANTS from '@src/constants/constants'
 import { SportTag } from './ui/sport'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { usePlayerInfo } from '../../model'
 import globalStyles from '@src/constants/styles'
+import { useViewer } from '@src/entities/viewer'
 
 export const FirstStep = () => {
   const { theme } = useTheme()
   const { sportsList } = useSports()
   const { sportID, handlers } = usePlayerInfo()
+  const { viewer } = useViewer()
+
+  console.log(viewer.id)
 
   if (!sportsList) return null
 

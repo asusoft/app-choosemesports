@@ -12,7 +12,7 @@ import React, { createContext, PropsWithChildren, useState } from 'react'
 
 type State = {
   sport: Sport | undefined
-  sportID: String
+  sportID: string
   personal: PlayerPersonalInfoIn
   contact: PlayerContactInUpdate
   positions: PlayerPositionIn[]

@@ -73,7 +73,6 @@ export const Screen = () => {
             containerStyle={{
               width: '100%',
             }}
-            label='Login'
             placeholder='Username'
             errorMsg={loginError.login || loginError.both}
           />
@@ -86,7 +85,6 @@ export const Screen = () => {
             containerStyle={{
               width: '100%',
             }}
-            label='Password'
             placeholder='Password'
             errorMsg={loginError.password || loginError.both}
           />

@@ -16,12 +16,12 @@ export const addPlayerFieldsMutationResolver = async (_, { data }, { user, datab
         fields = {
             additionalFields: [
                 ...playerMe.additionalFields,
-                data.additionalFields
+                data.fields
             ]
         }
     } else {
         fields = {
-            additionalFields: data.additionalFields
+            additionalFields: data.fields
         }
     }
 

@@ -172,7 +172,6 @@ export const Screen = () => {
       Form={
         <>
           <TextInput
-            label='Your Name'
             value={credentials.name}
             onChange={value => {
               setCredentials(creds => ({ ...creds, name: value.toString() }))
@@ -183,7 +182,6 @@ export const Screen = () => {
             placeholder='Your Name'
           />
           <TextInput
-            label='Choose Username'
             value={credentials.login}
             onChange={value => {
               setRegisterError(errors => ({ ...errors, login: '' }))
@@ -196,7 +194,6 @@ export const Screen = () => {
             errorMsg={registerError.login}
           />
           <TextInput
-            label='Email'
             value={credentials.email}
             onChange={value => {
               setRegisterError(errors => ({ ...errors, email: '' }))
@@ -209,7 +206,6 @@ export const Screen = () => {
             errorMsg={registerError.email}
           />
           <PasswordInput
-            label='Choose Password'
             value={credentials.password}
             onChange={value => {
               setRegisterError(errors => ({ ...errors, password: '' }))
@@ -222,7 +218,6 @@ export const Screen = () => {
             errorMsg={registerError.password}
           />
           <PasswordInput
-            label='Re-Enter Password'
             value={credentials.confirmPassword}
             onChange={value => {
               setRegisterError(errors => ({ ...errors, confirmPassword: '' }))

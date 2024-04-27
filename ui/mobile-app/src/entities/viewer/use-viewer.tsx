@@ -33,6 +33,7 @@ export const useViewer = () => {
     },
     getMe: async () => {
       const response = await getMe()
+      console.log('here')
       if (response.data?.getMe?.__typename === 'User') {
         const authUser = response.data.getMe
         const playerResponse = await getPlayerMe()
@@ -50,7 +51,9 @@ export const useViewer = () => {
             avatar: authUser.avatar ? { ...authUser.avatar } : undefined,
             contact: { ...player.contact },
             personal: { ...player.personal },
-            positions: player.positions ? [...player.positions] : undefined,
+            playerPositions: player.playerPositions
+              ? [...player.playerPositions]
+              : undefined,
           }
           if (player.sport) hasInfoVar(true)
           viewerVar(authPlayer)
@@ -63,6 +66,7 @@ export const useViewer = () => {
     logout: async () => {
       await AsyncStorage.setItem('token', '')
       hasTokensVar(false)
+      hasInfoVar(false)
     },
   }
 
@@ -74,6 +78,7 @@ export const useViewer = () => {
         await actions.getMe()
         hasTokensVar(true)
       } else {
+        console.log('heree')
         hasTokensVar(false)
       }
       setIsCheckingToken(false)

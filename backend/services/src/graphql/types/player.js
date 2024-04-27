@@ -3,7 +3,7 @@ export const PlayerTypes = `
         id: ID!
         userID: ID!
         sport: Sport
-        positions: [PlayerPosition!]
+        playerPositions: [PlayerPosition!]
         contact: PlayerContact!
         personal: PlayerPersonalInfo!
         additionalFields: [PlayerAdditionalField!]
@@ -13,7 +13,7 @@ export const PlayerTypes = `
         id: ID!
         userID: ID!
         sport: Sport
-        positions: [PlayerPosition!]
+        playerPositions: [PlayerPosition!]
         contact: PlayerContact!
         personal: PlayerPersonalInfo!
         name: String!
@@ -141,6 +141,7 @@ export const PlayerTypes = `
         updatePlayerContact(data: PlayerContactInUpdate!): BaseError
         addPlayerAdditionalFields(data: PlayerAdditionalFieldsIn!): BaseError
         addPlayerPositions(data: PlayerPositionsIn!): BaseError
+        addPlayerPersonalInfo(data: PlayerPersonalInfoIn!): BaseError
         updatePlayerPersonalInfo(data: PlayerPersonalInfoInUpdate!): BaseError
     }
 

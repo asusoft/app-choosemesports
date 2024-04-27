@@ -26,7 +26,7 @@ const initialState: FullAuthPlayerFragment = {
     about: undefined,
     nationality: undefined,
   },
-  positions: undefined,
+  playerPositions: undefined,
   avatar: undefined,
 }
 
