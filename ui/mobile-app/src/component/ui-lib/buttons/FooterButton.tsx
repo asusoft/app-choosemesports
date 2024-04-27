@@ -45,7 +45,7 @@ const FooterButton = ({
         },
       ]}>
       {isLoading ? (
-        <ActivityIndicator size={'small'} color={theme?.palette.activityIndicator} />
+        <ActivityIndicator size={'small'} color={'#000000'} />
       ) : (
         <Typography style={{ color: textColor || '#FFFFFF' }} variant='buttonText'>
           {label}

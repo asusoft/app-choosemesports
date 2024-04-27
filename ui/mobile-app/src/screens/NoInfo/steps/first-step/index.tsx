@@ -70,5 +70,5 @@ export const FirstStep = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
 })

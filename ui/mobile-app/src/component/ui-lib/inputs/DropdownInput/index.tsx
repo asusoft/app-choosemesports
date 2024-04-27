@@ -16,6 +16,7 @@ export const DropdownInput = (props: DropdownInputProps) => {
       borderColor: theme.palette.border,
       backgroundColor: '#141821',
     },
+    props?.style,
   ]
 
   const dropdownContainerStyle: StyleProp<ViewStyle> = [

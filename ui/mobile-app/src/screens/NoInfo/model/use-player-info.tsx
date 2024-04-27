@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { StateContext } from './context'
 import {
   PlayerAdditionalField,
+  PlayerPersonalInfoIn,
   PlayerPositionIn,
   Sport,
 } from '@src/shared/generated/types/graphql'
@@ -23,11 +24,22 @@ const useCustomState = () => {
 export const usePlayerInfo = () => {
   const { navigate } = useAppNavigation<TNoInfoStackParamList>()
   const [
-    { sport, sportID, personal, contact, positions, additionalFields, selectedPosition },
+    {
+      sport,
+      sportID,
+      personal,
+      contact,
+      positions,
+      additionalFields,
+      selectedPosition,
+      isLoading,
+    },
     setState,
   ] = useCustomState()
 
-  const actions = {}
+  const actions = {
+    savePlayerInfo: () => {},
+  }
 
   const handlers = {
     onSportIdChange: (sportID: string) => setState(state => ({ ...state, sportID })),
@@ -59,14 +71,14 @@ export const usePlayerInfo = () => {
       }
     },
     onAddSinglePosition: (positionIn: PlayerPositionIn) => {
-      const isPositionExists = positions.some(pos => pos.name === positionIn.name);
+      const isPositionExists = positions.some(pos => pos.name === positionIn.name)
 
       if (!isPositionExists) {
         setState(state => ({
           ...state,
           positions: [...positions, positionIn],
-          selectedPosition: undefined
-        }));
+          selectedPosition: undefined,
+        }))
       } else {
         setState(state => ({ ...state, selectedPosition: undefined }))
       }
@@ -74,9 +86,25 @@ export const usePlayerInfo = () => {
     onRemovePosition: (name: string) => {
       setState(state => ({
         ...state,
-        positions: state.positions.filter(position => position.name !== name)
-      }));
+        positions: state.positions.filter(position => position.name !== name),
+      }))
     },
+    onSavePositions: () => {
+      navigate('FourthStep')
+    },
+
+    onSavePersonalInfo: (info: PlayerPersonalInfoIn) => {
+      console.log(info)
+      setState(state => ({ ...state, personal: info }))
+      navigate('FifthStep')
+    },
+
+    onSkip: () => {
+      setState(state => ({ ...state, isLoading: true }))
+    },
+    onSaveContacts: () => {
+      setState(state => ({ ...state, isLoading: false }))
+    }
   }
 
   return {
@@ -88,5 +116,6 @@ export const usePlayerInfo = () => {
     additionalFields,
     handlers,
     selectedPosition,
+    isLoading,
   }
 }

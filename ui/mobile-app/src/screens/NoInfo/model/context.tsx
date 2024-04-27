@@ -18,6 +18,7 @@ type State = {
   positions: PlayerPositionIn[]
   additionalFields: PlayerAdditionalField[]
   selectedPosition: Position | undefined
+  isLoading: boolean
 }
 
 const initialState: State = {
@@ -44,6 +45,7 @@ const initialState: State = {
   positions: [],
   additionalFields: [],
   selectedPosition: undefined,
+  isLoading: false,
 }
 
 type ContextProps = [State, React.Dispatch<React.SetStateAction<State>>]

@@ -35,39 +35,37 @@ export const ThirdStep = () => {
         />
         <Spacing value={20} />
         <View style={globalStyles.wrap}>
-        {positions &&
-          positions.map((position, index) => (
-            <View 
-            key={index}
-            style={{ 
-              borderWidth: 1, 
-              padding: 5, 
-              borderRadius: 8, 
-              borderColor: theme.palette.border, 
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 8
-              }}
-            >
-              <Typography>{position.name}</Typography>
-              <Pressable 
-               onPress={() => handlers.onRemovePosition(position.name)}
-                style={{ 
-                  height: 20, 
-                  width: 20, 
-                  borderRadius: 10, 
-                  backgroundColor: theme.palette.border,
+          {positions &&
+            positions.map((position, index) => (
+              <View
+                key={index}
+                style={{
+                  borderWidth: 1,
+                  padding: 5,
+                  borderRadius: 8,
+                  borderColor: theme.palette.border,
+                  flexDirection: 'row',
                   alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <CloseIcon height={12} width={12} fill={theme.palette.background}/>
-              </Pressable>
-            </View>
-          ))}
-          </View>
-          <Spacing value={20} />
+                  justifyContent: 'center',
+                  gap: 8,
+                }}>
+                <Typography>{position.name}</Typography>
+                <Pressable
+                  onPress={() => handlers.onRemovePosition(position.name)}
+                  style={{
+                    height: 20,
+                    width: 20,
+                    borderRadius: 10,
+                    backgroundColor: theme.palette.border,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <CloseIcon height={12} width={12} fill={theme.palette.background} />
+                </Pressable>
+              </View>
+            ))}
+        </View>
+        <Spacing value={20} />
         <Pressable
           onPress={() => setShowPositionsModal(true)}
           style={{
@@ -103,7 +101,7 @@ export const ThirdStep = () => {
         <FooterButton
           disabled={!positions}
           label='Next'
-          onPress={() => handlers.onSportSelected()}
+          onPress={() => handlers.onSavePositions()}
           textColor='#000000'
         />
       </View>
