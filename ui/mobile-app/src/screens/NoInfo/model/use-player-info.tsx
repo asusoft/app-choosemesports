@@ -1,6 +1,10 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { StateContext } from './context'
-import { PlayerAdditionalField, Sport } from '@src/shared/generated/types/graphql'
+import {
+  PlayerAdditionalField,
+  PlayerPositionIn,
+  Sport,
+} from '@src/shared/generated/types/graphql'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoInfoStackParamList } from '@src/navigations/types/NoInfoStack.types'
 
@@ -53,6 +57,25 @@ export const usePlayerInfo = () => {
       } else {
         setState(state => ({ ...state, selectedPosition: undefined }))
       }
+    },
+    onAddSinglePosition: (positionIn: PlayerPositionIn) => {
+      const isPositionExists = positions.some(pos => pos.name === positionIn.name);
+
+      if (!isPositionExists) {
+        setState(state => ({
+          ...state,
+          positions: [...positions, positionIn],
+          selectedPosition: undefined
+        }));
+      } else {
+        setState(state => ({ ...state, selectedPosition: undefined }))
+      }
+    },
+    onRemovePosition: (name: string) => {
+      setState(state => ({
+        ...state,
+        positions: state.positions.filter(position => position.name !== name)
+      }));
     },
   }
 

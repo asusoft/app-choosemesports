@@ -1,3 +1,4 @@
+import { PositionForm } from '@src/component/forms/position-form'
 import { SwipeModal } from '@src/component/modals/swipe-modal'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { DropdownInput } from '@src/component/ui-lib/inputs/DropdownInput'
@@ -64,46 +65,16 @@ export const PositionsModal = ({
           setValue={onIDChange}
         />
         <Spacing value={20} steps={2} />
-        {selectedPosition && <Typography children={'Your Stats:'} variant='textButton' />}
-        {selectedPosition?.stats.map((stat, index) => (
-          <View
-            key={index}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <View style={{}}>
-              <Typography children={stat.name} variant='textButton' />
-            </View>
-            <TextInput
-              onChange={value => {}}
-              containerStyle={{
-                width: '50%',
-              }}
-              inputContainerStyle={{
-                borderWidth: 1,
-                borderColor: theme.palette.border,
-                borderRadius: 8,
-                paddingHorizontal: 12,
-              }}
-            />
-          </View>
-        ))}
-      </View>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 45,
-          right: GLOBAL_CONSTANTS.paddingHorizontal,
-          left: GLOBAL_CONSTANTS.paddingHorizontal,
-        }}>
-        <FooterButton
-          // disabled={!isEnabled()}
-          label='Save'
-          onPress={() => {}}
-          textColor='#000000'
-        />
+        {selectedPosition && (
+          <PositionForm
+            position={selectedPosition}
+            onSave={handlers.onAddSinglePosition}
+            onClose={() => {
+              setPositionId('')
+              onClose()
+            }}
+          />
+        )}
       </View>
     </SwipeModal>
   )

@@ -9,5 +9,5 @@ export const NoInfoSteps = {
   SecondStep,
   ThirdStep,
   ForthStep,
-  FifthStep
+  FifthStep,
 }

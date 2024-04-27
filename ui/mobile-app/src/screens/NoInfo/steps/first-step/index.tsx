@@ -8,6 +8,7 @@ import GLOBAL_CONSTANTS from '@src/constants/constants'
 import { SportTag } from './ui/sport'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { usePlayerInfo } from '../../model'
+import globalStyles from '@src/constants/styles'
 
 export const FirstStep = () => {
   const { theme } = useTheme()
@@ -36,7 +37,7 @@ export const FirstStep = () => {
           variant='textParagraph'
         />
         <Spacing value={20} steps={2} />
-        <View style={styles.wrap}>
+        <View style={globalStyles.wrap}>
           {sportsList.sports.map((sport, index) => (
             <View key={index} style={{ paddingTop: 6 }}>
               <SportTag
@@ -69,10 +70,5 @@ export const FirstStep = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  wrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-  },
+  }
 })

@@ -6,16 +6,15 @@ import { Typography } from '@src/component/ui-lib/text/Typography'
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import GLOBAL_CONSTANTS from '@src/constants/constants'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
-import { PlayerPositionIn } from '@src/shared/generated/types/graphql'
-import { PlusIcon } from '@src/component/icons'
+import { CloseIcon, PlusIcon } from '@src/component/icons'
 import { PositionsModal } from './ui/positions-modal'
+import globalStyles from '@src/constants/styles'
 
 export const ThirdStep = () => {
   const { theme } = useTheme()
-  const { sport, handlers, additionalFields } = usePlayerInfo()
+  const { handlers, positions } = usePlayerInfo()
 
-  const [positions, setPosition] = useState<PlayerPositionIn[]>()
-  const [showPositionsModal, setShoePositionsModal] = useState(false)
+  const [showPositionsModal, setShowPositionsModal] = useState(false)
 
   return (
     <SafeAreaView
@@ -35,14 +34,42 @@ export const ThirdStep = () => {
           variant='textParagraph'
         />
         <Spacing value={20} />
+        <View style={globalStyles.wrap}>
         {positions &&
           positions.map((position, index) => (
-            <>
-              <Spacing value={20} />
-            </>
+            <View 
+            key={index}
+            style={{ 
+              borderWidth: 1, 
+              padding: 5, 
+              borderRadius: 8, 
+              borderColor: theme.palette.border, 
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8
+              }}
+            >
+              <Typography>{position.name}</Typography>
+              <Pressable 
+               onPress={() => handlers.onRemovePosition(position.name)}
+                style={{ 
+                  height: 20, 
+                  width: 20, 
+                  borderRadius: 10, 
+                  backgroundColor: theme.palette.border,
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <CloseIcon height={12} width={12} fill={theme.palette.background}/>
+              </Pressable>
+            </View>
           ))}
+          </View>
+          <Spacing value={20} />
         <Pressable
-          onPress={() => setShoePositionsModal(true)}
+          onPress={() => setShowPositionsModal(true)}
           style={{
             borderWidth: 1,
             borderColor: theme.palette.border,
@@ -82,7 +109,7 @@ export const ThirdStep = () => {
       </View>
       <PositionsModal
         visible={showPositionsModal}
-        onClose={() => setShoePositionsModal(false)}
+        onClose={() => setShowPositionsModal(false)}
       />
     </SafeAreaView>
   )

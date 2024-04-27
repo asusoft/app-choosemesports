@@ -3,6 +3,7 @@ import {
   PlayerAdditionalField,
   PlayerContactInUpdate,
   PlayerPersonalInfoIn,
+  PlayerPositionIn,
   Position,
   PositionIn,
   Sport,
@@ -14,7 +15,7 @@ type State = {
   sportID: String
   personal: PlayerPersonalInfoIn
   contact: PlayerContactInUpdate
-  positions: PositionIn[]
+  positions: PlayerPositionIn[]
   additionalFields: PlayerAdditionalField[]
   selectedPosition: Position | undefined
 }

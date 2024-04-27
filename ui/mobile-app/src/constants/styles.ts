@@ -2,6 +2,7 @@ import { Dimensions, ViewStyle } from 'react-native'
 
 type TGlobalStyles = {
   pageContainer: ViewStyle
+  wrap: ViewStyle
 }
 export const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window')
 
@@ -15,6 +16,11 @@ export const GLOBAL_PADDING = 20
 const globalStyles: TGlobalStyles = {
   pageContainer: {
     flex: 1,
+  },
+  wrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
   },
 }
 
