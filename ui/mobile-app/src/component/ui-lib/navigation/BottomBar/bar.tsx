@@ -19,6 +19,8 @@ export const BarUI = ({ state, navigation }: BottomTabBarProps) => {
         flexDirection: 'row',
         backgroundColor: theme.palette.background,
         borderTopWidth: BOTTOM_BAR_CONSTANTS.borderWidth,
+        borderTopColor: theme.palette.border,
+        paddingTop: 8,
         borderColor: theme.isDarkMode ? '#6A6A6A' : '#E0E0E0',
         paddingBottom: inests.bottom,
       }}>

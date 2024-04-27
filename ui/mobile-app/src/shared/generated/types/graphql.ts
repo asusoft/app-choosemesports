@@ -835,6 +835,11 @@ export type GetPlayerMeQuery = {
             code: string
           } | null
         }
+        additionalFields?: Array<{
+          __typename?: 'PlayerAdditionalField'
+          label: string
+          value: string
+        }> | null
       }
 }
 
@@ -903,6 +908,11 @@ export type GetPlayersQuery = {
               code: string
             } | null
           }
+          additionalFields?: Array<{
+            __typename?: 'PlayerAdditionalField'
+            label: string
+            value: string
+          }> | null
         }>
       }
 }
@@ -966,6 +976,11 @@ export type RetrievePlayerQuery = {
             code: string
           } | null
         }
+        additionalFields?: Array<{
+          __typename?: 'PlayerAdditionalField'
+          label: string
+          value: string
+        }> | null
       }
 }
 
@@ -1056,6 +1071,11 @@ export type FullPlayerFragment = {
       code: string
     } | null
   }
+  additionalFields?: Array<{
+    __typename?: 'PlayerAdditionalField'
+    label: string
+    value: string
+  }> | null
 }
 
 export type SimplePlayerFragment = {
@@ -1124,6 +1144,11 @@ export type PlayerListFragment = {
         code: string
       } | null
     }
+    additionalFields?: Array<{
+      __typename?: 'PlayerAdditionalField'
+      label: string
+      value: string
+    }> | null
   }>
 }
 
@@ -1183,6 +1208,11 @@ export type FullAuthPlayerFragment = {
     } | null
   }
   avatar?: { __typename?: 'File'; id: string; path: string } | null
+  additionalFields?: Array<{
+    __typename?: 'PlayerAdditionalField'
+    label: string
+    value: string
+  }> | null
 }
 
 export type FullPlayerPositionFragment = {
@@ -1500,6 +1530,10 @@ export const FullPlayerFragmentDoc = gql`
       weight
       about
     }
+    additionalFields {
+      label
+      value
+    }
   }
   ${FullSportFragmentDoc}
   ${FullPlayerPositionFragmentDoc}
@@ -1553,6 +1587,10 @@ export const FullAuthPlayerFragmentDoc = gql`
     role
     avatar {
       ...Media
+    }
+    additionalFields {
+      label
+      value
     }
   }
   ${FullSportFragmentDoc}

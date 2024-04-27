@@ -28,6 +28,12 @@ const initialState: FullAuthPlayerFragment = {
   },
   playerPositions: undefined,
   avatar: undefined,
+  additionalFields: [
+    {
+      label: '',
+      value: '',
+    },
+  ],
 }
 
 const viewerVar = makeVar<FullAuthPlayerFragment>(initialState)

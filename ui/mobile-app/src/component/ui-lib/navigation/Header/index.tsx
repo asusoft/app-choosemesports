@@ -1,3 +1,4 @@
+import React from 'react'
 import { useCallback } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -13,6 +14,7 @@ export type HeaderProps = {
   centralElement?: () => JSX.Element
   rightElement?: () => JSX.Element
   forceBackButton?: boolean
+  variant?: 'TRANSPARENT' | 'COLORED'
 } & { options?: { title?: string } }
 
 export const Header = ({
@@ -21,10 +23,12 @@ export const Header = ({
   rightElement,
   forceBackButton,
   options,
+  variant = 'COLORED',
 }: HeaderProps) => {
   const { goBack, getState } = useAppNavigation()
   const { theme } = useTheme()
-  const backgroundColor = theme.palette.background
+  const backgroundColor =
+    variant === 'TRANSPARENT' ? 'transparent' : theme.palette.background
   const { top: paddingTop } = useSafeAreaInsets()
   const fill = theme.palette.typography
 
@@ -87,6 +91,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    position: 'absolute',
+    top: 0,
   },
   sideElement: {
     padding: 16,

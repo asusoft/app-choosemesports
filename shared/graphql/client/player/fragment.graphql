@@ -25,6 +25,10 @@ fragment FullPlayer on Player {
         weight
         about
     }
+    additionalFields {
+        label
+        value
+    }
 }
 
 
@@ -79,6 +83,10 @@ fragment FullAuthPlayer on AuthPlayer {
     role
     avatar {
         ...Media
+    }
+    additionalFields {
+        label
+        value
     }
 }
 
