@@ -1,6 +1,6 @@
 import { AuthStackParamList } from './AuthStack.types'
 
-export type BottomBarTab = 'Home' | 'Feed' | 'Search' | 'Library' | 'Profile'
+export type BottomBarTab = 'Feed' | 'Notifications' | 'Profile'
 
 export type BottomBarParamList = Record<
   BottomBarTab,

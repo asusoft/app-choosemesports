@@ -1,5 +1,5 @@
 export const BOTTOM_BAR_CONSTANTS = {
-  paddingVertical: 10,
+  paddingVertical: 13,
   borderWidth: 1,
   iconHeight: 10,
 } as const

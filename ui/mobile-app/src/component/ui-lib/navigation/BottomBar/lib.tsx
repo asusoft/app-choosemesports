@@ -3,7 +3,7 @@ import { Theme } from '@src/services/theme/types'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { BOTTOM_BAR_CONSTANTS } from './constants'
 import { BottomBarTab } from '@src/navigations/types/BottomBar.types'
-import { bottomBarIcons } from '@src/component/icons'
+import { BellIcon, bottomBarIcons } from '@src/component/icons'
 import { SvgComponent } from '@src/shared/types'
 
 const { FeedsIcon, HomeIcon, LibraryIcon, ProfileIcon, SearchIcon } = bottomBarIcons
@@ -11,17 +11,13 @@ const { FeedsIcon, HomeIcon, LibraryIcon, ProfileIcon, SearchIcon } = bottomBarI
 export const getIcon =
   (tabName: BottomBarTab, isFocused: boolean, theme: Theme): SvgComponent =>
   () => {
-    const fill = '#F16133'
+    const fill = theme.palette.primary
 
     switch (tabName) {
-      case 'Home':
-        return <HomeIcon fill={isFocused ? fill : theme.palette.typography} />
+      case 'Notifications':
+        return <BellIcon fill={isFocused ? fill : theme.palette.typography} />
       case 'Feed':
         return <FeedsIcon fill={isFocused ? fill : theme.palette.typography} />
-      case 'Library':
-        return <LibraryIcon fill={isFocused ? fill : theme.palette.typography} />
-      case 'Search':
-        return <SearchIcon fill={isFocused ? fill : theme.palette.typography} />
       case 'Profile':
         return <ProfileIcon fill={isFocused ? fill : theme.palette.typography} />
     }

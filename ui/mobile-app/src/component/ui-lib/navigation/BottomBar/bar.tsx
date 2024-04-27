@@ -46,12 +46,6 @@ export const BarUI = ({ state, navigation }: BottomTabBarProps) => {
                 height={BOTTOM_BAR_CONSTANTS.iconHeight}
                 width={BOTTOM_BAR_CONSTANTS.iconHeight}
               />
-              <Typography
-                style={{
-                  color: isFocused ? '#F16133' : theme.palette.typography,
-                }}>
-                {route.name}
-              </Typography>
             </Pressable>
           </View>
         )

@@ -9,15 +9,13 @@ import TestScreen from '@src/screens/test'
 const TabBar = createBottomTabNavigator<BottomBarParamList>()
 
 const BottomBar = () => {
-  const { theme } = useTheme()
-
   return (
     <TabBar.Navigator
       screenOptions={{ headerShown: false }}
       tabBar={props => <BottomBarUI {...props} />}
-      initialRouteName={'Home'}>
+      initialRouteName={'Profile'}>
       <TabBar.Screen
-        name={'Home'}
+        name={'Profile'}
         component={AuthStack}
         options={{
           unmountOnBlur: true,
@@ -32,21 +30,7 @@ const BottomBar = () => {
         }}
       />
       <TabBar.Screen
-        name={'Search'}
-        component={TestScreen}
-        options={({ route }) => ({
-          unmountOnBlur: true,
-        })}
-      />
-      <TabBar.Screen
-        name={'Library'}
-        component={TestScreen}
-        options={{
-          unmountOnBlur: true,
-        }}
-      />
-      <TabBar.Screen
-        name={'Profile'}
+        name={'Notifications'}
         component={AuthStack}
         options={{
           unmountOnBlur: true,
