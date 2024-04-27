@@ -1,0 +1,5 @@
+mutation AddPlayerPositions($data: PlayerPositionsIn!) {
+  addPlayerPositions(data: $data) {
+    status
+  }
+}

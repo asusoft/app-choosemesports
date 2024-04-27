@@ -1,0 +1,5 @@
+mutation SetPlayerSport($id: ID!) {
+  setPlayerSport(id: $id) {
+    status
+  }
+}

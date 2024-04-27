@@ -1,0 +1,5 @@
+mutation AddPlayerAdditionalFields($data: PlayerAdditionalFieldsIn!) {
+  addPlayerAdditionalFields(data: $data) {
+    status
+  }
+}

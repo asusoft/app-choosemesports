@@ -19,6 +19,12 @@ export const updatePlayerMutationResolver = async (_, { data }, { user, database
             youtube: data.contact?.youtube || playerMe.contact.youtube,
         },
         personal: {
+            dateOfBirth: data.personal?.dateOfBirth || playerMe.personal.dateOfBirth,
+            gender: data.personal?.gender || playerMe.personal.gender,
+            nationality: {
+                country: data.personal?.nationality.country || playerMe.personal.nationality.country,
+                code: data.personal?.nationality.code || playerMe.personal.nationality.code
+            },
             about: data.personal?.about || playerMe.personal.about,
             height: data.personal?.height || playerMe.personal.height,
             weight: data.personal?.weight || playerMe.personal.weight,

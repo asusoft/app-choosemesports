@@ -23,6 +23,8 @@ const useCustomState = () => {
 
 export const usePlayerInfo = () => {
   const { navigate } = useAppNavigation<TNoInfoStackParamList>()
+
+
   const [
     {
       sport,
@@ -38,7 +40,9 @@ export const usePlayerInfo = () => {
   ] = useCustomState()
 
   const actions = {
-    savePlayerInfo: () => {},
+    savePlayerInfo: () => {
+
+    },
   }
 
   const handlers = {

@@ -3,9 +3,26 @@ export const PlayerTypes = `
         id: ID!
         userID: ID!
         sport: Sport
-        positions: [Position!]
+        positions: [PlayerPosition!]
         contact: PlayerContact!
         personal: PlayerPersonalInfo!
+        additionalFields: [PlayerAdditionalField!]
+    }
+
+    type AuthPlayer {
+        id: ID!
+        userID: ID!
+        sport: Sport
+        positions: [PlayerPosition!]
+        contact: PlayerContact!
+        personal: PlayerPersonalInfo!
+        name: String!
+        login: String!
+        email: String!
+        role: ERole!
+        avatar: File
+        bio: String
+        additionalFields: [PlayerAdditionalField!]
     }
 
     type PlayerContact {
@@ -75,14 +92,55 @@ export const PlayerTypes = `
         players: [Player!]!
     }
 
+    type PlayerAdditionalField {
+        label: String!
+        value: String!
+    }
+
+    input PlayerAdditionalFieldIn {
+        label: String!
+        value: String!
+    }
+
+    input PlayerAdditionalFieldsIn {
+        fields: [PlayerAdditionalFieldIn!]!
+    }
+
+
+    type PlayerPosition {
+        name: String!
+        stats: [PlayerPosStat!]!
+    }
+
+    type PlayerPosStat {
+        label: String!
+        value: String!
+    }
+
+    input PlayerPositionIn {
+        name: String!
+        stats: [PlayerPosStatIn!]!
+    }
+
+    input PlayerPositionsIn {
+        positions: [PlayerPositionIn!]!
+    }
+
+    input PlayerPosStatIn {
+        label: String!
+        value: String!
+    }
+
     union PlayerOrBE = Player | BaseError
     union PlayerListOrBE = PlayerList | BaseError
 
     extend type Mutation {
         createPlayer(input: PlayerIn!): AuthUserOrEWF!
         updatePlayer(data: PlayerInUpdate!): BaseError
-        setPlayerSport(id: String!): BaseError
+        setPlayerSport(id: ID!): BaseError
         updatePlayerContact(data: PlayerContactInUpdate!): BaseError
+        addPlayerAdditionalFields(data: PlayerAdditionalFieldsIn!): BaseError
+        addPlayerPositions(data: PlayerPositionsIn!): BaseError
         updatePlayerPersonalInfo(data: PlayerPersonalInfoInUpdate!): BaseError
     }
 
