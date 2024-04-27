@@ -22,10 +22,6 @@ export type AdditionalFields = {
   [key: string]: string
 }
 
-interface UpdateData {
-  [key: string]: InputMaybe<Scalars['String']['input']> | undefined
-}
-
 const useCustomState = () => {
   const context = useContext(StateContext)
   if (!context) {
@@ -60,25 +56,19 @@ export const usePlayerInfo = () => {
     savePlayerInfo: async (contacts: PlayerContactInUpdate) => {
       console.log(contacts)
       setState(state => ({ ...state, isLoading: true }))
-      sportID && (await setPlayerSport({ variables: { id: sportID } }))
-      additionalFields &&
-        additionalFields.length > 0 &&
-        (await addPlayerFields({ variables: { data: { fields: additionalFields } } }))
-      positions &&
-        positions.length > 0 &&
-        (await addPlayerPositions({ variables: { data: { positions: positions } } }))
-      personal && (await addPlayerPersonalInfo({ variables: { data: personal } }))
-      contact &&
-        (await updatePlayer({
-          variables: {
-            data: {
-              contact: contacts,
-            },
-          },
-        }))
+      sportID && await setPlayerSport({variables: { id: sportID}})
+      additionalFields && additionalFields.length > 0 && await addPlayerFields({variables: { data: { fields: additionalFields }}})
+      positions && positions.length > 0 && await addPlayerPositions({variables: { data: {positions: positions}}})
+      personal && await addPlayerPersonalInfo({variables: { data: personal }})
+      contact && await updatePlayer({variables: {
+        data: {
+          contact: contacts,
+          personal: personal
+        }
+      }})
       setState(state => ({ ...state, isLoading: false }))
       hasInfoVar(true)
-    },
+    }
   }
 
   const handlers = {
@@ -143,7 +133,7 @@ export const usePlayerInfo = () => {
     },
     onSaveContacts: (contact: PlayerContactInUpdate) => {
       actions.savePlayerInfo(contact)
-    },
+    }
   }
 
   return {
