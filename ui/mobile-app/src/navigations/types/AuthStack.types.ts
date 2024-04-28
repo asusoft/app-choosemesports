@@ -3,6 +3,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export type AuthStackParamList = {
   HomeScreen: undefined
+  AddPositionScreen: undefined
 }
 
 export type ScreenNavigationProp<

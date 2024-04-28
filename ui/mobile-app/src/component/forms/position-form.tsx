@@ -15,9 +15,10 @@ type PositionFormProps = {
   position: Position
   onSave: (positionIn: PlayerPositionIn) => void
   onClose?: () => void
+  isLoading?: boolean
 }
 
-export const PositionForm = ({ position, onSave, onClose }: PositionFormProps) => {
+export const PositionForm = ({ position, onSave, onClose, isLoading }: PositionFormProps) => {
   const { theme } = useTheme()
   const [stats, setStats] = useState<PlayerPosStatIn[]>([])
 
@@ -92,14 +93,15 @@ export const PositionForm = ({ position, onSave, onClose }: PositionFormProps) =
         style={{
           position: 'absolute',
           bottom: 45,
-          right: 5,
-          left: 5,
+          right: 0,
+          left: 0,
         }}>
         <FooterButton
           disabled={!isEnabled()}
           label='Save'
           onPress={() => submit()}
           textColor='#000000'
+          isLoading={isLoading}
         />
       </View>
     </View>

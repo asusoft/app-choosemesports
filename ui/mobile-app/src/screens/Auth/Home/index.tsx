@@ -5,14 +5,11 @@ import globalStyles, { WINDOW_HEIGHT, WINDOW_WIDTH } from '@src/constants/styles
 import { useViewer } from '@src/entities/viewer'
 import { useTheme } from '@src/services/theme/hooks'
 import React, { Component } from 'react'
-import {
-  View,
-  StyleSheet,
-  ImageBackground,
-  ScrollView,
-} from 'react-native'
+import { View, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 import { Section } from './ui/section-container'
 import CountryFlag from 'react-native-country-flag'
+import { Positions } from './ui/positions'
+import { getAge } from '@src/utils/get-age'
 
 const background = require('@/img/background.png')
 
@@ -24,7 +21,9 @@ export const HomeScreen = () => {
   return (
     <View style={{ ...styles.container, backgroundColor: theme.palette.background }}>
       <ImageBackground
-        source={{ uri: 'https://assets.manutd.com/AssetPicker/images/0/0/19/161/1286513/Player-Profile-Kobee-Mainoo1704816160111.png'}}
+        source={{
+          uri: 'https://assets.manutd.com/AssetPicker/images/0/0/19/161/1286513/Player-Profile-Kobee-Mainoo1704816160111.png',
+        }}
         style={{
           width: WINDOW_WIDTH,
           height: WINDOW_HEIGHT / 2,
@@ -55,27 +54,19 @@ export const HomeScreen = () => {
             <Typography variant='buttonText' children={viewer.playerPositions[0].name} />
           )}
         </View>
-        {
-          viewer.additionalFields && (
-            <>
+        {viewer.additionalFields && (
+          <>
             <Spacing />
-             <View style={globalStyles.wrap}>
-              {
-                viewer.additionalFields.map((field, index) => (
-                  <View style={{flexDirection: 'row', gap: 4}}>
-                    <Typography variant='textButton' children={`${field.label}:`} />
-                    <Typography variant='textParagraph' children={field.value} />
-                  </View>
-                ))
-              }
-            
-          </View>
-            </>
-           
-          )
-        }
-      
-       
+            <View style={globalStyles.wrap}>
+              {viewer.additionalFields.map((field, index) => (
+                <View key={index} style={{ flexDirection: 'row', gap: 4 }}>
+                  <Typography variant='textButton' children={`${field.label}:`} />
+                  <Typography variant='textParagraph' children={field.value} />
+                </View>
+              ))}
+            </View>
+          </>
+        )}
       </ImageBackground>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
@@ -99,7 +90,9 @@ export const HomeScreen = () => {
               height: 50,
             }}>
             <Typography variant='buttonText'>Age</Typography>
-            <Typography variant='textButton'>23</Typography>
+            <Typography variant='textButton'>
+              {getAge(viewer.personal.dateOfBirth)}
+            </Typography>
           </View>
           <View
             style={{
@@ -143,11 +136,11 @@ export const HomeScreen = () => {
             <Typography variant='textParagraph'>{viewer.personal.about}</Typography>
           </View>
           <Spacing value={20} />
-          {viewer.playerPositions && <Section label='Positions' onPress={() => {}} />}
+          {viewer.playerPositions && <Positions />}
           <Spacing value={20} />
-          <Section label='Awards' onPress={() => {}} />
+          <Section label='Achievements' onAdd={() => {}} />
           <Spacing value={20} />
-          <Section label='Video Highlights' onPress={() => {}} />
+          <Section label='Video Highlights' onAdd={() => {}} />
         </View>
       </ScrollView>
     </View>

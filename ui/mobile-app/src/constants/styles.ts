@@ -3,6 +3,7 @@ import { Dimensions, ViewStyle } from 'react-native'
 type TGlobalStyles = {
   pageContainer: ViewStyle
   wrap: ViewStyle
+  buttonContainer: ViewStyle
 }
 export const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window')
 
@@ -21,6 +22,13 @@ const globalStyles: TGlobalStyles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 12,
+  },
+  buttonContainer: {
+    height: 35,
+    width: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
   },
 }
 

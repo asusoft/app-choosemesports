@@ -10,7 +10,7 @@ import GLOBAL_CONSTANTS from '@src/constants/constants'
 import { GLOBAL_PADDING } from '@src/constants/styles'
 import { usePlayerInfo } from '@src/screens/NoInfo/model'
 import { useTheme } from '@src/services/theme/hooks'
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Pressable } from 'react-native'
 
 export const PositionsModal = ({

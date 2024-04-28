@@ -1,35 +1,47 @@
-import { ArrowIcon } from '@src/component/icons'
+import { ArrowDownIcon, ArrowIcon, CloseIcon, PlusIcon } from '@src/component/icons'
+import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 import { useTheme } from '@src/services/theme/hooks'
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import React, { PropsWithChildren, useState } from 'react'
+import { View, Pressable } from 'react-native'
 
-export const Section = ({ label, onPress }: { label: string; onPress: () => void }) => {
+export type SectionProps = {
+  label: string
+  onAdd: () => void
+} & PropsWithChildren
+
+export const Section = ({ label, children, onAdd }: SectionProps) => {
   const { theme } = useTheme()
   return (
-    <View
-      style={{
-        height: 67,
-        borderRadius: 12,
-        backgroundColor: '#141821',
-        justifyContent: 'space-between',
-        paddingHorizontal: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}>
-      <Typography variant='buttonText'>{label}</Typography>
-      <Pressable
-        onPress={onPress}
-        style={{
-          height: 35,
-          width: 35,
-          backgroundColor: theme.palette.border,
-          borderRadius: 20,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <ArrowIcon height={22} width={22} fill={'#141821'} />
-      </Pressable>
+    <View style={{ backgroundColor: '#141821', borderRadius: 20, paddingHorizontal: 20 }}>
+      <View style={{ borderRadius: 20, paddingVertical: 20 }}>
+        <Pressable
+          onPress={onAdd}
+          style={{
+            flexDirection: 'row',
+            gap: 8,
+          }}>
+          <Typography variant='buttonText'>{label}</Typography>
+          <View
+            style={{
+              height: 25,
+              width: 25,
+              borderRadius: 15,
+              backgroundColor: theme.palette.border,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginLeft: 'auto',
+            }}>
+            <PlusIcon height={12} width={12} fill={'#141821'} />
+          </View>
+        </Pressable>
+        {children && (
+          <>
+            <Spacing value={20} />
+            {children}
+          </>
+        )}
+      </View>
     </View>
   )
 }

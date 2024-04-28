@@ -54,8 +54,8 @@ export const useViewer = () => {
               ? [...player.playerPositions]
               : undefined,
             additionalFields: player.additionalFields
-            ? [...player.additionalFields]
-            : undefined,
+              ? [...player.additionalFields]
+              : undefined,
           }
           if (player.sport) hasInfoVar(true)
           viewerVar(authPlayer)
