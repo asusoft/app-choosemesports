@@ -1,6 +1,14 @@
+import { getFileByID } from "../../../database/GetDocs/get-file-by-id.js";
+
 export const UserCustomResolvers = {
     User: {
         id: ({ _id, id }) => _id || id,
+        avatar: async ({ avatarID }) => {
+            if (!avatarID) {
+                return undefined;
+            }
+            return await getFileByID(avatarID);
+        },
     },
     UserOrBE: {
         __resolveType(obj, _, __){

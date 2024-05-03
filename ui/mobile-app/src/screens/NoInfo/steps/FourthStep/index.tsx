@@ -15,7 +15,7 @@ import { ItemType } from 'react-native-dropdown-picker'
 import { genders } from '@src/constants/genders'
 import { formatDate, ISOToDate } from '@src/shared/lib/date'
 import { DateInput } from '@src/component/ui-lib/inputs/DateInput/DateInput'
-import { HorizontalInput } from '../ui/horizontal-input'
+import { HorizontalInput } from '../../../../component/ui-lib/inputs/horizontall-input'
 
 const DropDownInput = ({
   label,

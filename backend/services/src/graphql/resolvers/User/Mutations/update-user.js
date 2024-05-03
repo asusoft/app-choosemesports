@@ -31,6 +31,7 @@ export const updateUserMutationResolver = async (_, { data }, { user }) => {
         bio: data?.bio || user.bio || '',
         email: data?.email || user.email,
         login: data?.login || user.login,
+        avatarID: data?.avatarID || user.avatarID || ''
     }
 
     const updateResponse = await updateUserById(user.id, fields)

@@ -21,7 +21,9 @@ export const usePosition = () => {
     undefined,
   )
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [getPlayerMe, { loading: getPlayerMeLoading }] = useGetPlayerMeLazyQuery({ fetchPolicy: 'no-cache'})
+  const [getPlayerMe, { loading: getPlayerMeLoading }] = useGetPlayerMeLazyQuery({
+    fetchPolicy: 'no-cache',
+  })
 
   const [myPositions, setMyPositions] = useState<PlayerPosition[]>([])
 

@@ -6,7 +6,11 @@ import { SettingsScreen } from '@src/screens/Auth/Settings'
 import { Pressable } from 'react-native'
 import { ArrowLeftIcon } from '@src/component/icons'
 import { useAppNavigation } from '../hooks'
-import { AccountDetails, ChangePassword, Profile } from '@src/screens/Auth/Settings/in-screens'
+import {
+  AccountDetails,
+  ChangePassword,
+  Profile,
+} from '@src/screens/Auth/Settings/in-screens'
 
 const Stack = createNativeStackNavigator<SettingsStackParamList>()
 
@@ -41,10 +45,10 @@ const SettingsStack = () => {
         component={AccountDetails}
         options={{ title: 'Account Details', animation: 'slide_from_right' }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name='Profile'
         component={Profile}
-        options={{ title: 'Profile Settings', animation: 'slide_from_right' }}
+        options={{ title: 'Profile', animation: 'slide_from_right' }}
       />
       <Stack.Screen
         name='ChangePassword'

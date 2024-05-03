@@ -9,14 +9,18 @@ export const HorizontalInput = ({
   label,
   onChange,
   type = 'TEXT',
+  value,
+  disabled
 }: {
   label: string
   onChange: (value: string) => void
   type?: 'PHONE' | 'TEXT'
+  value?: string
+  disabled?: boolean
 }) => {
   const { theme } = useTheme()
 
-  const [text, setText] = React.useState('')
+  const [text, setText] = React.useState(value)
 
   const handleChange = (value: string) => {
     setText(value)
@@ -46,6 +50,8 @@ export const HorizontalInput = ({
             borderRadius: 8,
             paddingHorizontal: 12,
           }}
+          editable={!disabled}
+          color={disabled ? theme.palette.border : undefined}
         />
       ) : (
         <PhoneInput

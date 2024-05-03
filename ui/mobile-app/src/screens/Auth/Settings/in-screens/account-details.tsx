@@ -10,9 +10,8 @@ import { useUpdateUserMutation } from '@src/shared/generated/types/graphql'
 import React, { Component, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-
 export const AccountDetails = () => {
-  const { viewer, actions} = useViewer()
+  const { viewer, actions } = useViewer()
   const { theme } = useTheme()
   const [updateUser] = useUpdateUserMutation()
 
@@ -24,10 +23,16 @@ export const AccountDetails = () => {
 
   const [loading, setLoading] = useState(false)
 
+  const isEnabled = () => {
+    return credentials.login !== viewer.login || credentials.email !== viewer.email
+  }
+
   const onSave = async () => {
     setLoading(true)
-    const response = await updateUser({variables: { data: { login: credentials.login, email: credentials.email}}})
-    if(response.data?.updateUser?.__typename === 'ErrorWithFields'){
+    const response = await updateUser({
+      variables: { data: { login: credentials.login, email: credentials.email } },
+    })
+    if (response.data?.updateUser?.__typename === 'ErrorWithFields') {
       errorAlert(response.data.updateUser.status)
     }
 
@@ -81,10 +86,9 @@ export const AccountDetails = () => {
           onPress={() => onSave()}
           textColor='#000000'
           isLoading={loading}
+          disabled={!isEnabled()}
         />
       </View>
     </Container>
   )
 }
-
-
