@@ -17,13 +17,12 @@ export const HomeScreen = () => {
   const { viewer, actions } = useViewer()
   const { theme } = useTheme()
 
-  const source = viewer.avatar ? viewer.avatar.path : background
+  const source = viewer.avatar ?  { uri: viewer.avatar.path } : background
+
   return (
     <View style={{ ...styles.container, backgroundColor: theme.palette.background }}>
       <ImageBackground
-        source={{
-          uri: 'https://assets.manutd.com/AssetPicker/images/0/0/19/161/1286513/Player-Profile-Kobee-Mainoo1704816160111.png',
-        }}
+        source={source}
         style={{
           width: WINDOW_WIDTH,
           height: WINDOW_HEIGHT / 2,

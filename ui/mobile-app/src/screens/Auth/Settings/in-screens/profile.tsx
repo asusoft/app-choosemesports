@@ -1,4 +1,4 @@
-import { CameraIcon } from '@src/component/icons'
+import { CameraIcon, EditIcon } from '@src/component/icons'
 import { Container } from '@src/component/ui-lib/containers/page-container'
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { useViewer } from '@src/entities/viewer'
@@ -14,6 +14,8 @@ import React, { useState } from 'react'
 import { View, Pressable, Image, ActivityIndicator, ScrollView } from 'react-native'
 import { ContactInfo } from './ui/profile-contacts'
 import { PersonalInfo } from './ui/profile-personal'
+
+const background = require('@/img/background.png');
 
 export const Profile = () => {
   const { theme } = useTheme()
@@ -39,6 +41,8 @@ export const Profile = () => {
     }
   }
 
+  const source = avatar ? { uri: avatar.path } : background;
+
   return (
     <Container>
       <Spacing />
@@ -52,15 +56,15 @@ export const Profile = () => {
             height: 200,
             width: 200,
             borderRadius: 100,
-            backgroundColor: theme.palette.field,
+            backgroundColor: theme.palette.border,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           {updateLoading || uploadLoading ? (
-            <ActivityIndicator size={'large'} color={theme.palette.primary} />
+            <ActivityIndicator size={'large'} color={theme.palette.field} />
           ) : (
             <Image
-              source={{ uri: avatar?.path }}
+              source={source}
               style={{
                 height: 200,
                 width: 200,
@@ -74,7 +78,7 @@ export const Profile = () => {
               height: 50,
               width: 50,
               borderRadius: 25,
-              backgroundColor: theme.palette.field,
+              backgroundColor: theme.palette.border,
               position: 'absolute',
               bottom: 0,
               right: 15,
@@ -82,7 +86,7 @@ export const Profile = () => {
               justifyContent: 'center',
               borderWidth: 5,
             }}>
-            <CameraIcon height={24} width={24} fill={'#000000'} />
+            <EditIcon height={26} width={20} fill={'#000000'} />
           </Pressable>
         </Pressable>
         <Spacing value={20} steps={2} />
