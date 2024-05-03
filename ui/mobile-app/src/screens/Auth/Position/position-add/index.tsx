@@ -13,11 +13,11 @@ import { useAppNavigation } from '@src/navigations/hooks'
 export const AddPositionScreen = () => {
     const { theme } = useTheme()
     const { viewer } = useViewer()
-    const { handlers, selectedPosition, positions, isLoading } = usePosition()
+    const { handlers, selectedPosition, isLoading, myPositions } = usePosition()
     const navigation = useAppNavigation()
 
     const sport = viewer.sport
-    const existingPositions = viewer.playerPositions
+    const existingPositions = myPositions
 
     const [items, setItems] = useState<{ label: string; value: string }[]>([])
     const [positionId, setPositionId] = useState<string>('WITHOUT_THEME')

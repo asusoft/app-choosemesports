@@ -1,6 +1,7 @@
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 import { useViewer } from '@src/entities/viewer'
+import { usePosition } from '@src/screens/Auth/Position/model/use-positions'
 import { useTheme } from '@src/services/theme/hooks'
 import { PlayerPosition } from '@src/shared/generated/types/graphql'
 import React from 'react'
@@ -47,7 +48,8 @@ const Position = ({ position, index }: { position: PlayerPosition; index: number
 
 export const PositionsList = () => {
   const { viewer } = useViewer()
-  const positions = viewer.playerPositions
+  const { myPositions } = usePosition()
+  const positions = myPositions
 
   if (positions === null || positions === undefined) return null
 
