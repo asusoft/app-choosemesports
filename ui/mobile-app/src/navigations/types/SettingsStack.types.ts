@@ -1,10 +1,11 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-export type AuthStackParamList = {
-  HomeScreen: undefined
-  AddPositionScreen: undefined
-  SettingsScreen: undefined
+export type SettingsStackParamList = {
+  Land: undefined
+  AccountDetails: undefined
+  Profile: undefined
+  ChangePassword: undefined
 }
 
 export type ScreenNavigationProp<
@@ -12,5 +13,5 @@ export type ScreenNavigationProp<
   RouteName extends keyof T = keyof ParamListBase,
 > = NativeStackScreenProps<T, RouteName>
 
-export type TAuthScreenNavigationProp<RouteName extends keyof AuthStackParamList> =
-  ScreenNavigationProp<AuthStackParamList, RouteName>
+export type TAuthScreenNavigationProp<RouteName extends keyof SettingsStackParamList> =
+  ScreenNavigationProp<SettingsStackParamList, RouteName>

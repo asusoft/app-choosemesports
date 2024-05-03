@@ -25,6 +25,8 @@ const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
       value,
       textAlign,
       inputContainerStyle,
+      disabled,
+      color
     },
     ref,
   ) => {
@@ -63,8 +65,8 @@ const TextInputBase = forwardRef<RNInput, TextInputBaseProps>(
             outlineColor={theme.palette.blue}
             activeUnderlineColor={theme.palette.blue}
             error={true}
-            disabled={true}
-            color={theme.palette.typography}
+            disabled={disabled}
+            color={ color || theme.palette.typography}
             ref={ref}
           />
           {appendComponent}

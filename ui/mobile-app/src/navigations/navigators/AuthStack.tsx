@@ -5,6 +5,7 @@ import { Header } from '@src/component/ui-lib/navigation/Header'
 import { HomeScreen } from '@src/screens/Auth/Home'
 import { HeaderButtons } from '@src/component/ui/home-screen/header-buttons'
 import { AddPositionScreen } from '@src/screens/Auth/Position/position-add'
+import SettingsStack from './SettingsStack'
 
 const Stack = createNativeStackNavigator<AuthStackParamList>()
 
@@ -32,6 +33,11 @@ const AuthStack = () => {
         name={'AddPositionScreen'}
         component={AddPositionScreen}
         options={{ title: 'Add new Position', animation: 'slide_from_bottom' }}
+      />
+      <Stack.Screen
+        name={'SettingsScreen'}
+        component={SettingsStack}
+        options={{ headerShown: false, animation: 'slide_from_right' }}
       />
     </Stack.Navigator>
   )

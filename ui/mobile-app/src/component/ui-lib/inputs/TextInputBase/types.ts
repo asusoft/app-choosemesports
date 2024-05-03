@@ -23,4 +23,6 @@ export type TextInputBaseProps = TextInputProps & {
   errorMsg?: string
   onChange: (text: string) => void
   placeholder?: string
+  disabled?: boolean
+  color?: string
 }

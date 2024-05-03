@@ -18,7 +18,12 @@ type PositionFormProps = {
   isLoading?: boolean
 }
 
-export const PositionForm = ({ position, onSave, onClose, isLoading }: PositionFormProps) => {
+export const PositionForm = ({
+  position,
+  onSave,
+  onClose,
+  isLoading,
+}: PositionFormProps) => {
   const { theme } = useTheme()
   const [stats, setStats] = useState<PlayerPosStatIn[]>([])
 

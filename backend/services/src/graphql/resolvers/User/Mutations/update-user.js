@@ -1,3 +1,4 @@
+import { auth } from "../../../../../init-firebase.js";
 import { updateUserById } from "../../../../database/UpdateDocs/update-user-by-id.js";
 import { ErrorStatus } from "../../../../helpers/index.js";
 import { validateEmail, validateLogin, validateString } from "../../../../helpers/InputValidation.js";
@@ -27,12 +28,16 @@ export const updateUserMutationResolver = async (_, { data }, { user }) => {
     }
 
     const fields = {
-        bio: data?.bio || user.bio,
+        bio: data?.bio || user.bio || '',
         email: data?.email || user.email,
         login: data?.login || user.login,
     }
 
     const updateResponse = await updateUserById(user.id, fields)
+
+    auth.updateUser(user.id, {
+        email: data?.email || user.email
+    });
 
     if(updateResponse) return null
     else return {status: ErrorStatus.UNKNOWN_ERROR }

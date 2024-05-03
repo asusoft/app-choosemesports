@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const URI = 'https://choosemesports.onrender.com/'
+// const URI = 'http://localhost:4000'
 
 const httpLink = createHttpLink({
   uri: URI,

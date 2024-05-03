@@ -16,7 +16,7 @@ export const useViewer = () => {
   const viewer = useReactiveVar(viewerVar)
   const hasTokens = useReactiveVar(hasTokensVar)
   const hasInfo = useReactiveVar(hasInfoVar)
-  const [getMe, { loading: getMeLoading }] = useGetMeLazyQuery()
+  const [getMe, { loading: getMeLoading }] = useGetMeLazyQuery({ fetchPolicy: 'no-cache'})
   const [getPlayerMe, { loading: getPlayerMeLoading }] = useGetPlayerMeLazyQuery()
   const [login] = useLoginMutation()
 
@@ -64,6 +64,9 @@ export const useViewer = () => {
     },
     resetMe: () => {
       viewerVar(initialViewerState)
+    },
+    updateMe:async () => {
+      await actions.getMe()
     },
     logout: async () => {
       await AsyncStorage.setItem('token', '')
