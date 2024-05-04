@@ -1,0 +1,12 @@
+fragment FullVideo on Video {
+    id
+    author {
+        ...SimpleUser
+    }
+    attachement {
+        ...Media
+    }
+    description
+    isApproved
+    showInProfile
+}

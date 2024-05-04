@@ -4,6 +4,7 @@ import { PlayerMutations } from './Player/index.js';
 import { AuthMutations } from './Auth/index.js';
 import { SportMutations } from './Sport/index.js';
 import { AdminMutations } from './Admin/index.js';
+import { VideoMutations } from './Video/index.js';
 
 export const mutations = `
   ${UserMutations}
@@ -12,4 +13,5 @@ export const mutations = `
   ${AuthMutations}
   ${SportMutations}
   ${AdminMutations}
+  ${VideoMutations}
 `;

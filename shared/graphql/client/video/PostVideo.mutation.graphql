@@ -1,0 +1,11 @@
+mutation PostVideo($input: VideoIn!) {
+    postVideo(input: $input) {
+        __typename
+        ... on Video {
+           ...FullVideo
+        }
+        ... on BaseError {
+            status
+        }
+    }
+}
