@@ -10,7 +10,6 @@ export const createPlayerDoc = async (userID, input) => {
     const data = {
         id: newPlayerRef.id,
         userID: userID,
-        positions: [],
         contact: {
             phone: '',
             youtube: '',
@@ -29,7 +28,6 @@ export const createPlayerDoc = async (userID, input) => {
             weight: '',
             about: ''
         },
-        
         createdAt: new Date(),
         updatedAt: new Date(),
     };

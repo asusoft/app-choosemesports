@@ -9,7 +9,6 @@ export const PlayerCustomResolvers = {
             }
             return await getSportByID(sportID, database);
         },
-        playerPositions: ({ positions }) => positions
     },
     PlayerOrBE: {
         __resolveType(obj, _, __){

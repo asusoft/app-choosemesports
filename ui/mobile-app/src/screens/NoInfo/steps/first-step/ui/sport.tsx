@@ -29,7 +29,7 @@ export const SportTag = ({ item, onPress, selectedSpordID }: SportTagProps) => {
         backgroundColor,
       }}>
       <Typography
-        children={item.id}
+        children={item.name}
         variant='textButton'
         style={{
           color: textColor,

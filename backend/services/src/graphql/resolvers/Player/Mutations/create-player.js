@@ -34,7 +34,6 @@ export const createPlayerMutationResolver = async (_, { input }, { database }) =
                 .then(async (userRecord) => {
                     user = await createUserDoc(userRecord.uid, {...input, role: ERole.PLAYER})
                     await createPlayerDoc(user.id, input )
-                    console.log('we are here')
                 })
             return {
                 user,

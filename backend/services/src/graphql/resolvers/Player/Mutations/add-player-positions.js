@@ -3,8 +3,6 @@ import { updatePlayerById } from "../../../../database/UpdateDocs/update-player-
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const addPlayerPositionsMutationResolver = async (_, { data }, { user, database }) => {
-    console.log(data);
-    
     if (!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
     
     try {
@@ -16,11 +14,11 @@ export const addPlayerPositionsMutationResolver = async (_, { data }, { user, da
         
         if (playerMe.positions) {
             fields = {
-                positions: [...playerMe.positions, ...data.positions]
+                playerPositions: [...playerMe.positions, ...data.positions]
             };
         } else {
             fields = {
-                positions: data.positions
+                playerPositions: data.positions
             };
         }
 

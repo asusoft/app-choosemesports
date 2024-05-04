@@ -3,8 +3,6 @@ import { updatePlayerById } from "../../../../database/UpdateDocs/update-player-
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const updatePlayerMutationResolver = async (_, { data }, { user, database }) => {
-
-    console.log(data)
     if(!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
 
     const playerMe = await getPlayerByQuery("userID", user.id, database)
