@@ -3,6 +3,7 @@ import { bucket } from '../../init-firebase.js'
 import retry from 'async-retry'
 
 export const FileUpload = async (input) => {
+  console.log(input)
   let uri;
 
   if (input.uri.startsWith('file://')) {
