@@ -47,9 +47,6 @@ export const pickFromDevice = async (
         cropperChooseText: 'Choose',
         maximumVideoDuration: options?.maximumVideoDuration,
       })
-
-      console.log(file)
-
       return file
     },
     createFileFormData: (asset: ImageOrVideo) => {

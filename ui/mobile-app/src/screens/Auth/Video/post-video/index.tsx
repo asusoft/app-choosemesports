@@ -12,23 +12,24 @@ import { useTheme } from '@src/services/theme/hooks'
 import {
   usePostVideoMutation,
   useRequestApprovalMutation,
-  useUploadVideoMutation,
   VideoIn,
 } from '@src/shared/generated/types/graphql'
-import React, { Component, useState } from 'react'
-import { View, Text, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
+import { uploadFile } from '@src/utils/firebase/upload-file'
+import React, { useState } from 'react'
+import { View, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
 
 export const PostVideoScreen = () => {
   const { theme } = useTheme()
   const { viewer, actions } = useViewer()
   const navigation = useAppNavigation()
-  const [uploadVideo, { loading: uploadLoading }] = useUploadVideoMutation()
   const [postVideo, { loading: postLoading }] = usePostVideoMutation()
   const [requestApproval] = useRequestApprovalMutation()
   const [videoIn, setVideoIn] = useState<VideoIn>({
     videoID: '',
     description: '',
   })
+
+  const [loading, setLoading] = useState(false)
 
   const isEnabled = () => {
     return videoIn.videoID !== '' && videoIn.description !== ''
@@ -37,16 +38,13 @@ export const PostVideoScreen = () => {
   const onChooseVideoPress = async () => {
     const result = await pickFromDevice('any')
 
-    const response = await uploadVideo({ variables: { file: result.file } })
-
-    if (response.data && response.data?.uploadVideo.__typename === 'File') {
-      const videoID = response.data.uploadVideo.id
+    setLoading(true)
+    const response = await uploadFile(result.file)
+    if(response.uploadFile.__typename === 'File'){
+      const videoID = response.uploadFile.id
       setVideoIn(vidIn => ({ ...vidIn, videoID }))
     }
-
-    if(response.data?.uploadVideo.__typename === 'BaseError'){
-        console.log(response.data?.uploadVideo.status)
-    }
+    setLoading(false)
   }
 
   const onSave = async () => {
@@ -105,7 +103,7 @@ export const PostVideoScreen = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              {uploadLoading ? (
+              {loading ? (
                 <ActivityIndicator />
               ) : (
                 <PlusIcon height={30} width={30} fill={theme.palette.placeholder} />
