@@ -1,6 +1,4 @@
-//import liraries
 import { PlusIcon, TrashIcon } from '@src/component/icons'
-import { errorAlert } from '@src/component/modals/alert'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 import { Container } from '@src/component/ui-lib/containers/page-container'
 import { TextInput } from '@src/component/ui-lib/inputs/TextInput'
@@ -20,7 +18,7 @@ import {
 import React, { Component, useState } from 'react'
 import { View, Text, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
 
-// create a component
+
 export const PostVideoScreen = () => {
   const { theme } = useTheme()
   const { viewer, actions } = useViewer()
@@ -39,7 +37,7 @@ export const PostVideoScreen = () => {
 
   const onChooseVideoPress = async () => {
     const { RNFile } = await pickFromDevice('any')
-    
+
     const response = await uploadVideo({ variables: { file: RNFile } })
 
     if (response.data && response.data?.uploadVideo.__typename === 'File') {

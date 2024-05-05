@@ -1,7 +1,6 @@
 import { ReactNativeFile } from 'apollo-upload-client'
 
 import ImageCropPicker, { ImageOrVideo } from 'react-native-image-crop-picker'
-import { File } from '../shared/generated/types/graphql'
 import { FileType } from '@src/shared/types'
 
 export type PickedFileFromDevice = Awaited<ReturnType<typeof pickFromDevice>>
