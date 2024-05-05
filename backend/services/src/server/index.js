@@ -1,37 +1,41 @@
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
 import { typeDefs } from '../graphql/index.js';
 import resolvers from '../graphql/resolvers/index.js';
 import { getUserFromToken } from '../helpers/tokenization.js';
 import { database } from '../../init-firebase.js';
 
-const start = async () => {
-    const server = new ApolloServer({
-        typeDefs,
-        resolvers,
-        introspection: true,
-    });
+const app = express();
+const httpServer = http.createServer(app);
 
-    const corsOptions = {
-      origin: 'http://localhost:8081',
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      preflightContinue: false,
-      optionsSuccessStatus: 204,
-  };
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+});
 
-    const { url } = await startStandaloneServer(server, {
-        listen: { port: 4000 },
-        cors: corsOptions,
-        context: async ({ req }) => {
-            const user = await getUserFromToken(req.headers.authorization, database)
-            return {
-              user,
-              database
-            }
-          },
-    });
+await server.start();
 
-    console.log(`🚀  Server ready at: ${url}`);
-}
+app.use(
+  '/',
+  cors(),
+  express.json({ limit: '50mb' }),
+  expressMiddleware(server, {
+    context: async ({ req }) => {
+      const user = await getUserFromToken(req.headers.authorization, database)
+      return {
+        user,
+        database
+      }
+    },
+  }),
+);
 
-start();
+
+await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
+console.log(`🚀 Server ready at http://localhost:4000/`);
+
