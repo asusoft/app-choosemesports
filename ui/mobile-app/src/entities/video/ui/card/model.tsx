@@ -21,8 +21,9 @@ export const useVideoCard = (data: VideoCardProps) => {
   const [error, setError] = useState(false)
   const [video, setVideo] = useState<FullVideoFragment>(data.item)
 
-
-  const onTogglePlay = useCallback(() => {setFullScreen(p => !p)}, [data])
+  const onTogglePlay = useCallback(() => {
+    setFullScreen(p => !p)
+  }, [data])
   const onTogglePlayback = useCallback(() => setFullScreen(p => !p), [data])
 
   const onError = (e: any) => {

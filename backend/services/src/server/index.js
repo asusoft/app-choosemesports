@@ -12,8 +12,16 @@ const start = async () => {
         introspection: true,
     });
 
+    const corsOptions = {
+      origin: 'http://localhost:8081',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
+  };
+
     const { url } = await startStandaloneServer(server, {
         listen: { port: 4000 },
+        cors: corsOptions,
         context: async ({ req }) => {
             const user = await getUserFromToken(req.headers.authorization, database)
             return {

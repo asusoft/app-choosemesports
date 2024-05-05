@@ -49,6 +49,8 @@ export const pickFromDevice = async (
         maximumVideoDuration: options?.maximumVideoDuration,
       })
 
+      console.log(file)
+
       return file
     },
     createFileFormData: (asset: ImageOrVideo) => {

@@ -7,8 +7,6 @@ import { Player } from '@src/modules/media/video/video-player'
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 
-
-
 export const Content = () => {
   const { theme } = useTheme()
 
@@ -41,8 +39,8 @@ export const Content = () => {
             isMuted={false}
             isPaused={isPaused}
             fullScreen={fullScreen}
-            onReady={() => { }}
-            onError={() => { }}
+            onReady={() => {}}
+            onError={() => {}}
           />
         </View>
         <Spacing />

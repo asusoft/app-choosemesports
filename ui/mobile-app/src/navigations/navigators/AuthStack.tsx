@@ -7,6 +7,7 @@ import { HeaderButtons } from '@src/component/ui/home-screen/header-buttons'
 import { AddPositionScreen } from '@src/screens/Auth/Position/position-add'
 import SettingsStack from './SettingsStack'
 import { VideosScreen } from '@src/screens/Auth/Video'
+import { PostVideoScreen } from '@src/screens/Auth/Video/post-video'
 
 const Stack = createNativeStackNavigator<AuthStackParamList>()
 
@@ -44,6 +45,11 @@ const AuthStack = () => {
         name={'VideosScreen'}
         component={VideosScreen}
         options={{ title: 'My Videos' }}
+      />
+      <Stack.Screen
+        name={'PostVideoScreen'}
+        component={PostVideoScreen}
+        options={{ title: '' }}
       />
     </Stack.Navigator>
   )

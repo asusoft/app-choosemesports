@@ -16,7 +16,7 @@ type VideoPlayerProps = {
 
 export const Player = (props: VideoPlayerProps) => {
   return (
-    <VideoPlayer 
+    <VideoPlayer
       video={source}
       thumbnail={background}
       style={{

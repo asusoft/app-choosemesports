@@ -9,7 +9,7 @@ import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
 
 export const Screen = () => {
   const { data, loading, renderItem } = useVideosManaging()
-  const navigation = useAppNavigation()
+  const { navigate } = useAppNavigation()
 
   let view: JSX.Element | null = null
 
@@ -32,7 +32,11 @@ export const Screen = () => {
             bottom: 20,
             width: '100%',
           }}>
-          <FooterButton label='Post New Video' textColor='#000000' onPress={() => {}} />
+          <FooterButton
+            label='Post New Video'
+            textColor='#000000'
+            onPress={() => navigate('PostVideoScreen')}
+          />
         </View>
       </>
     )

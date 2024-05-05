@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   sideElement: {
-    padding: 16,
+    paddingHorizontal: 16,
     flex: 1,
   },
   centralElement: {

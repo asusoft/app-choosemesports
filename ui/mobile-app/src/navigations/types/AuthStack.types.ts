@@ -6,6 +6,7 @@ export type AuthStackParamList = {
   AddPositionScreen: undefined
   SettingsScreen: undefined
   VideosScreen: undefined
+  PostVideoScreen: undefined
 }
 
 export type ScreenNavigationProp<

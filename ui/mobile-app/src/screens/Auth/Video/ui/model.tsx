@@ -15,13 +15,11 @@ import Rating from '@src/component/ui/rating'
 import { Typography } from '@src/component/ui-lib/text/Typography'
 import { Spacing } from '@src/component/ui-lib/separators/spacing'
 import { Player } from '@src/modules/media/video/video-player'
-import { VideoCard } from '@src/entities/video/ui'
+import { VideoCard } from '@src/entities/video'
 
 export const useVideosManaging = () => {
   const { theme } = useTheme()
   const { viewer } = useViewer()
-  const isFocused = useIsFocused()
-  const { navigate } = useAppNavigation()
   const [data, setData] = useState<VideoListFragment | null>(MOCK_VIDEOS)
   const { loading, refetch: getMyVideos } = useGetMyVideosQuery()
 
@@ -38,25 +36,8 @@ export const useVideosManaging = () => {
     },
   }
 
-  useEffect(() => {
-    // if (isFocused) {
-    //   actions.getVideos()
-    // } else {
-    //   actions.clearData()
-    // }
-  }, [isFocused])
-
-  const onVideoPress = useCallback(
-    (id: string) => () => {
-      //navigate('AlbumScreen', { id })
-    },
-    [navigate],
-  )
-
   const renderItem: ListRenderItem<FullVideoFragment> = useCallback(
-    ({ item, index }) => (
-      <VideoCard item={item} />
-    ),
+    ({ item, index }) => <VideoCard item={item} />,
     [],
   )
 
