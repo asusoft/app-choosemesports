@@ -3,7 +3,7 @@ import { bucket } from '../../init-firebase.js'
 import retry from 'async-retry'
 
 export const FileUpload = async (input) => {
-  console.log(input)
+
   let uri;
 
   if (input.uri.startsWith('file://')) {
@@ -25,22 +25,25 @@ export const FileUpload = async (input) => {
       folder = "All";
     }
 
-    const res = await bucket.upload(uri, {
-      destination: `${folder}/${input.name}`,
-      metadata: {
-        metadata: { firebaseStorageDownloadTokens: v4() }
-      },
-      resumable: false,
-      timeout: 1200000,
-      concurrency: 1,
-    });
-
-    const file = res[0];
-    const signedUrlConfig = { action: 'read', expires: '03-09-2491' };
-
-    const [url] = await file.getSignedUrl(signedUrlConfig);
-
-    return { url, file: file.metadata };
+    try {
+      const res = await bucket.upload(uri, {
+        destination: `${folder}/${input.name}`,
+        metadata: {
+          metadata: { firebaseStorageDownloadTokens: v4() }
+        },
+        resumable: false,
+        timeout: 1200000,
+        concurrency: 1,
+      });
+      const file = res[0];
+      const signedUrlConfig = { action: 'read', expires: '03-09-2491' };
+  
+      const [url] = await file.getSignedUrl(signedUrlConfig);
+  
+      return { url, file: file.metadata };
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return retry(uploadFunction, { retries: 3, factor: 2 });

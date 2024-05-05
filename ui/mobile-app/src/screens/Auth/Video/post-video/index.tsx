@@ -18,7 +18,6 @@ import {
 import React, { Component, useState } from 'react'
 import { View, Text, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
 
-
 export const PostVideoScreen = () => {
   const { theme } = useTheme()
   const { viewer, actions } = useViewer()
@@ -36,9 +35,9 @@ export const PostVideoScreen = () => {
   }
 
   const onChooseVideoPress = async () => {
-    const { RNFile } = await pickFromDevice('any')
+    const result = await pickFromDevice('any')
 
-    const response = await uploadVideo({ variables: { file: RNFile } })
+    const response = await uploadVideo({ variables: { file: result.file } })
 
     if (response.data && response.data?.uploadVideo.__typename === 'File') {
       const videoID = response.data.uploadVideo.id
