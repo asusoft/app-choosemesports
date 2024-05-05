@@ -17,7 +17,7 @@ export const HomeScreen = () => {
   const { viewer, actions } = useViewer()
   const { theme } = useTheme()
 
-  const source = viewer.avatar ?  { uri: viewer.avatar.path } : background
+  const source = viewer.avatar ? { uri: viewer.avatar.path } : background
 
   return (
     <View style={{ ...styles.container, backgroundColor: theme.palette.background }}>

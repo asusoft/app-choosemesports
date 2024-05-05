@@ -17,13 +17,25 @@ type VideoList {
     videos: [Video!]!
 }
 
+type VideoRequest {
+    id: ID!
+    videoID: ID!
+}
+
+type VideoRequestList {
+    total: Int!
+    requests: [VideoRequest!]!
+}
+
 union VideoOrBE = Video | BaseError
 union VideoListOrBE = VideoList | BaseError
+union VideoRequestListOrBE = VideoRequestList | BaseError
 
 type Mutation {
     postVideo(input: VideoIn): VideoOrBE!
     hideVideo(id: ID!): BaseError
     showVideo(id: ID!): BaseError
+    requestApproval(id: ID!): BaseError
 }
 
 type Query {

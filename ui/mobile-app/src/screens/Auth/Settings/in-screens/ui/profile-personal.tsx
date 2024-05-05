@@ -78,7 +78,7 @@ export const PersonalInfo = () => {
             }}
             value={personal.height!!}
           />
-           <HorizontalInput
+          <HorizontalInput
             label='Weight:'
             onChange={value => {
               setPersonal(personal => ({ ...personal, weight: value }))

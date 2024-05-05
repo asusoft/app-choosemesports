@@ -137,6 +137,7 @@ export type LogInInput = {
 
 export type Mutation = {
   __typename?: 'Mutation'
+  acceptVideo?: Maybe<BaseError>
   addPlayerAdditionalFields?: Maybe<BaseError>
   addPlayerPersonalInfo?: Maybe<BaseError>
   addPlayerPositions?: Maybe<BaseError>
@@ -149,15 +150,24 @@ export type Mutation = {
   createPlayer: AuthUserOrEwf
   createPosition: PositionOrBe
   createSport: SportOrBe
+  hideVideo?: Maybe<BaseError>
   login: AuthUserOrBe
   logout?: Maybe<BaseError>
+  postVideo: VideoOrBe
+  rejectVideo?: Maybe<BaseError>
+  requestApproval?: Maybe<BaseError>
   setPlayerSport?: Maybe<BaseError>
+  showVideo?: Maybe<BaseError>
   updatePlayer?: Maybe<BaseError>
   updatePlayerContact?: Maybe<BaseError>
   updatePlayerPersonalInfo?: Maybe<BaseError>
   updateUser?: Maybe<ErrorWithFields>
   uploadImage: UploadFileResponse
   uploadVideo: UploadFileResponse
+}
+
+export type MutationAcceptVideoArgs = {
+  videoID: Scalars['ID']['input']
 }
 
 export type MutationAddPlayerAdditionalFieldsArgs = {
@@ -210,6 +220,10 @@ export type MutationCreateSportArgs = {
   input: SportIn
 }
 
+export type MutationHideVideoArgs = {
+  id: Scalars['ID']['input']
+}
+
 export type MutationLoginArgs = {
   input?: InputMaybe<LogInInput>
 }
@@ -218,7 +232,23 @@ export type MutationLogoutArgs = {
   token: Scalars['String']['input']
 }
 
+export type MutationPostVideoArgs = {
+  input?: InputMaybe<VideoIn>
+}
+
+export type MutationRejectVideoArgs = {
+  input: RejectionIn
+}
+
+export type MutationRequestApprovalArgs = {
+  id: Scalars['ID']['input']
+}
+
 export type MutationSetPlayerSportArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationShowVideoArgs = {
   id: Scalars['ID']['input']
 }
 
@@ -390,10 +420,13 @@ export type Query = {
   __typename?: 'Query'
   getAdminMe: AdminOrBe
   getMe: UserOrBe
+  getMyVideos: VideoListOrBe
   getPlayerMe: PlayerOrBe
   getPlayers: PlayerListOrBe
   getSportPositions: PositionListOrBe
   getSports: SportListOrBe
+  getVideoRequests: VideoRequestListOrBe
+  getVideosByPlayerId: VideoListOrBe
   isEmailExist: BooleanObjectOrBe
   isLoginExist: BooleanObjectOrBe
   isPhoneExist: BooleanObjectOrBe
@@ -401,6 +434,7 @@ export type Query = {
   retrievePlayer: PlayerOrBe
   retrieveSport: SportOrBe
   retrieveUser: UserOrBe
+  retrieveVideo: VideoOrBe
 }
 
 export type QueryGetPlayersArgs = {
@@ -418,6 +452,17 @@ export type QueryGetSportPositionsArgs = {
 export type QueryGetSportsArgs = {
   limit?: Scalars['Int']['input']
   skip?: InputMaybe<Scalars['String']['input']>
+}
+
+export type QueryGetVideoRequestsArgs = {
+  limit?: Scalars['Int']['input']
+  skip?: Scalars['Int']['input']
+}
+
+export type QueryGetVideosByPlayerIdArgs = {
+  id: Scalars['ID']['input']
+  limit?: Scalars['Int']['input']
+  skip?: Scalars['Int']['input']
 }
 
 export type QueryIsEmailExistArgs = {
@@ -446,6 +491,15 @@ export type QueryRetrieveSportArgs = {
 
 export type QueryRetrieveUserArgs = {
   id: Scalars['ID']['input']
+}
+
+export type QueryRetrieveVideoArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type RejectionIn = {
+  reason: VRejectionReason
+  videoID: Scalars['ID']['input']
 }
 
 export type RetrieveFileResponse = BaseError | File
@@ -524,6 +578,51 @@ export type UserNationalityOut = {
 }
 
 export type UserOrBe = BaseError | User
+
+export enum VRejectionReason {
+  Duration = 'DURATION',
+  Quality = 'QUALITY',
+  ViolationOfPolicy = 'VIOLATION_OF_POLICY',
+}
+
+export type Video = {
+  __typename?: 'Video'
+  attachement: File
+  author: User
+  description?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  isApproved: Scalars['Boolean']['output']
+  showInProfile: Scalars['Boolean']['output']
+}
+
+export type VideoIn = {
+  description?: InputMaybe<Scalars['String']['input']>
+  videoID: Scalars['String']['input']
+}
+
+export type VideoList = {
+  __typename?: 'VideoList'
+  total: Scalars['Int']['output']
+  videos: Array<Video>
+}
+
+export type VideoListOrBe = BaseError | VideoList
+
+export type VideoOrBe = BaseError | Video
+
+export type VideoRequest = {
+  __typename?: 'VideoRequest'
+  id: Scalars['ID']['output']
+  videoID: Scalars['ID']['output']
+}
+
+export type VideoRequestList = {
+  __typename?: 'VideoRequestList'
+  requests: Array<VideoRequest>
+  total: Scalars['Int']['output']
+}
+
+export type VideoRequestListOrBe = BaseError | VideoRequestList
 
 export type AdminLoginMutationVariables = Exact<{
   input?: InputMaybe<AdminIn>
@@ -1440,6 +1539,121 @@ export type SimpleUserFragment = {
   avatar?: { __typename?: 'File'; id: string; path: string } | null
 }
 
+export type GetMyVideosQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetMyVideosQuery = {
+  __typename?: 'Query'
+  getMyVideos:
+    | { __typename: 'BaseError'; status: ErrorStatus }
+    | {
+        __typename: 'VideoList'
+        total: number
+        videos: Array<{
+          __typename?: 'Video'
+          id: string
+          description?: string | null
+          isApproved: boolean
+          showInProfile: boolean
+          author: {
+            __typename?: 'User'
+            id: string
+            name: string
+            login: string
+            avatar?: { __typename?: 'File'; id: string; path: string } | null
+          }
+          attachement: { __typename?: 'File'; id: string; path: string }
+        }>
+      }
+}
+
+export type HideVideoMutationVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
+
+export type HideVideoMutation = {
+  __typename?: 'Mutation'
+  hideVideo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
+}
+
+export type PostVideoMutationVariables = Exact<{
+  input: VideoIn
+}>
+
+export type PostVideoMutation = {
+  __typename?: 'Mutation'
+  postVideo:
+    | { __typename: 'BaseError'; status: ErrorStatus }
+    | {
+        __typename: 'Video'
+        id: string
+        description?: string | null
+        isApproved: boolean
+        showInProfile: boolean
+        author: {
+          __typename?: 'User'
+          id: string
+          name: string
+          login: string
+          avatar?: { __typename?: 'File'; id: string; path: string } | null
+        }
+        attachement: { __typename?: 'File'; id: string; path: string }
+      }
+}
+
+export type RequestApprovalMutationVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
+
+export type RequestApprovalMutation = {
+  __typename?: 'Mutation'
+  requestApproval?: { __typename?: 'BaseError'; status: ErrorStatus } | null
+}
+
+export type ShowVideoMutationVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
+
+export type ShowVideoMutation = {
+  __typename?: 'Mutation'
+  showVideo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
+}
+
+export type FullVideoFragment = {
+  __typename?: 'Video'
+  id: string
+  description?: string | null
+  isApproved: boolean
+  showInProfile: boolean
+  author: {
+    __typename?: 'User'
+    id: string
+    name: string
+    login: string
+    avatar?: { __typename?: 'File'; id: string; path: string } | null
+  }
+  attachement: { __typename?: 'File'; id: string; path: string }
+}
+
+export type VideoListFragment = {
+  __typename?: 'VideoList'
+  total: number
+  videos: Array<{
+    __typename?: 'Video'
+    id: string
+    description?: string | null
+    isApproved: boolean
+    showInProfile: boolean
+    author: {
+      __typename?: 'User'
+      id: string
+      name: string
+      login: string
+      avatar?: { __typename?: 'File'; id: string; path: string } | null
+    }
+    attachement: { __typename?: 'File'; id: string; path: string }
+  }>
+}
+
 export const SimpleSportFragmentDoc = gql`
   fragment SimpleSport on Sport {
     id
@@ -1620,6 +1834,31 @@ export const SimpleUserFragmentDoc = gql`
     }
   }
   ${MediaFragmentDoc}
+`
+export const FullVideoFragmentDoc = gql`
+  fragment FullVideo on Video {
+    id
+    author {
+      ...SimpleUser
+    }
+    attachement {
+      ...Media
+    }
+    description
+    isApproved
+    showInProfile
+  }
+  ${SimpleUserFragmentDoc}
+  ${MediaFragmentDoc}
+`
+export const VideoListFragmentDoc = gql`
+  fragment VideoList on VideoList {
+    total
+    videos {
+      ...FullVideo
+    }
+  }
+  ${FullVideoFragmentDoc}
 `
 export const AdminLoginDocument = gql`
   mutation AdminLogin($input: AdminIn) {
@@ -3660,4 +3899,261 @@ export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>
 export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
   UpdateUserMutation,
   UpdateUserMutationVariables
+>
+export const GetMyVideosDocument = gql`
+  query GetMyVideos {
+    getMyVideos {
+      __typename
+      ... on BaseError {
+        status
+      }
+      ... on VideoList {
+        ...VideoList
+      }
+    }
+  }
+  ${VideoListFragmentDoc}
+`
+
+/**
+ * __useGetMyVideosQuery__
+ *
+ * To run a query within a React component, call `useGetMyVideosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMyVideosQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMyVideosQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetMyVideosQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
+    GetMyVideosDocument,
+    options,
+  )
+}
+export function useGetMyVideosLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
+    GetMyVideosDocument,
+    options,
+  )
+}
+export function useGetMyVideosSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    GetMyVideosQuery,
+    GetMyVideosQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useSuspenseQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
+    GetMyVideosDocument,
+    options,
+  )
+}
+export type GetMyVideosQueryHookResult = ReturnType<typeof useGetMyVideosQuery>
+export type GetMyVideosLazyQueryHookResult = ReturnType<typeof useGetMyVideosLazyQuery>
+export type GetMyVideosSuspenseQueryHookResult = ReturnType<
+  typeof useGetMyVideosSuspenseQuery
+>
+export type GetMyVideosQueryResult = Apollo.QueryResult<
+  GetMyVideosQuery,
+  GetMyVideosQueryVariables
+>
+export const HideVideoDocument = gql`
+  mutation HideVideo($id: ID!) {
+    hideVideo(id: $id) {
+      status
+    }
+  }
+`
+export type HideVideoMutationFn = Apollo.MutationFunction<
+  HideVideoMutation,
+  HideVideoMutationVariables
+>
+
+/**
+ * __useHideVideoMutation__
+ *
+ * To run a mutation, you first call `useHideVideoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useHideVideoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [hideVideoMutation, { data, loading, error }] = useHideVideoMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useHideVideoMutation(
+  baseOptions?: Apollo.MutationHookOptions<HideVideoMutation, HideVideoMutationVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<HideVideoMutation, HideVideoMutationVariables>(
+    HideVideoDocument,
+    options,
+  )
+}
+export type HideVideoMutationHookResult = ReturnType<typeof useHideVideoMutation>
+export type HideVideoMutationResult = Apollo.MutationResult<HideVideoMutation>
+export type HideVideoMutationOptions = Apollo.BaseMutationOptions<
+  HideVideoMutation,
+  HideVideoMutationVariables
+>
+export const PostVideoDocument = gql`
+  mutation PostVideo($input: VideoIn!) {
+    postVideo(input: $input) {
+      __typename
+      ... on Video {
+        ...FullVideo
+      }
+      ... on BaseError {
+        status
+      }
+    }
+  }
+  ${FullVideoFragmentDoc}
+`
+export type PostVideoMutationFn = Apollo.MutationFunction<
+  PostVideoMutation,
+  PostVideoMutationVariables
+>
+
+/**
+ * __usePostVideoMutation__
+ *
+ * To run a mutation, you first call `usePostVideoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePostVideoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [postVideoMutation, { data, loading, error }] = usePostVideoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function usePostVideoMutation(
+  baseOptions?: Apollo.MutationHookOptions<PostVideoMutation, PostVideoMutationVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<PostVideoMutation, PostVideoMutationVariables>(
+    PostVideoDocument,
+    options,
+  )
+}
+export type PostVideoMutationHookResult = ReturnType<typeof usePostVideoMutation>
+export type PostVideoMutationResult = Apollo.MutationResult<PostVideoMutation>
+export type PostVideoMutationOptions = Apollo.BaseMutationOptions<
+  PostVideoMutation,
+  PostVideoMutationVariables
+>
+export const RequestApprovalDocument = gql`
+  mutation RequestApproval($id: ID!) {
+    requestApproval(id: $id) {
+      status
+    }
+  }
+`
+export type RequestApprovalMutationFn = Apollo.MutationFunction<
+  RequestApprovalMutation,
+  RequestApprovalMutationVariables
+>
+
+/**
+ * __useRequestApprovalMutation__
+ *
+ * To run a mutation, you first call `useRequestApprovalMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRequestApprovalMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [requestApprovalMutation, { data, loading, error }] = useRequestApprovalMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useRequestApprovalMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    RequestApprovalMutation,
+    RequestApprovalMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<RequestApprovalMutation, RequestApprovalMutationVariables>(
+    RequestApprovalDocument,
+    options,
+  )
+}
+export type RequestApprovalMutationHookResult = ReturnType<
+  typeof useRequestApprovalMutation
+>
+export type RequestApprovalMutationResult = Apollo.MutationResult<RequestApprovalMutation>
+export type RequestApprovalMutationOptions = Apollo.BaseMutationOptions<
+  RequestApprovalMutation,
+  RequestApprovalMutationVariables
+>
+export const ShowVideoDocument = gql`
+  mutation ShowVideo($id: ID!) {
+    showVideo(id: $id) {
+      status
+    }
+  }
+`
+export type ShowVideoMutationFn = Apollo.MutationFunction<
+  ShowVideoMutation,
+  ShowVideoMutationVariables
+>
+
+/**
+ * __useShowVideoMutation__
+ *
+ * To run a mutation, you first call `useShowVideoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useShowVideoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [showVideoMutation, { data, loading, error }] = useShowVideoMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useShowVideoMutation(
+  baseOptions?: Apollo.MutationHookOptions<ShowVideoMutation, ShowVideoMutationVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<ShowVideoMutation, ShowVideoMutationVariables>(
+    ShowVideoDocument,
+    options,
+  )
+}
+export type ShowVideoMutationHookResult = ReturnType<typeof useShowVideoMutation>
+export type ShowVideoMutationResult = Apollo.MutationResult<ShowVideoMutation>
+export type ShowVideoMutationOptions = Apollo.BaseMutationOptions<
+  ShowVideoMutation,
+  ShowVideoMutationVariables
 >

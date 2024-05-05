@@ -15,7 +15,7 @@ import { View, Pressable, Image, ActivityIndicator, ScrollView } from 'react-nat
 import { ContactInfo } from './ui/profile-contacts'
 import { PersonalInfo } from './ui/profile-personal'
 
-const background = require('@/img/background.png');
+const background = require('@/img/background.png')
 
 export const Profile = () => {
   const { theme } = useTheme()
@@ -41,7 +41,7 @@ export const Profile = () => {
     }
   }
 
-  const source = avatar ? { uri: avatar.path } : background;
+  const source = avatar ? { uri: avatar.path } : background
 
   return (
     <Container>
@@ -90,7 +90,7 @@ export const Profile = () => {
           </Pressable>
         </Pressable>
         <Spacing value={20} steps={2} />
-        <View style={{ width: '100%', backgroundColor: '#141821', borderRadius: 20, }}>
+        <View style={{ width: '100%', backgroundColor: '#141821', borderRadius: 20 }}>
           <PersonalInfo />
           <ContactInfo />
         </View>

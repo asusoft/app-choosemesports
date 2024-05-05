@@ -10,7 +10,7 @@ export const HorizontalInput = ({
   onChange,
   type = 'TEXT',
   value,
-  disabled
+  disabled,
 }: {
   label: string
   onChange: (value: string) => void

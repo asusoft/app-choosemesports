@@ -1,6 +1,7 @@
 import { ErrorStatus } from "../../../../helpers/index.js";
 
 export const postVideoMutationResolver = async (_, { input }, { user, database }) => {
+    console.log('Here')
     if(!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
 
     const newVidRef = database.collection("Videos").doc();

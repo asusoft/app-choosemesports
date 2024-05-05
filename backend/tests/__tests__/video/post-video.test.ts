@@ -24,7 +24,7 @@ describe('Post Video', () => {
         expect(response.postVideo.status).toBe(ErrorStatus.NotAuthenticated)
     })
 
-    it('Successful creation of video', async () => {
+    it('Successful posting of video', async () => {
         const response = await postVideo(client, { input: video }, accessToken())
 
         if (response.postVideo.__typename !== 'Video') {
@@ -36,5 +36,7 @@ describe('Post Video', () => {
         expect(response.postVideo.attachement).not.toBeNull()
         expect(response.postVideo.attachement.id).not.toBeNull()
         expect(response.postVideo.attachement.path).not.toBeNull()
+        expect(response.postVideo.isApproved).toBeFalse()
+        expect(response.postVideo.showInProfile).toBeFalse()
     })
 })

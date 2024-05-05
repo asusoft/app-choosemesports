@@ -5,6 +5,7 @@ export type AuthStackParamList = {
   HomeScreen: undefined
   AddPositionScreen: undefined
   SettingsScreen: undefined
+  VideosScreen: undefined
 }
 
 export type ScreenNavigationProp<

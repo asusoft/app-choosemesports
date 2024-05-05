@@ -51,7 +51,10 @@ const documents = {
     "query RetrieveUser($id: ID!) {\n  retrieveUser(id: $id) {\n    __typename\n    ... on BaseError {\n      status\n    }\n    ... on User {\n      ...FullUser\n    }\n  }\n}": types.RetrieveUserDocument,
     "mutation UpdateUser($data: UserInUpdate!) {\n  updateUser(data: $data) {\n    status\n    fields\n  }\n}": types.UpdateUserDocument,
     "fragment FullUser on User {\n  id\n  name\n  login\n  email\n  role\n  avatar {\n    ...Media\n  }\n}\n\nfragment SimpleUser on User {\n  id\n  name\n  login\n  avatar {\n    ...Media\n  }\n}": types.FullUserFragmentDoc,
+    "mutation HideVideo($id: ID!) {\n  hideVideo(id: $id) {\n    status\n  }\n}": types.HideVideoDocument,
     "mutation PostVideo($input: VideoIn!) {\n  postVideo(input: $input) {\n    __typename\n    ... on Video {\n      ...FullVideo\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}": types.PostVideoDocument,
+    "mutation RequestApproval($id: ID!) {\n  requestApproval(id: $id) {\n    status\n  }\n}": types.RequestApprovalDocument,
+    "mutation ShowVideo($id: ID!) {\n  showVideo(id: $id) {\n    status\n  }\n}": types.ShowVideoDocument,
     "fragment FullVideo on Video {\n  id\n  author {\n    ...SimpleUser\n  }\n  attachement {\n    ...Media\n  }\n  description\n  isApproved\n  showInProfile\n}": types.FullVideoFragmentDoc,
 };
 
@@ -224,7 +227,19 @@ export function graphql(source: "fragment FullUser on User {\n  id\n  name\n  lo
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "mutation HideVideo($id: ID!) {\n  hideVideo(id: $id) {\n    status\n  }\n}"): (typeof documents)["mutation HideVideo($id: ID!) {\n  hideVideo(id: $id) {\n    status\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "mutation PostVideo($input: VideoIn!) {\n  postVideo(input: $input) {\n    __typename\n    ... on Video {\n      ...FullVideo\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"): (typeof documents)["mutation PostVideo($input: VideoIn!) {\n  postVideo(input: $input) {\n    __typename\n    ... on Video {\n      ...FullVideo\n    }\n    ... on BaseError {\n      status\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation RequestApproval($id: ID!) {\n  requestApproval(id: $id) {\n    status\n  }\n}"): (typeof documents)["mutation RequestApproval($id: ID!) {\n  requestApproval(id: $id) {\n    status\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation ShowVideo($id: ID!) {\n  showVideo(id: $id) {\n    status\n  }\n}"): (typeof documents)["mutation ShowVideo($id: ID!) {\n  showVideo(id: $id) {\n    status\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

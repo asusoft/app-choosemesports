@@ -10,3 +10,10 @@ fragment FullVideo on Video {
     isApproved
     showInProfile
 }
+
+fragment VideoList on VideoList {
+    total
+    videos {
+        ...FullVideo
+    }
+}

@@ -6,6 +6,7 @@ import { HomeScreen } from '@src/screens/Auth/Home'
 import { HeaderButtons } from '@src/component/ui/home-screen/header-buttons'
 import { AddPositionScreen } from '@src/screens/Auth/Position/position-add'
 import SettingsStack from './SettingsStack'
+import { VideosScreen } from '@src/screens/Auth/Video'
 
 const Stack = createNativeStackNavigator<AuthStackParamList>()
 
@@ -38,6 +39,11 @@ const AuthStack = () => {
         name={'SettingsScreen'}
         component={SettingsStack}
         options={{ headerShown: false, animation: 'slide_from_right' }}
+      />
+      <Stack.Screen
+        name={'VideosScreen'}
+        component={VideosScreen}
+        options={{ title: 'My Videos' }}
       />
     </Stack.Navigator>
   )

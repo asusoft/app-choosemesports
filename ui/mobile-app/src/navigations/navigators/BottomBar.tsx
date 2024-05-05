@@ -24,10 +24,11 @@ const BottomBar = () => {
       />
       <TabBar.Screen
         name={'Feed'}
-        component={TestScreen}
+        component={AuthStack}
         options={{
           unmountOnBlur: true,
         }}
+        initialParams={{ screen: 'VideosScreen' }}
       />
       <TabBar.Screen
         name={'Notifications'}

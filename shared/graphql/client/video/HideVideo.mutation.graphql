@@ -1,0 +1,5 @@
+mutation HideVideo($id: ID!) {
+  hideVideo(id: $id) {
+    status
+  }
+}

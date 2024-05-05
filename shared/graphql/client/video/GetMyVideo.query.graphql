@@ -1,0 +1,11 @@
+query GetMyVideos {
+  getMyVideos {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on VideoList {
+      ...VideoList
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation RequestApproval($id: ID!) {
+  requestApproval(id: $id) {
+    status
+  }
+}
