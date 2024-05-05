@@ -36,7 +36,7 @@ export const PostVideoScreen = () => {
   }
 
   const onChooseVideoPress = async () => {
-    const result = await pickFromDevice('any')
+    const result = await pickFromDevice('video')
 
     setLoading(true)
     const response = await uploadFile(result.file)
@@ -52,7 +52,7 @@ export const PostVideoScreen = () => {
       const response = await postVideo({ variables: { input: videoIn } })
       if (response.data?.postVideo.__typename === 'Video') {
         const vidId = response.data?.postVideo.id
-        await requestApproval({ variables: { id: vidId } })
+       // await requestApproval({ variables: { id: vidId } })
       }
       navigation.goBack()
     }

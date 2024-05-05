@@ -21,7 +21,7 @@ export const uploadToBucket = async (input) => {
         folder = "All";
     }
 
-    const fileRef = storage().ref(`New/${input.name}`);
+    const fileRef = storage().ref(`${folder}/${input.name}`);
    
     const pathToFile = uri
 
