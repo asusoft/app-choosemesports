@@ -60,7 +60,7 @@ export const ThirdStep = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
-                  <CloseIcon height={12} width={12} fill={theme.palette.background} />
+                  <CloseIcon height={12} width={12} fill={theme.palette.typography} />
                 </Pressable>
               </View>
             ))}
@@ -102,7 +102,7 @@ export const ThirdStep = () => {
           disabled={!positions}
           label='Next'
           onPress={() => handlers.onSavePositions()}
-          textColor='#000000'
+          textColor='#fff'
         />
       </View>
       <PositionsModal

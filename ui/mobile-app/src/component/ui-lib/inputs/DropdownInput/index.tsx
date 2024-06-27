@@ -14,7 +14,7 @@ export const DropdownInput = (props: DropdownInputProps) => {
     styles.inputContainer,
     {
       borderColor: theme.palette.border,
-      backgroundColor: '#141821',
+      backgroundColor: theme.palette.background,
     },
     props?.style,
   ]
@@ -23,7 +23,7 @@ export const DropdownInput = (props: DropdownInputProps) => {
     styles.dropdownContainer,
     {
       borderColor: theme.palette.border,
-      backgroundColor: '#141821',
+      backgroundColor: theme.palette.background,
     },
   ]
 
@@ -63,10 +63,13 @@ export const DropdownInput = (props: DropdownInputProps) => {
         NOTHING_TO_SHOW: props.emptyPlaceholder,
       }}
       dropDownContainerStyle={dropdownContainerStyle}
-      listItemContainerStyle={{ backgroundColor: '#141821', padding: 0 }}
+      listItemContainerStyle={{ backgroundColor: theme.palette.background, padding: 0 }}
       selectedItemContainerStyle={{
         backgroundColor: theme.palette.primary,
         padding: 0,
+      }}
+      selectedItemLabelStyle={{
+        color: '#FFF'
       }}
     />
   )

@@ -15,8 +15,8 @@ export const SportTag = ({ item, onPress, selectedSpordID }: SportTagProps) => {
   const isSelected = item.id === selectedSpordID
 
   const backgroundColor = isSelected ? theme.palette.primary : theme.palette.background
-  const textColor = isSelected ? '#000000' : theme.palette.border
-  const borderColor = isSelected ? theme.palette.primary : theme.palette.border
+  const textColor = isSelected ? '#fff' : theme.palette.placeholder
+  const borderColor = isSelected ? theme.palette.primary : theme.palette.placeholder
 
   return (
     <Pressable

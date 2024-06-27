@@ -105,7 +105,7 @@ export const PositionForm = ({
           disabled={!isEnabled()}
           label='Save'
           onPress={() => submit()}
-          textColor='#000000'
+          textColor='#fff'
           isLoading={isLoading}
         />
       </View>

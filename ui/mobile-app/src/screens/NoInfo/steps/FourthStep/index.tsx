@@ -255,7 +255,7 @@ export const ForthStep = () => {
           disabled={!isEnabled()}
           label='Next'
           onPress={submit}
-          textColor='#000000'
+          textColor='#fff'
         />
       </View>
     </SafeAreaView>

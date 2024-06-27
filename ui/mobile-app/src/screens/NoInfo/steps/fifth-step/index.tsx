@@ -15,6 +15,11 @@ export const FifthStep = () => {
 
   const [contact, setContact] = useState({})
 
+  const hasValues = (obj: any) => {
+    return Object.values(obj).some((value: any) => value.trim() !== '');
+  };
+
+
   return (
     <SafeAreaView
       style={{ ...styles.container, backgroundColor: theme.palette.background }}>
@@ -78,13 +83,19 @@ export const FifthStep = () => {
           isLoading={isLoading}
           label='Skip'
           onPress={() => handlers.onSkip(contact)}
+          color='transparent'
           textColor='#000000'
+          style={{
+            borderWidth: 1,
+            borderColor: theme.palette.primary,
+          }}
         />
         <FooterButton
           isLoading={isLoading}
+          disabled={!hasValues(contact)}
           label='Save'
           onPress={() => handlers.onSaveContacts(contact)}
-          textColor='#000000'
+          textColor='#000000' 
         />
       </View>
     </SafeAreaView>

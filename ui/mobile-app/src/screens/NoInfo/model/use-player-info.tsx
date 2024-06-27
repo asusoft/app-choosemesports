@@ -16,7 +16,6 @@ import {
 } from '@src/shared/generated/types/graphql'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoInfoStackParamList } from '@src/navigations/types/NoInfoStack.types'
-import { hasNoInfoVar } from '@src/shared/apollo/has-info'
 
 export type AdditionalFields = {
   [key: string]: string
@@ -73,7 +72,6 @@ export const usePlayerInfo = () => {
       //     },
       //   }))
       setState(state => ({ ...state, isLoading: false }))
-      hasNoInfoVar(true)
     },
   }
 

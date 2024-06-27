@@ -49,7 +49,7 @@ export const PositionsModal = ({
       <View
         style={{
           flex: 1,
-          backgroundColor: '#141821',
+          backgroundColor: theme.palette.background,
           borderTopLeftRadius: 50,
           borderTopRightRadius: 50,
           padding: GLOBAL_PADDING,

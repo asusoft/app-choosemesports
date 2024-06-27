@@ -60,7 +60,7 @@ export const FirstStep = () => {
           disabled={!sportID}
           label='Next'
           onPress={() => handlers.onSportSelected()}
-          textColor='#000000'
+          textColor='#fff'
         />
       </View>
     </SafeAreaView>
