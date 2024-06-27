@@ -19,8 +19,11 @@ export const HomeScreen = () => {
 
   const source = viewer.avatar ? { uri: viewer.avatar.path } : background
 
+  const nameParts = viewer.name.split(' ');
+  const [firstName = '', secondName = '', thirdName = ''] = nameParts;
+
   return (
-    <View style={{ ...styles.container, backgroundColor: theme.palette.background }}>
+    <View style={{ ...styles.container, backgroundColor: '#2F4A2A'}}>
       <ImageBackground
         source={source}
         style={{
@@ -34,11 +37,12 @@ export const HomeScreen = () => {
         }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <View>
-            <Typography children={viewer.name.split(' ')[0]} variant='subHero' />
-            <Typography
-              children={`${viewer.name.split(' ')[1]} ${viewer.name.split(' ')[2]}`}
-              variant='hero'
-            />
+          <Typography style={{ color: '#fff' }} children={firstName} variant='subHero' />
+          {secondName && <Typography
+            style={{ color: '#fff' }}
+            children={`${secondName} ${thirdName}`}
+            variant='hero'
+          />}
           </View>
           {viewer.personal.nationality && (
             <View style={{ justifyContent: 'flex-end' }}>
@@ -48,9 +52,9 @@ export const HomeScreen = () => {
         </View>
         <Spacing />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography variant='buttonText' children={viewer.sport?.name} />
+          <Typography style={{ color: '#fff' }} variant='buttonText' children={viewer.sport?.name} />
           {viewer.playerPositions && (
-            <Typography variant='buttonText' children={viewer.playerPositions[0].name} />
+            <Typography style={{ color: '#fff' }} variant='buttonText' children={viewer.playerPositions[0].name} />
           )}
         </View>
         {viewer.additionalFields && (
@@ -59,8 +63,8 @@ export const HomeScreen = () => {
             <View style={globalStyles.wrap}>
               {viewer.additionalFields.map((field, index) => (
                 <View key={index} style={{ flexDirection: 'row', gap: 4 }}>
-                  <Typography variant='textButton' children={`${field.label}:`} />
-                  <Typography variant='textParagraph' children={field.value} />
+                  <Typography style={{ color: '#fff' }} variant='textButton' children={`${field.label}:`} />
+                  <Typography style={{ color: '#fff' }} variant='textParagraph' children={field.value} />
                 </View>
               ))}
             </View>
@@ -88,8 +92,8 @@ export const HomeScreen = () => {
               gap: 8,
               height: 50,
             }}>
-            <Typography variant='buttonText'>Age</Typography>
-            <Typography variant='textButton'>
+            <Typography style={{ color: '#fff' }} variant='buttonText'>Age</Typography>
+            <Typography style={{ color: '#fff' }} variant='textButton'>
               {getAge(viewer.personal.dateOfBirth)}
             </Typography>
           </View>
@@ -104,8 +108,8 @@ export const HomeScreen = () => {
               borderLeftWidth: 2,
               borderColor: '#C7C7C7',
             }}>
-            <Typography variant='buttonText'>Height</Typography>
-            <Typography variant='textButton'>{`${viewer.personal.height}M`}</Typography>
+            <Typography style={{ color: '#fff' }} variant='buttonText'>Height</Typography>
+            <Typography style={{ color: '#fff' }} variant='textButton'>{`${viewer.personal.height}M`}</Typography>
           </View>
           <View
             style={{
@@ -115,8 +119,8 @@ export const HomeScreen = () => {
               gap: 8,
               height: 50,
             }}>
-            <Typography variant='buttonText'>Weight</Typography>
-            <Typography variant='textButton'>{`${viewer.personal.weight}Kg`}</Typography>
+            <Typography style={{ color: '#fff' }} variant='buttonText'>Weight</Typography>
+            <Typography style={{ color: '#fff' }} variant='textButton'>{`${viewer.personal.weight}Kg`}</Typography>
           </View>
         </View>
         <View

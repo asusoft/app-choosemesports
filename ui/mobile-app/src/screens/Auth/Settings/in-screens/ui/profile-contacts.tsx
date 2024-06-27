@@ -70,7 +70,7 @@ export const ContactInfo = () => {
           <FooterButton
             label='Save'
             onPress={onSave}
-            textColor='#000000'
+            textColor='#fff'
             isLoading={loading}
           />
         </>

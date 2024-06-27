@@ -13,4 +13,5 @@ export const lightThemePallete: Palette = {
   field: '#EFEFEF',
   icon: '#000000',
   blue: '#0000FF',
+  container: '#F1F1F1',
 }

@@ -12,9 +12,9 @@ export const addPlayerPositionsMutationResolver = async (_, { data }, { user, da
 
         let fields;
         
-        if (playerMe.positions) {
+        if (playerMe.playerPositions) {
             fields = {
-                playerPositions: [...playerMe.positions, ...data.positions]
+                playerPositions: [...playerMe.playerPositions, ...data.positions]
             };
         } else {
             fields = {

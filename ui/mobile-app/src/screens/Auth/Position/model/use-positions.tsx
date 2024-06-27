@@ -38,6 +38,8 @@ export const usePosition = () => {
     if (response.data?.getPlayerMe.__typename === 'Player') {
       const playerPositions = response.data.getPlayerMe.playerPositions
       if (playerPositions) setMyPositions(playerPositions)
+
+        console.log(playerPositions)
     }
     actions.updateMe()
   }

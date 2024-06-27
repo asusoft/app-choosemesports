@@ -65,15 +65,17 @@ export const Header = ({
         backgroundColor,
         paddingTop,
       }}>
-      <Pressable disabled={!showBackButton} onPress={goBack} style={styles.sideElement}>
-        {leftElement ? (
-          renderLeftElement()
-        ) : showBackButton ? (
-          <ArrowLeftIcon height={HEADER_CONSTANTS.iconSize} fill={fill} />
-        ) : (
-          <Spacing value={HEADER_CONSTANTS.iconSize} />
-        )}
-      </Pressable>
+        <View style={styles.sideElement}>
+          {leftElement ? (
+              renderLeftElement()
+            ) : showBackButton ? (
+              <Pressable disabled={!showBackButton} onPress={goBack}>
+              <ArrowLeftIcon height={HEADER_CONSTANTS.iconSize} fill={fill} />
+              </Pressable>
+            ) : (
+              <Spacing value={HEADER_CONSTANTS.iconSize} />
+            )}
+        </View>
       <View style={styles.centralElement}>{renderCentralElement()}</View>
       <View
         style={{

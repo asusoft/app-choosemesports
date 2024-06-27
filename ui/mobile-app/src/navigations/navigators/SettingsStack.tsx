@@ -11,11 +11,13 @@ import {
   ChangePassword,
   Profile,
 } from '@src/screens/Auth/Settings/in-screens'
+import { useTheme } from '@src/services/theme/hooks'
 
 const Stack = createNativeStackNavigator<SettingsStackParamList>()
 
 const SettingsStack = () => {
   const navigation = useAppNavigation()
+  const { theme } = useTheme()
   return (
     <Stack.Navigator
       initialRouteName='Land'
@@ -33,7 +35,7 @@ const SettingsStack = () => {
               {...props}
               leftElement={() => (
                 <Pressable onPress={() => navigation.goBack()}>
-                  <ArrowLeftIcon fill={'#FFFFFF'} />
+                  <ArrowLeftIcon fill={theme.palette.typography} />
                 </Pressable>
               )}
             />

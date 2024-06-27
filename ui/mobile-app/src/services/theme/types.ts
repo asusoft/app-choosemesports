@@ -35,6 +35,7 @@ export type Palette = {
   field: string
   icon: string
   blue: string
+  container: string
 }
 
 export type Fonts = Record<

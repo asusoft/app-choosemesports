@@ -52,7 +52,7 @@ export const AccountDetails = () => {
         }}
         placeholder='Your Name'
         editable={false}
-        color={theme.palette.border}
+        color={theme.palette.placeholder}
       />
       <TextInput
         value={credentials.login}
@@ -84,7 +84,7 @@ export const AccountDetails = () => {
         <FooterButton
           label='Save'
           onPress={() => onSave()}
-          textColor='#000000'
+          textColor='#fff'
           isLoading={loading}
           disabled={!isEnabled()}
         />

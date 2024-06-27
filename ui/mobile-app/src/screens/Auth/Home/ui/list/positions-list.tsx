@@ -27,7 +27,7 @@ const Position = ({ position, index }: { position: PlayerPosition; index: number
           <View
             key={index}
             style={{
-              backgroundColor: '#141821',
+              backgroundColor: theme.palette.container,
               borderRadius: 8,
               alignItems: 'center',
               justifyContent: 'center',
@@ -47,14 +47,14 @@ const Position = ({ position, index }: { position: PlayerPosition; index: number
 }
 
 export const PositionsList = () => {
-  const { viewer } = useViewer()
+  const { theme } = useTheme()
   const { myPositions } = usePosition()
   const positions = myPositions
 
   if (positions === null || positions === undefined) return null
 
   return (
-    <View style={{ ...styles.container, backgroundColor: '#141821' }}>
+    <View style={{ ...styles.container, backgroundColor: theme.palette.container }}>
       <FlatList
         data={positions}
         renderItem={({ item, index }) => <Position position={item} index={index} />}

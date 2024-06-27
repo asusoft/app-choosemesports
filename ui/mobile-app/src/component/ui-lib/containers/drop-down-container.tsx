@@ -13,7 +13,7 @@ export const DropDownContainer = ({ label, children }: SectionProps) => {
   const { theme } = useTheme()
   const [show, setShow] = useState(false)
   return (
-    <View style={{ backgroundColor: '#141821', borderRadius: 20, paddingHorizontal: 20 }}>
+    <View style={{ backgroundColor: theme.palette.container, borderRadius: 20, paddingHorizontal: 20 }}>
       <View style={{ borderRadius: 20, paddingVertical: 20 }}>
         <Pressable
           onPress={() => setShow(s => !s)}

@@ -13,4 +13,5 @@ export const darkThemePallete: Palette = {
   field: '#484848',
   icon: '#FFFFFF',
   blue: '#0000FF',
+  container: '#F1F1F1',
 }

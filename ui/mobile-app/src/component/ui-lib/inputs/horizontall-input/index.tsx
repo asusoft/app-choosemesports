@@ -51,7 +51,8 @@ export const HorizontalInput = ({
             paddingHorizontal: 12,
           }}
           editable={!disabled}
-          color={disabled ? theme.palette.border : undefined}
+          color={disabled ? theme.palette.placeholder : undefined}
+          placeholderTextColor={theme.palette.placeholder}
         />
       ) : (
         <PhoneInput

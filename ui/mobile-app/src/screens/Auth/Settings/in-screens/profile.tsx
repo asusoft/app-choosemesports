@@ -79,6 +79,7 @@ export const Profile = () => {
               width: 50,
               borderRadius: 25,
               backgroundColor: theme.palette.border,
+              borderColor: theme.palette.background,
               position: 'absolute',
               bottom: 0,
               right: 15,
@@ -90,7 +91,7 @@ export const Profile = () => {
           </Pressable>
         </Pressable>
         <Spacing value={20} steps={2} />
-        <View style={{ width: '100%', backgroundColor: '#141821', borderRadius: 20 }}>
+        <View style={{ width: '100%', backgroundColor: theme.palette.container, borderRadius: 20 }}>
           <PersonalInfo />
           <ContactInfo />
         </View>

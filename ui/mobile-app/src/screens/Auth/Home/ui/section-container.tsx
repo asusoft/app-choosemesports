@@ -13,7 +13,7 @@ export type SectionProps = {
 export const Section = ({ label, children, onAdd }: SectionProps) => {
   const { theme } = useTheme()
   return (
-    <View style={{ backgroundColor: '#141821', borderRadius: 20, paddingHorizontal: 20 }}>
+    <View style={{ backgroundColor: theme.palette.container, borderRadius: 20, paddingHorizontal: 20 }}>
       <View style={{ borderRadius: 20, paddingVertical: 20 }}>
         <Pressable
           onPress={onAdd}
@@ -32,7 +32,7 @@ export const Section = ({ label, children, onAdd }: SectionProps) => {
               justifyContent: 'center',
               marginLeft: 'auto',
             }}>
-            <PlusIcon height={12} width={12} fill={'#141821'} />
+            <PlusIcon height={12} width={12} fill={'#000'} />
           </View>
         </Pressable>
         {children && (

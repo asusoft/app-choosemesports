@@ -21,7 +21,7 @@ export const SettingsScreen = () => {
     <Container>
       <View
         style={{
-          backgroundColor: '#141821',
+          backgroundColor: theme.palette.container,
           borderRadius: 20,
           padding: 20,
           gap: 18,
@@ -33,7 +33,7 @@ export const SettingsScreen = () => {
         <Item label='Language' onPress={() => {}} /> */}
         <Item label='Change Password' onPress={() => navigate('ChangePassword')} />
         <Spacing />
-        <LineSeparator />
+        <LineSeparator tickness={1} />
         <Spacing />
         <Item label='Privacy & Security' onPress={() => {}} />
         <Item label='Help & Support' onPress={() => {}} />
@@ -45,7 +45,7 @@ export const SettingsScreen = () => {
           style={{ width: '30%' }}
           label='Logout'
           onPress={() => actions.logout()}
-          textColor='#000000'
+          textColor='#fff'
         />
       </View>
     </Container>
