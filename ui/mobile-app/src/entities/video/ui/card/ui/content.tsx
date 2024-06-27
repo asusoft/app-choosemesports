@@ -35,7 +35,7 @@ export const Content = () => {
             overflow: 'hidden',
           }}>
           <Player
-            uri={'https://www.w3schools.com/html/mov_bbb.mp4'}
+            uri={'https://www.youtube.com/watch?v=9I6E1yc5Iks'}
             isMuted={false}
             isPaused={isPaused}
             fullScreen={fullScreen}

@@ -1,7 +1,7 @@
 import { Palette } from '../types'
 
 export const lightThemePallete: Palette = {
-  primary: '#F16133',
+  primary: '#8BCD80',
   background: '#FFFFFF',
   error: '#FA0000',
   skeleton: '#D3D3D3',

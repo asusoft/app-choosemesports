@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* choosemesportsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* choosemesportsTests.m */; };
-		04FB40C52BE824BC00A0391E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04FB40C42BE824BC00A0391E /* GoogleService-Info.plist */; };
+		04D94DC12C01FF5D0070F0AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04D94DC02C01FF5D0070F0AF /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -31,7 +31,7 @@
 		00E356EE1AD99517003FC87E /* choosemesportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = choosemesportsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* choosemesportsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = choosemesportsTests.m; sourceTree = "<group>"; };
-		04FB40C42BE824BC00A0391E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04D94DC02C01FF5D0070F0AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "choosemesports/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* choosemesports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = choosemesports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = choosemesports/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = choosemesports/AppDelegate.mm; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				04FB40C42BE824BC00A0391E /* GoogleService-Info.plist */,
+				04D94DC02C01FF5D0070F0AF /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* choosemesports */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* choosemesportsTests */,
@@ -249,7 +249,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				04FB40C52BE824BC00A0391E /* GoogleService-Info.plist in Resources */,
+				04D94DC12C01FF5D0070F0AF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

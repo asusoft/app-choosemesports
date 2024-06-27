@@ -9,10 +9,10 @@ const SplashScreen = () => {
   return (
     <View style={{ backgroundColor, ...styles.container }}>
       <View style={{ marginTop: -50 }}>
-        <Logo height={200} fill={backgroundColor} />
+        <Logo height={200} fill={'black'} />
       </View>
       <View style={{ position: 'absolute', bottom: 30 }}>
-        <SavvyLogo />
+        {/* <SavvyLogo /> */}
       </View>
     </View>
   )

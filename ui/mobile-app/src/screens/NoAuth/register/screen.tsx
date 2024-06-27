@@ -82,8 +82,7 @@ export const Screen = () => {
           ...errors,
           [field]: formatRegErrors(field, status),
         }))
-        console.log('field: ', response.data.createPlayer.fields)
-        console.log('status: ', response.data.createPlayer.status)
+        return
       }
 
       const loginData = {
@@ -116,7 +115,7 @@ export const Screen = () => {
   }
 
   const underlinedText = (text: string) => (
-    <Text style={{ textDecorationLine: 'underline', color: theme.palette.primary }}>
+    <Text style={{ textDecorationLine: 'underline', color: theme.palette.placeholder }}>
       {text}
     </Text>
   )

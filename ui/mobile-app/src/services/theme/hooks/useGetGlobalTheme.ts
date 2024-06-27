@@ -6,7 +6,7 @@ import {
 import { Theme } from '../types'
 
 export const useGetGlobalTheme = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   const darkTheme: Theme = {
     palette: darkSchema,

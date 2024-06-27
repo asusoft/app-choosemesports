@@ -17,7 +17,7 @@ type VideoPlayerProps = {
 export const Player = (props: VideoPlayerProps) => {
   return (
     <VideoPlayer
-      video={source}
+      video={{ uri: 'https://www.youtube.com/watch?v=9I6E1yc5Iks'}}
       thumbnail={background}
       style={{
         height: '100%',

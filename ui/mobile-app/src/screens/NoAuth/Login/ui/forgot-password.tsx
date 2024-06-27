@@ -8,7 +8,7 @@ export const ForgotPassword = () => {
   const theme = useTheme()
   return (
     <View style={{ alignItems: 'flex-end' }}>
-      <TextButton label={'Forgot Password?'} onPress={() => {}} />
+      {/* <TextButton label={'Forgot Password?'} onPress={() => {}} /> */}
     </View>
   )
 }

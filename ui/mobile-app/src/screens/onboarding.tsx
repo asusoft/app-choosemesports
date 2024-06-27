@@ -25,7 +25,7 @@ const OnboardingScreen = () => {
           alignItems: 'center',
           paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal + 11,
         }}>
-        <Logo />
+        <Logo  fill={'#000000'}/>
         <Spacing value={12} steps={4} />
         <Typography style={{ textAlign: 'center', fontSize: 17 }}>
           Create an account to showcase your sports talents, connect with scouts, and
@@ -49,7 +49,7 @@ const OnboardingScreen = () => {
           isLoading={false}
           onPress={() => navigate('LoginScreen')}
           style={{ width: '40%' }}
-          textColor={'#000000'}
+          textColor={'#fff'}
         />
         <FooterButton
           disabled={false}
@@ -57,6 +57,7 @@ const OnboardingScreen = () => {
           isLoading={false}
           onPress={() => navigate('RegistrationScreen')}
           color='transparent'
+          textColor={'#000000'}
           style={{
             width: '40%',
             borderWidth: 1,

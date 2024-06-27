@@ -16,7 +16,7 @@ import {
 } from '@src/shared/generated/types/graphql'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { TNoInfoStackParamList } from '@src/navigations/types/NoInfoStack.types'
-import { hasInfoVar } from '@src/shared/apollo/has-info'
+import { hasNoInfoVar } from '@src/shared/apollo/has-info'
 
 export type AdditionalFields = {
   [key: string]: string
@@ -63,17 +63,17 @@ export const usePlayerInfo = () => {
         positions.length > 0 &&
         (await addPlayerPositions({ variables: { data: { positions: positions } } }))
       personal && (await addPlayerPersonalInfo({ variables: { data: personal } }))
-      contact &&
-        (await updatePlayer({
-          variables: {
-            data: {
-              contact: contacts,
-              personal: personal,
-            },
-          },
-        }))
+      // contact &&
+      //   (await updatePlayer({
+      //     variables: {
+      //       data: {
+      //         contact: contacts,
+      //         personal: personal,
+      //       },
+      //     },
+      //   }))
       setState(state => ({ ...state, isLoading: false }))
-      hasInfoVar(true)
+      hasNoInfoVar(true)
     },
   }
 

@@ -30,7 +30,7 @@ const AuthLayout = ({ title, subtitle, Form, renderBottomElement }: AuthLayoutPr
           paddingHorizontal: 12,
         }}>
         <View style={{ alignItems: 'center' }}>
-          <Logo />
+          <Logo fill={'black'}/>
           <Spacing value={20} steps={2} />
           <Typography
             variant='pageTitle'
