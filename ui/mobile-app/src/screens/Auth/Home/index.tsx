@@ -71,7 +71,6 @@ export const HomeScreen = () => {
           </>
         )}
       </ImageBackground>
-      <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
             width: WINDOW_WIDTH,
@@ -134,6 +133,7 @@ export const HomeScreen = () => {
             paddingVertical: GLOBAL_CONSTANTS.paddingHorizontal,
             paddingHorizontal: 30,
           }}>
+             <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ gap: 8 }}>
             <Typography variant='buttonText'>About</Typography>
             <Typography variant='textParagraph'>{viewer.personal.about}</Typography>
@@ -144,8 +144,8 @@ export const HomeScreen = () => {
           <Section label='Achievements' onAdd={() => {}} />
           <Spacing value={20} />
           <Section label='Video Highlights' onAdd={() => {}} />
-        </View>
       </ScrollView>
+        </View>
     </View>
   )
 }

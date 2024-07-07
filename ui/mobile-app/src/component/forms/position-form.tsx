@@ -4,7 +4,7 @@ import {
   Position,
 } from '@src/shared/generated/types/graphql'
 import React, { Component, useCallback, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { Typography } from '../ui-lib/text/Typography'
 import { TextInput } from '../ui-lib/inputs/TextInput'
 import { useTheme } from '@src/services/theme/hooks'
@@ -68,6 +68,7 @@ export const PositionForm = ({
 
   return (
     <View style={{ flex: 1 }}>
+      <ScrollView>
       {position && <Typography children={'Your Stats:'} variant='textButton' />}
       {position?.stats.map((stat, index) => (
         <View
@@ -94,10 +95,11 @@ export const PositionForm = ({
           />
         </View>
       ))}
+      </ScrollView>
       <View
         style={{
           position: 'absolute',
-          bottom: 45,
+          bottom: 10,
           right: 0,
           left: 0,
         }}>

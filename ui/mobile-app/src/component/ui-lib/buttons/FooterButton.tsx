@@ -40,8 +40,7 @@ const FooterButton = ({
         styles.Footer,
         style,
         {
-          opacity: disabled ? 0.5 : 1,
-          backgroundColor: color || theme?.palette.primary,
+          backgroundColor: disabled ? '#C0DDBB' :  color || theme?.palette.primary,
         },
       ]}>
       {isLoading ? (
