@@ -1,0 +1,11 @@
+query GetNotifications($skip: Int! = 0, $limit: Int! = 20) {
+  getNotifications(skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on NotificationList {
+      ...NotificationList
+    }
+  }
+}

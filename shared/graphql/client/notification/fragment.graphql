@@ -1,0 +1,15 @@
+fragment Notification on Notification {
+    id
+    type
+    text
+    title
+    createdAt
+}
+
+
+fragment NotificationList on NotificationList {
+    total
+    notifications {
+        ...Notification
+    }
+}

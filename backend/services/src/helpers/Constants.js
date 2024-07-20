@@ -28,4 +28,15 @@ export const VideoRequestStatus = {
     ACCEPTED: "ACCEPTED",
     REJECTED: "REJECTED"
 }
+
+export const ENotificationType = {
+    VIDEO_REJECTION: "VIDEO_REJECTION",
+    VIDEO_ACCEPTANCE: "VIDEO_ACCEPTANCE"
+}
+
+export const VRejectionReason = {
+    QUALITY: "QUALITY",
+    VIOLATION_OF_POLICY: "VIOLATION_OF_POLICY",
+    DURATION: "DURATION"
+  } 
     

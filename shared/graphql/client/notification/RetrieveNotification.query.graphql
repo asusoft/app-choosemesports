@@ -1,0 +1,11 @@
+query RetrieveNotification ($id: String!){
+    retrieveNotification (id: $id) { 
+        __typename
+        ... on BaseError {
+            status
+        }
+        ... on Notification {
+            ...Notification
+        }
+    }
+}
