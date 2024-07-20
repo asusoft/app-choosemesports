@@ -1,96 +1,88 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
-export type Maybe<T> = T | null
-export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
-}
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
-}
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
-  [_ in K]?: never
-}
-export type Incremental<T> =
-  | T
-  | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never }
-const defaultOptions = {} as const
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string }
-  String: { input: string; output: string }
-  Boolean: { input: boolean; output: boolean }
-  Int: { input: number; output: number }
-  Float: { input: number; output: number }
-  Upload: { input: RNFile; output: RNFile }
-}
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  Upload: { input: RNFile; output: RNFile; }
+};
 
 export type Admin = {
-  __typename?: 'Admin'
-  id: Scalars['ID']['output']
-  login: Scalars['String']['output']
-}
+  __typename?: 'Admin';
+  id: Scalars['ID']['output'];
+  login: Scalars['String']['output'];
+};
 
 export type AdminIn = {
-  login: Scalars['String']['input']
-  password: Scalars['String']['input']
-}
+  login: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+};
 
-export type AdminOrBe = Admin | BaseError
+export type AdminOrBe = Admin | BaseError;
 
 export type AuthAdmin = {
-  __typename?: 'AuthAdmin'
-  admin: Admin
-  token: Scalars['String']['output']
-}
+  __typename?: 'AuthAdmin';
+  admin: Admin;
+  token: Scalars['String']['output'];
+};
 
-export type AuthAdminOrBe = AuthAdmin | BaseError
+export type AuthAdminOrBe = AuthAdmin | BaseError;
 
-export type AuthAdminOrEwf = AuthAdmin | ErrorWithFields
+export type AuthAdminOrEwf = AuthAdmin | ErrorWithFields;
 
 export type AuthPlayer = {
-  __typename?: 'AuthPlayer'
-  additionalFields?: Maybe<Array<PlayerAdditionalField>>
-  avatar?: Maybe<File>
-  bio?: Maybe<Scalars['String']['output']>
-  contact: PlayerContact
-  email: Scalars['String']['output']
-  id: Scalars['ID']['output']
-  login: Scalars['String']['output']
-  name: Scalars['String']['output']
-  personal: PlayerPersonalInfo
-  playerPositions?: Maybe<Array<PlayerPosition>>
-  role: ERole
-  sport?: Maybe<Sport>
-  userID: Scalars['ID']['output']
-}
+  __typename?: 'AuthPlayer';
+  additionalFields?: Maybe<Array<PlayerAdditionalField>>;
+  avatar?: Maybe<File>;
+  bio?: Maybe<Scalars['String']['output']>;
+  contact: PlayerContact;
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  login: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  personal: PlayerPersonalInfo;
+  playerPositions?: Maybe<Array<PlayerPosition>>;
+  role: ERole;
+  sport?: Maybe<Sport>;
+  userID: Scalars['ID']['output'];
+};
 
 export type AuthUser = {
-  __typename?: 'AuthUser'
-  token: Scalars['String']['output']
-  user: User
-}
+  __typename?: 'AuthUser';
+  token: Scalars['String']['output'];
+  user: User;
+};
 
-export type AuthUserOrBe = AuthUser | BaseError
+export type AuthUserOrBe = AuthUser | BaseError;
 
-export type AuthUserOrEwf = AuthUser | ErrorWithFields
+export type AuthUserOrEwf = AuthUser | ErrorWithFields;
 
 export type BaseError = {
-  __typename?: 'BaseError'
-  status: ErrorStatus
-}
+  __typename?: 'BaseError';
+  status: ErrorStatus;
+};
 
 export type BooleanObject = {
-  __typename?: 'BooleanObject'
-  boolean: Scalars['Boolean']['output']
-}
+  __typename?: 'BooleanObject';
+  boolean: Scalars['Boolean']['output'];
+};
 
-export type BooleanObjectOrBe = BaseError | BooleanObject
+export type BooleanObjectOrBe = BaseError | BooleanObject;
 
 export enum ERole {
   Player = 'PLAYER',
-  Scout = 'SCOUT',
+  Scout = 'SCOUT'
 }
 
 export enum ErrorStatus {
@@ -101,1786 +93,1085 @@ export enum ErrorStatus {
   NotAuthenticated = 'NOT_AUTHENTICATED',
   NotEnoughPermissions = 'NOT_ENOUGH_PERMISSIONS',
   NotFound = 'NOT_FOUND',
-  UnknownError = 'UNKNOWN_ERROR',
+  UnknownError = 'UNKNOWN_ERROR'
 }
 
 export type ErrorWithFields = {
-  __typename?: 'ErrorWithFields'
-  fields: Array<Scalars['String']['output']>
-  status: ErrorStatus
-}
+  __typename?: 'ErrorWithFields';
+  fields: Array<Scalars['String']['output']>;
+  status: ErrorStatus;
+};
 
 export type File = {
-  __typename?: 'File'
-  checksum?: Maybe<Scalars['String']['output']>
-  createdAt: Scalars['String']['output']
-  id: Scalars['ID']['output']
-  name?: Maybe<Scalars['String']['output']>
-  path: Scalars['String']['output']
-  size?: Maybe<Scalars['Int']['output']>
-  type: Scalars['String']['output']
-  updatedAt: Scalars['String']['output']
-}
+  __typename?: 'File';
+  checksum?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  path: Scalars['String']['output'];
+  size?: Maybe<Scalars['Int']['output']>;
+  thumbnailUrl?: Maybe<Scalars['String']['output']>;
+  type: Scalars['String']['output'];
+  updatedAt: Scalars['String']['output'];
+};
 
 export enum Gender {
   Female = 'FEMALE',
   Male = 'MALE',
   Other = 'OTHER',
-  Unknown = 'UNKNOWN',
+  Unknown = 'UNKNOWN'
 }
 
 export type LogInInput = {
-  login: Scalars['String']['input']
-  password: Scalars['String']['input']
-  role: ERole
-}
+  login: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  role: ERole;
+};
 
 export type Mutation = {
-  __typename?: 'Mutation'
-  acceptVideo?: Maybe<BaseError>
-  addPlayerAdditionalFields?: Maybe<BaseError>
-  addPlayerPersonalInfo?: Maybe<BaseError>
-  addPlayerPositions?: Maybe<BaseError>
-  addSportUniqueField?: Maybe<BaseError>
-  adminLogin: AuthAdminOrBe
-  adminLogout?: Maybe<BaseError>
-  changeAdminPassword?: Maybe<ErrorWithFields>
-  changePassword?: Maybe<ErrorWithFields>
-  createAdmin: AuthAdminOrEwf
-  createPlayer: AuthUserOrEwf
-  createPosition: PositionOrBe
-  createSport: SportOrBe
-  hideVideo?: Maybe<BaseError>
-  login: AuthUserOrBe
-  logout?: Maybe<BaseError>
-  postVideo: VideoOrBe
-  rejectVideo?: Maybe<BaseError>
-  requestApproval?: Maybe<BaseError>
-  setPlayerSport?: Maybe<BaseError>
-  showVideo?: Maybe<BaseError>
-  updatePlayer?: Maybe<BaseError>
-  updatePlayerContact?: Maybe<BaseError>
-  updatePlayerPersonalInfo?: Maybe<BaseError>
-  updateUser?: Maybe<ErrorWithFields>
-  uploadImage: UploadFileResponse
-  uploadVideo: UploadFileResponse
-}
+  __typename?: 'Mutation';
+  acceptVideo?: Maybe<BaseError>;
+  addPlayerAdditionalFields?: Maybe<BaseError>;
+  addPlayerPersonalInfo?: Maybe<BaseError>;
+  addPlayerPositions?: Maybe<BaseError>;
+  addSportUniqueField?: Maybe<BaseError>;
+  adminLogin: AuthAdminOrBe;
+  adminLogout?: Maybe<BaseError>;
+  changeAdminPassword?: Maybe<ErrorWithFields>;
+  changePassword?: Maybe<ErrorWithFields>;
+  createAdmin: AuthAdminOrEwf;
+  createPlayer: AuthUserOrEwf;
+  createPosition: PositionOrBe;
+  createSport: SportOrBe;
+  hideVideo?: Maybe<BaseError>;
+  login: AuthUserOrBe;
+  logout?: Maybe<BaseError>;
+  postVideo: VideoOrBe;
+  rejectVideo?: Maybe<BaseError>;
+  requestApproval?: Maybe<BaseError>;
+  setPlayerSport?: Maybe<BaseError>;
+  showVideo?: Maybe<BaseError>;
+  updatePlayer?: Maybe<BaseError>;
+  updatePlayerContact?: Maybe<BaseError>;
+  updatePlayerPersonalInfo?: Maybe<BaseError>;
+  updateUser?: Maybe<ErrorWithFields>;
+  uploadImage: UploadFileResponse;
+  uploadVideo: UploadFileResponse;
+};
+
 
 export type MutationAcceptVideoArgs = {
-  videoID: Scalars['ID']['input']
-}
+  videoID: Scalars['ID']['input'];
+};
+
 
 export type MutationAddPlayerAdditionalFieldsArgs = {
-  data: PlayerAdditionalFieldsIn
-}
+  data: PlayerAdditionalFieldsIn;
+};
+
 
 export type MutationAddPlayerPersonalInfoArgs = {
-  data: PlayerPersonalInfoIn
-}
+  data: PlayerPersonalInfoIn;
+};
+
 
 export type MutationAddPlayerPositionsArgs = {
-  data: PlayerPositionsIn
-}
+  data: PlayerPositionsIn;
+};
+
 
 export type MutationAddSportUniqueFieldArgs = {
-  input: UniqueFieldIn
-}
+  input: UniqueFieldIn;
+};
+
 
 export type MutationAdminLoginArgs = {
-  input?: InputMaybe<AdminIn>
-}
+  input?: InputMaybe<AdminIn>;
+};
+
 
 export type MutationAdminLogoutArgs = {
-  token: Scalars['String']['input']
-}
+  token: Scalars['String']['input'];
+};
+
 
 export type MutationChangeAdminPasswordArgs = {
-  newPassword: Scalars['String']['input']
-  oldPassword: Scalars['String']['input']
-}
+  newPassword: Scalars['String']['input'];
+  oldPassword: Scalars['String']['input'];
+};
+
 
 export type MutationChangePasswordArgs = {
-  newPassword: Scalars['String']['input']
-  oldPassword: Scalars['String']['input']
-}
+  newPassword: Scalars['String']['input'];
+  oldPassword: Scalars['String']['input'];
+};
+
 
 export type MutationCreateAdminArgs = {
-  input?: InputMaybe<AdminIn>
-}
+  input?: InputMaybe<AdminIn>;
+};
+
 
 export type MutationCreatePlayerArgs = {
-  input: PlayerIn
-}
+  input: PlayerIn;
+};
+
 
 export type MutationCreatePositionArgs = {
-  input: PositionIn
-}
+  input: PositionIn;
+};
+
 
 export type MutationCreateSportArgs = {
-  input: SportIn
-}
+  input: SportIn;
+};
+
 
 export type MutationHideVideoArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type MutationLoginArgs = {
-  input?: InputMaybe<LogInInput>
-}
+  input?: InputMaybe<LogInInput>;
+};
+
 
 export type MutationLogoutArgs = {
-  token: Scalars['String']['input']
-}
+  token: Scalars['String']['input'];
+};
+
 
 export type MutationPostVideoArgs = {
-  input?: InputMaybe<VideoIn>
-}
+  input?: InputMaybe<VideoIn>;
+};
+
 
 export type MutationRejectVideoArgs = {
-  input: RejectionIn
-}
+  input: RejectionIn;
+};
+
 
 export type MutationRequestApprovalArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type MutationSetPlayerSportArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type MutationShowVideoArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type MutationUpdatePlayerArgs = {
-  data: PlayerInUpdate
-}
+  data: PlayerInUpdate;
+};
+
 
 export type MutationUpdatePlayerContactArgs = {
-  data: PlayerContactInUpdate
-}
+  data: PlayerContactInUpdate;
+};
+
 
 export type MutationUpdatePlayerPersonalInfoArgs = {
-  data: PlayerPersonalInfoInUpdate
-}
+  data: PlayerPersonalInfoInUpdate;
+};
+
 
 export type MutationUpdateUserArgs = {
-  data: UserInUpdate
-}
+  data: UserInUpdate;
+};
+
 
 export type MutationUploadImageArgs = {
-  file: Scalars['Upload']['input']
-}
+  file: Scalars['Upload']['input'];
+};
+
 
 export type MutationUploadVideoArgs = {
-  file: Scalars['Upload']['input']
-}
+  file: Scalars['Upload']['input'];
+};
 
 export type Player = {
-  __typename?: 'Player'
-  additionalFields?: Maybe<Array<PlayerAdditionalField>>
-  contact: PlayerContact
-  id: Scalars['ID']['output']
-  personal: PlayerPersonalInfo
-  playerPositions?: Maybe<Array<PlayerPosition>>
-  sport?: Maybe<Sport>
-  userID: Scalars['ID']['output']
-}
+  __typename?: 'Player';
+  additionalFields?: Maybe<Array<PlayerAdditionalField>>;
+  contact: PlayerContact;
+  id: Scalars['ID']['output'];
+  personal: PlayerPersonalInfo;
+  playerPositions?: Maybe<Array<PlayerPosition>>;
+  sport?: Maybe<Sport>;
+  userID: Scalars['ID']['output'];
+};
 
 export type PlayerAdditionalField = {
-  __typename?: 'PlayerAdditionalField'
-  label: Scalars['String']['output']
-  value: Scalars['String']['output']
-}
+  __typename?: 'PlayerAdditionalField';
+  label: Scalars['String']['output'];
+  value: Scalars['String']['output'];
+};
 
 export type PlayerAdditionalFieldIn = {
-  label: Scalars['String']['input']
-  value: Scalars['String']['input']
-}
+  label: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
 
 export type PlayerAdditionalFieldsIn = {
-  fields: Array<PlayerAdditionalFieldIn>
-}
+  fields: Array<PlayerAdditionalFieldIn>;
+};
 
 export type PlayerContact = {
-  __typename?: 'PlayerContact'
-  facebook?: Maybe<Scalars['String']['output']>
-  instagram?: Maybe<Scalars['String']['output']>
-  phone?: Maybe<Scalars['String']['output']>
-  twitter?: Maybe<Scalars['String']['output']>
-  youtube?: Maybe<Scalars['String']['output']>
-}
+  __typename?: 'PlayerContact';
+  facebook?: Maybe<Scalars['String']['output']>;
+  instagram?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  twitter?: Maybe<Scalars['String']['output']>;
+  youtube?: Maybe<Scalars['String']['output']>;
+};
 
 export type PlayerContactInUpdate = {
-  facebook?: InputMaybe<Scalars['String']['input']>
-  instagram?: InputMaybe<Scalars['String']['input']>
-  phone?: InputMaybe<Scalars['String']['input']>
-  twitter?: InputMaybe<Scalars['String']['input']>
-  youtube?: InputMaybe<Scalars['String']['input']>
-}
+  facebook?: InputMaybe<Scalars['String']['input']>;
+  instagram?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  twitter?: InputMaybe<Scalars['String']['input']>;
+  youtube?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type PlayerIn = {
-  email: Scalars['String']['input']
-  login: Scalars['String']['input']
-  name: Scalars['String']['input']
-  password: Scalars['String']['input']
-}
+  email: Scalars['String']['input'];
+  login: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+};
 
 export type PlayerInUpdate = {
-  contact?: InputMaybe<PlayerContactInUpdate>
-  personal?: InputMaybe<PlayerPersonalInfoInUpdate>
-}
+  contact?: InputMaybe<PlayerContactInUpdate>;
+  personal?: InputMaybe<PlayerPersonalInfoInUpdate>;
+};
 
 export type PlayerList = {
-  __typename?: 'PlayerList'
-  players: Array<Player>
-  total: Scalars['Int']['output']
-}
+  __typename?: 'PlayerList';
+  players: Array<Player>;
+  total: Scalars['Int']['output'];
+};
 
-export type PlayerListOrBe = BaseError | PlayerList
+export type PlayerListOrBe = BaseError | PlayerList;
 
-export type PlayerOrBe = BaseError | Player
+export type PlayerOrBe = BaseError | Player;
 
 export type PlayerPersonalInfo = {
-  __typename?: 'PlayerPersonalInfo'
-  about?: Maybe<Scalars['String']['output']>
-  dateOfBirth?: Maybe<Scalars['String']['output']>
-  gender?: Maybe<Gender>
-  height?: Maybe<Scalars['String']['output']>
-  nationality?: Maybe<UserNationalityOut>
-  weight?: Maybe<Scalars['String']['output']>
-}
+  __typename?: 'PlayerPersonalInfo';
+  about?: Maybe<Scalars['String']['output']>;
+  dateOfBirth?: Maybe<Scalars['String']['output']>;
+  gender?: Maybe<Gender>;
+  height?: Maybe<Scalars['String']['output']>;
+  nationality?: Maybe<UserNationalityOut>;
+  weight?: Maybe<Scalars['String']['output']>;
+};
 
 export type PlayerPersonalInfoIn = {
-  about: Scalars['String']['input']
-  dateOfBirth: Scalars['String']['input']
-  gender: Gender
-  height: Scalars['String']['input']
-  nationality: UserNationalityIn
-  weight: Scalars['String']['input']
-}
+  about: Scalars['String']['input'];
+  dateOfBirth: Scalars['String']['input'];
+  gender: Gender;
+  height: Scalars['String']['input'];
+  nationality: UserNationalityIn;
+  weight: Scalars['String']['input'];
+};
 
 export type PlayerPersonalInfoInUpdate = {
-  about?: InputMaybe<Scalars['String']['input']>
-  height?: InputMaybe<Scalars['String']['input']>
-  weight?: InputMaybe<Scalars['String']['input']>
-}
+  about?: InputMaybe<Scalars['String']['input']>;
+  height?: InputMaybe<Scalars['String']['input']>;
+  weight?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type PlayerPosStat = {
-  __typename?: 'PlayerPosStat'
-  label: Scalars['String']['output']
-  value: Scalars['String']['output']
-}
+  __typename?: 'PlayerPosStat';
+  label: Scalars['String']['output'];
+  value: Scalars['String']['output'];
+};
 
 export type PlayerPosStatIn = {
-  label: Scalars['String']['input']
-  value: Scalars['String']['input']
-}
+  label: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
 
 export type PlayerPosition = {
-  __typename?: 'PlayerPosition'
-  name: Scalars['String']['output']
-  stats: Array<PlayerPosStat>
-}
+  __typename?: 'PlayerPosition';
+  name: Scalars['String']['output'];
+  stats: Array<PlayerPosStat>;
+};
 
 export type PlayerPositionIn = {
-  name: Scalars['String']['input']
-  stats: Array<PlayerPosStatIn>
-}
+  name: Scalars['String']['input'];
+  stats: Array<PlayerPosStatIn>;
+};
 
 export type PlayerPositionsIn = {
-  positions: Array<PlayerPositionIn>
-}
+  positions: Array<PlayerPositionIn>;
+};
 
 export type Position = {
-  __typename?: 'Position'
-  id: Scalars['ID']['output']
-  name: Scalars['String']['output']
-  sportID: Scalars['String']['output']
-  stats: Array<Stat>
-}
+  __typename?: 'Position';
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  sportID: Scalars['String']['output'];
+  stats: Array<Stat>;
+};
 
 export type PositionIn = {
-  name: Scalars['String']['input']
-  sportID: Scalars['String']['input']
-  stats: Array<StatIn>
-}
+  name: Scalars['String']['input'];
+  sportID: Scalars['String']['input'];
+  stats: Array<StatIn>;
+};
 
 export type PositionList = {
-  __typename?: 'PositionList'
-  positions: Array<Position>
-  total: Scalars['Int']['output']
-}
+  __typename?: 'PositionList';
+  positions: Array<Position>;
+  total: Scalars['Int']['output'];
+};
 
-export type PositionListOrBe = BaseError | PositionList
+export type PositionListOrBe = BaseError | PositionList;
 
-export type PositionOrBe = BaseError | Position
+export type PositionOrBe = BaseError | Position;
 
 export type Query = {
-  __typename?: 'Query'
-  getAdminMe: AdminOrBe
-  getMe: UserOrBe
-  getMyVideos: VideoListOrBe
-  getPlayerMe: PlayerOrBe
-  getPlayers: PlayerListOrBe
-  getSportPositions: PositionListOrBe
-  getSports: SportListOrBe
-  getVideoRequests: VideoRequestListOrBe
-  getVideosByPlayerId: VideoListOrBe
-  isEmailExist: BooleanObjectOrBe
-  isLoginExist: BooleanObjectOrBe
-  isPhoneExist: BooleanObjectOrBe
-  retrieveFile: RetrieveFileResponse
-  retrievePlayer: PlayerOrBe
-  retrieveSport: SportOrBe
-  retrieveUser: UserOrBe
-  retrieveVideo: VideoOrBe
-}
+  __typename?: 'Query';
+  getAdminMe: AdminOrBe;
+  getMe: UserOrBe;
+  getMyVideos: VideoListOrBe;
+  getPlayerMe: PlayerOrBe;
+  getPlayers: PlayerListOrBe;
+  getSportPositions: PositionListOrBe;
+  getSports: SportListOrBe;
+  getVideoRequests: VideoRequestListOrBe;
+  getVideosByPlayerId: VideoListOrBe;
+  isEmailExist: BooleanObjectOrBe;
+  isLoginExist: BooleanObjectOrBe;
+  isPhoneExist: BooleanObjectOrBe;
+  retrieveFile: RetrieveFileResponse;
+  retrievePlayer: PlayerOrBe;
+  retrieveSport: SportOrBe;
+  retrieveUser: UserOrBe;
+  retrieveVideo: VideoOrBe;
+};
+
 
 export type QueryGetPlayersArgs = {
-  ageGroup?: InputMaybe<Scalars['String']['input']>
-  limit?: Scalars['Int']['input']
-  location?: InputMaybe<Scalars['String']['input']>
-  skip?: Scalars['Int']['input']
-  sportName?: InputMaybe<Scalars['String']['input']>
-}
+  ageGroup?: InputMaybe<Scalars['String']['input']>;
+  limit?: Scalars['Int']['input'];
+  location?: InputMaybe<Scalars['String']['input']>;
+  skip?: Scalars['Int']['input'];
+  sportName?: InputMaybe<Scalars['String']['input']>;
+};
+
 
 export type QueryGetSportPositionsArgs = {
-  sportID: Scalars['ID']['input']
-}
+  sportID: Scalars['ID']['input'];
+};
+
 
 export type QueryGetSportsArgs = {
-  limit?: Scalars['Int']['input']
-  skip?: InputMaybe<Scalars['String']['input']>
-}
+  limit?: Scalars['Int']['input'];
+  skip?: InputMaybe<Scalars['String']['input']>;
+};
+
 
 export type QueryGetVideoRequestsArgs = {
-  limit?: Scalars['Int']['input']
-  skip?: Scalars['Int']['input']
-}
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+};
+
 
 export type QueryGetVideosByPlayerIdArgs = {
-  id: Scalars['ID']['input']
-  limit?: Scalars['Int']['input']
-  skip?: Scalars['Int']['input']
-}
+  id: Scalars['ID']['input'];
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+};
+
 
 export type QueryIsEmailExistArgs = {
-  email: Scalars['String']['input']
-}
+  email: Scalars['String']['input'];
+};
+
 
 export type QueryIsLoginExistArgs = {
-  login: Scalars['String']['input']
-}
+  login: Scalars['String']['input'];
+};
+
 
 export type QueryIsPhoneExistArgs = {
-  phone: Scalars['String']['input']
-}
+  phone: Scalars['String']['input'];
+};
+
 
 export type QueryRetrieveFileArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type QueryRetrievePlayerArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type QueryRetrieveSportArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type QueryRetrieveUserArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
+
 
 export type QueryRetrieveVideoArgs = {
-  id: Scalars['ID']['input']
-}
+  id: Scalars['ID']['input'];
+};
 
 export type RejectionIn = {
-  reason: VRejectionReason
-  videoID: Scalars['ID']['input']
-}
+  reason: VRejectionReason;
+  videoID: Scalars['ID']['input'];
+};
 
-export type RetrieveFileResponse = BaseError | File
+export type RetrieveFileResponse = BaseError | File;
 
 export type Sport = {
-  __typename?: 'Sport'
-  id: Scalars['ID']['output']
-  name: Scalars['String']['output']
-  positions?: Maybe<PositionList>
-  uniqueFields?: Maybe<Array<UniqueField>>
-}
+  __typename?: 'Sport';
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  positions?: Maybe<PositionList>;
+  uniqueFields?: Maybe<Array<UniqueField>>;
+};
 
 export type SportIn = {
-  name: Scalars['String']['input']
-}
+  name: Scalars['String']['input'];
+};
 
 export type SportList = {
-  __typename?: 'SportList'
-  sports: Array<Sport>
-  total: Scalars['Int']['output']
-}
+  __typename?: 'SportList';
+  sports: Array<Sport>;
+  total: Scalars['Int']['output'];
+};
 
-export type SportListOrBe = BaseError | SportList
+export type SportListOrBe = BaseError | SportList;
 
-export type SportOrBe = BaseError | Sport
+export type SportOrBe = BaseError | Sport;
 
 export type Stat = {
-  __typename?: 'Stat'
-  name: Scalars['String']['output']
-}
+  __typename?: 'Stat';
+  name: Scalars['String']['output'];
+};
 
 export type StatIn = {
-  name: Scalars['String']['input']
-}
+  name: Scalars['String']['input'];
+};
 
 export type UniqueField = {
-  __typename?: 'UniqueField'
-  label: Scalars['String']['output']
-  sportID: Scalars['ID']['output']
-}
+  __typename?: 'UniqueField';
+  label: Scalars['String']['output'];
+  sportID: Scalars['ID']['output'];
+};
 
 export type UniqueFieldIn = {
-  label: Scalars['String']['input']
-  sportID: Scalars['String']['input']
-}
+  label: Scalars['String']['input'];
+  sportID: Scalars['String']['input'];
+};
 
-export type UploadFileResponse = BaseError | File
+export type UploadFileResponse = BaseError | File;
 
 export type User = {
-  __typename?: 'User'
-  avatar?: Maybe<File>
-  bio?: Maybe<Scalars['String']['output']>
-  email: Scalars['String']['output']
-  id: Scalars['ID']['output']
-  login: Scalars['String']['output']
-  name: Scalars['String']['output']
-  role: ERole
-}
+  __typename?: 'User';
+  avatar?: Maybe<File>;
+  bio?: Maybe<Scalars['String']['output']>;
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  login: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  role: ERole;
+};
 
 export type UserInUpdate = {
-  avatarID?: InputMaybe<Scalars['String']['input']>
-  bio?: InputMaybe<Scalars['String']['input']>
-  email?: InputMaybe<Scalars['String']['input']>
-  login?: InputMaybe<Scalars['String']['input']>
-}
+  avatarID?: InputMaybe<Scalars['String']['input']>;
+  bio?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  login?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type UserNationalityIn = {
-  code: Scalars['String']['input']
-  country: Scalars['String']['input']
-}
+  code: Scalars['String']['input'];
+  country: Scalars['String']['input'];
+};
 
 export type UserNationalityOut = {
-  __typename?: 'UserNationalityOut'
-  code: Scalars['String']['output']
-  country: Scalars['String']['output']
-}
+  __typename?: 'UserNationalityOut';
+  code: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+};
 
-export type UserOrBe = BaseError | User
+export type UserOrBe = BaseError | User;
 
 export enum VRejectionReason {
   Duration = 'DURATION',
   Quality = 'QUALITY',
-  ViolationOfPolicy = 'VIOLATION_OF_POLICY',
+  ViolationOfPolicy = 'VIOLATION_OF_POLICY'
 }
 
 export type Video = {
-  __typename?: 'Video'
-  attachement: File
-  author: User
-  description?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  isApproved: Scalars['Boolean']['output']
-  showInProfile: Scalars['Boolean']['output']
-}
+  __typename?: 'Video';
+  attachement: File;
+  author: User;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  isApproved: Scalars['Boolean']['output'];
+  showInProfile: Scalars['Boolean']['output'];
+};
 
 export type VideoIn = {
-  description?: InputMaybe<Scalars['String']['input']>
-  videoID: Scalars['String']['input']
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  videoID: Scalars['String']['input'];
+};
 
 export type VideoList = {
-  __typename?: 'VideoList'
-  total: Scalars['Int']['output']
-  videos: Array<Video>
-}
+  __typename?: 'VideoList';
+  total: Scalars['Int']['output'];
+  videos: Array<Video>;
+};
 
-export type VideoListOrBe = BaseError | VideoList
+export type VideoListOrBe = BaseError | VideoList;
 
-export type VideoOrBe = BaseError | Video
+export type VideoOrBe = BaseError | Video;
 
 export type VideoRequest = {
-  __typename?: 'VideoRequest'
-  id: Scalars['ID']['output']
-  videoID: Scalars['ID']['output']
-}
+  __typename?: 'VideoRequest';
+  id: Scalars['ID']['output'];
+  videoID: Scalars['ID']['output'];
+};
 
 export type VideoRequestList = {
-  __typename?: 'VideoRequestList'
-  requests: Array<VideoRequest>
-  total: Scalars['Int']['output']
-}
+  __typename?: 'VideoRequestList';
+  requests: Array<VideoRequest>;
+  total: Scalars['Int']['output'];
+};
 
-export type VideoRequestListOrBe = BaseError | VideoRequestList
+export type VideoRequestListOrBe = BaseError | VideoRequestList;
 
 export type AdminLoginMutationVariables = Exact<{
-  input?: InputMaybe<AdminIn>
-}>
+  input?: InputMaybe<AdminIn>;
+}>;
 
-export type AdminLoginMutation = {
-  __typename?: 'Mutation'
-  adminLogin:
-    | {
-        __typename: 'AuthAdmin'
-        token: string
-        admin: { __typename?: 'Admin'; id: string; login: string }
-      }
-    | { __typename: 'BaseError'; status: ErrorStatus }
-}
+
+export type AdminLoginMutation = { __typename?: 'Mutation', adminLogin: { __typename: 'AuthAdmin', token: string, admin: { __typename?: 'Admin', id: string, login: string } } | { __typename: 'BaseError', status: ErrorStatus } };
 
 export type AdminLogoutMutationVariables = Exact<{
-  token: Scalars['String']['input']
-}>
+  token: Scalars['String']['input'];
+}>;
 
-export type AdminLogoutMutation = {
-  __typename?: 'Mutation'
-  adminLogout?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type AdminLogoutMutation = { __typename?: 'Mutation', adminLogout?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type ChangeAdminPasswordMutationVariables = Exact<{
-  oldPassword: Scalars['String']['input']
-  newPassword: Scalars['String']['input']
-}>
+  oldPassword: Scalars['String']['input'];
+  newPassword: Scalars['String']['input'];
+}>;
 
-export type ChangeAdminPasswordMutation = {
-  __typename?: 'Mutation'
-  changeAdminPassword?: {
-    __typename?: 'ErrorWithFields'
-    status: ErrorStatus
-    fields: Array<string>
-  } | null
-}
+
+export type ChangeAdminPasswordMutation = { __typename?: 'Mutation', changeAdminPassword?: { __typename?: 'ErrorWithFields', status: ErrorStatus, fields: Array<string> } | null };
 
 export type CreateAdminMutationVariables = Exact<{
-  input: AdminIn
-}>
+  input: AdminIn;
+}>;
 
-export type CreateAdminMutation = {
-  __typename?: 'Mutation'
-  createAdmin:
-    | {
-        __typename: 'AuthAdmin'
-        token: string
-        admin: { __typename?: 'Admin'; id: string; login: string }
-      }
-    | { __typename: 'ErrorWithFields'; status: ErrorStatus; fields: Array<string> }
-}
 
-export type GetAdminMeQueryVariables = Exact<{ [key: string]: never }>
+export type CreateAdminMutation = { __typename?: 'Mutation', createAdmin: { __typename: 'AuthAdmin', token: string, admin: { __typename?: 'Admin', id: string, login: string } } | { __typename: 'ErrorWithFields', status: ErrorStatus, fields: Array<string> } };
 
-export type GetAdminMeQuery = {
-  __typename?: 'Query'
-  getAdminMe:
-    | { __typename: 'Admin'; id: string; login: string }
-    | { __typename: 'BaseError'; status: ErrorStatus }
-}
+export type GetAdminMeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdminMeQuery = { __typename?: 'Query', getAdminMe: { __typename: 'Admin', id: string, login: string } | { __typename: 'BaseError', status: ErrorStatus } };
 
 export type ChangePasswordMutationVariables = Exact<{
-  oldPassword: Scalars['String']['input']
-  newPassword: Scalars['String']['input']
-}>
+  oldPassword: Scalars['String']['input'];
+  newPassword: Scalars['String']['input'];
+}>;
 
-export type ChangePasswordMutation = {
-  __typename?: 'Mutation'
-  changePassword?: {
-    __typename?: 'ErrorWithFields'
-    status: ErrorStatus
-    fields: Array<string>
-  } | null
-}
 
-export type GetMeQueryVariables = Exact<{ [key: string]: never }>
+export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword?: { __typename?: 'ErrorWithFields', status: ErrorStatus, fields: Array<string> } | null };
 
-export type GetMeQuery = {
-  __typename?: 'Query'
-  getMe:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'User'
-        id: string
-        name: string
-        login: string
-        email: string
-        role: ERole
-        avatar?: { __typename?: 'File'; id: string; path: string } | null
-      }
-}
+export type GetMeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMeQuery = { __typename?: 'Query', getMe: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'User', id: string, name: string, login: string, email: string, role: ERole, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null } };
 
 export type IsEmailExistQueryVariables = Exact<{
-  email: Scalars['String']['input']
-}>
+  email: Scalars['String']['input'];
+}>;
 
-export type IsEmailExistQuery = {
-  __typename?: 'Query'
-  isExist:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'BooleanObject'; boolean: boolean }
-}
+
+export type IsEmailExistQuery = { __typename?: 'Query', isExist: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'BooleanObject', boolean: boolean } };
 
 export type IsLoginExistQueryVariables = Exact<{
-  login: Scalars['String']['input']
-}>
+  login: Scalars['String']['input'];
+}>;
 
-export type IsLoginExistQuery = {
-  __typename?: 'Query'
-  isExist:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'BooleanObject'; boolean: boolean }
-}
+
+export type IsLoginExistQuery = { __typename?: 'Query', isExist: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'BooleanObject', boolean: boolean } };
 
 export type IsPhoneExistQueryVariables = Exact<{
-  phone: Scalars['String']['input']
-}>
+  phone: Scalars['String']['input'];
+}>;
 
-export type IsPhoneExistQuery = {
-  __typename?: 'Query'
-  isExist:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'BooleanObject'; boolean: boolean }
-}
+
+export type IsPhoneExistQuery = { __typename?: 'Query', isExist: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'BooleanObject', boolean: boolean } };
 
 export type LoginMutationVariables = Exact<{
-  input?: InputMaybe<LogInInput>
-}>
+  input?: InputMaybe<LogInInput>;
+}>;
 
-export type LoginMutation = {
-  __typename?: 'Mutation'
-  login:
-    | {
-        __typename: 'AuthUser'
-        token: string
-        user: {
-          __typename?: 'User'
-          id: string
-          name: string
-          login: string
-          email: string
-          role: ERole
-          avatar?: { __typename?: 'File'; id: string; path: string } | null
-        }
-      }
-    | { __typename: 'BaseError'; status: ErrorStatus }
-}
+
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename: 'AuthUser', token: string, user: { __typename?: 'User', id: string, name: string, login: string, email: string, role: ERole, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null } } | { __typename: 'BaseError', status: ErrorStatus } };
 
 export type LogoutMutationVariables = Exact<{
-  token: Scalars['String']['input']
-}>
+  token: Scalars['String']['input'];
+}>;
 
-export type LogoutMutation = {
-  __typename?: 'Mutation'
-  logout?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type RetrieveFileQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type RetrieveFileQuery = {
-  __typename?: 'Query'
-  retrieveFile:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'File'
-        id: string
-        createdAt: string
-        updatedAt: string
-        name?: string | null
-        path: string
-        type: string
-        checksum?: string | null
-        size?: number | null
-      }
-}
+
+export type RetrieveFileQuery = { __typename?: 'Query', retrieveFile: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'File', id: string, createdAt: string, updatedAt: string, name?: string | null, path: string, type: string, checksum?: string | null, size?: number | null } };
 
 export type UploadImageMutationVariables = Exact<{
-  file: Scalars['Upload']['input']
-}>
+  file: Scalars['Upload']['input'];
+}>;
 
-export type UploadImageMutation = {
-  __typename?: 'Mutation'
-  uploadImage:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'File'; id: string; path: string; type: string }
-}
+
+export type UploadImageMutation = { __typename?: 'Mutation', uploadImage: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'File', id: string, path: string, type: string } };
 
 export type UploadVideoMutationVariables = Exact<{
-  file: Scalars['Upload']['input']
-}>
+  file: Scalars['Upload']['input'];
+}>;
 
-export type UploadVideoMutation = {
-  __typename?: 'Mutation'
-  uploadVideo:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'File'; id: string; path: string; type: string }
-}
 
-export type MediaFragment = { __typename?: 'File'; id: string; path: string }
+export type UploadVideoMutation = { __typename?: 'Mutation', uploadVideo: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'File', id: string, path: string, type: string } };
+
+export type MediaFragment = { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null };
 
 export type AddPlayerAdditionalFieldsMutationVariables = Exact<{
-  data: PlayerAdditionalFieldsIn
-}>
+  data: PlayerAdditionalFieldsIn;
+}>;
 
-export type AddPlayerAdditionalFieldsMutation = {
-  __typename?: 'Mutation'
-  addPlayerAdditionalFields?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type AddPlayerAdditionalFieldsMutation = { __typename?: 'Mutation', addPlayerAdditionalFields?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type AddPlayerPersonalInfoMutationVariables = Exact<{
-  data: PlayerPersonalInfoIn
-}>
+  data: PlayerPersonalInfoIn;
+}>;
 
-export type AddPlayerPersonalInfoMutation = {
-  __typename?: 'Mutation'
-  addPlayerPersonalInfo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type AddPlayerPersonalInfoMutation = { __typename?: 'Mutation', addPlayerPersonalInfo?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type AddPlayerPositionsMutationVariables = Exact<{
-  data: PlayerPositionsIn
-}>
+  data: PlayerPositionsIn;
+}>;
 
-export type AddPlayerPositionsMutation = {
-  __typename?: 'Mutation'
-  addPlayerPositions?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type AddPlayerPositionsMutation = { __typename?: 'Mutation', addPlayerPositions?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type CreatePlayerMutationVariables = Exact<{
-  input: PlayerIn
-}>
+  input: PlayerIn;
+}>;
 
-export type CreatePlayerMutation = {
-  __typename?: 'Mutation'
-  createPlayer:
-    | {
-        __typename: 'AuthUser'
-        token: string
-        user: {
-          __typename?: 'User'
-          id: string
-          name: string
-          login: string
-          email: string
-          role: ERole
-          avatar?: { __typename?: 'File'; id: string; path: string } | null
-        }
-      }
-    | { __typename: 'ErrorWithFields'; status: ErrorStatus; fields: Array<string> }
-}
 
-export type GetPlayerMeQueryVariables = Exact<{ [key: string]: never }>
+export type CreatePlayerMutation = { __typename?: 'Mutation', createPlayer: { __typename: 'AuthUser', token: string, user: { __typename?: 'User', id: string, name: string, login: string, email: string, role: ERole, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null } } | { __typename: 'ErrorWithFields', status: ErrorStatus, fields: Array<string> } };
 
-export type GetPlayerMeQuery = {
-  __typename?: 'Query'
-  getPlayerMe:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'Player'
-        id: string
-        userID: string
-        sport?: {
-          __typename?: 'Sport'
-          id: string
-          name: string
-          uniqueFields?: Array<{
-            __typename?: 'UniqueField'
-            sportID: string
-            label: string
-          }> | null
-          positions?: {
-            __typename?: 'PositionList'
-            total: number
-            positions: Array<{
-              __typename?: 'Position'
-              id: string
-              sportID: string
-              name: string
-              stats: Array<{ __typename?: 'Stat'; name: string }>
-            }>
-          } | null
-        } | null
-        playerPositions?: Array<{
-          __typename?: 'PlayerPosition'
-          name: string
-          stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-        }> | null
-        contact: {
-          __typename?: 'PlayerContact'
-          phone?: string | null
-          youtube?: string | null
-          facebook?: string | null
-          twitter?: string | null
-          instagram?: string | null
-        }
-        personal: {
-          __typename?: 'PlayerPersonalInfo'
-          dateOfBirth?: string | null
-          gender?: Gender | null
-          height?: string | null
-          weight?: string | null
-          about?: string | null
-          nationality?: {
-            __typename?: 'UserNationalityOut'
-            country: string
-            code: string
-          } | null
-        }
-        additionalFields?: Array<{
-          __typename?: 'PlayerAdditionalField'
-          label: string
-          value: string
-        }> | null
-      }
-}
+export type GetPlayerMeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPlayerMeQuery = { __typename?: 'Query', getPlayerMe: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null } };
 
 export type GetPlayersQueryVariables = Exact<{
-  sportName?: InputMaybe<Scalars['String']['input']>
-  location?: InputMaybe<Scalars['String']['input']>
-  ageGroup?: InputMaybe<Scalars['String']['input']>
-  skip?: Scalars['Int']['input']
-  limit?: Scalars['Int']['input']
-}>
+  sportName?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  ageGroup?: InputMaybe<Scalars['String']['input']>;
+  skip?: Scalars['Int']['input'];
+  limit?: Scalars['Int']['input'];
+}>;
 
-export type GetPlayersQuery = {
-  __typename?: 'Query'
-  getPlayers:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'PlayerList'
-        players: Array<{
-          __typename?: 'Player'
-          id: string
-          userID: string
-          sport?: {
-            __typename?: 'Sport'
-            id: string
-            name: string
-            uniqueFields?: Array<{
-              __typename?: 'UniqueField'
-              sportID: string
-              label: string
-            }> | null
-            positions?: {
-              __typename?: 'PositionList'
-              total: number
-              positions: Array<{
-                __typename?: 'Position'
-                id: string
-                sportID: string
-                name: string
-                stats: Array<{ __typename?: 'Stat'; name: string }>
-              }>
-            } | null
-          } | null
-          playerPositions?: Array<{
-            __typename?: 'PlayerPosition'
-            name: string
-            stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-          }> | null
-          contact: {
-            __typename?: 'PlayerContact'
-            phone?: string | null
-            youtube?: string | null
-            facebook?: string | null
-            twitter?: string | null
-            instagram?: string | null
-          }
-          personal: {
-            __typename?: 'PlayerPersonalInfo'
-            dateOfBirth?: string | null
-            gender?: Gender | null
-            height?: string | null
-            weight?: string | null
-            about?: string | null
-            nationality?: {
-              __typename?: 'UserNationalityOut'
-              country: string
-              code: string
-            } | null
-          }
-          additionalFields?: Array<{
-            __typename?: 'PlayerAdditionalField'
-            label: string
-            value: string
-          }> | null
-        }>
-      }
-}
+
+export type GetPlayersQuery = { __typename?: 'Query', getPlayers: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PlayerList', players: Array<{ __typename?: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null }> } };
 
 export type RetrievePlayerQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type RetrievePlayerQuery = {
-  __typename?: 'Query'
-  retrievePlayer:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'Player'
-        id: string
-        userID: string
-        sport?: {
-          __typename?: 'Sport'
-          id: string
-          name: string
-          uniqueFields?: Array<{
-            __typename?: 'UniqueField'
-            sportID: string
-            label: string
-          }> | null
-          positions?: {
-            __typename?: 'PositionList'
-            total: number
-            positions: Array<{
-              __typename?: 'Position'
-              id: string
-              sportID: string
-              name: string
-              stats: Array<{ __typename?: 'Stat'; name: string }>
-            }>
-          } | null
-        } | null
-        playerPositions?: Array<{
-          __typename?: 'PlayerPosition'
-          name: string
-          stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-        }> | null
-        contact: {
-          __typename?: 'PlayerContact'
-          phone?: string | null
-          youtube?: string | null
-          facebook?: string | null
-          twitter?: string | null
-          instagram?: string | null
-        }
-        personal: {
-          __typename?: 'PlayerPersonalInfo'
-          dateOfBirth?: string | null
-          gender?: Gender | null
-          height?: string | null
-          weight?: string | null
-          about?: string | null
-          nationality?: {
-            __typename?: 'UserNationalityOut'
-            country: string
-            code: string
-          } | null
-        }
-        additionalFields?: Array<{
-          __typename?: 'PlayerAdditionalField'
-          label: string
-          value: string
-        }> | null
-      }
-}
+
+export type RetrievePlayerQuery = { __typename?: 'Query', retrievePlayer: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null } };
 
 export type SetPlayerSportMutationVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type SetPlayerSportMutation = {
-  __typename?: 'Mutation'
-  setPlayerSport?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type SetPlayerSportMutation = { __typename?: 'Mutation', setPlayerSport?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type UpdatePlayerMutationVariables = Exact<{
-  data: PlayerInUpdate
-}>
+  data: PlayerInUpdate;
+}>;
 
-export type UpdatePlayerMutation = {
-  __typename?: 'Mutation'
-  updatePlayer?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type UpdatePlayerMutation = { __typename?: 'Mutation', updatePlayer?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type UpdatePlayerContactMutationVariables = Exact<{
-  data: PlayerContactInUpdate
-}>
+  data: PlayerContactInUpdate;
+}>;
 
-export type UpdatePlayerContactMutation = {
-  __typename?: 'Mutation'
-  updatePlayerContact?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type UpdatePlayerContactMutation = { __typename?: 'Mutation', updatePlayerContact?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type UpdatePlayerPersonalInfoMutationVariables = Exact<{
-  data: PlayerPersonalInfoInUpdate
-}>
+  data: PlayerPersonalInfoInUpdate;
+}>;
 
-export type UpdatePlayerPersonalInfoMutation = {
-  __typename?: 'Mutation'
-  updatePlayerPersonalInfo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
 
-export type FullPlayerFragment = {
-  __typename?: 'Player'
-  id: string
-  userID: string
-  sport?: {
-    __typename?: 'Sport'
-    id: string
-    name: string
-    uniqueFields?: Array<{
-      __typename?: 'UniqueField'
-      sportID: string
-      label: string
-    }> | null
-    positions?: {
-      __typename?: 'PositionList'
-      total: number
-      positions: Array<{
-        __typename?: 'Position'
-        id: string
-        sportID: string
-        name: string
-        stats: Array<{ __typename?: 'Stat'; name: string }>
-      }>
-    } | null
-  } | null
-  playerPositions?: Array<{
-    __typename?: 'PlayerPosition'
-    name: string
-    stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-  }> | null
-  contact: {
-    __typename?: 'PlayerContact'
-    phone?: string | null
-    youtube?: string | null
-    facebook?: string | null
-    twitter?: string | null
-    instagram?: string | null
-  }
-  personal: {
-    __typename?: 'PlayerPersonalInfo'
-    dateOfBirth?: string | null
-    gender?: Gender | null
-    height?: string | null
-    weight?: string | null
-    about?: string | null
-    nationality?: {
-      __typename?: 'UserNationalityOut'
-      country: string
-      code: string
-    } | null
-  }
-  additionalFields?: Array<{
-    __typename?: 'PlayerAdditionalField'
-    label: string
-    value: string
-  }> | null
-}
+export type UpdatePlayerPersonalInfoMutation = { __typename?: 'Mutation', updatePlayerPersonalInfo?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
-export type SimplePlayerFragment = {
-  __typename?: 'Player'
-  id: string
-  userID: string
-  sport?: { __typename?: 'Sport'; id: string; name: string } | null
-  playerPositions?: Array<{
-    __typename?: 'PlayerPosition'
-    name: string
-    stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-  }> | null
-}
+export type FullPlayerFragment = { __typename?: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null };
 
-export type PlayerListFragment = {
-  __typename?: 'PlayerList'
-  total: number
-  players: Array<{
-    __typename?: 'Player'
-    id: string
-    userID: string
-    sport?: {
-      __typename?: 'Sport'
-      id: string
-      name: string
-      uniqueFields?: Array<{
-        __typename?: 'UniqueField'
-        sportID: string
-        label: string
-      }> | null
-      positions?: {
-        __typename?: 'PositionList'
-        total: number
-        positions: Array<{
-          __typename?: 'Position'
-          id: string
-          sportID: string
-          name: string
-          stats: Array<{ __typename?: 'Stat'; name: string }>
-        }>
-      } | null
-    } | null
-    playerPositions?: Array<{
-      __typename?: 'PlayerPosition'
-      name: string
-      stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-    }> | null
-    contact: {
-      __typename?: 'PlayerContact'
-      phone?: string | null
-      youtube?: string | null
-      facebook?: string | null
-      twitter?: string | null
-      instagram?: string | null
-    }
-    personal: {
-      __typename?: 'PlayerPersonalInfo'
-      dateOfBirth?: string | null
-      gender?: Gender | null
-      height?: string | null
-      weight?: string | null
-      about?: string | null
-      nationality?: {
-        __typename?: 'UserNationalityOut'
-        country: string
-        code: string
-      } | null
-    }
-    additionalFields?: Array<{
-      __typename?: 'PlayerAdditionalField'
-      label: string
-      value: string
-    }> | null
-  }>
-}
+export type SimplePlayerFragment = { __typename?: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null };
 
-export type FullAuthPlayerFragment = {
-  __typename?: 'AuthPlayer'
-  id: string
-  userID: string
-  name: string
-  login: string
-  email: string
-  role: ERole
-  sport?: {
-    __typename?: 'Sport'
-    id: string
-    name: string
-    uniqueFields?: Array<{
-      __typename?: 'UniqueField'
-      sportID: string
-      label: string
-    }> | null
-    positions?: {
-      __typename?: 'PositionList'
-      total: number
-      positions: Array<{
-        __typename?: 'Position'
-        id: string
-        sportID: string
-        name: string
-        stats: Array<{ __typename?: 'Stat'; name: string }>
-      }>
-    } | null
-  } | null
-  playerPositions?: Array<{
-    __typename?: 'PlayerPosition'
-    name: string
-    stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-  }> | null
-  contact: {
-    __typename?: 'PlayerContact'
-    phone?: string | null
-    youtube?: string | null
-    facebook?: string | null
-    twitter?: string | null
-    instagram?: string | null
-  }
-  personal: {
-    __typename?: 'PlayerPersonalInfo'
-    dateOfBirth?: string | null
-    gender?: Gender | null
-    height?: string | null
-    weight?: string | null
-    about?: string | null
-    nationality?: {
-      __typename?: 'UserNationalityOut'
-      country: string
-      code: string
-    } | null
-  }
-  avatar?: { __typename?: 'File'; id: string; path: string } | null
-  additionalFields?: Array<{
-    __typename?: 'PlayerAdditionalField'
-    label: string
-    value: string
-  }> | null
-}
+export type PlayerListFragment = { __typename?: 'PlayerList', total: number, players: Array<{ __typename?: 'Player', id: string, userID: string, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null }> };
 
-export type FullPlayerPositionFragment = {
-  __typename?: 'PlayerPosition'
-  name: string
-  stats: Array<{ __typename?: 'PlayerPosStat'; label: string; value: string }>
-}
+export type FullAuthPlayerFragment = { __typename?: 'AuthPlayer', id: string, userID: string, name: string, login: string, email: string, role: ERole, sport?: { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } | null, playerPositions?: Array<{ __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> }> | null, contact: { __typename?: 'PlayerContact', phone?: string | null, youtube?: string | null, facebook?: string | null, twitter?: string | null, instagram?: string | null }, personal: { __typename?: 'PlayerPersonalInfo', dateOfBirth?: string | null, gender?: Gender | null, height?: string | null, weight?: string | null, about?: string | null, nationality?: { __typename?: 'UserNationalityOut', country: string, code: string } | null }, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null, additionalFields?: Array<{ __typename?: 'PlayerAdditionalField', label: string, value: string }> | null };
+
+export type FullPlayerPositionFragment = { __typename?: 'PlayerPosition', name: string, stats: Array<{ __typename?: 'PlayerPosStat', label: string, value: string }> };
 
 export type AddSportUniqueFieldMutationVariables = Exact<{
-  input: UniqueFieldIn
-}>
+  input: UniqueFieldIn;
+}>;
 
-export type AddSportUniqueFieldMutation = {
-  __typename?: 'Mutation'
-  addSportUniqueField?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type AddSportUniqueFieldMutation = { __typename?: 'Mutation', addSportUniqueField?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type CreatePositionMutationVariables = Exact<{
-  input: PositionIn
-}>
+  input: PositionIn;
+}>;
 
-export type CreatePositionMutation = {
-  __typename?: 'Mutation'
-  createPosition:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'Position'
-        id: string
-        sportID: string
-        name: string
-        stats: Array<{ __typename?: 'Stat'; name: string }>
-      }
-}
+
+export type CreatePositionMutation = { __typename?: 'Mutation', createPosition: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> } };
 
 export type CreateSportMutationVariables = Exact<{
-  input: SportIn
-}>
+  input: SportIn;
+}>;
 
-export type CreateSportMutation = {
-  __typename?: 'Mutation'
-  createSport:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | { __typename: 'Sport'; id: string; name: string }
-}
+
+export type CreateSportMutation = { __typename?: 'Mutation', createSport: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Sport', id: string, name: string } };
 
 export type GetSportPositionsQueryVariables = Exact<{
-  sportID: Scalars['ID']['input']
-}>
+  sportID: Scalars['ID']['input'];
+}>;
 
-export type GetSportPositionsQuery = {
-  __typename?: 'Query'
-  getSportPositions:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'PositionList'
-        total: number
-        positions: Array<{
-          __typename?: 'Position'
-          id: string
-          sportID: string
-          name: string
-          stats: Array<{ __typename?: 'Stat'; name: string }>
-        }>
-      }
-}
+
+export type GetSportPositionsQuery = { __typename?: 'Query', getSportPositions: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } };
 
 export type GetSportsQueryVariables = Exact<{
-  skip?: InputMaybe<Scalars['String']['input']>
-  limit?: Scalars['Int']['input']
-}>
+  skip?: InputMaybe<Scalars['String']['input']>;
+  limit?: Scalars['Int']['input'];
+}>;
 
-export type GetSportsQuery = {
-  __typename?: 'Query'
-  getSports:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'SportList'
-        total: number
-        sports: Array<{
-          __typename?: 'Sport'
-          id: string
-          name: string
-          uniqueFields?: Array<{
-            __typename?: 'UniqueField'
-            sportID: string
-            label: string
-          }> | null
-          positions?: {
-            __typename?: 'PositionList'
-            total: number
-            positions: Array<{
-              __typename?: 'Position'
-              id: string
-              sportID: string
-              name: string
-              stats: Array<{ __typename?: 'Stat'; name: string }>
-            }>
-          } | null
-        }>
-      }
-}
+
+export type GetSportsQuery = { __typename?: 'Query', getSports: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'SportList', total: number, sports: Array<{ __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null }> } };
 
 export type RetrieveSportQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type RetrieveSportQuery = {
-  __typename?: 'Query'
-  retrieveSport:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'Sport'
-        id: string
-        name: string
-        uniqueFields?: Array<{
-          __typename?: 'UniqueField'
-          sportID: string
-          label: string
-        }> | null
-        positions?: {
-          __typename?: 'PositionList'
-          total: number
-          positions: Array<{
-            __typename?: 'Position'
-            id: string
-            sportID: string
-            name: string
-            stats: Array<{ __typename?: 'Stat'; name: string }>
-          }>
-        } | null
-      }
-}
 
-export type FullSportFragment = {
-  __typename?: 'Sport'
-  id: string
-  name: string
-  uniqueFields?: Array<{
-    __typename?: 'UniqueField'
-    sportID: string
-    label: string
-  }> | null
-  positions?: {
-    __typename?: 'PositionList'
-    total: number
-    positions: Array<{
-      __typename?: 'Position'
-      id: string
-      sportID: string
-      name: string
-      stats: Array<{ __typename?: 'Stat'; name: string }>
-    }>
-  } | null
-}
+export type RetrieveSportQuery = { __typename?: 'Query', retrieveSport: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null } };
 
-export type SimpleSportFragment = { __typename?: 'Sport'; id: string; name: string }
+export type FullSportFragment = { __typename?: 'Sport', id: string, name: string, uniqueFields?: Array<{ __typename?: 'UniqueField', sportID: string, label: string }> | null, positions?: { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> } | null };
 
-export type FullPositionFragment = {
-  __typename?: 'Position'
-  id: string
-  sportID: string
-  name: string
-  stats: Array<{ __typename?: 'Stat'; name: string }>
-}
+export type SimpleSportFragment = { __typename?: 'Sport', id: string, name: string };
 
-export type PositionListFragment = {
-  __typename?: 'PositionList'
-  total: number
-  positions: Array<{
-    __typename?: 'Position'
-    id: string
-    sportID: string
-    name: string
-    stats: Array<{ __typename?: 'Stat'; name: string }>
-  }>
-}
+export type FullPositionFragment = { __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> };
+
+export type PositionListFragment = { __typename?: 'PositionList', total: number, positions: Array<{ __typename?: 'Position', id: string, sportID: string, name: string, stats: Array<{ __typename?: 'Stat', name: string }> }> };
 
 export type RetrieveUserQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type RetrieveUserQuery = {
-  __typename?: 'Query'
-  retrieveUser:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'User'
-        id: string
-        name: string
-        login: string
-        email: string
-        role: ERole
-        avatar?: { __typename?: 'File'; id: string; path: string } | null
-      }
-}
+
+export type RetrieveUserQuery = { __typename?: 'Query', retrieveUser: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'User', id: string, name: string, login: string, email: string, role: ERole, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null } };
 
 export type UpdateUserMutationVariables = Exact<{
-  data: UserInUpdate
-}>
+  data: UserInUpdate;
+}>;
 
-export type UpdateUserMutation = {
-  __typename?: 'Mutation'
-  updateUser?: {
-    __typename?: 'ErrorWithFields'
-    status: ErrorStatus
-    fields: Array<string>
-  } | null
-}
 
-export type FullUserFragment = {
-  __typename?: 'User'
-  id: string
-  name: string
-  login: string
-  email: string
-  role: ERole
-  avatar?: { __typename?: 'File'; id: string; path: string } | null
-}
+export type UpdateUserMutation = { __typename?: 'Mutation', updateUser?: { __typename?: 'ErrorWithFields', status: ErrorStatus, fields: Array<string> } | null };
 
-export type SimpleUserFragment = {
-  __typename?: 'User'
-  id: string
-  name: string
-  login: string
-  avatar?: { __typename?: 'File'; id: string; path: string } | null
-}
+export type FullUserFragment = { __typename?: 'User', id: string, name: string, login: string, email: string, role: ERole, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null };
 
-export type GetMyVideosQueryVariables = Exact<{ [key: string]: never }>
+export type SimpleUserFragment = { __typename?: 'User', id: string, name: string, login: string, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null };
 
-export type GetMyVideosQuery = {
-  __typename?: 'Query'
-  getMyVideos:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'VideoList'
-        total: number
-        videos: Array<{
-          __typename?: 'Video'
-          id: string
-          description?: string | null
-          isApproved: boolean
-          showInProfile: boolean
-          author: {
-            __typename?: 'User'
-            id: string
-            name: string
-            login: string
-            avatar?: { __typename?: 'File'; id: string; path: string } | null
-          }
-          attachement: { __typename?: 'File'; id: string; path: string }
-        }>
-      }
-}
+export type GetMyVideosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMyVideosQuery = { __typename?: 'Query', getMyVideos: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'VideoList', total: number, videos: Array<{ __typename?: 'Video', id: string, description?: string | null, isApproved: boolean, showInProfile: boolean, author: { __typename?: 'User', id: string, name: string, login: string, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null }, attachement: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } }> } };
 
 export type HideVideoMutationVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type HideVideoMutation = {
-  __typename?: 'Mutation'
-  hideVideo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type HideVideoMutation = { __typename?: 'Mutation', hideVideo?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type PostVideoMutationVariables = Exact<{
-  input: VideoIn
-}>
+  input: VideoIn;
+}>;
 
-export type PostVideoMutation = {
-  __typename?: 'Mutation'
-  postVideo:
-    | { __typename: 'BaseError'; status: ErrorStatus }
-    | {
-        __typename: 'Video'
-        id: string
-        description?: string | null
-        isApproved: boolean
-        showInProfile: boolean
-        author: {
-          __typename?: 'User'
-          id: string
-          name: string
-          login: string
-          avatar?: { __typename?: 'File'; id: string; path: string } | null
-        }
-        attachement: { __typename?: 'File'; id: string; path: string }
-      }
-}
+
+export type PostVideoMutation = { __typename?: 'Mutation', postVideo: { __typename: 'BaseError', status: ErrorStatus } | { __typename: 'Video', id: string, description?: string | null, isApproved: boolean, showInProfile: boolean, author: { __typename?: 'User', id: string, name: string, login: string, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null }, attachement: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } } };
 
 export type RequestApprovalMutationVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type RequestApprovalMutation = {
-  __typename?: 'Mutation'
-  requestApproval?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
+
+export type RequestApprovalMutation = { __typename?: 'Mutation', requestApproval?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
 export type ShowVideoMutationVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
+  id: Scalars['ID']['input'];
+}>;
 
-export type ShowVideoMutation = {
-  __typename?: 'Mutation'
-  showVideo?: { __typename?: 'BaseError'; status: ErrorStatus } | null
-}
 
-export type FullVideoFragment = {
-  __typename?: 'Video'
-  id: string
-  description?: string | null
-  isApproved: boolean
-  showInProfile: boolean
-  author: {
-    __typename?: 'User'
-    id: string
-    name: string
-    login: string
-    avatar?: { __typename?: 'File'; id: string; path: string } | null
-  }
-  attachement: { __typename?: 'File'; id: string; path: string }
-}
+export type ShowVideoMutation = { __typename?: 'Mutation', showVideo?: { __typename?: 'BaseError', status: ErrorStatus } | null };
 
-export type VideoListFragment = {
-  __typename?: 'VideoList'
-  total: number
-  videos: Array<{
-    __typename?: 'Video'
-    id: string
-    description?: string | null
-    isApproved: boolean
-    showInProfile: boolean
-    author: {
-      __typename?: 'User'
-      id: string
-      name: string
-      login: string
-      avatar?: { __typename?: 'File'; id: string; path: string } | null
-    }
-    attachement: { __typename?: 'File'; id: string; path: string }
-  }>
-}
+export type FullVideoFragment = { __typename?: 'Video', id: string, description?: string | null, isApproved: boolean, showInProfile: boolean, author: { __typename?: 'User', id: string, name: string, login: string, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null }, attachement: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } };
+
+export type VideoListFragment = { __typename?: 'VideoList', total: number, videos: Array<{ __typename?: 'Video', id: string, description?: string | null, isApproved: boolean, showInProfile: boolean, author: { __typename?: 'User', id: string, name: string, login: string, avatar?: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } | null }, attachement: { __typename?: 'File', id: string, path: string, thumbnailUrl?: string | null } }> };
 
 export const SimpleSportFragmentDoc = gql`
-  fragment SimpleSport on Sport {
-    id
-    name
-  }
-`
+    fragment SimpleSport on Sport {
+  id
+  name
+}
+    `;
 export const FullPlayerPositionFragmentDoc = gql`
-  fragment FullPlayerPosition on PlayerPosition {
-    name
-    stats {
-      label
-      value
-    }
+    fragment FullPlayerPosition on PlayerPosition {
+  name
+  stats {
+    label
+    value
   }
-`
+}
+    `;
 export const SimplePlayerFragmentDoc = gql`
-  fragment SimplePlayer on Player {
-    id
-    userID
-    sport {
-      ...SimpleSport
-    }
-    playerPositions {
-      ...FullPlayerPosition
-    }
+    fragment SimplePlayer on Player {
+  id
+  userID
+  sport {
+    ...SimpleSport
   }
-  ${SimpleSportFragmentDoc}
-  ${FullPlayerPositionFragmentDoc}
-`
+  playerPositions {
+    ...FullPlayerPosition
+  }
+}
+    ${SimpleSportFragmentDoc}
+${FullPlayerPositionFragmentDoc}`;
 export const FullPositionFragmentDoc = gql`
-  fragment FullPosition on Position {
-    id
-    sportID
+    fragment FullPosition on Position {
+  id
+  sportID
+  name
+  stats {
     name
-    stats {
-      name
-    }
   }
-`
+}
+    `;
 export const PositionListFragmentDoc = gql`
-  fragment PositionList on PositionList {
-    total
-    positions {
-      ...FullPosition
-    }
+    fragment PositionList on PositionList {
+  total
+  positions {
+    ...FullPosition
   }
-  ${FullPositionFragmentDoc}
-`
+}
+    ${FullPositionFragmentDoc}`;
 export const FullSportFragmentDoc = gql`
-  fragment FullSport on Sport {
-    id
-    name
-    uniqueFields {
-      sportID
-      label
-    }
-    positions {
-      ...PositionList
-    }
+    fragment FullSport on Sport {
+  id
+  name
+  uniqueFields {
+    sportID
+    label
   }
-  ${PositionListFragmentDoc}
-`
+  positions {
+    ...PositionList
+  }
+}
+    ${PositionListFragmentDoc}`;
 export const FullPlayerFragmentDoc = gql`
-  fragment FullPlayer on Player {
-    id
-    userID
-    sport {
-      ...FullSport
-    }
-    playerPositions {
-      ...FullPlayerPosition
-    }
-    contact {
-      phone
-      youtube
-      facebook
-      twitter
-      instagram
-    }
-    personal {
-      dateOfBirth
-      gender
-      nationality {
-        country
-        code
-      }
-      height
-      weight
-      about
-    }
-    additionalFields {
-      label
-      value
-    }
+    fragment FullPlayer on Player {
+  id
+  userID
+  sport {
+    ...FullSport
   }
-  ${FullSportFragmentDoc}
-  ${FullPlayerPositionFragmentDoc}
-`
+  playerPositions {
+    ...FullPlayerPosition
+  }
+  contact {
+    phone
+    youtube
+    facebook
+    twitter
+    instagram
+  }
+  personal {
+    dateOfBirth
+    gender
+    nationality {
+      country
+      code
+    }
+    height
+    weight
+    about
+  }
+  additionalFields {
+    label
+    value
+  }
+}
+    ${FullSportFragmentDoc}
+${FullPlayerPositionFragmentDoc}`;
 export const PlayerListFragmentDoc = gql`
-  fragment PlayerList on PlayerList {
-    total
-    players {
-      ...FullPlayer
-    }
+    fragment PlayerList on PlayerList {
+  total
+  players {
+    ...FullPlayer
   }
-  ${FullPlayerFragmentDoc}
-`
+}
+    ${FullPlayerFragmentDoc}`;
 export const MediaFragmentDoc = gql`
-  fragment Media on File {
-    id
-    path
-  }
-`
+    fragment Media on File {
+  id
+  path
+  thumbnailUrl
+}
+    `;
 export const FullAuthPlayerFragmentDoc = gql`
-  fragment FullAuthPlayer on AuthPlayer {
-    id
-    userID
-    sport {
-      ...FullSport
-    }
-    playerPositions {
-      ...FullPlayerPosition
-    }
-    contact {
-      phone
-      youtube
-      facebook
-      twitter
-      instagram
-    }
-    personal {
-      dateOfBirth
-      gender
-      nationality {
-        country
-        code
-      }
-      height
-      weight
-      about
-    }
-    name
-    login
-    email
-    role
-    avatar {
-      ...Media
-    }
-    additionalFields {
-      label
-      value
-    }
+    fragment FullAuthPlayer on AuthPlayer {
+  id
+  userID
+  sport {
+    ...FullSport
   }
-  ${FullSportFragmentDoc}
-  ${FullPlayerPositionFragmentDoc}
-  ${MediaFragmentDoc}
-`
+  playerPositions {
+    ...FullPlayerPosition
+  }
+  contact {
+    phone
+    youtube
+    facebook
+    twitter
+    instagram
+  }
+  personal {
+    dateOfBirth
+    gender
+    nationality {
+      country
+      code
+    }
+    height
+    weight
+    about
+  }
+  name
+  login
+  email
+  role
+  avatar {
+    ...Media
+  }
+  additionalFields {
+    label
+    value
+  }
+}
+    ${FullSportFragmentDoc}
+${FullPlayerPositionFragmentDoc}
+${MediaFragmentDoc}`;
 export const FullUserFragmentDoc = gql`
-  fragment FullUser on User {
-    id
-    name
-    login
-    email
-    role
-    avatar {
-      ...Media
-    }
+    fragment FullUser on User {
+  id
+  name
+  login
+  email
+  role
+  avatar {
+    ...Media
   }
-  ${MediaFragmentDoc}
-`
+}
+    ${MediaFragmentDoc}`;
 export const SimpleUserFragmentDoc = gql`
-  fragment SimpleUser on User {
-    id
-    name
-    login
-    avatar {
-      ...Media
-    }
+    fragment SimpleUser on User {
+  id
+  name
+  login
+  avatar {
+    ...Media
   }
-  ${MediaFragmentDoc}
-`
+}
+    ${MediaFragmentDoc}`;
 export const FullVideoFragmentDoc = gql`
-  fragment FullVideo on Video {
-    id
-    author {
-      ...SimpleUser
-    }
-    attachement {
-      ...Media
-    }
-    description
-    isApproved
-    showInProfile
+    fragment FullVideo on Video {
+  id
+  author {
+    ...SimpleUser
   }
-  ${SimpleUserFragmentDoc}
-  ${MediaFragmentDoc}
-`
+  attachement {
+    ...Media
+  }
+  description
+  isApproved
+  showInProfile
+}
+    ${SimpleUserFragmentDoc}
+${MediaFragmentDoc}`;
 export const VideoListFragmentDoc = gql`
-  fragment VideoList on VideoList {
-    total
-    videos {
-      ...FullVideo
-    }
+    fragment VideoList on VideoList {
+  total
+  videos {
+    ...FullVideo
   }
-  ${FullVideoFragmentDoc}
-`
+}
+    ${FullVideoFragmentDoc}`;
 export const AdminLoginDocument = gql`
-  mutation AdminLogin($input: AdminIn) {
-    adminLogin(input: $input) {
-      __typename
-      ... on AuthAdmin {
-        admin {
-          id
-          login
-        }
-        token
+    mutation AdminLogin($input: AdminIn) {
+  adminLogin(input: $input) {
+    __typename
+    ... on AuthAdmin {
+      admin {
+        id
+        login
       }
-      ... on BaseError {
-        status
-      }
+      token
+    }
+    ... on BaseError {
+      status
     }
   }
-`
-export type AdminLoginMutationFn = Apollo.MutationFunction<
-  AdminLoginMutation,
-  AdminLoginMutationVariables
->
+}
+    `;
+export type AdminLoginMutationFn = Apollo.MutationFunction<AdminLoginMutation, AdminLoginMutationVariables>;
 
 /**
  * __useAdminLoginMutation__
@@ -1899,35 +1190,21 @@ export type AdminLoginMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAdminLoginMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AdminLoginMutation,
-    AdminLoginMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<AdminLoginMutation, AdminLoginMutationVariables>(
-    AdminLoginDocument,
-    options,
-  )
-}
-export type AdminLoginMutationHookResult = ReturnType<typeof useAdminLoginMutation>
-export type AdminLoginMutationResult = Apollo.MutationResult<AdminLoginMutation>
-export type AdminLoginMutationOptions = Apollo.BaseMutationOptions<
-  AdminLoginMutation,
-  AdminLoginMutationVariables
->
+export function useAdminLoginMutation(baseOptions?: Apollo.MutationHookOptions<AdminLoginMutation, AdminLoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AdminLoginMutation, AdminLoginMutationVariables>(AdminLoginDocument, options);
+      }
+export type AdminLoginMutationHookResult = ReturnType<typeof useAdminLoginMutation>;
+export type AdminLoginMutationResult = Apollo.MutationResult<AdminLoginMutation>;
+export type AdminLoginMutationOptions = Apollo.BaseMutationOptions<AdminLoginMutation, AdminLoginMutationVariables>;
 export const AdminLogoutDocument = gql`
-  mutation AdminLogout($token: String!) {
-    adminLogout(token: $token) {
-      status
-    }
+    mutation AdminLogout($token: String!) {
+  adminLogout(token: $token) {
+    status
   }
-`
-export type AdminLogoutMutationFn = Apollo.MutationFunction<
-  AdminLogoutMutation,
-  AdminLogoutMutationVariables
->
+}
+    `;
+export type AdminLogoutMutationFn = Apollo.MutationFunction<AdminLogoutMutation, AdminLogoutMutationVariables>;
 
 /**
  * __useAdminLogoutMutation__
@@ -1946,36 +1223,22 @@ export type AdminLogoutMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAdminLogoutMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AdminLogoutMutation,
-    AdminLogoutMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<AdminLogoutMutation, AdminLogoutMutationVariables>(
-    AdminLogoutDocument,
-    options,
-  )
-}
-export type AdminLogoutMutationHookResult = ReturnType<typeof useAdminLogoutMutation>
-export type AdminLogoutMutationResult = Apollo.MutationResult<AdminLogoutMutation>
-export type AdminLogoutMutationOptions = Apollo.BaseMutationOptions<
-  AdminLogoutMutation,
-  AdminLogoutMutationVariables
->
+export function useAdminLogoutMutation(baseOptions?: Apollo.MutationHookOptions<AdminLogoutMutation, AdminLogoutMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AdminLogoutMutation, AdminLogoutMutationVariables>(AdminLogoutDocument, options);
+      }
+export type AdminLogoutMutationHookResult = ReturnType<typeof useAdminLogoutMutation>;
+export type AdminLogoutMutationResult = Apollo.MutationResult<AdminLogoutMutation>;
+export type AdminLogoutMutationOptions = Apollo.BaseMutationOptions<AdminLogoutMutation, AdminLogoutMutationVariables>;
 export const ChangeAdminPasswordDocument = gql`
-  mutation ChangeAdminPassword($oldPassword: String!, $newPassword: String!) {
-    changeAdminPassword(oldPassword: $oldPassword, newPassword: $newPassword) {
-      status
-      fields
-    }
+    mutation ChangeAdminPassword($oldPassword: String!, $newPassword: String!) {
+  changeAdminPassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    status
+    fields
   }
-`
-export type ChangeAdminPasswordMutationFn = Apollo.MutationFunction<
-  ChangeAdminPasswordMutation,
-  ChangeAdminPasswordMutationVariables
->
+}
+    `;
+export type ChangeAdminPasswordMutationFn = Apollo.MutationFunction<ChangeAdminPasswordMutation, ChangeAdminPasswordMutationVariables>;
 
 /**
  * __useChangeAdminPasswordMutation__
@@ -1995,49 +1258,32 @@ export type ChangeAdminPasswordMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useChangeAdminPasswordMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    ChangeAdminPasswordMutation,
-    ChangeAdminPasswordMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    ChangeAdminPasswordMutation,
-    ChangeAdminPasswordMutationVariables
-  >(ChangeAdminPasswordDocument, options)
-}
-export type ChangeAdminPasswordMutationHookResult = ReturnType<
-  typeof useChangeAdminPasswordMutation
->
-export type ChangeAdminPasswordMutationResult =
-  Apollo.MutationResult<ChangeAdminPasswordMutation>
-export type ChangeAdminPasswordMutationOptions = Apollo.BaseMutationOptions<
-  ChangeAdminPasswordMutation,
-  ChangeAdminPasswordMutationVariables
->
+export function useChangeAdminPasswordMutation(baseOptions?: Apollo.MutationHookOptions<ChangeAdminPasswordMutation, ChangeAdminPasswordMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChangeAdminPasswordMutation, ChangeAdminPasswordMutationVariables>(ChangeAdminPasswordDocument, options);
+      }
+export type ChangeAdminPasswordMutationHookResult = ReturnType<typeof useChangeAdminPasswordMutation>;
+export type ChangeAdminPasswordMutationResult = Apollo.MutationResult<ChangeAdminPasswordMutation>;
+export type ChangeAdminPasswordMutationOptions = Apollo.BaseMutationOptions<ChangeAdminPasswordMutation, ChangeAdminPasswordMutationVariables>;
 export const CreateAdminDocument = gql`
-  mutation CreateAdmin($input: AdminIn!) {
-    createAdmin(input: $input) {
-      __typename
-      ... on AuthAdmin {
-        admin {
-          id
-          login
-        }
-        token
+    mutation CreateAdmin($input: AdminIn!) {
+  createAdmin(input: $input) {
+    __typename
+    ... on AuthAdmin {
+      admin {
+        id
+        login
       }
-      ... on ErrorWithFields {
-        status
-        fields
-      }
+      token
+    }
+    ... on ErrorWithFields {
+      status
+      fields
     }
   }
-`
-export type CreateAdminMutationFn = Apollo.MutationFunction<
-  CreateAdminMutation,
-  CreateAdminMutationVariables
->
+}
+    `;
+export type CreateAdminMutationFn = Apollo.MutationFunction<CreateAdminMutation, CreateAdminMutationVariables>;
 
 /**
  * __useCreateAdminMutation__
@@ -2056,38 +1302,27 @@ export type CreateAdminMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreateAdminMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateAdminMutation,
-    CreateAdminMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateAdminMutation, CreateAdminMutationVariables>(
-    CreateAdminDocument,
-    options,
-  )
-}
-export type CreateAdminMutationHookResult = ReturnType<typeof useCreateAdminMutation>
-export type CreateAdminMutationResult = Apollo.MutationResult<CreateAdminMutation>
-export type CreateAdminMutationOptions = Apollo.BaseMutationOptions<
-  CreateAdminMutation,
-  CreateAdminMutationVariables
->
+export function useCreateAdminMutation(baseOptions?: Apollo.MutationHookOptions<CreateAdminMutation, CreateAdminMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateAdminMutation, CreateAdminMutationVariables>(CreateAdminDocument, options);
+      }
+export type CreateAdminMutationHookResult = ReturnType<typeof useCreateAdminMutation>;
+export type CreateAdminMutationResult = Apollo.MutationResult<CreateAdminMutation>;
+export type CreateAdminMutationOptions = Apollo.BaseMutationOptions<CreateAdminMutation, CreateAdminMutationVariables>;
 export const GetAdminMeDocument = gql`
-  query GetAdminMe {
-    getAdminMe {
-      __typename
-      ... on Admin {
-        id
-        login
-      }
-      ... on BaseError {
-        status
-      }
+    query GetAdminMe {
+  getAdminMe {
+    __typename
+    ... on Admin {
+      id
+      login
+    }
+    ... on BaseError {
+      status
     }
   }
-`
+}
+    `;
 
 /**
  * __useGetAdminMeQuery__
@@ -2104,57 +1339,31 @@ export const GetAdminMeDocument = gql`
  *   },
  * });
  */
-export function useGetAdminMeQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetAdminMeQuery, GetAdminMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(
-    GetAdminMeDocument,
-    options,
-  )
-}
-export function useGetAdminMeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetAdminMeQuery, GetAdminMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(
-    GetAdminMeDocument,
-    options,
-  )
-}
-export function useGetAdminMeSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    GetAdminMeQuery,
-    GetAdminMeQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(
-    GetAdminMeDocument,
-    options,
-  )
-}
-export type GetAdminMeQueryHookResult = ReturnType<typeof useGetAdminMeQuery>
-export type GetAdminMeLazyQueryHookResult = ReturnType<typeof useGetAdminMeLazyQuery>
-export type GetAdminMeSuspenseQueryHookResult = ReturnType<
-  typeof useGetAdminMeSuspenseQuery
->
-export type GetAdminMeQueryResult = Apollo.QueryResult<
-  GetAdminMeQuery,
-  GetAdminMeQueryVariables
->
+export function useGetAdminMeQuery(baseOptions?: Apollo.QueryHookOptions<GetAdminMeQuery, GetAdminMeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(GetAdminMeDocument, options);
+      }
+export function useGetAdminMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAdminMeQuery, GetAdminMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(GetAdminMeDocument, options);
+        }
+export function useGetAdminMeSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAdminMeQuery, GetAdminMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAdminMeQuery, GetAdminMeQueryVariables>(GetAdminMeDocument, options);
+        }
+export type GetAdminMeQueryHookResult = ReturnType<typeof useGetAdminMeQuery>;
+export type GetAdminMeLazyQueryHookResult = ReturnType<typeof useGetAdminMeLazyQuery>;
+export type GetAdminMeSuspenseQueryHookResult = ReturnType<typeof useGetAdminMeSuspenseQuery>;
+export type GetAdminMeQueryResult = Apollo.QueryResult<GetAdminMeQuery, GetAdminMeQueryVariables>;
 export const ChangePasswordDocument = gql`
-  mutation ChangePassword($oldPassword: String!, $newPassword: String!) {
-    changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {
-      status
-      fields
-    }
+    mutation ChangePassword($oldPassword: String!, $newPassword: String!) {
+  changePassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    status
+    fields
   }
-`
-export type ChangePasswordMutationFn = Apollo.MutationFunction<
-  ChangePasswordMutation,
-  ChangePasswordMutationVariables
->
+}
+    `;
+export type ChangePasswordMutationFn = Apollo.MutationFunction<ChangePasswordMutation, ChangePasswordMutationVariables>;
 
 /**
  * __useChangePasswordMutation__
@@ -2174,40 +1383,26 @@ export type ChangePasswordMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useChangePasswordMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    ChangePasswordMutation,
-    ChangePasswordMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<ChangePasswordMutation, ChangePasswordMutationVariables>(
-    ChangePasswordDocument,
-    options,
-  )
-}
-export type ChangePasswordMutationHookResult = ReturnType<
-  typeof useChangePasswordMutation
->
-export type ChangePasswordMutationResult = Apollo.MutationResult<ChangePasswordMutation>
-export type ChangePasswordMutationOptions = Apollo.BaseMutationOptions<
-  ChangePasswordMutation,
-  ChangePasswordMutationVariables
->
+export function useChangePasswordMutation(baseOptions?: Apollo.MutationHookOptions<ChangePasswordMutation, ChangePasswordMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ChangePasswordMutation, ChangePasswordMutationVariables>(ChangePasswordDocument, options);
+      }
+export type ChangePasswordMutationHookResult = ReturnType<typeof useChangePasswordMutation>;
+export type ChangePasswordMutationResult = Apollo.MutationResult<ChangePasswordMutation>;
+export type ChangePasswordMutationOptions = Apollo.BaseMutationOptions<ChangePasswordMutation, ChangePasswordMutationVariables>;
 export const GetMeDocument = gql`
-  query GetMe {
-    getMe {
-      __typename
-      ... on User {
-        ...FullUser
-      }
-      ... on BaseError {
-        status
-      }
+    query GetMe {
+  getMe {
+    __typename
+    ... on User {
+      ...FullUser
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${FullUserFragmentDoc}
-`
+}
+    ${FullUserFragmentDoc}`;
 
 /**
  * __useGetMeQuery__
@@ -2224,41 +1419,35 @@ export const GetMeDocument = gql`
  *   },
  * });
  */
-export function useGetMeQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetMeQuery, GetMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options)
-}
-export function useGetMeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options)
-}
-export function useGetMeSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options)
-}
-export type GetMeQueryHookResult = ReturnType<typeof useGetMeQuery>
-export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>
-export type GetMeSuspenseQueryHookResult = ReturnType<typeof useGetMeSuspenseQuery>
-export type GetMeQueryResult = Apollo.QueryResult<GetMeQuery, GetMeQueryVariables>
+export function useGetMeQuery(baseOptions?: Apollo.QueryHookOptions<GetMeQuery, GetMeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+      }
+export function useGetMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+        }
+export function useGetMeSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+        }
+export type GetMeQueryHookResult = ReturnType<typeof useGetMeQuery>;
+export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>;
+export type GetMeSuspenseQueryHookResult = ReturnType<typeof useGetMeSuspenseQuery>;
+export type GetMeQueryResult = Apollo.QueryResult<GetMeQuery, GetMeQueryVariables>;
 export const IsEmailExistDocument = gql`
-  query IsEmailExist($email: String!) {
-    isExist: isEmailExist(email: $email) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on BooleanObject {
-        boolean
-      }
+    query IsEmailExist($email: String!) {
+  isExist: isEmailExist(email: $email) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on BooleanObject {
+      boolean
     }
   }
-`
+}
+    `;
 
 /**
  * __useIsEmailExistQuery__
@@ -2276,62 +1465,35 @@ export const IsEmailExistDocument = gql`
  *   },
  * });
  */
-export function useIsEmailExistQuery(
-  baseOptions: Apollo.QueryHookOptions<IsEmailExistQuery, IsEmailExistQueryVariables> &
-    ({ variables: IsEmailExistQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(
-    IsEmailExistDocument,
-    options,
-  )
-}
-export function useIsEmailExistLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    IsEmailExistQuery,
-    IsEmailExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(
-    IsEmailExistDocument,
-    options,
-  )
-}
-export function useIsEmailExistSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IsEmailExistQuery,
-    IsEmailExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(
-    IsEmailExistDocument,
-    options,
-  )
-}
-export type IsEmailExistQueryHookResult = ReturnType<typeof useIsEmailExistQuery>
-export type IsEmailExistLazyQueryHookResult = ReturnType<typeof useIsEmailExistLazyQuery>
-export type IsEmailExistSuspenseQueryHookResult = ReturnType<
-  typeof useIsEmailExistSuspenseQuery
->
-export type IsEmailExistQueryResult = Apollo.QueryResult<
-  IsEmailExistQuery,
-  IsEmailExistQueryVariables
->
+export function useIsEmailExistQuery(baseOptions: Apollo.QueryHookOptions<IsEmailExistQuery, IsEmailExistQueryVariables> & ({ variables: IsEmailExistQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(IsEmailExistDocument, options);
+      }
+export function useIsEmailExistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IsEmailExistQuery, IsEmailExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(IsEmailExistDocument, options);
+        }
+export function useIsEmailExistSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<IsEmailExistQuery, IsEmailExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<IsEmailExistQuery, IsEmailExistQueryVariables>(IsEmailExistDocument, options);
+        }
+export type IsEmailExistQueryHookResult = ReturnType<typeof useIsEmailExistQuery>;
+export type IsEmailExistLazyQueryHookResult = ReturnType<typeof useIsEmailExistLazyQuery>;
+export type IsEmailExistSuspenseQueryHookResult = ReturnType<typeof useIsEmailExistSuspenseQuery>;
+export type IsEmailExistQueryResult = Apollo.QueryResult<IsEmailExistQuery, IsEmailExistQueryVariables>;
 export const IsLoginExistDocument = gql`
-  query IsLoginExist($login: String!) {
-    isExist: isLoginExist(login: $login) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on BooleanObject {
-        boolean
-      }
+    query IsLoginExist($login: String!) {
+  isExist: isLoginExist(login: $login) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on BooleanObject {
+      boolean
     }
   }
-`
+}
+    `;
 
 /**
  * __useIsLoginExistQuery__
@@ -2349,62 +1511,35 @@ export const IsLoginExistDocument = gql`
  *   },
  * });
  */
-export function useIsLoginExistQuery(
-  baseOptions: Apollo.QueryHookOptions<IsLoginExistQuery, IsLoginExistQueryVariables> &
-    ({ variables: IsLoginExistQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(
-    IsLoginExistDocument,
-    options,
-  )
-}
-export function useIsLoginExistLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    IsLoginExistQuery,
-    IsLoginExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(
-    IsLoginExistDocument,
-    options,
-  )
-}
-export function useIsLoginExistSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IsLoginExistQuery,
-    IsLoginExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(
-    IsLoginExistDocument,
-    options,
-  )
-}
-export type IsLoginExistQueryHookResult = ReturnType<typeof useIsLoginExistQuery>
-export type IsLoginExistLazyQueryHookResult = ReturnType<typeof useIsLoginExistLazyQuery>
-export type IsLoginExistSuspenseQueryHookResult = ReturnType<
-  typeof useIsLoginExistSuspenseQuery
->
-export type IsLoginExistQueryResult = Apollo.QueryResult<
-  IsLoginExistQuery,
-  IsLoginExistQueryVariables
->
+export function useIsLoginExistQuery(baseOptions: Apollo.QueryHookOptions<IsLoginExistQuery, IsLoginExistQueryVariables> & ({ variables: IsLoginExistQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(IsLoginExistDocument, options);
+      }
+export function useIsLoginExistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IsLoginExistQuery, IsLoginExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(IsLoginExistDocument, options);
+        }
+export function useIsLoginExistSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<IsLoginExistQuery, IsLoginExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<IsLoginExistQuery, IsLoginExistQueryVariables>(IsLoginExistDocument, options);
+        }
+export type IsLoginExistQueryHookResult = ReturnType<typeof useIsLoginExistQuery>;
+export type IsLoginExistLazyQueryHookResult = ReturnType<typeof useIsLoginExistLazyQuery>;
+export type IsLoginExistSuspenseQueryHookResult = ReturnType<typeof useIsLoginExistSuspenseQuery>;
+export type IsLoginExistQueryResult = Apollo.QueryResult<IsLoginExistQuery, IsLoginExistQueryVariables>;
 export const IsPhoneExistDocument = gql`
-  query IsPhoneExist($phone: String!) {
-    isExist: isPhoneExist(phone: $phone) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on BooleanObject {
-        boolean
-      }
+    query IsPhoneExist($phone: String!) {
+  isExist: isPhoneExist(phone: $phone) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on BooleanObject {
+      boolean
     }
   }
-`
+}
+    `;
 
 /**
  * __useIsPhoneExistQuery__
@@ -2422,70 +1557,39 @@ export const IsPhoneExistDocument = gql`
  *   },
  * });
  */
-export function useIsPhoneExistQuery(
-  baseOptions: Apollo.QueryHookOptions<IsPhoneExistQuery, IsPhoneExistQueryVariables> &
-    ({ variables: IsPhoneExistQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(
-    IsPhoneExistDocument,
-    options,
-  )
-}
-export function useIsPhoneExistLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    IsPhoneExistQuery,
-    IsPhoneExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(
-    IsPhoneExistDocument,
-    options,
-  )
-}
-export function useIsPhoneExistSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IsPhoneExistQuery,
-    IsPhoneExistQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(
-    IsPhoneExistDocument,
-    options,
-  )
-}
-export type IsPhoneExistQueryHookResult = ReturnType<typeof useIsPhoneExistQuery>
-export type IsPhoneExistLazyQueryHookResult = ReturnType<typeof useIsPhoneExistLazyQuery>
-export type IsPhoneExistSuspenseQueryHookResult = ReturnType<
-  typeof useIsPhoneExistSuspenseQuery
->
-export type IsPhoneExistQueryResult = Apollo.QueryResult<
-  IsPhoneExistQuery,
-  IsPhoneExistQueryVariables
->
-export const LoginDocument = gql`
-  mutation Login($input: LogInInput) {
-    login(input: $input) {
-      __typename
-      ... on AuthUser {
-        user {
-          ...FullUser
+export function useIsPhoneExistQuery(baseOptions: Apollo.QueryHookOptions<IsPhoneExistQuery, IsPhoneExistQueryVariables> & ({ variables: IsPhoneExistQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(IsPhoneExistDocument, options);
+      }
+export function useIsPhoneExistLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IsPhoneExistQuery, IsPhoneExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(IsPhoneExistDocument, options);
         }
-        token
+export function useIsPhoneExistSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<IsPhoneExistQuery, IsPhoneExistQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<IsPhoneExistQuery, IsPhoneExistQueryVariables>(IsPhoneExistDocument, options);
+        }
+export type IsPhoneExistQueryHookResult = ReturnType<typeof useIsPhoneExistQuery>;
+export type IsPhoneExistLazyQueryHookResult = ReturnType<typeof useIsPhoneExistLazyQuery>;
+export type IsPhoneExistSuspenseQueryHookResult = ReturnType<typeof useIsPhoneExistSuspenseQuery>;
+export type IsPhoneExistQueryResult = Apollo.QueryResult<IsPhoneExistQuery, IsPhoneExistQueryVariables>;
+export const LoginDocument = gql`
+    mutation Login($input: LogInInput) {
+  login(input: $input) {
+    __typename
+    ... on AuthUser {
+      user {
+        ...FullUser
       }
-      ... on BaseError {
-        status
-      }
+      token
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${FullUserFragmentDoc}
-`
-export type LoginMutationFn = Apollo.MutationFunction<
-  LoginMutation,
-  LoginMutationVariables
->
+}
+    ${FullUserFragmentDoc}`;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 
 /**
  * __useLoginMutation__
@@ -2504,29 +1608,21 @@ export type LoginMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLoginMutation(
-  baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options)
-}
-export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>
-export type LoginMutationResult = Apollo.MutationResult<LoginMutation>
-export type LoginMutationOptions = Apollo.BaseMutationOptions<
-  LoginMutation,
-  LoginMutationVariables
->
+export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
+      }
+export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const LogoutDocument = gql`
-  mutation Logout($token: String!) {
-    logout(token: $token) {
-      status
-    }
+    mutation Logout($token: String!) {
+  logout(token: $token) {
+    status
   }
-`
-export type LogoutMutationFn = Apollo.MutationFunction<
-  LogoutMutation,
-  LogoutMutationVariables
->
+}
+    `;
+export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
 
 /**
  * __useLogoutMutation__
@@ -2545,41 +1641,33 @@ export type LogoutMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLogoutMutation(
-  baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(
-    LogoutDocument,
-    options,
-  )
-}
-export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>
-export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>
-export type LogoutMutationOptions = Apollo.BaseMutationOptions<
-  LogoutMutation,
-  LogoutMutationVariables
->
+export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
+      }
+export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
+export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
+export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
 export const RetrieveFileDocument = gql`
-  query RetrieveFile($id: ID!) {
-    retrieveFile(id: $id) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on File {
-        id
-        createdAt
-        updatedAt
-        name
-        path
-        type
-        checksum
-        size
-      }
+    query RetrieveFile($id: ID!) {
+  retrieveFile(id: $id) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on File {
+      id
+      createdAt
+      updatedAt
+      name
+      path
+      type
+      checksum
+      size
     }
   }
-`
+}
+    `;
 
 /**
  * __useRetrieveFileQuery__
@@ -2597,68 +1685,38 @@ export const RetrieveFileDocument = gql`
  *   },
  * });
  */
-export function useRetrieveFileQuery(
-  baseOptions: Apollo.QueryHookOptions<RetrieveFileQuery, RetrieveFileQueryVariables> &
-    ({ variables: RetrieveFileQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(
-    RetrieveFileDocument,
-    options,
-  )
-}
-export function useRetrieveFileLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RetrieveFileQuery,
-    RetrieveFileQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(
-    RetrieveFileDocument,
-    options,
-  )
-}
-export function useRetrieveFileSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    RetrieveFileQuery,
-    RetrieveFileQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(
-    RetrieveFileDocument,
-    options,
-  )
-}
-export type RetrieveFileQueryHookResult = ReturnType<typeof useRetrieveFileQuery>
-export type RetrieveFileLazyQueryHookResult = ReturnType<typeof useRetrieveFileLazyQuery>
-export type RetrieveFileSuspenseQueryHookResult = ReturnType<
-  typeof useRetrieveFileSuspenseQuery
->
-export type RetrieveFileQueryResult = Apollo.QueryResult<
-  RetrieveFileQuery,
-  RetrieveFileQueryVariables
->
+export function useRetrieveFileQuery(baseOptions: Apollo.QueryHookOptions<RetrieveFileQuery, RetrieveFileQueryVariables> & ({ variables: RetrieveFileQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(RetrieveFileDocument, options);
+      }
+export function useRetrieveFileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RetrieveFileQuery, RetrieveFileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(RetrieveFileDocument, options);
+        }
+export function useRetrieveFileSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<RetrieveFileQuery, RetrieveFileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<RetrieveFileQuery, RetrieveFileQueryVariables>(RetrieveFileDocument, options);
+        }
+export type RetrieveFileQueryHookResult = ReturnType<typeof useRetrieveFileQuery>;
+export type RetrieveFileLazyQueryHookResult = ReturnType<typeof useRetrieveFileLazyQuery>;
+export type RetrieveFileSuspenseQueryHookResult = ReturnType<typeof useRetrieveFileSuspenseQuery>;
+export type RetrieveFileQueryResult = Apollo.QueryResult<RetrieveFileQuery, RetrieveFileQueryVariables>;
 export const UploadImageDocument = gql`
-  mutation UploadImage($file: Upload!) {
-    uploadImage(file: $file) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on File {
-        id
-        path
-        type
-      }
+    mutation UploadImage($file: Upload!) {
+  uploadImage(file: $file) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on File {
+      id
+      path
+      type
     }
   }
-`
-export type UploadImageMutationFn = Apollo.MutationFunction<
-  UploadImageMutation,
-  UploadImageMutationVariables
->
+}
+    `;
+export type UploadImageMutationFn = Apollo.MutationFunction<UploadImageMutation, UploadImageMutationVariables>;
 
 /**
  * __useUploadImageMutation__
@@ -2677,43 +1735,29 @@ export type UploadImageMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUploadImageMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UploadImageMutation,
-    UploadImageMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UploadImageMutation, UploadImageMutationVariables>(
-    UploadImageDocument,
-    options,
-  )
-}
-export type UploadImageMutationHookResult = ReturnType<typeof useUploadImageMutation>
-export type UploadImageMutationResult = Apollo.MutationResult<UploadImageMutation>
-export type UploadImageMutationOptions = Apollo.BaseMutationOptions<
-  UploadImageMutation,
-  UploadImageMutationVariables
->
+export function useUploadImageMutation(baseOptions?: Apollo.MutationHookOptions<UploadImageMutation, UploadImageMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UploadImageMutation, UploadImageMutationVariables>(UploadImageDocument, options);
+      }
+export type UploadImageMutationHookResult = ReturnType<typeof useUploadImageMutation>;
+export type UploadImageMutationResult = Apollo.MutationResult<UploadImageMutation>;
+export type UploadImageMutationOptions = Apollo.BaseMutationOptions<UploadImageMutation, UploadImageMutationVariables>;
 export const UploadVideoDocument = gql`
-  mutation UploadVideo($file: Upload!) {
-    uploadVideo(file: $file) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on File {
-        id
-        path
-        type
-      }
+    mutation UploadVideo($file: Upload!) {
+  uploadVideo(file: $file) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on File {
+      id
+      path
+      type
     }
   }
-`
-export type UploadVideoMutationFn = Apollo.MutationFunction<
-  UploadVideoMutation,
-  UploadVideoMutationVariables
->
+}
+    `;
+export type UploadVideoMutationFn = Apollo.MutationFunction<UploadVideoMutation, UploadVideoMutationVariables>;
 
 /**
  * __useUploadVideoMutation__
@@ -2732,35 +1776,21 @@ export type UploadVideoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUploadVideoMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UploadVideoMutation,
-    UploadVideoMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UploadVideoMutation, UploadVideoMutationVariables>(
-    UploadVideoDocument,
-    options,
-  )
-}
-export type UploadVideoMutationHookResult = ReturnType<typeof useUploadVideoMutation>
-export type UploadVideoMutationResult = Apollo.MutationResult<UploadVideoMutation>
-export type UploadVideoMutationOptions = Apollo.BaseMutationOptions<
-  UploadVideoMutation,
-  UploadVideoMutationVariables
->
+export function useUploadVideoMutation(baseOptions?: Apollo.MutationHookOptions<UploadVideoMutation, UploadVideoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UploadVideoMutation, UploadVideoMutationVariables>(UploadVideoDocument, options);
+      }
+export type UploadVideoMutationHookResult = ReturnType<typeof useUploadVideoMutation>;
+export type UploadVideoMutationResult = Apollo.MutationResult<UploadVideoMutation>;
+export type UploadVideoMutationOptions = Apollo.BaseMutationOptions<UploadVideoMutation, UploadVideoMutationVariables>;
 export const AddPlayerAdditionalFieldsDocument = gql`
-  mutation AddPlayerAdditionalFields($data: PlayerAdditionalFieldsIn!) {
-    addPlayerAdditionalFields(data: $data) {
-      status
-    }
+    mutation AddPlayerAdditionalFields($data: PlayerAdditionalFieldsIn!) {
+  addPlayerAdditionalFields(data: $data) {
+    status
   }
-`
-export type AddPlayerAdditionalFieldsMutationFn = Apollo.MutationFunction<
-  AddPlayerAdditionalFieldsMutation,
-  AddPlayerAdditionalFieldsMutationVariables
->
+}
+    `;
+export type AddPlayerAdditionalFieldsMutationFn = Apollo.MutationFunction<AddPlayerAdditionalFieldsMutation, AddPlayerAdditionalFieldsMutationVariables>;
 
 /**
  * __useAddPlayerAdditionalFieldsMutation__
@@ -2779,38 +1809,21 @@ export type AddPlayerAdditionalFieldsMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddPlayerAdditionalFieldsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddPlayerAdditionalFieldsMutation,
-    AddPlayerAdditionalFieldsMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    AddPlayerAdditionalFieldsMutation,
-    AddPlayerAdditionalFieldsMutationVariables
-  >(AddPlayerAdditionalFieldsDocument, options)
-}
-export type AddPlayerAdditionalFieldsMutationHookResult = ReturnType<
-  typeof useAddPlayerAdditionalFieldsMutation
->
-export type AddPlayerAdditionalFieldsMutationResult =
-  Apollo.MutationResult<AddPlayerAdditionalFieldsMutation>
-export type AddPlayerAdditionalFieldsMutationOptions = Apollo.BaseMutationOptions<
-  AddPlayerAdditionalFieldsMutation,
-  AddPlayerAdditionalFieldsMutationVariables
->
+export function useAddPlayerAdditionalFieldsMutation(baseOptions?: Apollo.MutationHookOptions<AddPlayerAdditionalFieldsMutation, AddPlayerAdditionalFieldsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddPlayerAdditionalFieldsMutation, AddPlayerAdditionalFieldsMutationVariables>(AddPlayerAdditionalFieldsDocument, options);
+      }
+export type AddPlayerAdditionalFieldsMutationHookResult = ReturnType<typeof useAddPlayerAdditionalFieldsMutation>;
+export type AddPlayerAdditionalFieldsMutationResult = Apollo.MutationResult<AddPlayerAdditionalFieldsMutation>;
+export type AddPlayerAdditionalFieldsMutationOptions = Apollo.BaseMutationOptions<AddPlayerAdditionalFieldsMutation, AddPlayerAdditionalFieldsMutationVariables>;
 export const AddPlayerPersonalInfoDocument = gql`
-  mutation AddPlayerPersonalInfo($data: PlayerPersonalInfoIn!) {
-    addPlayerPersonalInfo(data: $data) {
-      status
-    }
+    mutation AddPlayerPersonalInfo($data: PlayerPersonalInfoIn!) {
+  addPlayerPersonalInfo(data: $data) {
+    status
   }
-`
-export type AddPlayerPersonalInfoMutationFn = Apollo.MutationFunction<
-  AddPlayerPersonalInfoMutation,
-  AddPlayerPersonalInfoMutationVariables
->
+}
+    `;
+export type AddPlayerPersonalInfoMutationFn = Apollo.MutationFunction<AddPlayerPersonalInfoMutation, AddPlayerPersonalInfoMutationVariables>;
 
 /**
  * __useAddPlayerPersonalInfoMutation__
@@ -2829,38 +1842,21 @@ export type AddPlayerPersonalInfoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddPlayerPersonalInfoMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddPlayerPersonalInfoMutation,
-    AddPlayerPersonalInfoMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    AddPlayerPersonalInfoMutation,
-    AddPlayerPersonalInfoMutationVariables
-  >(AddPlayerPersonalInfoDocument, options)
-}
-export type AddPlayerPersonalInfoMutationHookResult = ReturnType<
-  typeof useAddPlayerPersonalInfoMutation
->
-export type AddPlayerPersonalInfoMutationResult =
-  Apollo.MutationResult<AddPlayerPersonalInfoMutation>
-export type AddPlayerPersonalInfoMutationOptions = Apollo.BaseMutationOptions<
-  AddPlayerPersonalInfoMutation,
-  AddPlayerPersonalInfoMutationVariables
->
+export function useAddPlayerPersonalInfoMutation(baseOptions?: Apollo.MutationHookOptions<AddPlayerPersonalInfoMutation, AddPlayerPersonalInfoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddPlayerPersonalInfoMutation, AddPlayerPersonalInfoMutationVariables>(AddPlayerPersonalInfoDocument, options);
+      }
+export type AddPlayerPersonalInfoMutationHookResult = ReturnType<typeof useAddPlayerPersonalInfoMutation>;
+export type AddPlayerPersonalInfoMutationResult = Apollo.MutationResult<AddPlayerPersonalInfoMutation>;
+export type AddPlayerPersonalInfoMutationOptions = Apollo.BaseMutationOptions<AddPlayerPersonalInfoMutation, AddPlayerPersonalInfoMutationVariables>;
 export const AddPlayerPositionsDocument = gql`
-  mutation AddPlayerPositions($data: PlayerPositionsIn!) {
-    addPlayerPositions(data: $data) {
-      status
-    }
+    mutation AddPlayerPositions($data: PlayerPositionsIn!) {
+  addPlayerPositions(data: $data) {
+    status
   }
-`
-export type AddPlayerPositionsMutationFn = Apollo.MutationFunction<
-  AddPlayerPositionsMutation,
-  AddPlayerPositionsMutationVariables
->
+}
+    `;
+export type AddPlayerPositionsMutationFn = Apollo.MutationFunction<AddPlayerPositionsMutation, AddPlayerPositionsMutationVariables>;
 
 /**
  * __useAddPlayerPositionsMutation__
@@ -2879,49 +1875,31 @@ export type AddPlayerPositionsMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddPlayerPositionsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddPlayerPositionsMutation,
-    AddPlayerPositionsMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    AddPlayerPositionsMutation,
-    AddPlayerPositionsMutationVariables
-  >(AddPlayerPositionsDocument, options)
-}
-export type AddPlayerPositionsMutationHookResult = ReturnType<
-  typeof useAddPlayerPositionsMutation
->
-export type AddPlayerPositionsMutationResult =
-  Apollo.MutationResult<AddPlayerPositionsMutation>
-export type AddPlayerPositionsMutationOptions = Apollo.BaseMutationOptions<
-  AddPlayerPositionsMutation,
-  AddPlayerPositionsMutationVariables
->
+export function useAddPlayerPositionsMutation(baseOptions?: Apollo.MutationHookOptions<AddPlayerPositionsMutation, AddPlayerPositionsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddPlayerPositionsMutation, AddPlayerPositionsMutationVariables>(AddPlayerPositionsDocument, options);
+      }
+export type AddPlayerPositionsMutationHookResult = ReturnType<typeof useAddPlayerPositionsMutation>;
+export type AddPlayerPositionsMutationResult = Apollo.MutationResult<AddPlayerPositionsMutation>;
+export type AddPlayerPositionsMutationOptions = Apollo.BaseMutationOptions<AddPlayerPositionsMutation, AddPlayerPositionsMutationVariables>;
 export const CreatePlayerDocument = gql`
-  mutation CreatePlayer($input: PlayerIn!) {
-    createPlayer(input: $input) {
-      __typename
-      ... on AuthUser {
-        user {
-          ...FullUser
-        }
-        token
+    mutation CreatePlayer($input: PlayerIn!) {
+  createPlayer(input: $input) {
+    __typename
+    ... on AuthUser {
+      user {
+        ...FullUser
       }
-      ... on ErrorWithFields {
-        status
-        fields
-      }
+      token
+    }
+    ... on ErrorWithFields {
+      status
+      fields
     }
   }
-  ${FullUserFragmentDoc}
-`
-export type CreatePlayerMutationFn = Apollo.MutationFunction<
-  CreatePlayerMutation,
-  CreatePlayerMutationVariables
->
+}
+    ${FullUserFragmentDoc}`;
+export type CreatePlayerMutationFn = Apollo.MutationFunction<CreatePlayerMutation, CreatePlayerMutationVariables>;
 
 /**
  * __useCreatePlayerMutation__
@@ -2940,38 +1918,26 @@ export type CreatePlayerMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreatePlayerMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreatePlayerMutation,
-    CreatePlayerMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreatePlayerMutation, CreatePlayerMutationVariables>(
-    CreatePlayerDocument,
-    options,
-  )
-}
-export type CreatePlayerMutationHookResult = ReturnType<typeof useCreatePlayerMutation>
-export type CreatePlayerMutationResult = Apollo.MutationResult<CreatePlayerMutation>
-export type CreatePlayerMutationOptions = Apollo.BaseMutationOptions<
-  CreatePlayerMutation,
-  CreatePlayerMutationVariables
->
+export function useCreatePlayerMutation(baseOptions?: Apollo.MutationHookOptions<CreatePlayerMutation, CreatePlayerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreatePlayerMutation, CreatePlayerMutationVariables>(CreatePlayerDocument, options);
+      }
+export type CreatePlayerMutationHookResult = ReturnType<typeof useCreatePlayerMutation>;
+export type CreatePlayerMutationResult = Apollo.MutationResult<CreatePlayerMutation>;
+export type CreatePlayerMutationOptions = Apollo.BaseMutationOptions<CreatePlayerMutation, CreatePlayerMutationVariables>;
 export const GetPlayerMeDocument = gql`
-  query GetPlayerMe {
-    getPlayerMe {
-      __typename
-      ... on Player {
-        ...FullPlayer
-      }
-      ... on BaseError {
-        status
-      }
+    query GetPlayerMe {
+  getPlayerMe {
+    __typename
+    ... on Player {
+      ...FullPlayer
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${FullPlayerFragmentDoc}
-`
+}
+    ${FullPlayerFragmentDoc}`;
 
 /**
  * __useGetPlayerMeQuery__
@@ -2988,73 +1954,43 @@ export const GetPlayerMeDocument = gql`
  *   },
  * });
  */
-export function useGetPlayerMeQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetPlayerMeQuery, GetPlayerMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(
-    GetPlayerMeDocument,
-    options,
-  )
-}
-export function useGetPlayerMeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetPlayerMeQuery, GetPlayerMeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(
-    GetPlayerMeDocument,
-    options,
-  )
-}
-export function useGetPlayerMeSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    GetPlayerMeQuery,
-    GetPlayerMeQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(
-    GetPlayerMeDocument,
-    options,
-  )
-}
-export type GetPlayerMeQueryHookResult = ReturnType<typeof useGetPlayerMeQuery>
-export type GetPlayerMeLazyQueryHookResult = ReturnType<typeof useGetPlayerMeLazyQuery>
-export type GetPlayerMeSuspenseQueryHookResult = ReturnType<
-  typeof useGetPlayerMeSuspenseQuery
->
-export type GetPlayerMeQueryResult = Apollo.QueryResult<
-  GetPlayerMeQuery,
-  GetPlayerMeQueryVariables
->
-export const GetPlayersDocument = gql`
-  query GetPlayers(
-    $sportName: String
-    $location: String
-    $ageGroup: String
-    $skip: Int! = 0
-    $limit: Int! = 20
-  ) {
-    getPlayers(
-      sportName: $sportName
-      location: $location
-      ageGroup: $ageGroup
-      skip: $skip
-      limit: $limit
-    ) {
-      __typename
-      ... on BaseError {
-        status
+export function useGetPlayerMeQuery(baseOptions?: Apollo.QueryHookOptions<GetPlayerMeQuery, GetPlayerMeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(GetPlayerMeDocument, options);
       }
-      ... on PlayerList {
-        players {
-          ...FullPlayer
+export function useGetPlayerMeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPlayerMeQuery, GetPlayerMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(GetPlayerMeDocument, options);
         }
+export function useGetPlayerMeSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPlayerMeQuery, GetPlayerMeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPlayerMeQuery, GetPlayerMeQueryVariables>(GetPlayerMeDocument, options);
+        }
+export type GetPlayerMeQueryHookResult = ReturnType<typeof useGetPlayerMeQuery>;
+export type GetPlayerMeLazyQueryHookResult = ReturnType<typeof useGetPlayerMeLazyQuery>;
+export type GetPlayerMeSuspenseQueryHookResult = ReturnType<typeof useGetPlayerMeSuspenseQuery>;
+export type GetPlayerMeQueryResult = Apollo.QueryResult<GetPlayerMeQuery, GetPlayerMeQueryVariables>;
+export const GetPlayersDocument = gql`
+    query GetPlayers($sportName: String, $location: String, $ageGroup: String, $skip: Int! = 0, $limit: Int! = 20) {
+  getPlayers(
+    sportName: $sportName
+    location: $location
+    ageGroup: $ageGroup
+    skip: $skip
+    limit: $limit
+  ) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on PlayerList {
+      players {
+        ...FullPlayer
       }
     }
   }
-  ${FullPlayerFragmentDoc}
-`
+}
+    ${FullPlayerFragmentDoc}`;
 
 /**
  * __useGetPlayersQuery__
@@ -3076,59 +2012,35 @@ export const GetPlayersDocument = gql`
  *   },
  * });
  */
-export function useGetPlayersQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetPlayersQuery, GetPlayersQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetPlayersQuery, GetPlayersQueryVariables>(
-    GetPlayersDocument,
-    options,
-  )
-}
-export function useGetPlayersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetPlayersQuery, GetPlayersQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetPlayersQuery, GetPlayersQueryVariables>(
-    GetPlayersDocument,
-    options,
-  )
-}
-export function useGetPlayersSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    GetPlayersQuery,
-    GetPlayersQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetPlayersQuery, GetPlayersQueryVariables>(
-    GetPlayersDocument,
-    options,
-  )
-}
-export type GetPlayersQueryHookResult = ReturnType<typeof useGetPlayersQuery>
-export type GetPlayersLazyQueryHookResult = ReturnType<typeof useGetPlayersLazyQuery>
-export type GetPlayersSuspenseQueryHookResult = ReturnType<
-  typeof useGetPlayersSuspenseQuery
->
-export type GetPlayersQueryResult = Apollo.QueryResult<
-  GetPlayersQuery,
-  GetPlayersQueryVariables
->
+export function useGetPlayersQuery(baseOptions?: Apollo.QueryHookOptions<GetPlayersQuery, GetPlayersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPlayersQuery, GetPlayersQueryVariables>(GetPlayersDocument, options);
+      }
+export function useGetPlayersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPlayersQuery, GetPlayersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPlayersQuery, GetPlayersQueryVariables>(GetPlayersDocument, options);
+        }
+export function useGetPlayersSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPlayersQuery, GetPlayersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPlayersQuery, GetPlayersQueryVariables>(GetPlayersDocument, options);
+        }
+export type GetPlayersQueryHookResult = ReturnType<typeof useGetPlayersQuery>;
+export type GetPlayersLazyQueryHookResult = ReturnType<typeof useGetPlayersLazyQuery>;
+export type GetPlayersSuspenseQueryHookResult = ReturnType<typeof useGetPlayersSuspenseQuery>;
+export type GetPlayersQueryResult = Apollo.QueryResult<GetPlayersQuery, GetPlayersQueryVariables>;
 export const RetrievePlayerDocument = gql`
-  query RetrievePlayer($id: ID!) {
-    retrievePlayer(id: $id) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on Player {
-        ...FullPlayer
-      }
+    query RetrievePlayer($id: ID!) {
+  retrievePlayer(id: $id) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on Player {
+      ...FullPlayer
     }
   }
-  ${FullPlayerFragmentDoc}
-`
+}
+    ${FullPlayerFragmentDoc}`;
 
 /**
  * __useRetrievePlayerQuery__
@@ -3146,65 +2058,30 @@ export const RetrievePlayerDocument = gql`
  *   },
  * });
  */
-export function useRetrievePlayerQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    RetrievePlayerQuery,
-    RetrievePlayerQueryVariables
-  > &
-    ({ variables: RetrievePlayerQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(
-    RetrievePlayerDocument,
-    options,
-  )
-}
-export function useRetrievePlayerLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RetrievePlayerQuery,
-    RetrievePlayerQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(
-    RetrievePlayerDocument,
-    options,
-  )
-}
-export function useRetrievePlayerSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    RetrievePlayerQuery,
-    RetrievePlayerQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(
-    RetrievePlayerDocument,
-    options,
-  )
-}
-export type RetrievePlayerQueryHookResult = ReturnType<typeof useRetrievePlayerQuery>
-export type RetrievePlayerLazyQueryHookResult = ReturnType<
-  typeof useRetrievePlayerLazyQuery
->
-export type RetrievePlayerSuspenseQueryHookResult = ReturnType<
-  typeof useRetrievePlayerSuspenseQuery
->
-export type RetrievePlayerQueryResult = Apollo.QueryResult<
-  RetrievePlayerQuery,
-  RetrievePlayerQueryVariables
->
+export function useRetrievePlayerQuery(baseOptions: Apollo.QueryHookOptions<RetrievePlayerQuery, RetrievePlayerQueryVariables> & ({ variables: RetrievePlayerQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(RetrievePlayerDocument, options);
+      }
+export function useRetrievePlayerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RetrievePlayerQuery, RetrievePlayerQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(RetrievePlayerDocument, options);
+        }
+export function useRetrievePlayerSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<RetrievePlayerQuery, RetrievePlayerQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<RetrievePlayerQuery, RetrievePlayerQueryVariables>(RetrievePlayerDocument, options);
+        }
+export type RetrievePlayerQueryHookResult = ReturnType<typeof useRetrievePlayerQuery>;
+export type RetrievePlayerLazyQueryHookResult = ReturnType<typeof useRetrievePlayerLazyQuery>;
+export type RetrievePlayerSuspenseQueryHookResult = ReturnType<typeof useRetrievePlayerSuspenseQuery>;
+export type RetrievePlayerQueryResult = Apollo.QueryResult<RetrievePlayerQuery, RetrievePlayerQueryVariables>;
 export const SetPlayerSportDocument = gql`
-  mutation SetPlayerSport($id: ID!) {
-    setPlayerSport(id: $id) {
-      status
-    }
+    mutation SetPlayerSport($id: ID!) {
+  setPlayerSport(id: $id) {
+    status
   }
-`
-export type SetPlayerSportMutationFn = Apollo.MutationFunction<
-  SetPlayerSportMutation,
-  SetPlayerSportMutationVariables
->
+}
+    `;
+export type SetPlayerSportMutationFn = Apollo.MutationFunction<SetPlayerSportMutation, SetPlayerSportMutationVariables>;
 
 /**
  * __useSetPlayerSportMutation__
@@ -3223,37 +2100,21 @@ export type SetPlayerSportMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useSetPlayerSportMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    SetPlayerSportMutation,
-    SetPlayerSportMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<SetPlayerSportMutation, SetPlayerSportMutationVariables>(
-    SetPlayerSportDocument,
-    options,
-  )
-}
-export type SetPlayerSportMutationHookResult = ReturnType<
-  typeof useSetPlayerSportMutation
->
-export type SetPlayerSportMutationResult = Apollo.MutationResult<SetPlayerSportMutation>
-export type SetPlayerSportMutationOptions = Apollo.BaseMutationOptions<
-  SetPlayerSportMutation,
-  SetPlayerSportMutationVariables
->
+export function useSetPlayerSportMutation(baseOptions?: Apollo.MutationHookOptions<SetPlayerSportMutation, SetPlayerSportMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SetPlayerSportMutation, SetPlayerSportMutationVariables>(SetPlayerSportDocument, options);
+      }
+export type SetPlayerSportMutationHookResult = ReturnType<typeof useSetPlayerSportMutation>;
+export type SetPlayerSportMutationResult = Apollo.MutationResult<SetPlayerSportMutation>;
+export type SetPlayerSportMutationOptions = Apollo.BaseMutationOptions<SetPlayerSportMutation, SetPlayerSportMutationVariables>;
 export const UpdatePlayerDocument = gql`
-  mutation UpdatePlayer($data: PlayerInUpdate!) {
-    updatePlayer(data: $data) {
-      status
-    }
+    mutation UpdatePlayer($data: PlayerInUpdate!) {
+  updatePlayer(data: $data) {
+    status
   }
-`
-export type UpdatePlayerMutationFn = Apollo.MutationFunction<
-  UpdatePlayerMutation,
-  UpdatePlayerMutationVariables
->
+}
+    `;
+export type UpdatePlayerMutationFn = Apollo.MutationFunction<UpdatePlayerMutation, UpdatePlayerMutationVariables>;
 
 /**
  * __useUpdatePlayerMutation__
@@ -3272,35 +2133,21 @@ export type UpdatePlayerMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdatePlayerMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdatePlayerMutation,
-    UpdatePlayerMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UpdatePlayerMutation, UpdatePlayerMutationVariables>(
-    UpdatePlayerDocument,
-    options,
-  )
-}
-export type UpdatePlayerMutationHookResult = ReturnType<typeof useUpdatePlayerMutation>
-export type UpdatePlayerMutationResult = Apollo.MutationResult<UpdatePlayerMutation>
-export type UpdatePlayerMutationOptions = Apollo.BaseMutationOptions<
-  UpdatePlayerMutation,
-  UpdatePlayerMutationVariables
->
+export function useUpdatePlayerMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePlayerMutation, UpdatePlayerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdatePlayerMutation, UpdatePlayerMutationVariables>(UpdatePlayerDocument, options);
+      }
+export type UpdatePlayerMutationHookResult = ReturnType<typeof useUpdatePlayerMutation>;
+export type UpdatePlayerMutationResult = Apollo.MutationResult<UpdatePlayerMutation>;
+export type UpdatePlayerMutationOptions = Apollo.BaseMutationOptions<UpdatePlayerMutation, UpdatePlayerMutationVariables>;
 export const UpdatePlayerContactDocument = gql`
-  mutation UpdatePlayerContact($data: PlayerContactInUpdate!) {
-    updatePlayerContact(data: $data) {
-      status
-    }
+    mutation UpdatePlayerContact($data: PlayerContactInUpdate!) {
+  updatePlayerContact(data: $data) {
+    status
   }
-`
-export type UpdatePlayerContactMutationFn = Apollo.MutationFunction<
-  UpdatePlayerContactMutation,
-  UpdatePlayerContactMutationVariables
->
+}
+    `;
+export type UpdatePlayerContactMutationFn = Apollo.MutationFunction<UpdatePlayerContactMutation, UpdatePlayerContactMutationVariables>;
 
 /**
  * __useUpdatePlayerContactMutation__
@@ -3319,38 +2166,21 @@ export type UpdatePlayerContactMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdatePlayerContactMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdatePlayerContactMutation,
-    UpdatePlayerContactMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    UpdatePlayerContactMutation,
-    UpdatePlayerContactMutationVariables
-  >(UpdatePlayerContactDocument, options)
-}
-export type UpdatePlayerContactMutationHookResult = ReturnType<
-  typeof useUpdatePlayerContactMutation
->
-export type UpdatePlayerContactMutationResult =
-  Apollo.MutationResult<UpdatePlayerContactMutation>
-export type UpdatePlayerContactMutationOptions = Apollo.BaseMutationOptions<
-  UpdatePlayerContactMutation,
-  UpdatePlayerContactMutationVariables
->
+export function useUpdatePlayerContactMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePlayerContactMutation, UpdatePlayerContactMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdatePlayerContactMutation, UpdatePlayerContactMutationVariables>(UpdatePlayerContactDocument, options);
+      }
+export type UpdatePlayerContactMutationHookResult = ReturnType<typeof useUpdatePlayerContactMutation>;
+export type UpdatePlayerContactMutationResult = Apollo.MutationResult<UpdatePlayerContactMutation>;
+export type UpdatePlayerContactMutationOptions = Apollo.BaseMutationOptions<UpdatePlayerContactMutation, UpdatePlayerContactMutationVariables>;
 export const UpdatePlayerPersonalInfoDocument = gql`
-  mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoInUpdate!) {
-    updatePlayerPersonalInfo(data: $data) {
-      status
-    }
+    mutation UpdatePlayerPersonalInfo($data: PlayerPersonalInfoInUpdate!) {
+  updatePlayerPersonalInfo(data: $data) {
+    status
   }
-`
-export type UpdatePlayerPersonalInfoMutationFn = Apollo.MutationFunction<
-  UpdatePlayerPersonalInfoMutation,
-  UpdatePlayerPersonalInfoMutationVariables
->
+}
+    `;
+export type UpdatePlayerPersonalInfoMutationFn = Apollo.MutationFunction<UpdatePlayerPersonalInfoMutation, UpdatePlayerPersonalInfoMutationVariables>;
 
 /**
  * __useUpdatePlayerPersonalInfoMutation__
@@ -3369,38 +2199,21 @@ export type UpdatePlayerPersonalInfoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdatePlayerPersonalInfoMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdatePlayerPersonalInfoMutation,
-    UpdatePlayerPersonalInfoMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    UpdatePlayerPersonalInfoMutation,
-    UpdatePlayerPersonalInfoMutationVariables
-  >(UpdatePlayerPersonalInfoDocument, options)
-}
-export type UpdatePlayerPersonalInfoMutationHookResult = ReturnType<
-  typeof useUpdatePlayerPersonalInfoMutation
->
-export type UpdatePlayerPersonalInfoMutationResult =
-  Apollo.MutationResult<UpdatePlayerPersonalInfoMutation>
-export type UpdatePlayerPersonalInfoMutationOptions = Apollo.BaseMutationOptions<
-  UpdatePlayerPersonalInfoMutation,
-  UpdatePlayerPersonalInfoMutationVariables
->
+export function useUpdatePlayerPersonalInfoMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePlayerPersonalInfoMutation, UpdatePlayerPersonalInfoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdatePlayerPersonalInfoMutation, UpdatePlayerPersonalInfoMutationVariables>(UpdatePlayerPersonalInfoDocument, options);
+      }
+export type UpdatePlayerPersonalInfoMutationHookResult = ReturnType<typeof useUpdatePlayerPersonalInfoMutation>;
+export type UpdatePlayerPersonalInfoMutationResult = Apollo.MutationResult<UpdatePlayerPersonalInfoMutation>;
+export type UpdatePlayerPersonalInfoMutationOptions = Apollo.BaseMutationOptions<UpdatePlayerPersonalInfoMutation, UpdatePlayerPersonalInfoMutationVariables>;
 export const AddSportUniqueFieldDocument = gql`
-  mutation AddSportUniqueField($input: UniqueFieldIn!) {
-    addSportUniqueField(input: $input) {
-      status
-    }
+    mutation AddSportUniqueField($input: UniqueFieldIn!) {
+  addSportUniqueField(input: $input) {
+    status
   }
-`
-export type AddSportUniqueFieldMutationFn = Apollo.MutationFunction<
-  AddSportUniqueFieldMutation,
-  AddSportUniqueFieldMutationVariables
->
+}
+    `;
+export type AddSportUniqueFieldMutationFn = Apollo.MutationFunction<AddSportUniqueFieldMutation, AddSportUniqueFieldMutationVariables>;
 
 /**
  * __useAddSportUniqueFieldMutation__
@@ -3419,45 +2232,27 @@ export type AddSportUniqueFieldMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddSportUniqueFieldMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    AddSportUniqueFieldMutation,
-    AddSportUniqueFieldMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    AddSportUniqueFieldMutation,
-    AddSportUniqueFieldMutationVariables
-  >(AddSportUniqueFieldDocument, options)
-}
-export type AddSportUniqueFieldMutationHookResult = ReturnType<
-  typeof useAddSportUniqueFieldMutation
->
-export type AddSportUniqueFieldMutationResult =
-  Apollo.MutationResult<AddSportUniqueFieldMutation>
-export type AddSportUniqueFieldMutationOptions = Apollo.BaseMutationOptions<
-  AddSportUniqueFieldMutation,
-  AddSportUniqueFieldMutationVariables
->
+export function useAddSportUniqueFieldMutation(baseOptions?: Apollo.MutationHookOptions<AddSportUniqueFieldMutation, AddSportUniqueFieldMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddSportUniqueFieldMutation, AddSportUniqueFieldMutationVariables>(AddSportUniqueFieldDocument, options);
+      }
+export type AddSportUniqueFieldMutationHookResult = ReturnType<typeof useAddSportUniqueFieldMutation>;
+export type AddSportUniqueFieldMutationResult = Apollo.MutationResult<AddSportUniqueFieldMutation>;
+export type AddSportUniqueFieldMutationOptions = Apollo.BaseMutationOptions<AddSportUniqueFieldMutation, AddSportUniqueFieldMutationVariables>;
 export const CreatePositionDocument = gql`
-  mutation CreatePosition($input: PositionIn!) {
-    createPosition(input: $input) {
-      __typename
-      ... on Position {
-        ...FullPosition
-      }
-      ... on BaseError {
-        status
-      }
+    mutation CreatePosition($input: PositionIn!) {
+  createPosition(input: $input) {
+    __typename
+    ... on Position {
+      ...FullPosition
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${FullPositionFragmentDoc}
-`
-export type CreatePositionMutationFn = Apollo.MutationFunction<
-  CreatePositionMutation,
-  CreatePositionMutationVariables
->
+}
+    ${FullPositionFragmentDoc}`;
+export type CreatePositionMutationFn = Apollo.MutationFunction<CreatePositionMutation, CreatePositionMutationVariables>;
 
 /**
  * __useCreatePositionMutation__
@@ -3476,44 +2271,27 @@ export type CreatePositionMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreatePositionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreatePositionMutation,
-    CreatePositionMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreatePositionMutation, CreatePositionMutationVariables>(
-    CreatePositionDocument,
-    options,
-  )
-}
-export type CreatePositionMutationHookResult = ReturnType<
-  typeof useCreatePositionMutation
->
-export type CreatePositionMutationResult = Apollo.MutationResult<CreatePositionMutation>
-export type CreatePositionMutationOptions = Apollo.BaseMutationOptions<
-  CreatePositionMutation,
-  CreatePositionMutationVariables
->
+export function useCreatePositionMutation(baseOptions?: Apollo.MutationHookOptions<CreatePositionMutation, CreatePositionMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreatePositionMutation, CreatePositionMutationVariables>(CreatePositionDocument, options);
+      }
+export type CreatePositionMutationHookResult = ReturnType<typeof useCreatePositionMutation>;
+export type CreatePositionMutationResult = Apollo.MutationResult<CreatePositionMutation>;
+export type CreatePositionMutationOptions = Apollo.BaseMutationOptions<CreatePositionMutation, CreatePositionMutationVariables>;
 export const CreateSportDocument = gql`
-  mutation CreateSport($input: SportIn!) {
-    createSport(input: $input) {
-      __typename
-      ... on Sport {
-        ...SimpleSport
-      }
-      ... on BaseError {
-        status
-      }
+    mutation CreateSport($input: SportIn!) {
+  createSport(input: $input) {
+    __typename
+    ... on Sport {
+      ...SimpleSport
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${SimpleSportFragmentDoc}
-`
-export type CreateSportMutationFn = Apollo.MutationFunction<
-  CreateSportMutation,
-  CreateSportMutationVariables
->
+}
+    ${SimpleSportFragmentDoc}`;
+export type CreateSportMutationFn = Apollo.MutationFunction<CreateSportMutation, CreateSportMutationVariables>;
 
 /**
  * __useCreateSportMutation__
@@ -3532,38 +2310,26 @@ export type CreateSportMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreateSportMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateSportMutation,
-    CreateSportMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateSportMutation, CreateSportMutationVariables>(
-    CreateSportDocument,
-    options,
-  )
-}
-export type CreateSportMutationHookResult = ReturnType<typeof useCreateSportMutation>
-export type CreateSportMutationResult = Apollo.MutationResult<CreateSportMutation>
-export type CreateSportMutationOptions = Apollo.BaseMutationOptions<
-  CreateSportMutation,
-  CreateSportMutationVariables
->
+export function useCreateSportMutation(baseOptions?: Apollo.MutationHookOptions<CreateSportMutation, CreateSportMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateSportMutation, CreateSportMutationVariables>(CreateSportDocument, options);
+      }
+export type CreateSportMutationHookResult = ReturnType<typeof useCreateSportMutation>;
+export type CreateSportMutationResult = Apollo.MutationResult<CreateSportMutation>;
+export type CreateSportMutationOptions = Apollo.BaseMutationOptions<CreateSportMutation, CreateSportMutationVariables>;
 export const GetSportPositionsDocument = gql`
-  query GetSportPositions($sportID: ID!) {
-    getSportPositions(sportID: $sportID) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on PositionList {
-        ...PositionList
-      }
+    query GetSportPositions($sportID: ID!) {
+  getSportPositions(sportID: $sportID) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on PositionList {
+      ...PositionList
     }
   }
-  ${PositionListFragmentDoc}
-`
+}
+    ${PositionListFragmentDoc}`;
 
 /**
  * __useGetSportPositionsQuery__
@@ -3581,73 +2347,38 @@ export const GetSportPositionsDocument = gql`
  *   },
  * });
  */
-export function useGetSportPositionsQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetSportPositionsQuery,
-    GetSportPositionsQueryVariables
-  > &
-    ({ variables: GetSportPositionsQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(
-    GetSportPositionsDocument,
-    options,
-  )
-}
-export function useGetSportPositionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetSportPositionsQuery,
-    GetSportPositionsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(
-    GetSportPositionsDocument,
-    options,
-  )
-}
-export function useGetSportPositionsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    GetSportPositionsQuery,
-    GetSportPositionsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(
-    GetSportPositionsDocument,
-    options,
-  )
-}
-export type GetSportPositionsQueryHookResult = ReturnType<
-  typeof useGetSportPositionsQuery
->
-export type GetSportPositionsLazyQueryHookResult = ReturnType<
-  typeof useGetSportPositionsLazyQuery
->
-export type GetSportPositionsSuspenseQueryHookResult = ReturnType<
-  typeof useGetSportPositionsSuspenseQuery
->
-export type GetSportPositionsQueryResult = Apollo.QueryResult<
-  GetSportPositionsQuery,
-  GetSportPositionsQueryVariables
->
-export const GetSportsDocument = gql`
-  query GetSports($skip: String, $limit: Int! = 20) {
-    getSports(skip: $skip, limit: $limit) {
-      __typename
-      ... on BaseError {
-        status
+export function useGetSportPositionsQuery(baseOptions: Apollo.QueryHookOptions<GetSportPositionsQuery, GetSportPositionsQueryVariables> & ({ variables: GetSportPositionsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(GetSportPositionsDocument, options);
       }
-      ... on SportList {
-        sports {
-          ...FullSport
+export function useGetSportPositionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSportPositionsQuery, GetSportPositionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(GetSportPositionsDocument, options);
         }
-        total
+export function useGetSportPositionsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetSportPositionsQuery, GetSportPositionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSportPositionsQuery, GetSportPositionsQueryVariables>(GetSportPositionsDocument, options);
+        }
+export type GetSportPositionsQueryHookResult = ReturnType<typeof useGetSportPositionsQuery>;
+export type GetSportPositionsLazyQueryHookResult = ReturnType<typeof useGetSportPositionsLazyQuery>;
+export type GetSportPositionsSuspenseQueryHookResult = ReturnType<typeof useGetSportPositionsSuspenseQuery>;
+export type GetSportPositionsQueryResult = Apollo.QueryResult<GetSportPositionsQuery, GetSportPositionsQueryVariables>;
+export const GetSportsDocument = gql`
+    query GetSports($skip: String, $limit: Int! = 20) {
+  getSports(skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on SportList {
+      sports {
+        ...FullSport
       }
+      total
     }
   }
-  ${FullSportFragmentDoc}
-`
+}
+    ${FullSportFragmentDoc}`;
 
 /**
  * __useGetSportsQuery__
@@ -3666,56 +2397,35 @@ export const GetSportsDocument = gql`
  *   },
  * });
  */
-export function useGetSportsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetSportsQuery, GetSportsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetSportsQuery, GetSportsQueryVariables>(
-    GetSportsDocument,
-    options,
-  )
-}
-export function useGetSportsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetSportsQuery, GetSportsQueryVariables>(
-    GetSportsDocument,
-    options,
-  )
-}
-export function useGetSportsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetSportsQuery, GetSportsQueryVariables>(
-    GetSportsDocument,
-    options,
-  )
-}
-export type GetSportsQueryHookResult = ReturnType<typeof useGetSportsQuery>
-export type GetSportsLazyQueryHookResult = ReturnType<typeof useGetSportsLazyQuery>
-export type GetSportsSuspenseQueryHookResult = ReturnType<
-  typeof useGetSportsSuspenseQuery
->
-export type GetSportsQueryResult = Apollo.QueryResult<
-  GetSportsQuery,
-  GetSportsQueryVariables
->
+export function useGetSportsQuery(baseOptions?: Apollo.QueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+      }
+export function useGetSportsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+        }
+export function useGetSportsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetSportsQuery, GetSportsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSportsQuery, GetSportsQueryVariables>(GetSportsDocument, options);
+        }
+export type GetSportsQueryHookResult = ReturnType<typeof useGetSportsQuery>;
+export type GetSportsLazyQueryHookResult = ReturnType<typeof useGetSportsLazyQuery>;
+export type GetSportsSuspenseQueryHookResult = ReturnType<typeof useGetSportsSuspenseQuery>;
+export type GetSportsQueryResult = Apollo.QueryResult<GetSportsQuery, GetSportsQueryVariables>;
 export const RetrieveSportDocument = gql`
-  query RetrieveSport($id: ID!) {
-    retrieveSport(id: $id) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on Sport {
-        ...FullSport
-      }
+    query RetrieveSport($id: ID!) {
+  retrieveSport(id: $id) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on Sport {
+      ...FullSport
     }
   }
-  ${FullSportFragmentDoc}
-`
+}
+    ${FullSportFragmentDoc}`;
 
 /**
  * __useRetrieveSportQuery__
@@ -3733,65 +2443,35 @@ export const RetrieveSportDocument = gql`
  *   },
  * });
  */
-export function useRetrieveSportQuery(
-  baseOptions: Apollo.QueryHookOptions<RetrieveSportQuery, RetrieveSportQueryVariables> &
-    ({ variables: RetrieveSportQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(
-    RetrieveSportDocument,
-    options,
-  )
-}
-export function useRetrieveSportLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RetrieveSportQuery,
-    RetrieveSportQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(
-    RetrieveSportDocument,
-    options,
-  )
-}
-export function useRetrieveSportSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    RetrieveSportQuery,
-    RetrieveSportQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(
-    RetrieveSportDocument,
-    options,
-  )
-}
-export type RetrieveSportQueryHookResult = ReturnType<typeof useRetrieveSportQuery>
-export type RetrieveSportLazyQueryHookResult = ReturnType<
-  typeof useRetrieveSportLazyQuery
->
-export type RetrieveSportSuspenseQueryHookResult = ReturnType<
-  typeof useRetrieveSportSuspenseQuery
->
-export type RetrieveSportQueryResult = Apollo.QueryResult<
-  RetrieveSportQuery,
-  RetrieveSportQueryVariables
->
+export function useRetrieveSportQuery(baseOptions: Apollo.QueryHookOptions<RetrieveSportQuery, RetrieveSportQueryVariables> & ({ variables: RetrieveSportQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(RetrieveSportDocument, options);
+      }
+export function useRetrieveSportLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RetrieveSportQuery, RetrieveSportQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(RetrieveSportDocument, options);
+        }
+export function useRetrieveSportSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<RetrieveSportQuery, RetrieveSportQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<RetrieveSportQuery, RetrieveSportQueryVariables>(RetrieveSportDocument, options);
+        }
+export type RetrieveSportQueryHookResult = ReturnType<typeof useRetrieveSportQuery>;
+export type RetrieveSportLazyQueryHookResult = ReturnType<typeof useRetrieveSportLazyQuery>;
+export type RetrieveSportSuspenseQueryHookResult = ReturnType<typeof useRetrieveSportSuspenseQuery>;
+export type RetrieveSportQueryResult = Apollo.QueryResult<RetrieveSportQuery, RetrieveSportQueryVariables>;
 export const RetrieveUserDocument = gql`
-  query RetrieveUser($id: ID!) {
-    retrieveUser(id: $id) {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on User {
-        ...FullUser
-      }
+    query RetrieveUser($id: ID!) {
+  retrieveUser(id: $id) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on User {
+      ...FullUser
     }
   }
-  ${FullUserFragmentDoc}
-`
+}
+    ${FullUserFragmentDoc}`;
 
 /**
  * __useRetrieveUserQuery__
@@ -3809,61 +2489,31 @@ export const RetrieveUserDocument = gql`
  *   },
  * });
  */
-export function useRetrieveUserQuery(
-  baseOptions: Apollo.QueryHookOptions<RetrieveUserQuery, RetrieveUserQueryVariables> &
-    ({ variables: RetrieveUserQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(
-    RetrieveUserDocument,
-    options,
-  )
-}
-export function useRetrieveUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RetrieveUserQuery,
-    RetrieveUserQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(
-    RetrieveUserDocument,
-    options,
-  )
-}
-export function useRetrieveUserSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    RetrieveUserQuery,
-    RetrieveUserQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(
-    RetrieveUserDocument,
-    options,
-  )
-}
-export type RetrieveUserQueryHookResult = ReturnType<typeof useRetrieveUserQuery>
-export type RetrieveUserLazyQueryHookResult = ReturnType<typeof useRetrieveUserLazyQuery>
-export type RetrieveUserSuspenseQueryHookResult = ReturnType<
-  typeof useRetrieveUserSuspenseQuery
->
-export type RetrieveUserQueryResult = Apollo.QueryResult<
-  RetrieveUserQuery,
-  RetrieveUserQueryVariables
->
+export function useRetrieveUserQuery(baseOptions: Apollo.QueryHookOptions<RetrieveUserQuery, RetrieveUserQueryVariables> & ({ variables: RetrieveUserQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(RetrieveUserDocument, options);
+      }
+export function useRetrieveUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RetrieveUserQuery, RetrieveUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(RetrieveUserDocument, options);
+        }
+export function useRetrieveUserSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<RetrieveUserQuery, RetrieveUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<RetrieveUserQuery, RetrieveUserQueryVariables>(RetrieveUserDocument, options);
+        }
+export type RetrieveUserQueryHookResult = ReturnType<typeof useRetrieveUserQuery>;
+export type RetrieveUserLazyQueryHookResult = ReturnType<typeof useRetrieveUserLazyQuery>;
+export type RetrieveUserSuspenseQueryHookResult = ReturnType<typeof useRetrieveUserSuspenseQuery>;
+export type RetrieveUserQueryResult = Apollo.QueryResult<RetrieveUserQuery, RetrieveUserQueryVariables>;
 export const UpdateUserDocument = gql`
-  mutation UpdateUser($data: UserInUpdate!) {
-    updateUser(data: $data) {
-      status
-      fields
-    }
+    mutation UpdateUser($data: UserInUpdate!) {
+  updateUser(data: $data) {
+    status
+    fields
   }
-`
-export type UpdateUserMutationFn = Apollo.MutationFunction<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->
+}
+    `;
+export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
 
 /**
  * __useUpdateUserMutation__
@@ -3882,38 +2532,26 @@ export type UpdateUserMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdateUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
-    UpdateUserDocument,
-    options,
-  )
-}
-export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>
-export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->
+export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
+      }
+export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
+export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
 export const GetMyVideosDocument = gql`
-  query GetMyVideos {
-    getMyVideos {
-      __typename
-      ... on BaseError {
-        status
-      }
-      ... on VideoList {
-        ...VideoList
-      }
+    query GetMyVideos {
+  getMyVideos {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on VideoList {
+      ...VideoList
     }
   }
-  ${VideoListFragmentDoc}
-`
+}
+    ${VideoListFragmentDoc}`;
 
 /**
  * __useGetMyVideosQuery__
@@ -3930,56 +2568,30 @@ export const GetMyVideosDocument = gql`
  *   },
  * });
  */
-export function useGetMyVideosQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
-    GetMyVideosDocument,
-    options,
-  )
-}
-export function useGetMyVideosLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
-    GetMyVideosDocument,
-    options,
-  )
-}
-export function useGetMyVideosSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    GetMyVideosQuery,
-    GetMyVideosQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useSuspenseQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(
-    GetMyVideosDocument,
-    options,
-  )
-}
-export type GetMyVideosQueryHookResult = ReturnType<typeof useGetMyVideosQuery>
-export type GetMyVideosLazyQueryHookResult = ReturnType<typeof useGetMyVideosLazyQuery>
-export type GetMyVideosSuspenseQueryHookResult = ReturnType<
-  typeof useGetMyVideosSuspenseQuery
->
-export type GetMyVideosQueryResult = Apollo.QueryResult<
-  GetMyVideosQuery,
-  GetMyVideosQueryVariables
->
+export function useGetMyVideosQuery(baseOptions?: Apollo.QueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(GetMyVideosDocument, options);
+      }
+export function useGetMyVideosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(GetMyVideosDocument, options);
+        }
+export function useGetMyVideosSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetMyVideosQuery, GetMyVideosQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetMyVideosQuery, GetMyVideosQueryVariables>(GetMyVideosDocument, options);
+        }
+export type GetMyVideosQueryHookResult = ReturnType<typeof useGetMyVideosQuery>;
+export type GetMyVideosLazyQueryHookResult = ReturnType<typeof useGetMyVideosLazyQuery>;
+export type GetMyVideosSuspenseQueryHookResult = ReturnType<typeof useGetMyVideosSuspenseQuery>;
+export type GetMyVideosQueryResult = Apollo.QueryResult<GetMyVideosQuery, GetMyVideosQueryVariables>;
 export const HideVideoDocument = gql`
-  mutation HideVideo($id: ID!) {
-    hideVideo(id: $id) {
-      status
-    }
+    mutation HideVideo($id: ID!) {
+  hideVideo(id: $id) {
+    status
   }
-`
-export type HideVideoMutationFn = Apollo.MutationFunction<
-  HideVideoMutation,
-  HideVideoMutationVariables
->
+}
+    `;
+export type HideVideoMutationFn = Apollo.MutationFunction<HideVideoMutation, HideVideoMutationVariables>;
 
 /**
  * __useHideVideoMutation__
@@ -3998,39 +2610,27 @@ export type HideVideoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useHideVideoMutation(
-  baseOptions?: Apollo.MutationHookOptions<HideVideoMutation, HideVideoMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<HideVideoMutation, HideVideoMutationVariables>(
-    HideVideoDocument,
-    options,
-  )
-}
-export type HideVideoMutationHookResult = ReturnType<typeof useHideVideoMutation>
-export type HideVideoMutationResult = Apollo.MutationResult<HideVideoMutation>
-export type HideVideoMutationOptions = Apollo.BaseMutationOptions<
-  HideVideoMutation,
-  HideVideoMutationVariables
->
+export function useHideVideoMutation(baseOptions?: Apollo.MutationHookOptions<HideVideoMutation, HideVideoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<HideVideoMutation, HideVideoMutationVariables>(HideVideoDocument, options);
+      }
+export type HideVideoMutationHookResult = ReturnType<typeof useHideVideoMutation>;
+export type HideVideoMutationResult = Apollo.MutationResult<HideVideoMutation>;
+export type HideVideoMutationOptions = Apollo.BaseMutationOptions<HideVideoMutation, HideVideoMutationVariables>;
 export const PostVideoDocument = gql`
-  mutation PostVideo($input: VideoIn!) {
-    postVideo(input: $input) {
-      __typename
-      ... on Video {
-        ...FullVideo
-      }
-      ... on BaseError {
-        status
-      }
+    mutation PostVideo($input: VideoIn!) {
+  postVideo(input: $input) {
+    __typename
+    ... on Video {
+      ...FullVideo
+    }
+    ... on BaseError {
+      status
     }
   }
-  ${FullVideoFragmentDoc}
-`
-export type PostVideoMutationFn = Apollo.MutationFunction<
-  PostVideoMutation,
-  PostVideoMutationVariables
->
+}
+    ${FullVideoFragmentDoc}`;
+export type PostVideoMutationFn = Apollo.MutationFunction<PostVideoMutation, PostVideoMutationVariables>;
 
 /**
  * __usePostVideoMutation__
@@ -4049,32 +2649,21 @@ export type PostVideoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function usePostVideoMutation(
-  baseOptions?: Apollo.MutationHookOptions<PostVideoMutation, PostVideoMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<PostVideoMutation, PostVideoMutationVariables>(
-    PostVideoDocument,
-    options,
-  )
-}
-export type PostVideoMutationHookResult = ReturnType<typeof usePostVideoMutation>
-export type PostVideoMutationResult = Apollo.MutationResult<PostVideoMutation>
-export type PostVideoMutationOptions = Apollo.BaseMutationOptions<
-  PostVideoMutation,
-  PostVideoMutationVariables
->
+export function usePostVideoMutation(baseOptions?: Apollo.MutationHookOptions<PostVideoMutation, PostVideoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PostVideoMutation, PostVideoMutationVariables>(PostVideoDocument, options);
+      }
+export type PostVideoMutationHookResult = ReturnType<typeof usePostVideoMutation>;
+export type PostVideoMutationResult = Apollo.MutationResult<PostVideoMutation>;
+export type PostVideoMutationOptions = Apollo.BaseMutationOptions<PostVideoMutation, PostVideoMutationVariables>;
 export const RequestApprovalDocument = gql`
-  mutation RequestApproval($id: ID!) {
-    requestApproval(id: $id) {
-      status
-    }
+    mutation RequestApproval($id: ID!) {
+  requestApproval(id: $id) {
+    status
   }
-`
-export type RequestApprovalMutationFn = Apollo.MutationFunction<
-  RequestApprovalMutation,
-  RequestApprovalMutationVariables
->
+}
+    `;
+export type RequestApprovalMutationFn = Apollo.MutationFunction<RequestApprovalMutation, RequestApprovalMutationVariables>;
 
 /**
  * __useRequestApprovalMutation__
@@ -4093,37 +2682,21 @@ export type RequestApprovalMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useRequestApprovalMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    RequestApprovalMutation,
-    RequestApprovalMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<RequestApprovalMutation, RequestApprovalMutationVariables>(
-    RequestApprovalDocument,
-    options,
-  )
-}
-export type RequestApprovalMutationHookResult = ReturnType<
-  typeof useRequestApprovalMutation
->
-export type RequestApprovalMutationResult = Apollo.MutationResult<RequestApprovalMutation>
-export type RequestApprovalMutationOptions = Apollo.BaseMutationOptions<
-  RequestApprovalMutation,
-  RequestApprovalMutationVariables
->
+export function useRequestApprovalMutation(baseOptions?: Apollo.MutationHookOptions<RequestApprovalMutation, RequestApprovalMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RequestApprovalMutation, RequestApprovalMutationVariables>(RequestApprovalDocument, options);
+      }
+export type RequestApprovalMutationHookResult = ReturnType<typeof useRequestApprovalMutation>;
+export type RequestApprovalMutationResult = Apollo.MutationResult<RequestApprovalMutation>;
+export type RequestApprovalMutationOptions = Apollo.BaseMutationOptions<RequestApprovalMutation, RequestApprovalMutationVariables>;
 export const ShowVideoDocument = gql`
-  mutation ShowVideo($id: ID!) {
-    showVideo(id: $id) {
-      status
-    }
+    mutation ShowVideo($id: ID!) {
+  showVideo(id: $id) {
+    status
   }
-`
-export type ShowVideoMutationFn = Apollo.MutationFunction<
-  ShowVideoMutation,
-  ShowVideoMutationVariables
->
+}
+    `;
+export type ShowVideoMutationFn = Apollo.MutationFunction<ShowVideoMutation, ShowVideoMutationVariables>;
 
 /**
  * __useShowVideoMutation__
@@ -4142,18 +2715,10 @@ export type ShowVideoMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useShowVideoMutation(
-  baseOptions?: Apollo.MutationHookOptions<ShowVideoMutation, ShowVideoMutationVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<ShowVideoMutation, ShowVideoMutationVariables>(
-    ShowVideoDocument,
-    options,
-  )
-}
-export type ShowVideoMutationHookResult = ReturnType<typeof useShowVideoMutation>
-export type ShowVideoMutationResult = Apollo.MutationResult<ShowVideoMutation>
-export type ShowVideoMutationOptions = Apollo.BaseMutationOptions<
-  ShowVideoMutation,
-  ShowVideoMutationVariables
->
+export function useShowVideoMutation(baseOptions?: Apollo.MutationHookOptions<ShowVideoMutation, ShowVideoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ShowVideoMutation, ShowVideoMutationVariables>(ShowVideoDocument, options);
+      }
+export type ShowVideoMutationHookResult = ReturnType<typeof useShowVideoMutation>;
+export type ShowVideoMutationResult = Apollo.MutationResult<ShowVideoMutation>;
+export type ShowVideoMutationOptions = Apollo.BaseMutationOptions<ShowVideoMutation, ShowVideoMutationVariables>;

@@ -18,13 +18,35 @@ export const VideoTypes = `
         videos: [Video!]!
     }
 
+    enum VideoRequestStatus {
+        PENDING
+        ACCEPTED
+        REJECTED
+    }
+
+    type VideoRequest {
+        id: ID!
+        video: Video!
+        requestStatus: VideoRequestStatus
+        createdAt: String!
+        updatedAt: String!
+    }
+
+    type VideoRequestList {
+        total: Int!
+        requests: [VideoRequest!]!
+    }
+
     union VideoOrBE = Video | BaseError
     union VideoListOrBE = VideoList | BaseError
+    union VideoRequestOrBE = VideoRequest | BaseError
+    union VideoRequestListOrBE = VideoRequestList | BaseError
 
     type Mutation {
         postVideo(input: VideoIn): VideoOrBE!
         hideVideo(id: ID!): BaseError
         showVideo(id: ID!): BaseError
+        requestApproval(id: ID!): BaseError
     }
 
     type Query {

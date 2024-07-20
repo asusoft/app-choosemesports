@@ -42,7 +42,6 @@ export const FileUpload = async (input) => {
   
       return { url, file: file.metadata };
     } catch (error) {
-      console.log(error)
     }
   };
 

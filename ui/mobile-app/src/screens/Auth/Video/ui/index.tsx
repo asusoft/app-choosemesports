@@ -6,6 +6,7 @@ import { useVideosManaging } from './model'
 import { useAppNavigation } from '@src/navigations/hooks'
 import GLOBAL_CONSTANTS from '@src/constants/constants'
 import FooterButton from '@src/component/ui-lib/buttons/FooterButton'
+import { ActivityIndicator } from 'react-native'
 
 export const Screen = () => {
   const { data, loading, renderItem } = useVideosManaging()
@@ -13,7 +14,9 @@ export const Screen = () => {
 
   let view: JSX.Element | null = null
 
-  if (loading) view = <Typography>Loading...</Typography>
+  if (loading) view = <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+    <ActivityIndicator  size={'large'}/>
+  </View>
 
   if (!loading && data)
     view = (
@@ -23,7 +26,7 @@ export const Screen = () => {
           showsVerticalScrollIndicator={false}
           renderItem={renderItem}
           contentContainerStyle={{ marginVertical: 30, paddingBottom: 100 }}
-          ListEmptyComponent={() => <Typography>No ALbum...</Typography>}
+          ListEmptyComponent={() => <Typography>No Videos...</Typography>}
         />
         <View
           style={{

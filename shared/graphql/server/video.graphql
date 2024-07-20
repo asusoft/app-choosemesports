@@ -17,9 +17,18 @@ type VideoList {
     videos: [Video!]!
 }
 
+enum VideoRequestStatus {
+    PENDING
+    ACCEPTED
+    REJECTED
+}
+
 type VideoRequest {
     id: ID!
-    videoID: ID!
+    video: Video!
+    requestStatus: VideoRequestStatus
+    createdAt: String!
+    updatedAt: String!
 }
 
 type VideoRequestList {
@@ -29,6 +38,7 @@ type VideoRequestList {
 
 union VideoOrBE = Video | BaseError
 union VideoListOrBE = VideoList | BaseError
+union VideoRequestOrBE = VideoRequest | BaseError
 union VideoRequestListOrBE = VideoRequestList | BaseError
 
 type Mutation {

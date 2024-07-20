@@ -1,0 +1,5 @@
+mutation AcceptVideoRequest($requestID: ID!) {
+  acceptVideo(requestID: $requestID) {
+    status
+  }
+}

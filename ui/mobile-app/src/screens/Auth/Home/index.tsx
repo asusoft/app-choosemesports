@@ -143,7 +143,7 @@ export const HomeScreen = () => {
           <Spacing value={20} />
           <Section label='Achievements' onAdd={() => {}} />
           <Spacing value={20} />
-          <Section label='Video Highlights' onAdd={() => {}} />
+          {/* <Section label='Video Highlights' onAdd={() => {}} /> */}
       </ScrollView>
         </View>
     </View>

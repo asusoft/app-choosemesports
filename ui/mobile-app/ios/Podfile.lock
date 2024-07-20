@@ -1997,6 +1997,8 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
+  - react-native-create-thumbnail (2.0.0):
+    - React-Core
   - react-native-date-picker (5.0.2):
     - React-Core
   - react-native-document-picker (9.2.0):
@@ -2265,6 +2267,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
+  - react-native-create-thumbnail (from `../node_modules/react-native-create-thumbnail`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -2393,6 +2396,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
+  react-native-create-thumbnail:
+    :path: "../node_modules/react-native-create-thumbnail"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
   react-native-document-picker:
@@ -2520,6 +2525,7 @@ SPEC CHECKSUMS:
   React-logger: 0a57b68dd2aec7ff738195f081f0520724b35dab
   React-Mapbuffer: 114be72666d7e3e317c1a36fb566cd3ad712fcc8
   react-native-blur: 7e9297c3c6047fd61d4363a909377912bf48c990
+  react-native-create-thumbnail: ab55d24aea01723cf386f18b0b542aabb1982f27
   react-native-date-picker: 90687f1dbd374ff0265dca99d949998364c22fa9
   react-native-document-picker: 2b3efb60622b7be891b8d0e0e5424632150e0c94
   react-native-safe-area-context: dcab599c527c2d7de2d76507a523d20a0b83823d

@@ -1,7 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
-const URI = 'https://choosemesports.onrender.com/'
+const URI = 'http://localhost:4000/'
 
 const httpLink = createHttpLink({
   uri: URI,

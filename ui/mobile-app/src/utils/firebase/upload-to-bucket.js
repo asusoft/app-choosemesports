@@ -1,4 +1,5 @@
 import storage from '@react-native-firebase/storage';
+import { createThumbnail } from 'react-native-create-thumbnail';
 
 export const uploadToBucket = async (input) => {
     let uri;
@@ -30,11 +31,21 @@ export const uploadToBucket = async (input) => {
     const url = await fileRef.getDownloadURL()
     const data =  await fileRef.getMetadata()
 
+    let thumbnailUrl = '';
+    if (lowerCaseType.includes("video")) {
+        const thumbnail = await createThumbnail({ url: input.uri });
+        const thumbnailRef = storage().ref(`Thumbnails/${input.name}.jpg`);
+        await thumbnailRef.putFile(thumbnail.path);
+        thumbnailUrl = await thumbnailRef.getDownloadURL();
+    }
+
+
     return {
         url,
         name: data.name,
         type: data.contentType,
-        size: data.size
+        size: data.size,
+        thumbnailUrl
     }
     
 }

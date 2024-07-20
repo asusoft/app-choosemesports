@@ -4,8 +4,6 @@ export const postVideoMutationResolver = async (_, { input }, { user, database }
     if(!user) return { status: ErrorStatus.NOT_AUTHENTICATED };
 
     const newVidRef = database.collection("Videos").doc();
-
-   
     
     if (!newVidRef) {
         return { status: ErrorStatus.UNKNOWN_ERROR };

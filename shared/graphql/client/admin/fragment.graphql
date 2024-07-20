@@ -1,0 +1,21 @@
+fragment VideoRequest on VideoRequest {
+   id
+   video {
+    ...FullVideo
+   }
+   requestStatus
+   createdAt
+   updatedAt
+}
+
+
+fragment VideoRequestList on VideoRequestList {
+    requests {
+        ...VideoRequest
+    }
+    total
+}
+
+
+
+ 

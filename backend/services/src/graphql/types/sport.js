@@ -66,6 +66,6 @@ export const SportTypes = `
         getPlayerMe: PlayerOrBE!
         retrieveSport(id: ID!): SportOrBE!
         getSportPositions(sportID: ID!): PositionListOrBE!
-        getSports(skip: String, limit: Int! = 20): SportListOrBE!
+        getSports(skip: Int! = 0, limit: Int! = 20): SportListOrBE!
     }
 `

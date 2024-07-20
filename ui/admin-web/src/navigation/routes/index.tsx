@@ -7,6 +7,8 @@ import Dashboard from '@/screens/dashboard';
 import FourOFour from '@/screens/404';
 import Sports from '@/screens/sports';
 import SportDetails from '@/screens/sports/details';
+import VideoRequests from '@/screens/video-request';
+import RequestDetails from '@/screens/video-request/details';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,13 +25,23 @@ const router = createBrowserRouter(
                         <Sports />
                     </ProtectedRoute>
                 } />
-                 <Route path="sports/:sportID" element={
+                <Route path="sports/:sportID" element={
                     <ProtectedRoute>
                         <SportDetails />
                     </ProtectedRoute>
                 } />
-                 <Route path="*" element={
-                   <FourOFour />
+                <Route path="video-requests" element={
+                    <ProtectedRoute>
+                        <VideoRequests />
+                    </ProtectedRoute>
+                } />
+                <Route path="video-requests/:requestID" element={
+                    <ProtectedRoute>
+                        <RequestDetails />
+                    </ProtectedRoute>
+                } />
+                <Route path="*" element={
+                    <FourOFour />
                 } />
             </Route>
         </>

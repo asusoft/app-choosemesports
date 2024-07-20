@@ -1,4 +1,15 @@
 export const AdminTypes = `
+   enum VRejectionReason {
+        QUALITY
+        VIOLATION_OF_POLICY
+        DURATION
+    } 
+
+    input RejectionIn {
+        requestID: ID!
+        reason: VRejectionReason!
+    }
+
     type Admin {
         id: ID!
         login: String!
@@ -23,9 +34,16 @@ export const AdminTypes = `
         changeAdminPassword(oldPassword: String!, newPassword: String!): ErrorWithFields
         adminLogin(input: AdminIn): AuthAdminOrBE!
         createAdmin(input: AdminIn): AuthAdminOrEWF!
+        rejectVideo(input: RejectionIn!): BaseError
+        acceptVideo(requestID: ID!): BaseError
     }
 
     type Query {
         getAdminMe: AdminOrBE!
+        getVideoRequests(
+            skip: Int! = 0,
+            limit: Int! = 20
+        ): VideoRequestListOrBE!
+        retrieveVideoRequest(id: ID!): VideoRequestOrBE!
     }
 `;

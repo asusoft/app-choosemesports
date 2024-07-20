@@ -1,0 +1,11 @@
+query GetVideoRequests($skip: Int! = 0, $limit: Int! = 20) {
+  getVideoRequests(skip: $skip, limit: $limit) {
+    __typename
+    ... on BaseError {
+      status
+    }
+    ... on VideoRequestList {
+     ...VideoRequestList
+    }
+  }
+}

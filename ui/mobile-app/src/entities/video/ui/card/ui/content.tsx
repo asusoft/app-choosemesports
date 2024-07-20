@@ -1,6 +1,5 @@
 import React from 'react'
 import { Pressable, View } from 'react-native'
-import { MoreVerticalIcon, PlayIcon } from '@src/component/icons'
 import { useTheme } from '@src/services/theme/hooks'
 import { useVideoContext } from '../model'
 import { Player } from '@src/modules/media/video/video-player'
@@ -9,8 +8,7 @@ import { Typography } from '@src/component/ui-lib/text/Typography'
 
 export const Content = () => {
   const { theme } = useTheme()
-
-  const { video, fullScreen, isPaused } = useVideoContext()
+  const { video, fullScreen, isPaused, onError, onReady } = useVideoContext()
 
   return (
     <Pressable
@@ -35,12 +33,13 @@ export const Content = () => {
             overflow: 'hidden',
           }}>
           <Player
-            uri={'https://www.youtube.com/watch?v=9I6E1yc5Iks'}
+            uri={video.attachement.path}
+            preview={video.attachement.thumbnailUrl || ''}
             isMuted={false}
             isPaused={isPaused}
             fullScreen={fullScreen}
-            onReady={() => {}}
-            onError={() => {}}
+            onReady={onReady}
+            onError={onError}
           />
         </View>
         <Spacing />

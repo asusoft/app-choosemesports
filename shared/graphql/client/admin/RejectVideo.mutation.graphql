@@ -1,0 +1,5 @@
+mutation RejectVideoRequest($input: RejectionIn!) {
+  rejectVideo(input: $input) {
+    status
+  }
+}

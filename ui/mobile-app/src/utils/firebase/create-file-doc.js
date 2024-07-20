@@ -2,9 +2,6 @@ import firestore from '@react-native-firebase/firestore';
 
 
 export const createFileDoc = async (uploadResponse) => {
-
-    console.log(uploadResponse)
-
     const database = firestore()
 
     const newFileRef = database.collection("Files").doc();
@@ -22,6 +19,7 @@ export const createFileDoc = async (uploadResponse) => {
         size: uploadResponse.size,
         createdAt: new Date(),
         updatedAt: new Date(),
+        thumbnailUrl: uploadResponse.thumbnailUrl || ""
     };
 
     await newFileRef.set(data);

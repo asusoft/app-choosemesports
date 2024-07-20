@@ -20,7 +20,6 @@ export const loginMutationResolver = async (_, { input }, { database }) => {
     try {
         await signInWithEmailAndPassword(auth, user.email, input.password)
     } catch (error) {
-        console.log(error)
         return { status: ErrorStatus.INVALID_CREDENTIALS };
     }
 

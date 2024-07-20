@@ -8,6 +8,7 @@ export const FilesType = `
         type: String!
         checksum: String
         size: Int
+        thumbnailUrl: String
     }
 
     union UploadFileResponse = File | BaseError

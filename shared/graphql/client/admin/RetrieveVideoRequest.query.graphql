@@ -1,0 +1,11 @@
+query RetrieveVideoRequest ($id: ID!){
+    retrieveVideoRequest(id: $id) { 
+        __typename
+        ... on VideoRequest {
+            ...VideoRequest
+        }
+        ... on BaseError {
+            status
+        }
+    }
+}

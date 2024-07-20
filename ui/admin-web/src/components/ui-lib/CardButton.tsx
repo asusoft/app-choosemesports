@@ -6,14 +6,17 @@ import {
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 type CardButtonProps = {
     text: string,
     color?: string,
     onPress: () => void
+    loading?: boolean
 }
 
 
-export default function CardButton({ text, onPress, color }: CardButtonProps) {
+export default function CardButton({ text, onPress, color, loading }: CardButtonProps) {
     const navigate = useNavigate()
     return (
         <div style={{
@@ -29,14 +32,20 @@ export default function CardButton({ text, onPress, color }: CardButtonProps) {
                     borderRadius: "10px",
                     fontFamily: "Rajdhani",
                     "&:hover": {
-                    backgroundColor: "#48CAE4",
-                    cursor: "pointer",
+                        backgroundColor: "#48CAE4",
+                        cursor: "pointer",
                     }
                 }}
             >
-                <Typography fontSize="20px" fontFamily="Sora" whiteSpace="nowrap" color="#fff">
-                    {text}
-                </Typography>
+                {
+                    loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <Typography fontSize="20px" fontFamily="Sora" whiteSpace="nowrap" color="#fff">
+                            {text}
+                        </Typography>
+                    )
+                }
             </Box>
         </div>
     );

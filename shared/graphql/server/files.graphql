@@ -7,6 +7,7 @@ type File {
     type: String!
     checksum: String
     size: Int
+    thumbnailUrl: String
 }
 
 union UploadFileResponse = File | BaseError

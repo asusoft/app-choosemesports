@@ -20,7 +20,7 @@ import { VideoCard } from '@src/entities/video'
 export const useVideosManaging = () => {
   const { theme } = useTheme()
   const { viewer } = useViewer()
-  const [data, setData] = useState<VideoListFragment | null>(MOCK_VIDEOS)
+  const [data, setData] = useState<VideoListFragment | null>()
   const { loading, refetch: getMyVideos } = useGetMyVideosQuery()
 
   const actions = {
@@ -40,6 +40,13 @@ export const useVideosManaging = () => {
     ({ item, index }) => <VideoCard item={item} />,
     [],
   )
+
+  useEffect(() => {
+    async function fetch() {
+      await actions.getVideos()
+    }
+    fetch()
+  }, [])
 
   return {
     loading: false,

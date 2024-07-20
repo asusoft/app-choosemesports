@@ -21,4 +21,11 @@ export const Gender = {
     OTHER:"OTHER",
     UNKNOWN:"UNKNOWN"
 }
+
+
+export const VideoRequestStatus = {
+    PENDING: "PENDING",
+    ACCEPTED: "ACCEPTED",
+    REJECTED: "REJECTED"
+}
     

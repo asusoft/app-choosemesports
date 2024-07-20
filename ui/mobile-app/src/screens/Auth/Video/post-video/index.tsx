@@ -10,12 +10,14 @@ import { pickFromDevice } from '@src/lib/pick-from-device'
 import { useAppNavigation } from '@src/navigations/hooks'
 import { useTheme } from '@src/services/theme/hooks'
 import {
+  Maybe,
   usePostVideoMutation,
   useRequestApprovalMutation,
   VideoIn,
 } from '@src/shared/generated/types/graphql'
 import { uploadFile } from '@src/utils/firebase/upload-file'
 import React, { useState } from 'react'
+import { ImageBackground } from 'react-native'
 import { View, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
 
 export const PostVideoScreen = () => {
@@ -28,6 +30,7 @@ export const PostVideoScreen = () => {
     videoID: '',
     description: '',
   })
+  const [preview, setPreview] = useState<Maybe<string> | undefined>('')
 
   const [loading, setLoading] = useState(false)
 
@@ -37,11 +40,11 @@ export const PostVideoScreen = () => {
 
   const onChooseVideoPress = async () => {
     const result = await pickFromDevice('video')
-
     setLoading(true)
     const response = await uploadFile(result.file)
-    if(response.uploadFile.__typename === 'File'){
+    if (response.uploadFile.__typename === 'File') {
       const videoID = response.uploadFile.id
+      setPreview(response.uploadFile.thumbnailUrl)
       setVideoIn(vidIn => ({ ...vidIn, videoID }))
     }
     setLoading(false)
@@ -52,7 +55,7 @@ export const PostVideoScreen = () => {
       const response = await postVideo({ variables: { input: videoIn } })
       if (response.data?.postVideo.__typename === 'Video') {
         const vidId = response.data?.postVideo.id
-       // await requestApproval({ variables: { id: vidId } })
+        await requestApproval({ variables: { id: vidId } })
       }
       navigation.goBack()
     }
@@ -60,18 +63,20 @@ export const PostVideoScreen = () => {
 
   const onDelete = () => {
     setVideoIn(vidIn => ({ ...vidIn, videoID: '' }))
+    setPreview('')
   }
 
   return (
     <Container>
-        <Typography variant='subHero'>Post a video of your skills</Typography>
-        <Spacing value={20} steps={2}/>
+      <Typography variant='subHero'>Post a video of your skills</Typography>
+      <Spacing value={20} steps={2} />
       <View
         style={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <View
+        <ImageBackground
+         source={{uri: preview!}}
           style={{
             height: 180,
             width: '100%',
@@ -79,15 +84,15 @@ export const PostVideoScreen = () => {
             backgroundColor: theme.palette.field,
           }}>
           {videoIn.videoID ? (
-            <Pressable 
-            onPress={onDelete}
-            style={{
+            <Pressable
+              onPress={onDelete}
+              style={{
                 height: 40, width: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center',
-                 backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                 position: 'absolute',
-                 bottom: 5, right: 10
-            }}>
-                <TrashIcon height={20} width={20} fill={theme.palette.placeholder}/>
+                backgroundColor: theme.palette.background,
+                position: 'absolute',
+                bottom: 5, right: 10
+              }}>
+              <TrashIcon height={20} width={20} fill={theme.palette.placeholder} />
             </Pressable>
           ) : (
             <Pressable
@@ -99,7 +104,7 @@ export const PostVideoScreen = () => {
                 position: 'absolute',
                 top: 60,
                 left: '42%',
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                backgroundColor: theme.palette.background,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -111,7 +116,7 @@ export const PostVideoScreen = () => {
             </Pressable>
           )}
 
-        </View>
+        </ImageBackground>
         <Spacing />
         <TextInput
           value={videoIn.description!!}
