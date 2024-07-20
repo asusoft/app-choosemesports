@@ -1,0 +1,31 @@
+export const NotificationTypes = `
+    enum ENotificationType {
+        VIDEO_REJECTION
+        VIDEO_ACCEPTANCE
+    }
+    
+    
+    type Notification {
+        id: String!
+        type: ENotificationType!
+        text: String!
+        title: String!
+        createdAt: String!
+    }
+    
+    
+    type NotificationList {
+        total: Int!
+        notifications: [Notification!]!
+    }
+    
+    union NotificationListOrBE = NotificationList | BaseError
+    union NotificationOrBE = Notification | BaseError
+    
+    extend type Query {
+        getNotifications(skip: Int! = 0, limit: Int! = 20): NotificationListOrBE!
+        retrieveNotification(id: String!): NotificationOrBE
+    }
+    
+`;
+ 

@@ -5,6 +5,7 @@ import { SportQuery } from './Sport/index.js';
 import { AuthQuery } from './Auth/index.js';
 import { AdminQuery } from './Admin/index.js';
 import { VideoQuery } from './Video/index.js';
+import { NotificationQuery } from './Notification/index.js';
 
 export const queries = `
   ${UserQuery}
@@ -14,4 +15,5 @@ export const queries = `
   ${AuthQuery}
   ${AdminQuery}
   ${VideoQuery}
+  ${NotificationQuery}
 `;

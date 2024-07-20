@@ -6,6 +6,7 @@ import { SportTypes } from './sport.js';
 import { AuthTypes } from './auth.js';
 import { AdminTypes } from './admin.js';
 import { VideoTypes } from './video.js';
+import { NotificationTypes } from './notification.js';
 
 export const types = `
   ${UserType}
@@ -16,4 +17,5 @@ export const types = `
   ${AuthTypes}
   ${AdminTypes}
   ${VideoTypes}
+  ${NotificationTypes}
 `;
