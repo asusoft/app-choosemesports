@@ -16,9 +16,8 @@ export const FifthStep = () => {
   const [contact, setContact] = useState({})
 
   const hasValues = (obj: any) => {
-    return Object.values(obj).some((value: any) => value.trim() !== '');
-  };
-
+    return Object.values(obj).some((value: any) => value.trim() !== '')
+  }
 
   return (
     <SafeAreaView
@@ -95,7 +94,7 @@ export const FifthStep = () => {
           disabled={!hasValues(contact)}
           label='Save'
           onPress={() => handlers.onSaveContacts(contact)}
-          textColor='#000000' 
+          textColor='#000000'
         />
       </View>
     </SafeAreaView>

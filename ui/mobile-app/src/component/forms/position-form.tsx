@@ -69,32 +69,32 @@ export const PositionForm = ({
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-      {position && <Typography children={'Your Stats:'} variant='textButton' />}
-      {position?.stats.map((stat, index) => (
-        <View
-          key={index}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View style={{}}>
-            <Typography children={stat.name} variant='textButton' />
+        {position && <Typography children={'Your Stats:'} variant='textButton' />}
+        {position?.stats.map((stat, index) => (
+          <View
+            key={index}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{}}>
+              <Typography children={stat.name} variant='textButton' />
+            </View>
+            <TextInput
+              onChange={value => handleFieldChange(value.toString(), stat.name)}
+              containerStyle={{
+                width: '50%',
+              }}
+              inputContainerStyle={{
+                borderWidth: 1,
+                borderColor: theme.palette.border,
+                borderRadius: 8,
+                paddingHorizontal: 12,
+              }}
+            />
           </View>
-          <TextInput
-            onChange={value => handleFieldChange(value.toString(), stat.name)}
-            containerStyle={{
-              width: '50%',
-            }}
-            inputContainerStyle={{
-              borderWidth: 1,
-              borderColor: theme.palette.border,
-              borderRadius: 8,
-              paddingHorizontal: 12,
-            }}
-          />
-        </View>
-      ))}
+        ))}
       </ScrollView>
       <View
         style={{

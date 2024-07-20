@@ -1,25 +1,14 @@
 import React from 'react'
-import { useIsFocused } from '@react-navigation/native'
-import { useViewer } from '@src/entities/viewer'
-import { useAppNavigation } from '@src/navigations/hooks'
 import {
   FullVideoFragment,
   useGetMyVideosQuery,
   VideoListFragment,
 } from '@src/shared/generated/types/graphql'
 import { useCallback, useEffect, useState } from 'react'
-import { ListRenderItem, Pressable, View } from 'react-native'
-import { MOCK_VIDEOS } from '@src/constants/mock-data/videos'
-import { useTheme } from '@src/services/theme/hooks'
-import Rating from '@src/component/ui/rating'
-import { Typography } from '@src/component/ui-lib/text/Typography'
-import { Spacing } from '@src/component/ui-lib/separators/spacing'
-import { Player } from '@src/modules/media/video/video-player'
+import { ListRenderItem } from 'react-native'
 import { VideoCard } from '@src/entities/video'
 
 export const useVideosManaging = () => {
-  const { theme } = useTheme()
-  const { viewer } = useViewer()
   const [data, setData] = useState<VideoListFragment | null>()
   const { loading, refetch: getMyVideos } = useGetMyVideosQuery()
 
@@ -37,7 +26,7 @@ export const useVideosManaging = () => {
   }
 
   const renderItem: ListRenderItem<FullVideoFragment> = useCallback(
-    ({ item, index }) => <VideoCard item={item} />,
+    ({ item }) => <VideoCard key={item.id} item={item} />,
     [],
   )
 
@@ -49,7 +38,7 @@ export const useVideosManaging = () => {
   }, [])
 
   return {
-    loading: false,
+    loading: loading,
     renderItem,
     data,
   }

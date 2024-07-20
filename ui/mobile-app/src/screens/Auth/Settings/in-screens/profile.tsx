@@ -91,7 +91,12 @@ export const Profile = () => {
           </Pressable>
         </Pressable>
         <Spacing value={20} steps={2} />
-        <View style={{ width: '100%', backgroundColor: theme.palette.container, borderRadius: 20 }}>
+        <View
+          style={{
+            width: '100%',
+            backgroundColor: theme.palette.container,
+            borderRadius: 20,
+          }}>
           <PersonalInfo />
           <ContactInfo />
         </View>

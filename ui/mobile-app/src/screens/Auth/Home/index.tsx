@@ -19,11 +19,11 @@ export const HomeScreen = () => {
 
   const source = viewer.avatar ? { uri: viewer.avatar.path } : background
 
-  const nameParts = viewer.name.split(' ');
-  const [firstName = '', secondName = '', thirdName = ''] = nameParts;
+  const nameParts = viewer.name.split(' ')
+  const [firstName = '', secondName = '', thirdName = ''] = nameParts
 
   return (
-    <View style={{ ...styles.container, backgroundColor: '#2F4A2A'}}>
+    <View style={{ ...styles.container, backgroundColor: '#2F4A2A' }}>
       <ImageBackground
         source={source}
         style={{
@@ -37,12 +37,18 @@ export const HomeScreen = () => {
         }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <View>
-          <Typography style={{ color: '#fff' }} children={firstName} variant='subHero' />
-          {secondName && <Typography
-            style={{ color: '#fff' }}
-            children={`${secondName} ${thirdName}`}
-            variant='hero'
-          />}
+            <Typography
+              style={{ color: '#fff' }}
+              children={firstName}
+              variant='subHero'
+            />
+            {secondName && (
+              <Typography
+                style={{ color: '#fff' }}
+                children={`${secondName} ${thirdName}`}
+                variant='hero'
+              />
+            )}
           </View>
           {viewer.personal.nationality && (
             <View style={{ justifyContent: 'flex-end' }}>
@@ -52,9 +58,17 @@ export const HomeScreen = () => {
         </View>
         <Spacing />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography style={{ color: '#fff' }} variant='buttonText' children={viewer.sport?.name} />
+          <Typography
+            style={{ color: '#fff' }}
+            variant='buttonText'
+            children={viewer.sport?.name}
+          />
           {viewer.playerPositions && (
-            <Typography style={{ color: '#fff' }} variant='buttonText' children={viewer.playerPositions[0].name} />
+            <Typography
+              style={{ color: '#fff' }}
+              variant='buttonText'
+              children={viewer.playerPositions[0].name}
+            />
           )}
         </View>
         {viewer.additionalFields && (
@@ -63,77 +77,95 @@ export const HomeScreen = () => {
             <View style={globalStyles.wrap}>
               {viewer.additionalFields.map((field, index) => (
                 <View key={index} style={{ flexDirection: 'row', gap: 4 }}>
-                  <Typography style={{ color: '#fff' }} variant='textButton' children={`${field.label}:`} />
-                  <Typography style={{ color: '#fff' }} variant='textParagraph' children={field.value} />
+                  <Typography
+                    style={{ color: '#fff' }}
+                    variant='textButton'
+                    children={`${field.label}:`}
+                  />
+                  <Typography
+                    style={{ color: '#fff' }}
+                    variant='textParagraph'
+                    children={field.value}
+                  />
                 </View>
               ))}
             </View>
           </>
         )}
       </ImageBackground>
+      <View
+        style={{
+          width: WINDOW_WIDTH,
+          height: 145,
+          backgroundColor: '#466A3F',
+          marginTop: WINDOW_HEIGHT / 2 - 40,
+          borderTopRightRadius: 45,
+          borderTopLeftRadius: 45,
+          justifyContent: 'space-between',
+          paddingVertical: GLOBAL_CONSTANTS.paddingHorizontal,
+          flexDirection: 'row',
+        }}>
         <View
           style={{
-            width: WINDOW_WIDTH,
-            height: 145,
-            backgroundColor: '#466A3F',
-            marginTop: WINDOW_HEIGHT / 2 - 40,
-            borderTopRightRadius: 45,
-            borderTopLeftRadius: 45,
-            justifyContent: 'space-between',
-            paddingVertical: GLOBAL_CONSTANTS.paddingHorizontal,
-            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '30%',
+            gap: 8,
+            height: 50,
           }}>
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '30%',
-              gap: 8,
-              height: 50,
-            }}>
-            <Typography style={{ color: '#fff' }} variant='buttonText'>Age</Typography>
-            <Typography style={{ color: '#fff' }} variant='textButton'>
-              {getAge(viewer.personal.dateOfBirth)}
-            </Typography>
-          </View>
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '40%',
-              gap: 8,
-              height: 50,
-              borderRightWidth: 2,
-              borderLeftWidth: 2,
-              borderColor: '#C7C7C7',
-            }}>
-            <Typography style={{ color: '#fff' }} variant='buttonText'>Height</Typography>
-            <Typography style={{ color: '#fff' }} variant='textButton'>{`${viewer.personal.height}M`}</Typography>
-          </View>
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '30%',
-              gap: 8,
-              height: 50,
-            }}>
-            <Typography style={{ color: '#fff' }} variant='buttonText'>Weight</Typography>
-            <Typography style={{ color: '#fff' }} variant='textButton'>{`${viewer.personal.weight}Kg`}</Typography>
-          </View>
+          <Typography style={{ color: '#fff' }} variant='buttonText'>
+            Age
+          </Typography>
+          <Typography style={{ color: '#fff' }} variant='textButton'>
+            {getAge(viewer.personal.dateOfBirth)}
+          </Typography>
         </View>
         <View
           style={{
-            width: WINDOW_WIDTH,
-            flex: 1,
-            backgroundColor: theme.palette.background,
-            marginTop: -55,
-            borderTopRightRadius: 50,
-            borderTopLeftRadius: 50,
-            paddingVertical: GLOBAL_CONSTANTS.paddingHorizontal,
-            paddingHorizontal: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '40%',
+            gap: 8,
+            height: 50,
+            borderRightWidth: 2,
+            borderLeftWidth: 2,
+            borderColor: '#C7C7C7',
           }}>
-             <ScrollView showsVerticalScrollIndicator={false}>
+          <Typography style={{ color: '#fff' }} variant='buttonText'>
+            Height
+          </Typography>
+          <Typography
+            style={{ color: '#fff' }}
+            variant='textButton'>{`${viewer.personal.height}M`}</Typography>
+        </View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '30%',
+            gap: 8,
+            height: 50,
+          }}>
+          <Typography style={{ color: '#fff' }} variant='buttonText'>
+            Weight
+          </Typography>
+          <Typography
+            style={{ color: '#fff' }}
+            variant='textButton'>{`${viewer.personal.weight}Kg`}</Typography>
+        </View>
+      </View>
+      <View
+        style={{
+          width: WINDOW_WIDTH,
+          flex: 1,
+          backgroundColor: theme.palette.background,
+          marginTop: -55,
+          borderTopRightRadius: 50,
+          borderTopLeftRadius: 50,
+          paddingVertical: GLOBAL_CONSTANTS.paddingHorizontal,
+          paddingHorizontal: 30,
+        }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ gap: 8 }}>
             <Typography variant='buttonText'>About</Typography>
             <Typography variant='textParagraph'>{viewer.personal.about}</Typography>
@@ -144,8 +176,8 @@ export const HomeScreen = () => {
           <Section label='Achievements' onAdd={() => {}} />
           <Spacing value={20} />
           {/* <Section label='Video Highlights' onAdd={() => {}} /> */}
-      </ScrollView>
-        </View>
+        </ScrollView>
+      </View>
     </View>
   )
 }

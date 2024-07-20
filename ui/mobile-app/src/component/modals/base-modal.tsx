@@ -12,40 +12,30 @@ type ModalProps = PropsWithChildren & {
 
 export type { ModalProps as BaseModalProps }
 
-const CancelButton = ({ onPress }: { onPress: () => void }) => {
-  const { theme } = useTheme()
-  return (
-    <Pressable
-      style={{
-        borderRadius: 10,
-        width: '100%',
-        paddingVertical: 18,
-        alignItems: 'center',
-        backgroundColor: theme.palette.background,
-      }}
-      onPress={onPress}>
-      <Text
-        style={{
-          fontFamily: 'SF Pro Display',
-          fontSize: 20,
-          fontWeight: '500',
-          color: '#007AFF',
-        }}>
-        Cancel
-      </Text>
-    </Pressable>
-  )
-}
-
 export const BaseModal = ({ visible, onClose, children }: ModalProps) => {
   const { bottom } = useSafeAreaInsets()
+  const { theme } = useTheme()
   return (
     <RNModal animationType='fade' transparent={true} visible={visible}>
       <View style={styles.outer}>
         <RNModal animationType='slide' transparent={true} visible={visible}>
-          <Pressable onPress={onClose} style={{ ...styles.inner, paddingBottom: bottom }}>
-            <View style={styles.content}>{children}</View>
-            <CancelButton onPress={onClose} />
+          <Pressable onPress={onClose} style={{ ...styles.inner }}>
+            <View style={styles.content}>
+              <Pressable
+                onPress={onClose}
+                style={{ width: '100%', alignItems: 'center' }}>
+                <View
+                  style={[styles.line, { backgroundColor: theme.palette.placeholder }]}
+                />
+              </Pressable>
+              <View
+                style={{
+                  padding: GLOBAL_CONSTANTS.paddingHorizontal,
+                  marginBottom: bottom,
+                }}>
+                {children}
+              </View>
+            </View>
           </Pressable>
         </RNModal>
       </View>
@@ -56,20 +46,27 @@ export const BaseModal = ({ visible, onClose, children }: ModalProps) => {
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    backgroundColor: isIos ? 'rgba(0, 0, 0, 0.4)' : undefined,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    zIndex: 0,
   },
   inner: {
-    paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal,
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: !isIos ? 'rgba(0, 0, 0, 0.4)' : undefined,
+    gap: 6,
+    zIndex: 11,
   },
   content: {
-    borderRadius: 10,
+    borderRadius: 20,
     overflow: 'hidden',
-    backgroundColor: '#FFFFFF',
-    marginBottom: 6,
-    width: '100%',
+    justifyContent: 'flex-end',
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+  },
+  line: {
+    width: 50,
+    height: 5,
+    borderRadius: 100,
+    marginVertical: 12,
   },
 })

@@ -60,6 +60,7 @@ export const rejectVideoQueryResolver = async (_, { input }, { user, database })
             }
             await createNotification(notificationInput)
             await deletItemById('VideoRequests', input.requestID)
+            await deletItemById('Files', video.videoID)
             await deletItemById('Videos', videoID)
             return null
         }

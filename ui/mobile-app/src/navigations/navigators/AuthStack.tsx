@@ -8,6 +8,7 @@ import { AddPositionScreen } from '@src/screens/Auth/Position/position-add'
 import SettingsStack from './SettingsStack'
 import { VideosScreen } from '@src/screens/Auth/Video'
 import { PostVideoScreen } from '@src/screens/Auth/Video/post-video'
+import { NotificationsScreen } from '@src/screens/Auth/Notification'
 
 const Stack = createNativeStackNavigator<AuthStackParamList>()
 
@@ -50,6 +51,11 @@ const AuthStack = () => {
         name={'PostVideoScreen'}
         component={PostVideoScreen}
         options={{ title: '' }}
+      />
+      <Stack.Screen
+        name={'NotificationsScreen'}
+        component={NotificationsScreen}
+        options={{ title: 'Notifications' }}
       />
     </Stack.Navigator>
   )

@@ -76,7 +76,7 @@ export const PostVideoScreen = () => {
           justifyContent: 'center',
         }}>
         <ImageBackground
-         source={{uri: preview!}}
+          source={{ uri: preview! }}
           style={{
             height: 180,
             width: '100%',
@@ -87,10 +87,15 @@ export const PostVideoScreen = () => {
             <Pressable
               onPress={onDelete}
               style={{
-                height: 40, width: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center',
+                height: 40,
+                width: 40,
+                borderRadius: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
                 backgroundColor: theme.palette.background,
                 position: 'absolute',
-                bottom: 5, right: 10
+                bottom: 5,
+                right: 10,
               }}>
               <TrashIcon height={20} width={20} fill={theme.palette.placeholder} />
             </Pressable>
@@ -115,7 +120,6 @@ export const PostVideoScreen = () => {
               )}
             </Pressable>
           )}
-
         </ImageBackground>
         <Spacing />
         <TextInput

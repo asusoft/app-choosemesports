@@ -13,7 +13,6 @@ export const NotificationCustomResolvers = {
     },
     NotificationListOrBE: {
         __resolveType(obj, _, __){
-            console.log(obj)
             if(obj.total){
                 return 'NotificationList';
             }

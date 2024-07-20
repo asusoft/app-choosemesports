@@ -69,7 +69,7 @@ export const DropdownInput = (props: DropdownInputProps) => {
         padding: 0,
       }}
       selectedItemLabelStyle={{
-        color: '#FFF'
+        color: '#FFF',
       }}
     />
   )

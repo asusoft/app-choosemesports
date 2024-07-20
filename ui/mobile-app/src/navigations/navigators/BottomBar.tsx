@@ -36,7 +36,7 @@ const BottomBar = () => {
         options={{
           unmountOnBlur: true,
         }}
-        initialParams={{ screen: 'HomeScreen' }}
+        initialParams={{ screen: 'NotificationsScreen' }}
       />
     </TabBar.Navigator>
   )

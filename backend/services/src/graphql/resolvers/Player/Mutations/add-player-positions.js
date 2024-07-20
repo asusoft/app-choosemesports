@@ -30,7 +30,6 @@ export const addPlayerPositionsMutationResolver = async (_, { data }, { user, da
             return { status: ErrorStatus.UNKNOWN_ERROR };
         }
     } catch (error) {
-        console.error("Error adding player positions:", error);
         return { status: ErrorStatus.UNKNOWN_ERROR };
     }
 };

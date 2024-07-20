@@ -14,9 +14,12 @@ export const Screen = () => {
 
   let view: JSX.Element | null = null
 
-  if (loading) view = <View style={{ alignItems: 'center', justifyContent: 'center'}}>
-    <ActivityIndicator  size={'large'}/>
-  </View>
+  if (loading)
+    view = (
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size={'large'} />
+      </View>
+    )
 
   if (!loading && data)
     view = (

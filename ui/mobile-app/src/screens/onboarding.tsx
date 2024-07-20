@@ -25,7 +25,7 @@ const OnboardingScreen = () => {
           alignItems: 'center',
           paddingHorizontal: GLOBAL_CONSTANTS.paddingHorizontal + 11,
         }}>
-        <Logo  fill={'#000000'}/>
+        <Logo fill={'#000000'} />
         <Spacing value={12} steps={4} />
         <Typography style={{ textAlign: 'center', fontSize: 17 }}>
           Create an account to showcase your sports talents, connect with scouts, and

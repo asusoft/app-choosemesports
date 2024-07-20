@@ -64,18 +64,20 @@ export const Header = ({
         ...styles.container,
         backgroundColor,
         paddingTop,
+        borderBottomWidth: variant !== 'TRANSPARENT' ? 0.5 : 0,
+        borderBottomColor: theme.palette.line,
       }}>
-        <View style={styles.sideElement}>
-          {leftElement ? (
-              renderLeftElement()
-            ) : showBackButton ? (
-              <Pressable disabled={!showBackButton} onPress={goBack}>
-              <ArrowLeftIcon height={HEADER_CONSTANTS.iconSize} fill={fill} />
-              </Pressable>
-            ) : (
-              <Spacing value={HEADER_CONSTANTS.iconSize} />
-            )}
-        </View>
+      <View style={styles.sideElement}>
+        {leftElement ? (
+          renderLeftElement()
+        ) : showBackButton ? (
+          <Pressable disabled={!showBackButton} onPress={goBack}>
+            <ArrowLeftIcon height={HEADER_CONSTANTS.iconSize} fill={fill} />
+          </Pressable>
+        ) : (
+          <Spacing value={HEADER_CONSTANTS.iconSize} />
+        )}
+      </View>
       <View style={styles.centralElement}>{renderCentralElement()}</View>
       <View
         style={{

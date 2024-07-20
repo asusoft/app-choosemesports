@@ -14,14 +14,12 @@ type VideoPlayerProps = {
   preview: string
 }
 
-
-
 export const Player = (props: VideoPlayerProps) => {
-  const thumbnail = props.preview !== '' ? {uri: props.preview } : background
+  const thumbnail = props.preview !== '' ? { uri: props.preview } : background
 
   return (
     <VideoPlayer
-      video={{ uri: props.uri}}
+      video={{ uri: props.uri }}
       thumbnail={thumbnail}
       style={{
         height: '100%',
